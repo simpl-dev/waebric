@@ -2,4 +2,14 @@ group WaebricSimplGenerator;
 
 program() ::= <<
 generated <id>
+<definitions.definition:{
+  <testDefinitions(it)
+}>
+
+>>
+
+testDefinitions(definition) ::= <<
+  Definition test BEGIN
+  name: <definition.Id.text>
+  Definition test END
 >>

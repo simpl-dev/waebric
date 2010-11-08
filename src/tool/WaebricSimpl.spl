@@ -1,6 +1,28 @@
 grammar ee.cyber.simplicitas.waebric.WaebricSimpl;
 
-Program: 'program' Id;
+Program: 'module' Id Definitions;
+
+Definitions: Definition+;
+
+Definition: 'def' Id '(' arguments=Args ')' 
+	statements=Statement*
+'end';
+
+RecordPair: pairName=Id ":" pairValue=PrimitiveData;
+DataList: "[" listArg=PrimitiveData ("," listRest=PrimitiveData)? "]";
+DataRecords: "{" recordsArg=RecordPair ("," recordsRest=RecordPair)? "}";
+Args: arg=Data ("," rest=Data)?;
+
+Statement: Id;
+
+option PrimitiveData: DataNum | DataStr | DataSymbol;
+option Data: PrimitiveData | DataList | DataRecords;
+
+
+terminal DataNum: ('0'..'9')*;
+terminal DataStr: '"' (~'"')* '"';
+terminal DataSymbol: "'" Id;
+
 
 terminal Id: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 fragment ML_COMMENT: '/*' (~'*' | '*' ~'/')* '*/';
