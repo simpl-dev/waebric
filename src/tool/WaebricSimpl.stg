@@ -1,0 +1,5 @@
+group WaebricSimplGenerator;
+
+program() ::= <<
+generated <id>
+>>

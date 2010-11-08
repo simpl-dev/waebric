@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.imp.runtime.languageDescription">
+      <language extensions="wbsimpl" description="Waebric Simpl Implementation"
+                natureID="ee.cyber.simplicitas.waebric" language="waebric_simpl"/>
+   </extension>
+   <extension id="waebric_simpl.parserWrapper"
+              name="Waebric Simpl Implementation Parser Wrapper"
+              point="org.eclipse.imp.runtime.parser">
+      <parserWrapper
+            class="ee.cyber.simplicitas.waebric.WaebricSimplParseController"
+            language="waebric_simpl"/>
+   </extension>
+   <extension point="org.eclipse.imp.runtime.tokenColorer">
+      <tokenColorer class="ee.cyber.simplicitas.waebric.WaebricSimplTokenColorer"
+                    language="waebric_simpl"/>
+   </extension>
+   <extension point="org.eclipse.imp.runtime.modelTreeBuilder">
+      <treeBuilder
+            class="ee.cyber.simplicitas.waebric.WaebricSimplTreeModelBuilder"
+            language="waebric_simpl">
+      </treeBuilder>
+   </extension>
+   <extension point="org.eclipse.imp.runtime.labelProvider">
+   <labelProvider class="ee.cyber.simplicitas.waebric.WaebricSimplLabelProvider"
+   language="waebric_simpl"/>
+   </extension>
+   <extension point="org.eclipse.imp.runtime.referenceResolvers">
+   <referenceResolver class="ee.cyber.simplicitas.waebric.WaebricSimplReferenceResolver"
+   language="waebric_simpl"/>
+   </extension>
+   <extension point="org.eclipse.imp.runtime.foldingUpdater">
+   <foldingUpdater class="ee.cyber.simplicitas.waebric.WaebricSimplFoldingUpdater"
+   language="waebric_simpl"/>
+   </extension>
+   <extension point="org.eclipse.imp.runtime.documentationProvider">
+   <docProvider class="ee.cyber.simplicitas.waebric.WaebricSimplDocumentationProvider"
+   language="waebric_simpl"/>
+   </extension>
+   <extension id="waebric_simpl.hoverHelper"
+              name="Waebric Simpl Implementation Hover Helper"
+              point="org.eclipse.imp.runtime.hoverHelper">
+      <hoverHelper class="ee.cyber.simplicitas.imp.HoverHelper"
+                 language="waebric_simpl"/>
+   </extension>
+   <extension point="org.eclipse.imp.runtime.contentProposer">
+      <proposer class="ee.cyber.simplicitas.waebric.WaebricSimplContentProposer"
+                language="waebric_simpl"/>
+   </extension>
+   <extension point="org.eclipse.imp.runtime.markOccurrences">
+      <occurrenceMarker class="ee.cyber.simplicitas.waebric.WaebricSimplOccurrenceMarker"
+                        language="waebric_simpl"/>
+   </extension>
+   
+   <extension point="org.eclipse.ui.preferencePages">
+      <page class="ee.cyber.simplicitas.waebric.WaebricSimplPreferencePage"
+            id="ee.cyber.simplicitas.waebric.WaebricSimplPreferencePage"
+            name="Waebric Simpl Implementation Preferences">
+      </page>
+   </extension>
+   <extension point="org.eclipse.core.runtime.preferences">
+      <initializer class="ee.cyber.simplicitas.waebric.WaebricSimplPreferenceInitializer"/>
+   </extension>
+   
+   <extension
+          point="org.eclipse.ui.popupMenus">
+       <objectContribution
+             id="waebric_simpl.generatorPopUp"
+             nameFilter="*.wbsimpl"
+             objectClass="org.eclipse.core.resources.IFile">
+          <action
+                class="ee.cyber.simplicitas.waebric.WaebricSimplGenerateAction"
+                enablesFor="1"
+                id="ee.cyber.simplicitas.waebric.WaebricSimplGenerateAction"
+                label="Generate"
+                menubarPath="additions"
+                tooltip="Generate">
+          </action>
+       </objectContribution>
+    </extension>
+</plugin>
