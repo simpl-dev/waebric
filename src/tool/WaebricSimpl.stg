@@ -3,13 +3,29 @@ group WaebricSimplGenerator;
 program() ::= <<
 generated <id>
 <definitions.definition:{
-  <testDefinitions(it)
+  <testDefinitions(it)>
 }>
 
 >>
 
 testDefinitions(definition) ::= <<
   Definition test BEGIN
-  name: <definition.Id.text>
+  name: <definition.id.text>
+  arguments: <processArgs(definition.arguments)>
   Definition test END
+>>
+
+processArgs(args) ::= <<
+  <processArg(args.arg)><if(args.rst)>, <processArgs(args.rst)> <endif>
+>>
+
+processArg(arg) ::= <<
+  <if(arg.recordsArg)> <separateRecords(arg)>
+  <else><arg.text>
+  <endif>
+>>
+
+separateRecords(arg) ::= <<
+  record(s): { <arg.recordsArg.pairName> - <arg.recordsArg.pairValue> 
+    <if(arg.recordsRest)> <arg.recordsRest:{, <it.pairName> - <it.pairValue> }> <endif>}
 >>

@@ -1,5 +1,5 @@
 module test
 
-def blaah ( "xxx" )
+def blaah ( "xxx", "asd", "aaa", { blaa : "val", ugha : "blah" } )
 	abc
 end

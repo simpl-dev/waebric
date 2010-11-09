@@ -11,7 +11,7 @@ Definition: 'def' Id '(' arguments=Args ')'
 RecordPair: pairName=Id ":" pairValue=PrimitiveData;
 DataList: "[" listArg=PrimitiveData ("," listRest=PrimitiveData)? "]";
 DataRecords: "{" recordsArg=RecordPair ("," recordsRest=RecordPair)? "}";
-Args: arg=Data ("," rest=Data)?;
+Args: arg=Data ("," rst=Args)?;
 
 Statement: Id;
 
