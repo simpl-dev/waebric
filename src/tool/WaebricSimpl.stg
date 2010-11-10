@@ -11,21 +11,29 @@ generated <id>
 testDefinitions(definition) ::= <<
   Definition test BEGIN
   name: <definition.id.text>
-  arguments: <processArgs(definition.arguments)>
+  arguments: 
+  <processArgs(definition.arguments)>
   Definition test END
 >>
 
 processArgs(args) ::= <<
-  <processArg(args.arg)><if(args.rst)>, <processArgs(args.rst)> <endif>
+  <processArg(args.arg)><if(args.rst)> <processArgs(args.rst)> <endif>
 >>
 
 processArg(arg) ::= <<
-  <if(arg.recordsArg)> <separateRecords(arg)>
-  <else><arg.text>
+  <if(arg.records)> record(s): { <separateRecords(arg.records)> }
+  <elseif(arg.list)> list: [ <separateList(arg.list)> ]
+  <elseif(arg.strVal)> String: <arg.strVal>
+  <elseif(arg.numVal)> Number: <arg.numVal>
+  <elseif(arg.symVal)> Symbol: <arg.symVal>
+  <else>Unknown???: <arg.text>
   <endif>
 >>
 
-separateRecords(arg) ::= <<
-  record(s): { <arg.recordsArg.pairName> - <arg.recordsArg.pairValue> 
-    <if(arg.recordsRest)> <arg.recordsRest:{, <it.pairName> - <it.pairValue> }> <endif>}
+separateRecords(r) ::= <<
+  <r.recArg.pairName> - <r.recArg.pairValue> <if(r.recRest)>, <separateRecords(r.recRest)><endif>
+>>
+
+separateList(l) ::= <<
+  <l.listArg><if(l.listRest)>, <separateList(l.listRest)><endif>
 >>

@@ -9,19 +9,26 @@ Definition: 'def' Id '(' arguments=Args ')'
 'end';
 
 RecordPair: pairName=Id ":" pairValue=PrimitiveData;
-DataList: "[" listArg=PrimitiveData ("," listRest=PrimitiveData)? "]";
-DataRecords: "{" recordsArg=RecordPair ("," recordsRest=RecordPair)? "}";
+DataRecordItems: recArg=RecordPair ("," recRest=DataRecordItems)?;
+DataListItems: listArg=PrimitiveData ("," listRest=DataListItems)?;
+DataList: "[" list=DataListItems "]";
+DataRecords: "{" records=DataRecordItems "}";
 Args: arg=Data ("," rst=Args)?;
+DataNum: numVal=NUM;
+DataStr: strVal=STR;
+DataSymbol: symVal=SYMBOL;
 
 Statement: Id;
 
+// Data types that can be passed as arguments
+// TODO: DataNum, DataStr and DataSymbol should be contextual
 option PrimitiveData: DataNum | DataStr | DataSymbol;
 option Data: PrimitiveData | DataList | DataRecords;
 
-
-terminal DataNum: ('0'..'9')*;
-terminal DataStr: '"' (~'"')* '"';
-terminal DataSymbol: "'" Id;
+// Basic variable types
+terminal NUM: ('0'..'9')*;
+terminal STR: '"' (~'"')* '"';
+terminal SYMBOL: "'" Id;
 
 
 terminal Id: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

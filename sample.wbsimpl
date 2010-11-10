@@ -1,5 +1,5 @@
 module test
 
-def blaah ( "xxx", "asd", "aaa", { blaa : "val", ugha : "blah" } )
+def blaah ( "xxx", "asd", "aaa", { blaa : "val", ugha : "blah" }, [ "list1", "list2", 'abc ], 123, 'asd )
 	abc
 end
