@@ -1,37 +1,94 @@
 grammar ee.cyber.simplicitas.waebric.WaebricSimpl;
 
-Program: 'module' Id Definitions;
+Program: 'module' IdCon Definitions Site;
 
 Definitions: Definition+;
 
-Definition: 'def' Id '(' arguments=Args ')' 
+Definition: 'def' IdCon '(' arguments=Args ')' 
 	statements=Statement*
 'end';
 
-RecordPair: pairName=Id ":" pairValue=PrimitiveData;
+RecordPair: pairName=IdCon ":" pairValue=PrimitiveData;
 DataRecordItems: recArg=RecordPair ("," recRest=DataRecordItems)?;
 DataListItems: listArg=PrimitiveData ("," listRest=DataListItems)?;
 DataList: "[" list=DataListItems "]";
 DataRecords: "{" records=DataRecordItems "}";
-Args: arg=Data ("," rst=Args)?;
-DataNum: numVal=NUM;
-DataStr: strVal=STR;
-DataSymbol: symVal=SYMBOL;
+Args: arg=Expression ("," rst=Args)?;
+DataNum: numVal=NatCon;
+DataStr: strVal=Text;
+DataSymbol: symVal=SymbolCon;
 
-Statement: Id;
+Statement: IdCon;
+
+// File Mapping Nodes
+Site: 'site' 
+	mappings=Mappings+ 
+'end';
+
+Mappings: mapping=Mapping ";";
+Mapping: path=Path ":" markup=IdCon;	//TODO! Should be Markup not IdCon
+Path: (value1=FullPath | value2=FileName);
+
+
 
 // Data types that can be passed as arguments
-// TODO: DataNum, DataStr and DataSymbol should be contextual
 option PrimitiveData: DataNum | DataStr | DataSymbol;
-option Data: PrimitiveData | DataList | DataRecords;
+option Expression: PrimitiveData | DataList | DataRecords;
 
 // Basic variable types
-terminal NUM: ('0'..'9')*;
-terminal STR: '"' (~'"')* '"';
-terminal SYMBOL: "'" Id;
+
+//terminal NUM: ('0'..'9')*;
+//terminal STR: '"' (~'"')* '"';
 
 
-terminal Id: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+
+//**** TERMINALS **** //
+// Note that the terminals are matched according to the order of definition
+// therefore some general terminals are used for multiple places
+
+// General
+fragment Letter: ('a'..'z'|'A'..'Z');
+fragment Digit: ('0'..'9');
+fragment Hexadecimal: (Letter | Digit)+;
+terminal IdCon: Letter (Letter|Digit|'-')*;
+terminal NatCon: Digit+;
+
+// File mapping terminals
+fragment PathElement: (Letter|Digit|'%')+; //|~('\\'|'/')
+fragment FileExt: (Letter|Digit)+;
+terminal FileName: PathElement "." FileExt;
+terminal FullPath: ("/")? (PathElement "/")+ FileName;
+
+
+
+//Text and TextChar related
+fragment TextChar:	~('\u0000'..'\u001F' | '&' | '"' | '<' | '\u0080'..'\uFFFF' ) |
+			 '\n' | '\r' | '\t' | EscQuote | Amp | CharRef | EntRef ;
+fragment EscQuote:	'\\\\' | '\\"';		
+fragment Amp:		'\&' ~('#' | '0'..'9' | 'a'..'z' | 'A'..'Z' | '_' | ':')+;
+fragment CharRef:	'&#' Digit+ ';' | '&#x' Hexadecimal ';' ;
+fragment EntRef:	'&' ( Letter | '_' | ':' ) ( Letter | Digit | '.' | '-' | '_' | ':')* ';' ;
+terminal Text: '\"' TextChar* '\"';
+
+
+//StrCon and StrChar
+//As this will be processed after Text, all patterns that match
+//both, were already considered as Text. "comment" tag only
+//uses StrCon and this must be considered.
+fragment Newline: '\\n';
+fragment Tab: '\\t';
+fragment Quote: '\\"';
+fragment Backslash: '\\\\';
+fragment Decimal: '\\\\' 'a:' Digit 'b:' Digit 'c:' Digit;
+fragment StrChar: ~('\u0000'..'\u001F' | '"' | '\\') | Newline | Tab | Quote | Backslash | Decimal;
+terminal StrCon: '\"' StrChar* '\"';
+
+//symbol
+terminal SymbolCon: "'" SymbolChar*;
+fragment SymbolChar: ~( '\u0000'..'\u001F' | ' ' | ';' | ',' | '>' | '}' | ')');
+
+
+// whitespaces and comments
 fragment ML_COMMENT: '/*' (~'*' | '*' ~'/')* '*/';
 fragment SL_COMMENT: '//' ~('\n'|'\r')*;
 hidden terminal WS: (' '|'\t'|'\r'|'\n'|SL_COMMENT|ML_COMMENT)+;

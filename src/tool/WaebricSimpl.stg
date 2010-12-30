@@ -1,16 +1,26 @@
 group WaebricSimplGenerator;
 
 program() ::= <<
-generated <id>
+generated <idCon>
 <definitions.definition:{
   <testDefinitions(it)>
 }>
+
+
+Site test BEGIN
+<site.mappings:{
+  Mapping: <if(it.mapping.path.value1)><it.mapping.path.value1> (fullpath),
+  <else><it.mapping.path.value2> (filename)<endif> 
+  Markup: <it.mapping.markup.text>
+}>
+Site test END
+
 
 >>
 
 testDefinitions(definition) ::= <<
   Definition test BEGIN
-  name: <definition.id.text>
+  name: <definition.idCon>
   arguments: 
   <processArgs(definition.arguments)>
   Definition test END

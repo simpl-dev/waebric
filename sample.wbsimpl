@@ -1,5 +1,12 @@
 module test
 
-def blaah ( "xxx", "asd", "aaa", { blaa : "val", ugha : "blah" }, [ "list1", "list2", 'abc ], 123, 'asd )
+def blaah ("xxx", "asd", "aaa", {blaa : "val", ugha : "blah" }, [ "list1", "list2", 'abc ], 123, 'asd )
 	abc
+end
+
+site
+	/home/bla.txt : bl;
+	/home/david/bla.txt: bl2;
+	subdir/x.html: bl3;
+	x.html: bl4;
 end

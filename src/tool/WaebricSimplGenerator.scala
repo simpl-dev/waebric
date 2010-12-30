@@ -8,7 +8,7 @@ class WaebricSimplGenerator(destDir: String)
     
   def generate(tree: Program) {
     val args = tree.toJavaMap()
-    writeFile("GeneratedProgram.java", templates.getInstanceOf("program", args))
+    writeFile("TestOutput.java", templates.getInstanceOf("program", args))
   }
 }
   
