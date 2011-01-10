@@ -1,4 +1,4 @@
-package ee.cyber.simplicitas.waebric;
+package ee.cyber.waebric.lexer;
 
 import ee.cyber.simplicitas.{GeneratorBase, MainBase}
 

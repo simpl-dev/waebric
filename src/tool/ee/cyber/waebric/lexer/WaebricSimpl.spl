@@ -1,4 +1,8 @@
-grammar ee.cyber.simplicitas.waebric.WaebricSimpl;
+grammar ee.cyber.waebric.lexer.WaebricSimpl;
+
+scalaheader {
+import HelperMethods._
+}
 
 Program: 'module' IdCon Definitions Site;
 
@@ -9,14 +13,19 @@ Definition: 'def' IdCon '(' arguments=Args ')'
 'end';
 
 RecordPair: pairName=IdCon ":" pairValue=PrimitiveData;
-DataRecordItems: recArg=RecordPair ("," recRest=DataRecordItems)?;
-DataListItems: listArg=PrimitiveData ("," listRest=DataListItems)?;
+RecordItems: recArg=RecordPair ("," recRest=RecordItems)?;
 DataList: "[" list=DataListItems "]";
-DataRecords: "{" records=DataRecordItems "}";
 Args: arg=Expression ("," rst=Args)?;
+
+// primitive
 DataNum: numVal=NatCon;
-DataStr: strVal=Text;
 DataSymbol: symVal=SymbolCon;
+
+// with type check as well
+DataStr: strVal=Text;
+DataRecords: "{" records=RecordItems "}";
+DataListItems: listArg=PrimitiveData ("," listRest=DataListItems)?;
+
 
 Statement: IdCon;
 
@@ -30,21 +39,43 @@ Mapping: path=Path ":" markup=IdCon;	//TODO! Should be Markup not IdCon
 Path: (value1=FullPath | value2=FileName);
 
 
-
-// Data types that can be passed as arguments
+// Expressions
 option PrimitiveData: DataNum | DataStr | DataSymbol;
 option Expression: PrimitiveData | DataList | DataRecords;
 
-// Basic variable types
+//Field: Expression "." IdCon;
 
-//terminal NUM: ('0'..'9')*;
-//terminal STR: '"' (~'"')* '"';
+Field
+	returns Expression {FieldExpression(left, field)}
+	: left=Expression "." field=IdCon;
+Cat 
+	returns Expression {makeCat(left :: rest)}
+    : left=Expression ("+" rest=Expression)*;
 
+
+//Predicates
+option Predicate: TypeCheck | Not;
+
+TypeCheck returns Predicate {TypeCheckPredicate(exp, t)}: exp=Expression "." t=Types "?";
+Not returns Predicate {NotPredicate(p)}: "!" p=Predicate;
+Or returns Predicate {getAndOrPredicate(new String("or"), left :: rest)}
+    : left=And ("||" rest=And)*;
+And returns Predicate {getAndOrPredicate(new String("and"), left :: rest)}
+    : left=Predicate ("&&" rest=Predicate)*;
+
+// Types
+option Types {
+    def text: String
+}: TypeList |  TypeString | TypeRecord;
 
 
 //**** TERMINALS **** //
 // Note that the terminals are matched according to the order of definition
 // therefore some general terminals are used for multiple places
+
+terminal TypeRecord: 'record';
+terminal TypeList: 'list';
+terminal TypeString: 'string';
 
 // General
 fragment Letter: ('a'..'z'|'A'..'Z');

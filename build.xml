@@ -1,7 +1,7 @@
 <!-- ex: se sts=4 sw=4 expandtab: -->
 <project name="waebric-simpl" default="plugin" basedir=".">
     <property file="${basedir}/ant.properties"/>
-    <property name="simpl.version" value="1.0.1"/>
+    <property name="simpl.version" value="1.1.0"/>
 
     <property name="target" value="${basedir}/target"/>
     <property name="tool-jar" value="${target}/waebric-simpl-tool.jar"/>
@@ -35,8 +35,8 @@
         <!-- generate grammar -->
         <taskdef name="grammar" classpathref="tool-deps"
                  classname="ee.cyber.simplicitas.parse.GrammarTask"/>
-        <grammar src="${basedir}/src/tool/WaebricSimpl.spl"
-                 destdir="${target}/gen/ee/cyber/simplicitas/waebric"/>
+        <grammar src="${basedir}/src/tool/ee/cyber/waebric/lexer/WaebricSimpl.spl"
+                 destdir="${target}/gen/ee/cyber/waebric/lexer"/>
 
         <!-- compile sources (together with the generated grammar) -->
         <mkdir dir="${target}/classes"/>
@@ -55,7 +55,7 @@
 
     <target name="tool-run" depends="tool-deps">
         <!-- test run -->
-        <java classname="ee.cyber.simplicitas.waebric.WaebricSimplMain" fork="true">
+        <java classname="ee.cyber.waebric.lexer.WaebricSimplMain" fork="true">
             <classpath>
                 <path refid="tool-deps"/>
                 <path location="${tool-jar}"/>
