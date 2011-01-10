@@ -2,6 +2,7 @@ package ee.cyber.waebric.lexer
 
 import ee.cyber.simplicitas.{TerminalNode, CommonNode}
 
+/*
 case class CatExpression(left: Expression, right: Expression) extends Expression {
     def childrenNames = Array("left", "right")
 }
@@ -24,7 +25,7 @@ case class FieldExpression(left: Expression, field: IdCon) extends Expression {
 
 
 object HelperMethods {
-    
+
     def makeCat(args: List[Expression]) = {
         def loop(left: Expression, right: List[Expression]): Expression =
             (right) match {
@@ -36,7 +37,7 @@ object HelperMethods {
 
         loop(args.head, args.tail)
     }
-    
+
     def getAndOrPredicate(op: String, args: List[Predicate]) = {
     	def loop(left: Predicate, right: List[Predicate], op: String): Predicate =
             (right) match {
@@ -49,3 +50,4 @@ object HelperMethods {
         loop(args.head, args.tail, op)
     }
 }
+*/
