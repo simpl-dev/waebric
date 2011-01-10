@@ -9,6 +9,6 @@ def css(url, media)
 end
 
 def workshop(year,location)
-  a(href= year + "/index.html") "year location";
+  a(href= year + "/index.html") "<year> <location>";
 end
 
