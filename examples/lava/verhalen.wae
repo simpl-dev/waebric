@@ -1,0 +1,51 @@
+
+module verhalen
+
+import utils
+
+site
+  site/verhalen.html: verhalen()
+end
+
+def verhalen
+  layout single-column {
+   header("Korte verhalen");
+   p "Klik op onderstaande nummers van Lava om naar 
+	  de verhalen te gaan.";
+
+   let
+     td(img, alt, pdf) = td(width=200) {
+       img@160%160(src=img,alt=alt);
+       br;
+       a(href=pdf,target="_blank") yield;
+     }
+   in
+     table(summary="Verschenen Lava's") {
+       tr {
+         td("images/lavakaft_14-2.jpg", "14-2", "archief/lava14.2.pdf") "Lava 14.2";
+       }
+       tr {
+         td("images/lavakaft_14-1.jpg", "14-1", "archief/lava14.1.pdf") "Lava 14.1";
+         td("images/lavakaft_13-34.jpg", "13-34", "archief/lava13.3-4.pdf") "Lava 13.3 &amp; 13.4";
+         td("images/lavakaft_13-2.jpg", "13-2", "archief/lava13.2.pdf") "Lava 13.2";
+       }
+       tr {
+         td("images/lavakaft_13-1.jpg", "13-1", "archief/lava13.1.pdf") "Lava 13.1";
+         td("images/lavakaft_12-34.jpg", "12-34", "archief/lava12.3-4.pdf") "Lava 12.3 &amp; 12.4";
+         td("images/lavakaft_12-2.jpg", "12-2", "archief/lava12.2.pdf") "Lava 12-2";
+       }
+       tr {
+         td("images/lavakaft_12-1.jpg", "12-1", "archief/lava12.1.pdf") "Lava 12-1";
+         td("images/lavakaft_11-4.jpg", "11-4", "archief/lava11.4.pdf") "Lava 11-4";
+         td("images/lavakaft_11-3.jpg", "11-3", "archief/lava11.3.pdf") "Lava 11-3";
+       }
+     }
+   end
+   
+   p "Om PDF-bestanden te kunnen lezen heeft u Acrobat Reader nodig. Download Acrobat Reader 
+<a(href="http://www.adobe.com/products/acrobat/readstep2.html") 'hier>.";
+
+   abonnement;
+
+  }
+end

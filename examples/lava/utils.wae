@@ -1,0 +1,114 @@
+
+module utils
+
+def header(text)
+  vlam-h1 text;
+end
+
+def vlam-h1
+  h1 {
+   img.vlam(src="images/vlamgroot-inv.jpg", alt="lava vlam");
+   yield; 
+  }
+end
+
+def css(url, media)
+  link(rel="stylesheet", href=url, type="text/css", media=media);
+end
+
+def abonnement 
+ p a(href="abonnementen.html") em "Abonnement op ons tijdschrift?";
+end
+
+def layout
+  html(xmlns='http://www.w3.org/1999/xhtml) {
+    head {
+     title "Literair Tijdschrift Lava &mdash; Brandende Pen";
+     meta(http-equiv="content-type", content="text/html; charset=utf-8");
+     meta(name="keywords", content="kopij insturen, kort verhaal, korte verhalen, literatuur, literair tijdschrift, publiceren, schrijven, schrijfcursus, debuteren, debutant, brandende pen, lava, deadline, literaire prijs, schrijfwedstrijd");
+     meta(name="description", content="Literair tijdschrift Lava; organisator literaire prijs voor het korte verhaal De Brandende Pen");
+     meta(name="language", content="NL");
+     css("css/blueprint/screen.css", "screen, projection");
+     css("css/blueprint/print.css", "print");
+     comment "[if IE]>";
+     css("css/blueprint/ie.css", "screen, projection");
+     comment "<![endif]";
+     css("css/lava.css", "screen");
+   }
+   body {
+    div.container {
+      div.span-3.prepend-1 {
+        img(src="images/LAVA_logo_new08_lowres.jpg", width=110, alt="Lava Literair"); 
+        hr.space;
+        menu;
+      }
+      yield;
+    }
+    // Google analytics code
+    script(type="text/javascript") {
+      echo "
+var gaJsHost = ((\"https:\" == document.location.protocol) ? \"https://ssl.\" : \"http://www.\");
+document.write(unescape(\"%3Cscript src='\" + gaJsHost + \"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E\"));
+";
+    }
+    echo "
+";
+    script(type="text/javascript") {
+      echo "
+var pageTracker = _gat._getTracker(\"UA-5156251-1\");
+pageTracker._trackPageview();
+";  }
+
+   }
+  }
+end
+
+def menu
+ div#button ul.menu {
+   li a(href="index.html") "Lava Voorpagina";
+   li a(href="brandende%20pen.html") "Brandende Pen";
+   li a(href="verhalen.html") "Korte verhalen";
+   li a(href="overlava.html") "Over Lava";
+   li a(href="kopij.html") "Kopij insturen";
+   li a(href="abonnementen.html") "Abonnementen";
+ }
+end
+
+def thumbnail(image) 
+  img.thumb(src=image,alt="thumbnail");
+end
+
+def single-column
+ div.span-16.last {
+   yield;
+ }
+end
+
+
+def vprobanner
+   table {
+    tr {
+      td img(src="images/logos/vpro_logo.jpg"); 
+      td "&nbsp; De Avonden / Mediapartner";
+    }
+   }
+end
+
+def swfobject(url, width, height, id)
+  object(classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000, width=width, height=height) {
+    param$movie(url);
+    param$quality('high);
+    param$bgcolor('#fffce6);
+    comment "[if !IE]>";
+    object(type='application/x-shockwave-flash, data=url, width=width, height=height) {
+      param$quality('high);
+      param$bgcolor('#fffce6);
+      comment "<![endif]";
+      comment "[if !IE]>";
+    }      
+    comment "<![endif]";
+  }
+end
+
+
+

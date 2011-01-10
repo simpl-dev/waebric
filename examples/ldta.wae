@@ -1,0 +1,269 @@
+module ldta
+
+site
+ index.html: main
+end
+
+def css(url, media)
+  link(rel="stylesheet", href=url, type="text/css", media=media);
+end
+
+def workshop(year,location)
+  a(href= year + "/index.html") "<year> <location>";
+end
+
+def sciencedirect(issn, volume, issue, year) 
+  a(href="http://www.sciencedirect.com/science/publication?issn=" + issn + "&amp;volume=" + volume + "&amp;issue=" + issue) year;
+end
+
+def entcs(volume, issue, year)
+  sciencedirect("15710661", volume, issue, year);
+end
+
+def sp 
+  echo "&nbsp;";
+end
+
+def previous
+ ul { 	
+   li { 
+     h2 "Workshops";
+     ul {
+          li workshop("2001","Genova");
+          li workshop("2002","Grenoble");
+          li workshop("2003","Warsaw");
+          li workshop("2004","Barcelona");
+          li workshop("2005","Edinburgh");
+          li workshop("2006","Vienna");
+          li workshop("2007","Braga");
+          li workshop("2008","Budapest"); 
+     }
+     h2 "Proceedings";
+     ul {
+          li {
+           entcs("44","2",2001);
+           sp; entcs("65","3", 2002);
+           sp; entcs("82","3", 2003);
+           br; entcs("110","0", 2004);
+           sp; entcs("141","4", 2005);
+           sp; entcs("164","2", 2006);
+           br; entcs("203","2", 2007);
+           sp; echo "2008"; 
+         }
+     }
+     h2 "Tentative Deadlines";
+     ul {
+       li "Abstracts Nov 28th, 2008";
+       li "Papers Dec 5th, 2008";
+       li "Notification Feb 6th, 2009";
+     }
+
+    
+   }
+ }
+end
+
+def relatedLinks
+ ul { 	
+   li { 
+     h2 "Authors";
+     ul {
+          li a(href="http://www.easychair.org/conferences/?conf=ldta2009",info="Use this link to submit a paper when it becomes available") "Submit";
+          li a(href="notyetavailable",info="Use this link to register for ETAPS when it becomes available") "Register";
+     }
+   }
+   li {
+     h2 "Organizers";
+     ul {
+          li a(href="http://organisation.ldta.info") "Wiki";
+          li a(href="http://www.easychair.org/conferences/?conf=ldta2009") "EasyChair";
+     }
+   }
+   li {
+     h2 "ETAPS";
+     ul {
+       li a(href="http://www.cs.york.ac.uk/etaps09/") "Site";
+       li a(href="http://www.york.gov.uk/visiting/") "Visiting York";
+       li a(href="notavailable") "Registration";
+     }
+   }
+ }
+end
+
+
+def callForPapers
+ section("Call For Papers 2009") { 
+
+ p "This is the Call For Papers for the Ninth Workshop on Language Descriptions, Tools and Applications (LDTA 2009)";
+
+ p "LDTA is a two-day satellite event of ETAPS which takes place between on the 28th and 29th March 2009 in York, England.";
+
+ h2 "Scope";
+
+ p {
+  echo "LDTA is an application and tool oriented forum on meta programming in a broad sense. A meta program is a program that takes other programs as input or output. The focus of LDTA is on generated or otherwise efficiently implemented meta programs, possibly using high level descriptions of programming languages. Tools and techniques presented at LDTA are usually applicable in the context of \"Language Workbenches\" or \"Meta Programming Systems\" or simply as parts of advanced programming environments or IDEs. The applications areas include, but are not limited to:";
+  ul {
+ li "Program analysis, transformation, generation and verification";
+ li "Implementation of Domain Specific Languages (both visual and textual)";
+ li "Reverse engineering and reengineering";
+ li "Refactoring and other source-to-source transformations";
+ li "Application modelling (MDE, MDA, Software Factories, Software product lines)";
+ li "Grammar engineering / Grammarware";
+ li "Language definition and language prototyping";
+ li "Debugging, profiling and testing";
+ li "IDE construction";
+ li "Compiler construction";
+ }
+ }
+
+ p {
+   echo "LDTA is a well-established workshop next to other conferences and workshops on (programming) language engineering topics such as ";
+   a(href="http://planet-mde.org/sle2008/") "SLE"; 
+   echo " and ";
+   a(href="http://www.gpce.org") "GPCE";
+   echo ".";
+   echo "LDTA is traditionally a forum where computer science theories are put to the test of real-world software engineering issues, for example by applying:";
+  ul {
+ li "context-free grammars to parser generation for real programming languages,";
+ li "attribute grammars to static analyzer and compiler generation,";
+ li "term rewriting to source-to-source transformation,";
+ li "action semantics to programming language implementation,";
+ li "model checking to software verification.";
+ }
+
+ echo "Note that LDTA solicits submissions from any technological or theoretical domain, as long as the paper is within the application scope.";
+ }
+
+h2 "Submission Procedure and Publication";
+
+p {
+  echo "Submissions in the following categories are admissible:";
+ul {
+ li "research papers,";
+ li "tool papers,";
+ li "experience papers";
+}
+
+p {
+  echo "The final versions of accepted papers will probably(*) be published in Electronic Notes in Theoretical Computer Science (ENTCS), Elsevier Science, and will be made available during the workshop. (*) Due to organizational changes at Elsevier, publication by ENTCS publication is provisional; another comparable venue will be found otherwise.";
+  br;
+  br;
+  echo "Each submission must:";
+ul {
+ li "clearly and unambiguously state in which of the three categories it falls";
+ li "be original, i.e. not published or submitted elsewhere,";
+ li "contain a clear motivation,";
+ li "contain a thorough analysis of the claimed contributions (for example by comparing to related work),";
+ li "be written in less than 15 pages (research papers and experience reports), or less than 10 pages (tool papers)";
+ li { echo "use the "; a(href="http://www.entcs.org/files/etaps09/ldta/prentcsmacro.sty") "ENTCS style."; }
+}
+
+p "The authors of each submission are required to give a presentation at LDTA 2009. The authors of the tool papers are required to include an interactive demonstration in their presentations.";
+
+p "The authors of the best papers will be invited to write a journal version of their paper which will be separately reviewed and, assuming acceptance, be published in journal form. As in past years, this will be done in a special issue devoted to LDTA 2009 of the journal Science of Computer Programming (Elsevier Science).";
+
+p "The authors of the best tool papers will be invited to write a paper and submit the source of code of their tool, which will both be separately reviewed and, assuming acceptance, be published in the special issue on Experimental  Software and Toolkits (EST) of the journal Science of Computer Programming (Elsevier Science).";
+
+p { 
+  echo "Please submit your abstract and paper using ";
+  a(href="http://www.easychair.org/conferences/?conf=ldta2009") "http://www.easychair.org/conferences/?conf=ldta2009" ;
+}
+
+h2 "Program Committee";
+
+ul {
+ li a(href="mailto:Jurgen.Vinju@cwi.nl,torbjorn@comlab.ox.ac.uk") "Jurgen Vinju, CWI, Amsterdam (co-chair)";
+ li a(href="mailto:Jurgen.Vinju@cwi.nl,torbjorn@comlab.ox.ac.uk") "Torbj&ouml;rn Ekman, Oxford, UK (co-chair)"; 
+ li "Erik Meijer, Microsoft, Redmond, USA";
+ li "Walid Taha, Rice University, Houston USA"; 
+ li "Bob Fuhrer, IBM TJ Watson, USA ";
+ li "Susan Eisenbach, Imperial College, UK"; 
+ li "Jean-Marie Jacquet, FUNDP, Namur, Belgium"; 
+ li "Sibylle Schuppe, Chalmers, Sweden";
+ li "Elizabeth Scott, RHUL, UK ";
+ li "Robert Grimm, NYU, USA";
+ li "Judith Bishop, Pretoria, South Africa";
+ li "Tudor Girba, Univ of Berne, Switzerland";
+ li "Marjan Mernik, University of Maribor, Slovenia";
+ li "Thomas Dean, Fondazione Bruno Kessler - IRST, Italy"; 
+ li "Martin Bravenboer, Univ. of Oregon, USA ";
+ li "Pierre-Etienne Moreau, INRIA-LORIA, France";
+ li "Gabi Taentzer, Philipps-Universit&auml;t Marburg, Germany";
+ li "Joao Saraiva,  Universidade do Minho, Braga, Portugal";
+ li "Tijs van der Storm, CWI, The Netherlands";
+ li "Stephen Edwards, Columbia University, USA ";
+ li "Peter Thiemann, Universit&auml;t Freiburg, Germany"; 
+}
+
+h2 "Important Dates";
+ table {
+ tr { td b "Abstract submission deadline:"; td "Friday November 28th, 2008"; }
+ tr { td b "Paper submission deadline:";    td "Friday December 5th, 2008"; }  
+ tr { td b "Notification of acceptance:";   td "Friday February 6th, 2009" ; } 
+ tr { td b "Workshop date:" ;               td "20th March 20th, 2009 (tentative)" ; }  
+ }
+
+  }
+ }}
+end
+
+
+def parTitle(title)
+ h1.title title;
+end
+
+def par 
+ div.entry {
+  yield;
+ }
+end
+
+def section(title) 
+  parTitle(title);
+  par yield;
+end
+
+def subtitle(title)
+  p.meta small title;
+end
+
+def main 
+html(xmlns='http://www.w3.org/1999/xhtml) {
+ 
+    head {
+     title "LDTA";
+     meta(http-equiv="content-type", content="text/html; charset=utf-8");
+     meta(name="keywords", content="Programming Debugging Language Descriptions Parsing Parsers Term Rewriting Attribute Grammars Functional Programming Debugging Model Driven Engineering Formal Methods Meta Programming");
+     meta(name="description", content="The International Workshop on Language Descriptions Tools and Applications");
+     meta(name="language", content="NL");
+     css("./style.css", "screen");
+     comment "Design by Free CSS Templates\nhttp://www.freecsstemplates.org\nReleased for free under a Creative Commons Attribution 2.5 License\n\nName       : Compressed \nDescription: A three-column, fixed-width template fit for 1024x768 screen resolutions.\nVersion    : 1.0\nReleased   : 20080524";
+    }
+
+    body {
+      div#logo h1.logo "Workshop on Language Descriptions Tools and Applications";
+      div#page {
+        div.sidebar#sidebar1 {
+         br; 
+         previous;
+        }
+
+      div#content div.bgtop div.bgbtm div.post callForPapers();
+      
+
+    div.sidebar#sidebar2 {
+      br;
+      relatedLinks;
+    }
+	
+   
+    
+   }
+    div(style="clear: both;") {
+      br;
+      div#footer p.legal "&copy;2007 All Rights Reserved. Design by <a(href="http://www.freecsstemplates.org/") "Free CSS Templates">";
+    }
+  }
+    
+  }
+end

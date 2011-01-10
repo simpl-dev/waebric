@@ -1,0 +1,163 @@
+
+module home
+
+import utils
+
+site
+  site/index.html: home()
+end
+
+def home
+  layout {
+   div.span-7.colborder {
+    uitreiking09;
+
+    geurts;
+    /* bp-2009; */
+    casteele;
+    lililite;
+   }
+   div.span-8.last {
+    banners;
+    nieuws;
+    vpro;
+    cartoons;
+   }
+  }
+end
+
+def uitreiking09
+  header("Jan Aelberts winnaar De Brandende Pen");
+
+  p {
+   img(src="images/jan.jpg",width=180);
+   echo "Schrijver Jan Aelberts heeft De Brandende Pen 2009 gewonnen voor het beste korte verhaal. 
+Het is de tweede keer op rij dat een Vlaming het beste Nederlandse korte verhaal schreef.&nbsp;";
+   a(href="brandende%20pen.html") "Meer lezen...";
+  }
+
+/*
+  header("Uitreiking Brandende Pen 2009");
+  p {
+   echo "De  deadline voor de Brandende Pen 2009 is 15 oktober verstreken. Dit jaar stuurden 430 auteurs 
+een kort verhaal in. De uitreiking is op zondag 18 januari om 16.00 uur in caf&eacute; Hofman (Janskerkhof 17a Utrecht).";
+  }
+*/
+end
+
+def geurts 
+  header("Elke Geurts prijswinnaar met publicatie in Lava");
+
+  p { 
+
+    echo "De Nieuw Proza Prijs Venlo 2008 is toegekend aan <em "Elke
+    	 Geurts">. Zij ontvangt 1250 euro voor het beste verhaal in 2007
+    	 in een Nederlandstalig literair tijdschrift gepubliceerd door
+    	 een auteur die eerder nog geen verhalend proza in boekvorm
+    	 had gepubliceerd. Het winnende verhaal, <em "'De Nomadensnaar'">,
+    	 verscheen in Lava in maart 2007.";
+
+  }
+  
+  p { 
+    
+    echo "<em "Elke Geurts"> (Heijen, 1973) publiceerde in 2007 en
+    	 2008 ook verhalen in de tijdschriften <em "De Brakke Hond">,
+    	 <em "Bunker Hill"> en <em "Op Ruwe Planken">. Dit voorjaar verscheen
+    	 bij <em "Uitgeverij Nieuw Amsterdam"> haar verhalenbundel <em "Het
+    	 besluit van Dola Korstjens">. Zij werkt behalve aan nieuwe
+    	 verhalen, ook aan hoorspelen en toneelstukken. Zij volgde de
+    	 opleiding Dramaschrijven aan de Hogeschool voor de Kunsten in
+    	 Utrecht en woont in Amsterdam." ; }
+ 
+  p { echo "Voorgaande winnaars van de Nieuw Proza Prijs waren onder
+  meer <em "Arnon Grunberg (1994)">, <em "Manon Uphoff (1996)">, <em "Karel Glastra van
+  Loon (1998)"> en <em "Erwin Mortier (2000)">.";  } 
+
+end
+
+
+def casteele
+  header("Two-book deal voor Brusselse theatermaker Vandecasteele");
+
+  p { 
+
+   echo "De Vlaamse golf zet door bij Amsterdamse uitgevers: nadat
+   Joost Vandecasteele (1979, schrijver, standup komiek en
+   theatermaker bij het gezelschap Abattoir Ferm&eacute;) de Brandende
+   Pen 2007 van <em "Lava Literair"> had gewonnen, werd hij door de
+   Amsterdamse literair agent <a(href="http://www.sebes.nl") "Paul
+   Sebes"> benaderd om eens te praten over zijn werk. Sebes: 'Wat hij
+   schrijft vond ik steengoed, keihard, hyperrealistisch en vaak erg
+   grappig.'  Vandecasteele bleek vergevorderd met de verhalenbundel
+   <em "Brulletje">. De meerderheid van deze verhalen was reeds
+   gepubliceerd in literaire tijdschrijften als <em "De Revisor">, <em
+   "Lava Literair">, <em "Deus ex Machina"> en <em "De Brakke
+   Hond">. Maar ook een roman, <em "De Slag om Neo-Sparta"> genaamd,
+   was reeds in de maak. Met dit materiaal is Sebes uitgeverijen gaan
+   benaderen. De vijf belangrijkste literaire huizen in Amsterdam
+   toonden interesse, maar Peter Nijssen van de Arbeiderspers wist
+   Vandecasteele en Sebes met zijn enthousiasme en een
+   contractvoorstel voor zowel de bundel als de roman te
+   overtuigen. Nijssen: 'Het talent spat van de pagina's. We gaan <em
+   "Brulletje"> meteen in 2009 brengen.' Vandecasteele, die met zijn
+   bundel en ambitieuze roman iets nieuws probeert te cre&euml;ren
+   binnen de Nederlandstalige literatuur, is zeer verheugd met de deal
+   en het vertrouwen van de <a(href="http://www.arbeiderspers.nl")
+   "Arbeiderspers">.";
+
+
+
+ }
+end
+
+
+def vpro
+  let 
+    link = "http://www.vpro.nl/programma/deavonden/afleveringen/34639264/items/35915764/media/35915897/";
+    vpro = "http://www.vpro.nl/programma/deavonden/afleveringen/34639264/items/35915764/";
+  in
+    header("Lava bij de VPRO");
+    p {
+     thumbnail("images/radio.jpg");
+     echo "Hoofdredacteur van Lava, Xavier van Leeuwe, was te gast bij
+radioprogramma De Avonden van VPRO-Radio. Klik <a(href=vpro) 'hier> om de VPRO-site te 
+bezoeken. De bijdrage in het radioprogramma 'live' beluisteren? Klik
+dan <a(href=link) 'hier>.";
+    }
+  end
+  
+end
+
+
+
+def nieuws
+  header("Literair nieuws");
+  let 
+   link = "http://feed2js.org///feed2js.php?src=http%3A%2F%2Fwww.nrcboeken.nl%2Frss.xml&amp;num=10&amp;targ=y&amp;utf=y";
+  in
+    script(language='JavaScript, src=link, type="text/javascript");
+    noscript a(href=link) "View RSS Feed";
+  end
+end
+
+def banners
+    /* swfobject("banners/banner_deux.swf", 300, 200, 'deux); */
+
+    a(href="http://www.woordheks.nl") swfobject("banners/banner468X60.swf", 300, 60, 'woordheks);
+    hr.space;
+    vprobanner;
+    hr.space;
+end
+
+def lililite
+   a(href="http://www.lililite.com") img(src="images/lililite.jpg", width=300, height=200);
+end
+
+def cartoons
+   table {
+    tr td img(src="images/Boeken.jpg", width=300);
+    tr td img(src="images/Poezie.jpg", width=300);
+    tr td img(src="images/099_oeuvre.jpg", width=300);
+   }
+end

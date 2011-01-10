@@ -1,0 +1,359 @@
+
+module brand
+
+import utils
+
+site
+  site/brandendepen.html: brandende-pen()
+end
+
+def brandende-pen
+ layout single-column {
+   bp-2009;
+
+   header("Literaire Prijs de Brandende Pen 2007");
+
+    p "<em 'UTRECHT> - De Vlaamse schrijver <em "Joost Vandecasteele"> heeft afgelopen
+	  zaterdag literatuurprijs De Brandende Pen gewonnen. Zijn tekst
+	  &quot;Nooit meer vrede&quot; werd bekroond tot het beste korte verhaal van
+	  2007 door jury-leden <em "Hanneke Groenteman">, schrijver <em "Christiaan
+	    Weijts">, Contactredacteur <em "Erna Staal">, Lava-hoofdredacteur <em "Xavier van
+	    Leeuwe"> en literair agent <em "Paul Sebes">.";
+    p "&quot;Het is een lekker vlerkerig verhaal vol humor. De dialogen zijn
+	  pakkend en de tekst roept sterke, filmische beelden op. Met zijn
+	  krachtige en vettige proza bereikt de auteur een idiote vaart die doet
+	  denken aan zijn landgenoot Herman Brusselmans. We gaan nog veel van
+	  hem horen&quot;, aldus de jury. Vandecasteele won een masterclass literair
+	  debuteren ter waarde van 1350 euro. De 27-jarige Vlaming is naast
+	  schrijver ook theatermaker en treedt op als stand-up comedian.";
+    p "De redactie van Lava, initiatiefnemer van de Brandende Pen, ontving
+	  meer dan 300 inzendingen. De beste twintig korte verhalen zijn
+	  gepubliceerd in het dubbeldikke winternummer, Lava 13.3 dat
+	  verkrijgbaar is in de betere boekhandel. Het literaire tijdschrift
+	  heeft deze prijs voor het beste korte verhaal in het leven geroepen
+	  vanwege de groeiende belangstelling voor het genre.";
+    p "Vorig jaar won publicist <em "Martin Pieterse"> De Brandende Pen. Juryleden
+	  <em "Abdelkader Benali">, <em "Elsbeth Etty"> en <em "Arieke Kroes"> gaven schrijfster
+	  <em "Anneloes Timmerije"> in 2006 een eervolle vermelding.";
+    p "De redactie van literair tijdschrift Lava beoogt de belangstelling
+	  voor het Nederlandstalige korte verhaal en haar schrijvers te
+	  stimuleren. Wij publiceren al dertien jaar de beste teksten van de
+	  nieuwste generatie auteurs. Voor meer informatie: 
+           <a(href="http://www.lavaliterair.nl") 'http://www.lavaliterair.nl>.";
+    brandende-pen-2007-fotos;
+
+    header("Uitreiking Brandende Pen 2006 in de pers");
+    p "Klik op een afbeelding voor een vergroting.";
+    brandende-pen-2006-pers;
+    header("Uitreiking Brandende Pen 2006 in foto's");
+    brandende-pen-2006-fotos();
+  }
+end
+
+
+def bp-2009
+
+    header("Jan Aelberts wint De Brandende Pen 2009");
+
+    p {
+      echo "<em "UTRECHT"> &mdash; De 23-jarige Vlaamse schrijver <em "Jan Aelberts"> heeft De
+Brandende Pen 2009 gewonnen voor het beste korte verhaal. De juryleden
+<em "Micha&euml;l Zeeman">, <em "Zeger van Herwaarden">, <em "Wilma de Rek"> en <em "Xavier van
+Leeuwe"> reikten in januari deze literaire prijs uit in het Utrechtse
+caf&eacute; Hofman.  Aelberts tekst <i "Misschien bestaan we"> heeft volgens de
+jury &quot;lekkere zinnen en een goede vertellersstem. Een verhaal waarbij
+de auteur zijn personages met oprechte interesse tegemoet treedt. Een
+verhaal over vriendschap, over Vlaanderen en zijn akkers, over de
+zelfkant van het stadsleven. Een eigentijdse Trainspotting met uppers,
+downers en alles ertussenin.&quot;";
+    }
+
+    p { 
+     echo "Schrijfster Basje Boer uit Amsterdam
+heeft een eervolle vermelding toegekend gekregen met haar verhaal &quot;De
+plaatjes aan mijn muur&quot;. Ook Noud Hovius is deze eer te beurt gevallen
+met Passage.  Winnaar Jan Aelberts heeft een masterclass debuteren
+gewonnen van literair agent Paul Sebes ter waarde van 3.500 euro. Deze
+masterclass volgde ook de winnaar van vorig jaar, Joost
+Vandecasteele. Zijn debuutroman verschijnt dit voorjaar bij de
+Arbeiderspers.";
+   }
+
+   p {
+     echo "De redactie van Lava, initiatiefnemer van de Brandende
+Pen, ontving 430 inzendingen. De beste tien verhalen zijn gepubliceerd
+in Lava 15.1 die te krijgen is in de betere boekhandel.";
+    }
+
+
+
+header("Brandende Pen 2009 in foto's");
+
+brandende-pen-2009-fotos;
+
+header("Brandende Pen 2009 in de pers");
+
+ p "Klik op onderstaande links voor artikel.";
+
+ table {  
+  tr {
+  td a(href="http://www.volkskrant.nl/kunst/article1133866.ece/Vlaming_Aelberts_winnaar_De_Brandende_Pen_2009") img(width=170, src="images/logos/volkskrant_logo.gif");
+  td a(href="http://www.nrcboeken.nl/nieuws/jan-aelberts-wint-brandende-pen") img(height=30, src="images/logos/nrcboeken_logo.gif");
+  td a(href="http://www.elsevier.nl/web/Nieuws/Laatste-24-uur.htm?contentid=220230") img(height=30, src="images/logos/elsevier_logo.png");
+  }
+  tr {
+  td a(href="http://www.tijd.be/nieuws/ondernemingen_diensten/Vlaming_Aelberts_wint_De_Brandende_Pen_2009_in_Utrecht.8131369-431.art") img(height=30, src="images/logos/detijd_logo.png");
+  td a(href="http://papierenman.blogspot.com/2009/01/jan-aelberts-wint-de-brandende-pen.html") "De Papieren Man";
+  td a(href="http://www.zita.be/nieuws/binnenland/262032_vlaming-aelberts-wint-de-brandende-pen-2009-in-utrecht.html")  img(height=30, src="images/logos/zita_logo.png");
+  }
+  tr {
+  td a(href="http://www.nieuws.be/nieuws/Vlaming_Aelberts_wint_De_Brandende_Pen_2009_in_Utrecht_c5d418cc.aspx")  img(height=30, src="images/logos/nieuwsbe_logo.png");
+  td a(href="http://www.nieuwsblad.be/Article/Detail.aspx?ArticleID=B28727182090118")  img(height=30, src="images/logos/nieuwsblad_logo.gif");
+  td a(href="http://www.2news.be/item/vlaming_aelberts_wint_de_brandende_pen_2/?itemid=533128")  img(height=30, src="images/logos/2newsbe_logo.gif");
+  }
+  tr {
+  td a(href="http://binnenland.nieuws.nl/543310/vlaming_wint_prijs_voor_beste_korte_verhaal")  img(height=30, src="images/logos/nieuwsnl_logo.png");
+  td a(href="http://www.hbvl.be/nieuws/media_cultuur/onlinenieuws-limburgse-schrijver-23-wint-brandende-pen-2009.aspx?art={ea96dcdb-8f36-4598-8025-8408902e961a}")  img(height=30, src="images/logos/hbvlbe_logo.gif");
+  td a(href="http://nieuwsblad.typepad.com/genk/2009/01/genkenaar-in-de-kijker-jan-aelberts-23.html")  img(height=30, src="images/logos/nieuwsblad_logo.gif");
+  }
+  tr {
+  td a(href="http://www.trouw.nl/nieuws/nederland/article2007353.ece/Vlaming_wint_prijs_voor_beste_korte_verhaal.html")  img(height=30, src="images/logos/trouw_logo.gif");
+  td a(href="http://www.pzc.nl/regio/zeeland/4370141/Eervolle-vermelding-verhaal-Noud-Hovius.ece") img(height=30, src="images/logos/pzc_logo.png");
+  td "";
+  }
+ }
+
+p {
+   echo "Luister naar Jan Aelberts en Zeger van Herwaarden bij VPRO De Avonden";
+   br;
+  table {
+  tr {
+    td a(border=0, href="http://player.omroep.nl/embed/aflevering/8724593", target="_blank") img(width=300,border=0,src="http://u.omroep.nl/b/embed/aflevering/08/724/8724593.png");
+    td vprobanner();
+   }
+   }
+}
+
+ header("Juryrapport");
+
+blockquote {
+em "JURYRAPPORT DE BRANDENDE PEN 2009";
+
+p { echo "De Brandende Pen-jury 2009, bestaande uit: Micha&euml;l Zeeman, Zeger van
+Herwaarden, Wilma de Rek en Xavier van Leeuwe was verheugd, zij het
+ook wel enigszins onthutst maar liefst 430 inzendingen te
+ontvangen. De Brandende Pen is in het leven geroepen om het korte
+verhaal onder de aandacht te brengen. Er wordt immers, door uitgevers
+en boekverkopers in Nederland, veel gemopperd op het genre van het
+korte verhaal. Romans willen zij hebben, liefst omvangrijke, voor het
+korte verhaal zou geen emplooi zijn. Tegelijkertijd bestaat er, vooral
+in de Engelstalige literatuur, een schitterende verhaaltraditie,
+waarvan de vruchten lezers wereldwijd verrassen, troosten,
+fascineren. De Brandende Pen is een aanval op de belastering van het
+korte verhaal. Zeker. Maar de Brandende Pen beoogt daarenboven een
+steun in de rug te zijn voor onbekende auteurs die het talent hebben
+om in het professionele literaire circuit door te breken.  Dat lukte
+Joost Vandecasteele, de winnaar van vorig jaar, wiens eerste boek deze
+lente verschijnt bij de Arbeiderspers. Een roman, dat dan weer wel."; }
+ 
+p { echo "Ook de volgende tien genomineerden, de beste ingezonden verhalen van
+dit jaar, beschikken over de kwaliteit om een serieus en kieskeurig
+literair publiek te boeien. Daarom maken zij alle tien kans op het
+winnen van de Brandende Pen, de literaire prijs voor het beste
+Nederlandse korte verhaal:"; 
+
+ul {
+li "Ate Vegter met Oprit naar verval";
+li "Justine le Clercq met Werk me weg, werk me keurig weg";
+li "Marcel Orie met Nobunaga's Misstap";
+li "Jasper van Buren met Pek & Veren";
+li "Basje Boer met De plaatjes aan mijn muur";
+li "Noud Hovius met Passage";
+li "Natasza Tardio met Noodzaak";
+li "Alexander Baneman met Vleugelspijkers";
+li "Jan Aelberts met Misschien bestaan we";        
+li "Maarten Inghels met Remko en de twee vurige lippen";
+}
+
+}
+
+p { echo "De jury kwam op een wintermiddag bij elkaar in de bibliotheek van een
+Amsterdams design-hotel. De leeservaringen kwamen op tafel in de vorm
+van Moleskines, A4-tjes, soms zelfs excel-overzichten. Ze leverden
+stof voor een professionele en pittige discussie. Dat is op zichzelf
+al een verdienste van de auteurs die het waard is gememoreerd te
+worden, want wanneer wordt er in de Nederlandse literaire kritiek nu
+uitgebreid stil gestaan bij het korte verhaal? Wij onderzochten
+individuele stijlkenmerken, toetsten algemene karakteristieken van het
+korte verhaal en lieten ons waar mogelijk door de auteurs en elkaar op
+andere gedachten brengen."; }
+ 
+p { echo "Opvallend aan de inzendingen van dit jaar was dat veel auteurs de
+behoefte hebben 'mooi te schrijven' en daardoor soms in een kramp
+lijken te schieten. Maar het korte verhaal vereist nu juist
+stilistische strengheid &mdash; en die strengheid raakt aan soberheid. De
+jury zou daarom alle inzenders willen adviseren om gewoon op te
+schrijven wat ze zeggen willen. Ga niet opzettelijk literair doen. Er
+valt in dat verband nog steeds veel te leren van het Angelsaksische
+korte verhaal, dat niet voor niets zijn thuis vindt in het brede
+journalistieke magazine. Het goede korte verhaal komt in zijn
+helderheid in de buurt van de betere journalistiek.  Voorts ontbrak
+het geregeld aan ontwikkeling in de verhalen, waardoor het verhaal
+veeleer het karakter kreeg van een schets &mdash; een schets van een
+situatie, een gemoedstoestand, een gebeurtenis. Auteurs stonden te
+vaak stil of maakten pirouettes rond hun onderwerp. Zij verwarden
+beschrijving met het vertellen van een verhaal. Verveling hing dan als
+een dikke mist rond de personages."; }
+ 
+p { echo "Een aantal verhalen viel dan ook meteen af. Te incidenteel, te
+hermetisch of te parmantig taalgebruik, te weinig of zelfs helemaal
+geen handeling of ontwikkeling, pathetisch, traag of dikdoenerig."; }
+ 
+p { echo "Voor andere verhalen werd bewondering uitgesproken. Ories droomachtige
+Nobunaga's Misstap bijvoorbeeld, waarin de spanning in de echtelijke
+relatie groteske vormen aanneemt. Of Jasper van Burens Pek en Veren
+dat met Rotterdamse one-liners een Luiks feest tot grote hoogten
+brengt."; }
+ 
+p { echo "Er waren drie auteurs op wie de jury in het bijzonder de aandacht wil
+richten."; }
+ 
+p { echo "Ten eerste was daar Basje Boer wiens De plaatjes aan mijn muur een
+productieve bewerking vormde van een oud literair motief, de reis door
+de eigen kamer. Een introvert thema dat zij een eigentijdse schwung
+wist te geven. Aan Basje Boer is daarom een eervolle vermelding
+toegekend."; }
+ 
+p { echo "Ook Noud Hovius valt deze eer te beurt. Zijn korte verhaal Passage
+verdiende de tweede eervolle vermelding. De wereld van uit het
+standpunt van de stationsomroeper. Bingo. Een zeer origineel thema dat
+sterk was uitgewerkt met de omroeper als dirigent van een bizarre
+opvoering tussen vertraging en uitvallende treinen."; }
+ 
+p { echo "De jury was zeer erkentelijk voor deze en alle andere ingestuurde
+verhalen. Zij was onder de indruk van de overtuiging en het
+enthousiasme waarmee de auteurs het korte verhaal als genre eer
+aandeden. Dit gold in het bijzonder voor de auteur van het winnende
+korte verhaal."; }
+ 
+p { echo "Het verhaal dat wordt bekroond met de Brandende Pen 2009 had lekkere
+zinnen en beschikte over een goede vertellersstem. Een literair
+verhaal, in de goede zin van het woord. Een verhaal waarbij de auteur
+buiten het materiaal stond, de toon van een dagboek wist te ontwijken
+en zijn personages met oprechte interesse tegemoet leek te treden. Een
+verhaal over vriendschap. Over de zelfkant van het stadsleven. Een
+eigentijdse Trainspotting met uppers, downers en alles ertussenin. Een
+verhaal over ellende zonder weerga, een verhaal over Vlaanderen en
+zijn akkers."; }
+ 
+p { echo "De winnaar van de Brandende Pen 2009... voor het beste Nederlandse korte
+verhaal... is dan ook wederom een Vlaming... Jan Aelberts met &quot;Misschien
+bestaan we&quot;."; }
+
+ }
+
+/*  header("Literaire prijs de Brandende Pen 2009");
+
+  p "De deadline voor de Brandende Pen 2009 is 15 oktober verstreken. Dit
+jaar stuurden 430 auteurs een kort verhaal in. De jury bestaat uit
+schrijver Zeger van Herwaarden, Volkskrant-journaliste Wilma de Rek,
+schrijver en literatuurrecensent Micha&euml;l Zeeman en uitgever Xavier van
+Leeuwe. Wij nodigen u uit voor de uitreiking op zondag 18 januari om
+16.00 uur in caf&eacute; Hofman (Janskerkhof 17a Utrecht), waar de winnaar
+van de Brandende Pen 2009 wordt bekendgemaakt.";
+
+
+  p "Winnaar van de vorige Brandende Pen was Joost Vandecasteele. Na
+  de bekroning van zijn verhaal heeft hij een contract gesloten met de
+  Arbeiderspers voor een debuutroman en een verhalenbundel die begin
+  2009 uitkomt.";
+
+*/
+end
+
+
+def brandende-pen-2006-pers
+  let
+     td(img, thumb, medium, date) = td { 
+       a(target='_blank, href=img) 
+        img@139%100(border=0, src=thumb, align='left, alt=medium);
+        echo medium; br; echo date;
+      }
+  in
+             
+  table(border='0, width='800, summary="Brandende Pen 2006 in de pers") {
+    tr {
+      td('images/brpen06_pub_nrcnext.jpg, 'images/brpen06_pubthumb_nrcnext.jpg,
+		  "NRC Next", "8 november 2006");
+      td('images/brpen06_pub_telegraaf.jpg, 'images/brpen06_pubthumb_telegraaf.jpg,
+		  "De Telegraaf", "");
+      td('images/brpen06_pub_volkskrant.jpg, 'images/brpen06_pubthumb_volkskrant.jpg,
+		  "De Volkskrant", "");
+    }
+    tr {
+      td('images/brpen06_pub_nl30.jpg, 'images/brpen06_pubthumb_nl30.jpg,
+		  "NL30", "");
+      td('images/brpen06_pub_literaireprijzen.jpg, 'images/brpen06_pubthumb_literaireprijzen.jpg,
+		  "literaireprijzen.nl", "");
+      td('images/brpen06_pub_8weekly.jpg, 'images/brpen06_pubthumb_8weekly.jpg,
+		  "8 Weekly", "");  
+    }
+  }
+  end
+end
+
+def brandende-pen-2006-fotos
+  let 
+    td(img) = td(align='center) img@343%223(src=img, alt="Brandende Pen");
+  in
+   table(summary="Foto's Brandende Pen 2006") {
+    tr {
+      td('images/brpen06_christiaanweijts.jpg);
+      td('images/brpen06_christiaanfloorarieke.jpg);
+    }
+    tr {
+      td('images/brpen06_martinpietersechristiaanweijts.jpg);
+      td('images/brpen06_ministers.jpg);
+    }
+    tr {
+      td('images/brpen06_publiek.jpg);
+    }
+   }
+  end
+end
+
+def brandende-pen-2007-fotos
+  let 
+    td(img) = td(align='center) img@336%223(border=0, src=img, alt="Brandende Pen");
+  in
+   table(summary="Brandende Pen 2007") {
+    tr {
+      td('images/brpen07_04.jpg); td('images/brpen07_02.jpg);
+    }
+    tr {
+      td('images/brpen07_01.jpg); td('images/brpen07_03.jpg);
+    }
+    tr {
+      td('images/brpen07_05.jpg); td('images/brpen07_06.jpg);
+    }
+   }
+  end
+end
+
+def brandende-pen-2009-fotos
+  let 
+    td(img) = td(align='center) img(height=225,border=0, src=img, alt="Brandende Pen");
+  in
+   table(summary="Brandende Pen 2009") {
+    tr {
+      td('images/jury.jpg); td('images/joost.jpg);
+    }
+    tr {
+      td('images/zeeman.jpg); td('images/jan.jpg);
+    }
+    tr {
+      td('images/janlezend.jpg); td('images/derekzeeman.jpg);
+    }
+   }
+  end
+end

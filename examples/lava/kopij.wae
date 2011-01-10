@@ -1,0 +1,53 @@
+
+module kopij
+
+import utils
+
+site
+  site/kopij.html: kopij()
+end
+
+def kopij
+  layout single-column {
+    header("Kopij insturen");
+
+    p "Stuur korte verhalen, gedichten, graphic stories en illustraties als attachment naar 
+<a(href="mailto:redactie@lavaliterair.nl") "redactie@lavaliterair.nl">.";
+
+    h2 "Inzendingen bestaan uit:";
+    ul {
+     li "De kopij (in de attachment)";
+     li "Een beknopte biografie";
+     li "Contactgegevens";
+    }
+
+   h2 "Komende deadlines";
+  
+   table(summary="Deadlines") {
+    tr { td "15.3"; td "01 augustus 2009"; }
+    tr { td "16.1"; td "15 oktober 2009 (Brandende Pen 2010)"; }
+    tr { td "16.2"; td "01 april 2010"; }
+    tr { td "16.3"; td "01 augustus 2010"; }
+   }
+   
+   h2 "Spelregels";
+
+   ul {
+li "Lava verschaft geen gratis proefexemplaren aan geplaatste auteurs.";
+li "Lava plaatst alleen exclusieve stukken. Stuur kopij niet tegelijkertijd naar andere tijdschriften.";
+li "Proza: maximaal 1 verhaal per inzending van maximaal 2.000 woorden.";
+li "Po&euml;zie: maximaal 3 gedichten per inzending.";
+li "Minder is meer, maak zelf een selectie uit je werk.";
+li "Iedereen krijgt een bevestiging van ontvangst.";
+li "Lava bepaalt de bureauredactionele correcties; auteurs die hier van willen afwijken worden niet geplaatst.";
+
+  }
+
+  p "Lava heeft geen winstoogmerk en wordt in stand gehouden door
+onbezoldigde vrijwilligers; ondersteuning van dit werk door geplaatste
+auteurs die een abonnement nemen, wordt sterk gewaardeerd.";
+
+  abonnement;
+
+  }
+end

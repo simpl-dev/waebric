@@ -1,0 +1,172 @@
+
+module over
+
+import utils
+
+site
+  site/overlava.html: over()
+end
+
+def over
+  layout single-column {
+    header("Over Lava");
+
+p "Literair Tijdschrift Lava publiceert al vijftien jaar de beste teksten
+van de nieuwste generatie auteurs. Lava staat elk nummer vol met werk
+van Nederlandstalige schrijvers en dichters die zijn doorgebroken in
+het professionele literaire circuit of daarvoor de kwaliteit in huis
+hebben. Lava draagt het Nederlandse korte verhaal een bijzonder warm
+hart toe.";
+
+p "Om die reden reikt het tijdschrift elk jaar literaire prijs De
+Brandende Pen uit aan de auteur van het beste Nederlandse korte
+verhaal. Juryleden van de Brandende Pen waren onder meer Abdelkader
+Benali, Elsbeth Etty, Christiaan Weijts, Michael Zeeman en Hanneke
+Groenteman. Joost Zwagerman: &quot;Een mooi initiatief, ik volg de
+ontwikkelingen rond De Brandende Pen met grote interesse&quot;.";
+
+p "In Lava vond u verhalen en gedichten van onder meer Ingmar Heytze
+(Podium), Zeger van Herwaarden (Arbeiderspers), Anneloes Timmerije
+(Augustus) en Jan Luitzen (Sporthuis en Querido).";
+
+
+   abonnement;
+
+
+   div.span-16 {
+   div.span-8 {
+
+   header("Verkooppunten");
+   
+   h2 "Utrecht";
+
+   ul {
+    li "Literaire Boekhandel (Lijnmarkt 17)";
+    li "Broese Wristers (Stadhuisbrug 5)";
+   }
+
+ 
+   h2 "Amsterdam";
+
+   ul {
+     li "Scheltema (Koningsplein 20)";
+     li "Athenaeum (Spui 14-16)";
+   }
+  
+   }
+   
+   div.span-8.last {
+
+    header("Contact");
+   
+    ul {
+     li a(href='mailto:redactie@lavaliterair.nl) 'redactie@lavaliterair.nl;
+    }
+   
+    p "Redactie: Geert Kenbeek, Tijs van der Storm, Inge van de Wiel.";
+    p "Vormgeving: Debbie van Berkel en Ward Monn&eacute;.";
+    p "Uitgever: Xavier van Leeuwe / Uitgeverij Lucha Libre.";
+
+  }
+ 
+  div.span-16.last {
+   externe-links;
+  }
+ 
+  }
+  }
+end
+
+def externe-links
+  header("Links");
+  table(summary="Links") {
+    thead {
+     tr {
+      td "Schrijvers en dichters"; 
+      td "Literaire tijdschriften";
+      td "Overig";
+     }
+    }
+    tbody {
+      tr {
+       td {
+        ul.links {
+	      li a(href="http://www.jonathansafranfoer.com/") "Jonathan Safran Foer";
+	      li a(href="http://www.vrouwkje.com/") "Vrouwkje Tuinman";
+	      li a(href="http://www.joostzwagerman.nl") "Joost Zwagerman";
+	      li a(href="http://www.nielsenvincent.blogspot.com/") "Niels en Vincent";
+	      li a(href="http://www.johanhendrikx.com/") "Johan Hendrikx";
+	      li a(href="http://www.rikvanschaik.nl/") "Rik van Schaik";
+	      li a(href="http://www.lucaswinnips.nl/") "Lucas Winnips"; 
+	      li a(href="http://www.lettertjes.net/r/") "Rob Passchier"; 
+	      li a(href="http://www.crosswinds.net/~rugdichter/") "RuGdichters"; 
+	      li a(href="http://www.arthurjapin.nl") "Arthur Japin"; 
+	      li a(href="http://www.iljapfeijffer.nl") "Ilja Pfeijffer";
+	      li a(href="http://www.chroom.net/kilian") "Hans Kilian"; 
+	      li a(href="http://www.aanbeelden.nl") "aanbeelden"; 
+	      li a(href="http://home.planet.nl/~timeman") "Kees Klok"; 
+	      li a(href="http://www.recensieweb.nl/content/index.php") "Recensieweb";
+	      li a(href="http://derecensent.nl/") "De Recensent"; 
+	      li a(href="http://www.derecensie.web-log.nl") "De Recensie Web-Log";
+          }
+        }
+        td {
+	   ul.links {
+	      li a(href="http://www.yangtijdschrift.be/") "Yang";
+	      li a(href="http://www.revolver-literair.be/") "Revolver"; 
+	      li a(href="http://www.epibreren.com/pages/rotframe.html") "Meander"; 
+	      li a(href="http://www.krakatau.nl/") "Krakatau"; 
+	      li a(href="http://www.epibreren.com/pages/rotframe.html") "Passionate"; 
+	      li a(href="http://www.ballustrada.nl/") "Ballustrada"; 
+	      li a(href="http://www.revisor.nl/") "De Revisor"; 
+	      li a(href="http://www.kunsttijdschriftvlaanderen.be/") "Vlaanderen"; 
+	      li a(href="http://www.bunkerhill.nl/") "Bunker Hill"; 
+	      li a(href="http://www.pen.nl/nieuwegein/cultuur/beeldspraak/index.html") "BeeldSpraak"; 
+	      li a(href="http://www.writersblock.net/") "Writers Block"; 
+	      li a(href="http://httpd.chello.nl/~j.aarts/") "Bomans Krant"; 
+	      li a(href="http://www.chroom.net/") "Chroom Digitaal";
+	      li a(href="http://www.deusexmachina.be/") "Deus ex Machina";
+	      li a(href="http://www.brakkehond.be/") "De Brakke Hond";
+	      li a(href="http://www.xs4all.nl/~bpolak/") "Hermans-magazine";
+	      li a(href="http://www.degekooideroos.nl/") "De Gekooide Roos";
+	      li a(href="http://www.epibreren.com/pages/rotframe.html") "Rottend Staal Online";
+	      li a(href="http://www.hollandsmaandblad.nl/") "Hollands Maandblad";
+	      li a(href="http://www.dwb.be/") "Dietsche Warande en Belfort";
+	      li a(href="http://www.draagbaarliterair.be/") "Gierik &amp; Nieuw Vlaams Tijdschrift";
+           }
+        }
+	td {
+          ul.links {
+	      li a(href="http://slau.frodo.nl/") "Slau";
+	      li a(href="http://www.dbnl.org/") "Dbnl"; 
+	      li a(href="http://www.libralink.nl/") "LiBra"; 
+	      li a(href="http://www.boeklog.nl/") "Boeklog"; 
+	      li a(href="http://www.slushpile.net/") "Slushpile"; 
+	      li a(href="http://bookslut.com/") "Bookslut"; 
+	      li a(href="http://werktitel.nl/") "Werktitel"; 
+	      li a(href="http://www.epibreren.com/pages/rotframes.html") "Epibreren"; 
+	      li a(href="http://www.boekbalie.nl/") "Boekbalie"; 
+	      li a(href="http://www.bookninja.com/") "Bookninja"; 
+	      li a(href="http://www.the-ledge.com/index.php?lan=NL") "The Ledge"; 
+	      li a(href="http://www.poetryalive.nl/") "Poetryalive"; 
+	      li a(href="http://www.letteren.net/") "Letteren.net"; 
+	      li a(href="http://www.hetweiland.nl/") "Het weiland"; 
+	      li a(href="http://www.schrijven.org/index.php?index") "Schrijven.org"; 
+	      li a(href="http://www.mcsweeneys.net/") "McSweeneys"; 
+	      li a(href="http://boeken.vpro.nl/") "Boeken Vpro"; 
+	      li a(href="http://literatuurlinks.net/") "Literatuurlinks";
+	      li a(href="http://www.decontrabas.com/") "De Contrabas"; 
+	      li a(href="http://www.literatuur.startkabel.nl/") "Literatuurpagina";
+	      li a(href="http://www.literairnederland.nl/web/default.aspx") "LiterairNederland";
+	      li a(href="http://www.literatuur.startkabel.nl/") "Literatuur Startkabel";
+	      li a(href="http://bltvn.kb.nl/") "Koninklijke Bibliotheek";
+	      li a(href="http://www.fantastische-vertellingen.com/") "Fantastische Vertellingen";
+	      li a(href="http://www.festivalmooiewoorden.nl/") "Festival Mooie Woorden";
+	      li a(href="http://www.literatuur.opzijnbest.nl/") "Literatuur opzijnbest.nl";
+	      li a(href="http://www.kunsthuisutrecht.nl/Organisatie/239/5") "Lava-kamer Utrechts Kunsthuis";
+           }
+	  }
+	}
+      }
+    }
+end

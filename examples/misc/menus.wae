@@ -1,0 +1,46 @@
+module menus
+
+site
+  menus.html: main()
+end
+
+def main
+  layout("Recursive Menus") {
+    the-menu();
+  }
+end
+
+def css(url, media)
+  link(rel="stylesheet", href=url, type="text/css", media=media);
+end
+
+def layout(title)
+  html {
+    head {
+      css("blueprint.css", "screen, projection");      
+      title title;
+    }
+    body yield;
+  }
+end
+
+def the-menu
+  menu({title: "Menu", kids: [{title: "Home", link: "/"}, 
+           {title: "Misc", kids: 
+		[{title: "Contact", link: "contact.html"}, 
+                   {title: "Links", link: "links.html"}]}]});
+end
+
+def menu(menu)
+  echo menu.title;
+  ul
+   each (kid: menu.kids) 
+    item(kid);
+end
+
+def item(mi)
+  li if (mi.kids)
+       menu(mi);
+     else 
+       a(href=mi.link) mi.title;
+end

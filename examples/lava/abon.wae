@@ -1,0 +1,52 @@
+
+
+module abon
+
+site
+  site/abonnementen.html: abonnementen()
+end
+
+def abonnementen 
+  layout single-column {
+   header("Abonnee worden?");
+
+   p "Voor 30 euro krijg je een jaargang van ons literaire tijdschrift
+	  thuisgestuurd. Draag je Lava een extra warm hart toe? Neem dan voor
+	  40 euro een steunabonnement.  Je kunt natuurlijk ook een abonnement
+	  cadeau doen.";
+   
+   p {
+     echo "Je kunt je abonneren door:";
+     ul {
+
+	  li "een email te sturen naar
+	    <a(href="mailto:info@spabonneeservice.nl")
+	    "info@spabonneeservice.nl">; vermeld &quot;abonnement
+	    Lava&quot; en al je adresgegevens (ook je email-adres).";
+
+	  li "te bellen tijdens werkdagen van 9.00-17.00 
+	    uur naar 0172 476 085;";
+      }
+    }
+
+     p "Een acceptgiro voor betaling volgt. Alle portokosten zijn
+	  inbegrepen. Abonnementen worden stilzwijgend verlengd.
+	  Opzegging kan alleen schriftelijk geschieden
+	  v&oacute;&oacute;r toezending van het laatste nummer van
+	  iedere jaargang.";
+
+    table {
+     let 
+       td(img, alt) = td img(width="160",height="160", alt=alt,src=img);
+     in
+      tr {
+	      td("images/lavakaft_13-34.jpg", "lava 13-34");
+	      td("images/lavakaft_14-1.jpg", "lava 14-1");
+	      td("images/lavakaft_14-2.jpg", "lava 14-2");
+      }
+     end
+
+    }
+
+  }
+end
