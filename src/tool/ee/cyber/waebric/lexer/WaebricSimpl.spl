@@ -142,7 +142,7 @@ fragment Amp:		'\&' ~('#' | '0'..'9' | 'a'..'z' | 'A'..'Z' | '_' | ':')+;
 fragment CharRef:	'&#' Digit+ ';' | '&#x' Hexadecimal ';' ;
 fragment EntRef:	'&' ( Letter | '_' | ':' ) ( Letter | Digit | '.' | '-' | '_' | ':')* ';' ;
 terminal Text: '\"' TextChar* '\"';
-
+	
 terminal PreText: '"' TextChar* '<';
 //terminal PostText: '>' TextChar* '\"';
 //terminal MidText: '>' TextChar* '<';
