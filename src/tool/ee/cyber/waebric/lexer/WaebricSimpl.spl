@@ -1,6 +1,6 @@
 grammar ee.cyber.waebric.lexer.WaebricSimpl;
 
-// options (backtrack=true;)
+options (backtrack=true;)
 
 scalaheader {
 // import HelperMethods._
@@ -68,7 +68,7 @@ HeightAttr: "@" height=NatCon;
 Expression: CatExpression | ListExpression | RecordExpression;
 
 CatExpression: left=FieldExpression ("+" right=Expression)?;
-FieldExpression: PrimitiveExpression "." IdCon;
+FieldExpression: PrimitiveExpression ("." IdCon)?;
 option PrimitiveExpression:
      IdCon
      | SymbolCon
@@ -81,8 +81,54 @@ RecordExpression: "{" (first=KeyValuePair ("," rest=KeyValuePair)*)? "}";
 KeyValuePair: IdCon ":" Expression;
 
 
-Statement: "statement";
+Statement: 
+    IfStatement
+    | EachStatement
+    | LetStatement
+    | BlockStatement
+    | CommentStatement
+    | EchoStatement
+    | CdataStatement
+    | YieldStatement
+    | MarkupStatement;
 
+// TODO: rule for if without else.
+IfStatement: "if" "(" Predicate ")" ifStat=Statement "else" elseStat=Statement;
+EachStatement: "each" "(" IdCon ":" Expression ")" Statement;  
+
+LetStatement: "let" Assignment+ "in" Statement* "end";
+Assignment: VarBinding | FuncBinding;
+VarBinding: IdCon "=" Expression ";";
+FuncBinding: func=IdCon "(" (first=IdCon ("," rest=IdCon)*)? ")" "=" Statement;
+
+BlockStatement: "{" Statement* "}";
+CommentStatement: "comment" StrCon ";";
+EchoStatement: "echo" (Expression|Embedding) ";";
+CdataStatement: "cdata" Expression ";"; 
+YieldStatement: "yield" ";";
+MarkupStatement: Markup MarkupChain;
+
+Predicate: left=PrimPredicate (op=PredicateOp rest=PrimPredicate)*;
+terminal PredicateOp: AndOp | OrOp;
+fragment AndOp: "&&";
+fragment OrOp: "||";
+option PrimPredicate:
+    NotPredicate
+    | IsAPredicate;
+
+NotPredicate: "!" PrimPredicate;
+// TODO: just Expression should be converted to ExprPredicate or something.
+IsAPredicate: Expression ("." PredType "?")?;
+PredType: "list" | "record" | "string";
+
+
+MarkupChain: ";" | Expression ";" | Embedding ";" | Statement;
+
+Embedding: PreText Embed TextTail;
+
+Embed: Markup* Expression | Markup+;
+
+TextTail: PostText | MidText Embed TextTail;
 
 
 //symbol
@@ -101,6 +147,19 @@ terminal Text: '\"' TextChar* '\"';
 terminal PreText: '"' TextChar* '<';
 terminal PostText: '>' TextChar* '\"';
 terminal MidText: '>' TextChar* '<';
+
+//StrCon and StrChar
+//As this will be processed after Text, all patterns that match
+//both, were already considered as Text. "comment" tag only
+//uses StrCon and this must be considered.
+
+fragment Newline: '\\n';
+fragment Tab: '\\t';
+fragment Quote: '\\"';
+fragment Backslash: '\\\\';
+fragment Decimal: '\\\\' 'a:' Digit 'b:' Digit 'c:' Digit;
+fragment StrChar: ~('\u0000'..'\u001F' | '"' | '\\') | Newline | Tab | Quote | Backslash | Decimal;
+terminal StrCon: '\"' StrChar* '\"';
 
 
 
