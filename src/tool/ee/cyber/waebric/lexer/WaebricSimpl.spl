@@ -75,7 +75,7 @@ option Types {
 
 
 // Embedding and Markup
-/*TextTailPost: post=PostText;
+TextTailPost: post=PostText;
 
 TextTailMid: mid=MidText embed=Embed tail=TextTail;
 option TextTail: TextTailPost | TextTailMid;
@@ -90,7 +90,8 @@ Designator: id=IdCon attrs=Attribute*;
 
 IdAttr: "#" id=IdCon;
 ClassAttr: "." cl=IdCon;
-NameAttr: "$" name=IdCon;
+
+NameAttr: '$' name=IdCon;
 TypeAttr: ":" t=IdCon;
 WidthHeightAttr: "@" width=NatCon "%" height=NatCon;
 HeightAttr: "@" height=NatCon;
@@ -101,16 +102,14 @@ option Attribute:
 	TypeAttr | 
 	WidthHeightAttr | 
 	HeightAttr;
-
+/*
 Statement: (mlist=Markup+ Statement) | 
 	(m=Markup ";") |
 	(mlist=Markup+ m=Markup ";") |
 	(mlist=Markup+ exp=Expression ";") |
 	(mlist=Markup+ emb=Embedding ";") |
 	(d=Designator);
-
-*/
-
+	*/
 //**** TERMINALS **** //
 // Note that the terminals are matched according to the order of definition
 // therefore some general terminals are used for multiple places
@@ -144,15 +143,15 @@ fragment EntRef:	'&' ( Letter | '_' | ':' ) ( Letter | Digit | '.' | '-' | '_' |
 terminal Text: '\"' TextChar* '\"';
 	
 terminal PreText: '"' TextChar* '<';
-//terminal PostText: '>' TextChar* '\"';
-//terminal MidText: '>' TextChar* '<';
+terminal PostText: '>' TextChar* '\"';
+terminal MidText: '>' TextChar* '<';
 
 
 //StrCon and StrChar
 //As this will be processed after Text, all patterns that match
 //both, were already considered as Text. "comment" tag only
 //uses StrCon and this must be considered.
-/*
+
 fragment Newline: '\\n';
 fragment Tab: '\\t';
 fragment Quote: '\\"';
@@ -160,7 +159,7 @@ fragment Backslash: '\\\\';
 fragment Decimal: '\\\\' 'a:' Digit 'b:' Digit 'c:' Digit;
 fragment StrChar: ~('\u0000'..'\u001F' | '"' | '\\') | Newline | Tab | Quote | Backslash | Decimal;
 terminal StrCon: '\"' StrChar* '\"';
-*/
+
 
 //symbol
 terminal SymbolCon: "'" SymbolChar*;
