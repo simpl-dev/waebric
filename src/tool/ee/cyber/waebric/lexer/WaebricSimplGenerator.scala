@@ -2,16 +2,17 @@ package ee.cyber.waebric.lexer;
 
 import ee.cyber.simplicitas.{GeneratorBase, MainBase}
 
-class WaebricSimplGenerator(destDir: String) 
+class WaebricSimplGenerator(destDir: String)
         extends GeneratorBase(destDir) {
-  val templates = getTemplates("WaebricSimpl.stg")
-    
+//  val templates = getTemplates("WaebricSimpl.stg")
+
   def generate(tree: Program) {
+      println(tree)
     val args = tree.toJavaMap()
-    writeFile("TestOutput.java", templates.getInstanceOf("program", args))
+//    writeFile("TestOutput.java", templates.getInstanceOf("program", args))
   }
 }
-  
+
 object WaebricSimplMain extends MainBase {
   def main(argv: Array[String]) {
     parseOptions(argv)
@@ -19,8 +20,8 @@ object WaebricSimplMain extends MainBase {
     for (arg <- sources) {
       grammar.parseFile(arg)
       checkErrors(grammar.errors)
-      
-      new WaebricSimplGenerator(destDir).generate(grammar.tree)        
+
+      new WaebricSimplGenerator(destDir).generate(grammar.tree)
     }
   }
 }
