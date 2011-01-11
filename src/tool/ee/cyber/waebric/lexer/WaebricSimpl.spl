@@ -31,10 +31,17 @@ Mappings: first=Mapping (";" rest=Mapping)*;
 Mapping: path=Path ":" markup=Markup;
 
 // File mapping terminals
-fragment PathElement: (Letter|Digit|'%')+; //|~('\\'|'/')
-fragment FileExt: (Letter|Digit)+;
-fragment FileName: PathElement "." FileExt;
-terminal Path: ("/")? (PathElement "/")* FileName;
+// fragment PathElement: (Letter|Digit|'%')+; //|~('\\'|'/')
+// fragment FileExt: (Letter|Digit)+;
+// fragment FileName: PathElement "." FileExt;
+// terminal Path: ("/")? (PathElement "/")* FileName;
+
+terminal Path: ( PathElement '/' )* PathElement '.' FileExt; 
+fragment PathElement:( Letter | Digit | '%' )+ ; // '!'..'+' causes java heap exception
+fragment FileExt:( Letter | Digit )+ ;
+
+
+
 
 // General
 fragment Letter: ('a'..'z'|'A'..'Z');
@@ -86,7 +93,7 @@ Statement:
     | EachStatement
     | LetStatement
     | BlockStatement
-    | CommentStatement
+    // | CommentStatement
     | EchoStatement
     | CdataStatement
     | YieldStatement
@@ -102,7 +109,7 @@ VarBinding: IdCon "=" Expression ";";
 FuncBinding: func=IdCon "(" (first=IdCon ("," rest=IdCon)*)? ")" "=" Statement;
 
 BlockStatement: "{" Statement* "}";
-CommentStatement: "comment" StrCon ";";
+// CommentStatement: "comment" StrCon ";";
 EchoStatement: "echo" (Expression|Embedding) ";";
 CdataStatement: "cdata" Expression ";"; 
 YieldStatement: "yield" ";";
@@ -153,13 +160,13 @@ terminal MidText: '>' TextChar* '<';
 //both, were already considered as Text. "comment" tag only
 //uses StrCon and this must be considered.
 
-fragment Newline: '\\n';
-fragment Tab: '\\t';
-fragment Quote: '\\"';
-fragment Backslash: '\\\\';
-fragment Decimal: '\\\\' 'a:' Digit 'b:' Digit 'c:' Digit;
-fragment StrChar: ~('\u0000'..'\u001F' | '"' | '\\') | Newline | Tab | Quote | Backslash | Decimal;
-terminal StrCon: '\"' StrChar* '\"';
+// fragment Newline: '\\n';
+// fragment Tab: '\\t';
+// fragment Quote: '\\"';
+// fragment Backslash: '\\\\';
+// fragment Decimal: '\\\\' 'a:' Digit 'b:' Digit 'c:' Digit;
+// fragment StrChar: ~('\u0000'..'\u001F' | '"' | '\\') | Newline | Tab | Quote | Backslash | Decimal;
+// terminal StrCon: '"' StrChar* '"';
 
 
 
