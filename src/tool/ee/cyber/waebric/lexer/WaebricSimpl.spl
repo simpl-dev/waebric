@@ -38,13 +38,17 @@ Mapping: path=Path ":" markup=Markup;
 // fragment FileName: PathElement "." FileExt;
 // terminal Path: ("/")? (PathElement "/")* FileName;
 
-terminal Path check-all(site, path) exit-state(path): ( PathElement '/' )* PathElement '.' FileExt; 
+terminal Path 
+    check-all(site, path) 
+    exit-state(path)
+    : ( PathElement '/' )* PathElement '.' FileExt; 
 fragment PathElement:( Letter | Digit | '%' )+ ; // '!'..'+' causes java heap exception
 fragment FileExt:( Letter | Digit )+ ;
 
 // These must be before IdCon
 terminal SiteTerm enter-state(site, path): "site";
 terminal EndTerm exit-state(site, path): "end";
+terminal CommentTerm enter-state(string): "comment";
 
 
 // General
@@ -97,7 +101,7 @@ Statement:
     | EachStatement
     | LetStatement
     | BlockStatement
-    // | CommentStatement
+    | CommentStatement
     | EchoStatement
     | CdataStatement
     | YieldStatement
@@ -113,7 +117,7 @@ VarBinding: IdCon "=" Expression Semicolon;
 FuncBinding: func=IdCon "(" (first=IdCon ("," rest=IdCon)*)? ")" "=" Statement;
 
 BlockStatement: "{" Statement* "}";
-// CommentStatement: "comment" StrCon Semicolon;
+CommentStatement: CommentTerm StrCon Semicolon;
 EchoStatement: "echo" (Expression|Embedding) Semicolon;
 CdataStatement: "cdata" Expression Semicolon; 
 YieldStatement: "yield" Semicolon;
@@ -153,6 +157,8 @@ fragment EscQuote:'\\\\' | '\\"';
 fragment Amp:'\&' ~('#' | '0'..'9' | 'a'..'z' | 'A'..'Z' | '_' | ':')+;
 fragment CharRef:'&#' Digit+ ';' | '&#x' Hexadecimal ';' ;
 fragment EntRef:'&' ( Letter | '_' | ':' ) ( Letter | Digit | '.' | '-' | '_' | ':')* ';' ;
+// TODO: add check that this terminal must not be matched when lexer
+// state contains string.
 terminal Text: '"' TextChar* '"';
 
 terminal PreText: '"' TextChar* '<';
@@ -164,13 +170,13 @@ terminal MidText: '>' TextChar* '<';
 //both, were already considered as Text. "comment" tag only
 //uses StrCon and this must be considered.
 
-// fragment Newline: '\\n';
-// fragment Tab: '\\t';
-// fragment Quote: '\\"';
-// fragment Backslash: '\\\\';
-// fragment Decimal: '\\\\' 'a:' Digit 'b:' Digit 'c:' Digit;
-// fragment StrChar: ~('\u0000'..'\u001F' | '"' | '\\') | Newline | Tab | Quote | Backslash | Decimal;
-// terminal StrCon: '"' StrChar* '"';
+fragment Newline: '\\n';
+fragment Tab: '\\t';
+fragment Quote: '\\"';
+fragment Backslash: '\\\\';
+fragment Decimal: '\\\\' 'a:' Digit 'b:' Digit 'c:' Digit;
+fragment StrChar: ~('\u0000'..'\u001F' | '"' | '\\') | Newline | Tab | Quote | Backslash | Decimal;
+terminal StrCon check-any(string) exit-state(string): '"' StrChar* '"';
 
 
 terminal Semicolon enter-state(path): ";";
