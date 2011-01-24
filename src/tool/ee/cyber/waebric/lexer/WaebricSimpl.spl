@@ -32,12 +32,6 @@ Site:
 Mappings: first=Mapping (Semicolon rest=Mapping)*;
 Mapping: path=Path ":" markup=Markup;
 
-// File mapping terminals
-// fragment PathElement: (Letter|Digit|'%')+; //|~('\\'|'/')
-// fragment FileExt: (Letter|Digit)+;
-// fragment FileName: PathElement "." FileExt;
-// terminal Path: ("/")? (PathElement "/")* FileName;
-
 terminal Path 
     check-all(site, path) 
     exit-state(path)
@@ -112,10 +106,7 @@ Statement:
     | YieldStatement
     | MarkupStatement;
 
-// TODO: rule for if without else.
 IfStatement: "if" "(" Predicate ")" ifStat=Statement ("else" elseStat=Statement)?;
-//IfNoElseStatement: "if" "(" Predicate ")" ifStat=Statement;
-
 EachStatement: "each" "(" IdCon ":" Expression ")" Statement;  
 
 LetStatement: "let" Assignment+ "in" Statement* EndTerm;
