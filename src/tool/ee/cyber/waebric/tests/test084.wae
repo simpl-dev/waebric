@@ -1,0 +1,11 @@
+module test084
+
+def main
+  let b = {x: "X", y: "Y"}; 
+  in
+    if (b.x && b.y)
+      echo "Yes";
+    else 
+     echo "No";
+  end
+end

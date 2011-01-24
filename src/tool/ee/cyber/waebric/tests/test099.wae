@@ -1,0 +1,21 @@
+module test099
+
+def swfobject(url, width, height, id)
+  object(classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000, width=width, height=height) {
+    param$movie(url);
+    param$quality('high);
+    param$bgcolor('#fffce6);
+    comment "[if !IE]>";
+    object(type='application/x-shockwave-flash, data=url, width=width, height=height) {
+      param$quality('high);
+      param$bgcolor('#fffce6);
+      comment "<![endif]";
+      comment "[if !IE]>";
+    }      
+    comment "<![endif]";
+  }
+end
+
+def main
+  swfobject("htt://google.nl", 232, 3875, "swfobject");  
+end

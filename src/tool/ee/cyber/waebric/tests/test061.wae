@@ -1,0 +1,24 @@
+module test061
+
+
+def menu(menu)
+  echo menu.title;
+  ul
+   each (kid: menu.kids) 
+    item(kid);
+end
+
+def item(mi)
+  li if (mi.kids)
+       menu(mi);
+     else 
+       a(href=mi.link) mi.title;
+end
+
+def main
+  menu({title: "Menu", kids: [{title: "Home", link: "/"}, 
+           {title: "Misc", kids: 
+		[{title: "Contact", link: "contact.html"}, 
+                   {title: "Links", link: "links.html"}]}]});
+end
+

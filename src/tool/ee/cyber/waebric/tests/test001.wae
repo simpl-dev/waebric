@@ -1,0 +1,5 @@
+module test001
+
+// Empty function
+def main
+end

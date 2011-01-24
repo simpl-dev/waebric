@@ -1,0 +1,11 @@
+module test081
+
+def main
+  let b = {x: "X"}; 
+  in
+    if (b.record?)
+      echo "Yes";
+    else 
+     echo "No";
+  end
+end

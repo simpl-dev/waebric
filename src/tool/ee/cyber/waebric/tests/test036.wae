@@ -1,0 +1,5 @@
+module test036
+
+def main
+  html$bla;
+end

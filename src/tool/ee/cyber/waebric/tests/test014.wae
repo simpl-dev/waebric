@@ -1,0 +1,10 @@
+module test014
+
+def main
+  let 
+    x = "Hello";
+    y = "world!";
+  in
+	echo x + " " + y;
+  end
+end

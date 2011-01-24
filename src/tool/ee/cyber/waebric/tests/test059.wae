@@ -1,0 +1,12 @@
+module test059
+
+def f
+  yield;
+end
+
+def main 
+  each (x: [1,2,3,4])
+    f x;
+end
+
+

@@ -1,0 +1,10 @@
+module test075
+
+
+def main
+  let 
+    mypar() = p { echo "Mypar: "; yield; }
+  in
+    mypar "Hallo";
+  end
+end

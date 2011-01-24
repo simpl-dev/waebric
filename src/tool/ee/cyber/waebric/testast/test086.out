@@ -1,0 +1,198 @@
+0:103:Program {
+  definitions=16:103:Definitions {
+    definition=List {
+      16:103:FunctionDef {
+        arguments=(null)
+        endTerm=101:103:EndTerm {
+          text="end"
+        }
+        idCon=20:23:IdCon {
+          text="main"
+        }
+        statements=List {
+          27:99:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=(null)
+            ifStatement=(null)
+            letStatement=27:99:LetStatement {
+              assignment=List {
+                31:54:Assignment {
+                  funcBinding=(null)
+                  varBinding=31:54:VarBinding {
+                    expression=35:53:Expression {
+                      catExpression=(null)
+                      listExpression=(null)
+                      recordExpression=35:53:RecordExpression {
+                        first=36:40:KeyValuePair {
+                          expression=40:40:Expression {
+                            catExpression=40:40:CatExpression {
+                              left=40:40:FieldExpression {
+                                idCon=(null)
+                                primitiveExpression=40:40:NatCon {
+                                  text="3"
+                                }
+                              }
+                              right=(null)
+                            }
+                            listExpression=(null)
+                            recordExpression=(null)
+                          }
+                          idCon=36:36:IdCon {
+                            text="x"
+                          }
+                        }
+                        rest=List {
+                          43:46:KeyValuePair {
+                            expression=46:46:Expression {
+                              catExpression=46:46:CatExpression {
+                                left=46:46:FieldExpression {
+                                  idCon=(null)
+                                  primitiveExpression=46:46:NatCon {
+                                    text="4"
+                                  }
+                                }
+                                right=(null)
+                              }
+                              listExpression=(null)
+                              recordExpression=(null)
+                            }
+                            idCon=43:43:IdCon {
+                              text="y"
+                            }
+                          }
+                          49:52:KeyValuePair {
+                            expression=52:52:Expression {
+                              catExpression=52:52:CatExpression {
+                                left=52:52:FieldExpression {
+                                  idCon=(null)
+                                  primitiveExpression=52:52:NatCon {
+                                    text="6"
+                                  }
+                                }
+                                right=(null)
+                              }
+                              listExpression=(null)
+                              recordExpression=(null)
+                            }
+                            idCon=49:49:IdCon {
+                              text="z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                    idCon=31:31:IdCon {
+                      text="b"
+                    }
+                    semicolon=54:54:Semicolon {
+                      text=";"
+                    }
+                  }
+                }
+              }
+              endTerm=97:99:EndTerm {
+                text="end"
+              }
+              statement=List {
+                65:93:Statement {
+                  blockStatement=(null)
+                  cdataStatement=(null)
+                  commentStatement=(null)
+                  eachStatement=65:93:EachStatement {
+                    expression=74:74:Expression {
+                      catExpression=74:74:CatExpression {
+                        left=74:74:FieldExpression {
+                          idCon=(null)
+                          primitiveExpression=74:74:IdCon {
+                            text="b"
+                          }
+                        }
+                        right=(null)
+                      }
+                      listExpression=(null)
+                      recordExpression=(null)
+                    }
+                    idCon=71:71:IdCon {
+                      text="x"
+                    }
+                    statement=77:93:Statement {
+                      blockStatement=77:93:BlockStatement {
+                        statement=List {
+                          84:87:Statement {
+                            blockStatement=(null)
+                            cdataStatement=(null)
+                            commentStatement=(null)
+                            eachStatement=(null)
+                            echoStatement=(null)
+                            ifStatement=(null)
+                            letStatement=(null)
+                            markupStatement=84:87:MarkupStatement {
+                              markup=84:84:Markup {
+                                arguments=(null)
+                                designator=84:84:Designator {
+                                  attribute=List {
+                                  }
+                                  idCon=84:84:IdCon {
+                                    text="p"
+                                  }
+                                }
+                              }
+                              markupChain=86:87:MarkupChain {
+                                embedding=(null)
+                                expression=86:86:Expression {
+                                  catExpression=86:86:CatExpression {
+                                    left=86:86:FieldExpression {
+                                      idCon=(null)
+                                      primitiveExpression=86:86:IdCon {
+                                        text="x"
+                                      }
+                                    }
+                                    right=(null)
+                                  }
+                                  listExpression=(null)
+                                  recordExpression=(null)
+                                }
+                                semicolon=87:87:Semicolon {
+                                  text=";"
+                                }
+                                statement=(null)
+                              }
+                            }
+                            yieldStatement=(null)
+                          }
+                        }
+                      }
+                      cdataStatement=(null)
+                      commentStatement=(null)
+                      eachStatement=(null)
+                      echoStatement=(null)
+                      ifStatement=(null)
+                      letStatement=(null)
+                      markupStatement=(null)
+                      yieldStatement=(null)
+                    }
+                  }
+                  echoStatement=(null)
+                  ifStatement=(null)
+                  letStatement=(null)
+                  markupStatement=(null)
+                  yieldStatement=(null)
+                }
+              }
+            }
+            markupStatement=(null)
+            yieldStatement=(null)
+          }
+        }
+      }
+    }
+  }
+  idCon=7:13:IdCon {
+    text="test086"
+  }
+}
+RAW:
+Program(IdCon(test086),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,LetStatement(List(Assignment(VarBinding(IdCon(b),Expression(null,null,RecordExpression(KeyValuePair(IdCon(x),Expression(CatExpression(FieldExpression(NatCon(3),null),null),null,null)),List(KeyValuePair(IdCon(y),Expression(CatExpression(FieldExpression(NatCon(4),null),null),null,null)), KeyValuePair(IdCon(z),Expression(CatExpression(FieldExpression(NatCon(6),null),null),null,null))))),Semicolon(;)),null)),List(Statement(null,EachStatement(IdCon(x),Expression(CatExpression(FieldExpression(IdCon(b),null),null),null,null),Statement(null,null,null,BlockStatement(List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(p),List()),null),MarkupChain(Semicolon(;),Expression(CatExpression(FieldExpression(IdCon(x),null),null),null,null),null,null))))),null,null,null,null,null)),null,null,null,null,null,null,null)),EndTerm(end)),null,null,null,null,null,null)),EndTerm(end)))))

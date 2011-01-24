@@ -1,0 +1,12 @@
+module test040
+
+def main
+  f("Hello", " world!");
+end
+
+def f(x, y)
+  echo "x = " + x;
+  echo "
+y = " + y;
+end
+

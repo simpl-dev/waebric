@@ -1,0 +1,7 @@
+module test088
+
+//Parse errors
+
+def main
+  echo "abcd<ekjads/>";
+end

@@ -1,0 +1,63 @@
+0:50:Program {
+  definitions=16:50:Definitions {
+    definition=List {
+      16:50:FunctionDef {
+        arguments=(null)
+        endTerm=48:50:EndTerm {
+          text="end"
+        }
+        idCon=20:23:IdCon {
+          text="main"
+        }
+        statements=List {
+          27:46:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=27:46:EchoStatement {
+              embedding=(null)
+              expression=32:45:Expression {
+                catExpression=32:45:CatExpression {
+                  left=32:36:FieldExpression {
+                    idCon=(null)
+                    primitiveExpression=32:36:Text {
+                      text=""abc""
+                    }
+                  }
+                  right=40:45:Expression {
+                    catExpression=40:45:CatExpression {
+                      left=40:45:FieldExpression {
+                        idCon=(null)
+                        primitiveExpression=40:45:Text {
+                          text=""cdef""
+                        }
+                      }
+                      right=(null)
+                    }
+                    listExpression=(null)
+                    recordExpression=(null)
+                  }
+                }
+                listExpression=(null)
+                recordExpression=(null)
+              }
+              semicolon=46:46:Semicolon {
+                text=";"
+              }
+            }
+            ifStatement=(null)
+            letStatement=(null)
+            markupStatement=(null)
+            yieldStatement=(null)
+          }
+        }
+      }
+    }
+  }
+  idCon=7:13:IdCon {
+    text="test005"
+  }
+}
+RAW:
+Program(IdCon(test005),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(Text("abc"),null),Expression(CatExpression(FieldExpression(Text("cdef"),null),null),null,null)),null,null),null,Semicolon(;)),null,null,null)),EndTerm(end)))))

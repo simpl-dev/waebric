@@ -1,0 +1,14 @@
+module test043
+
+def main
+  f("Hello world!");
+end
+
+def f(x)
+  g(x);
+end
+
+def g(x)
+  echo "x = " + x;
+end
+

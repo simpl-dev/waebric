@@ -1,0 +1,5 @@
+module test022
+
+def main
+  html "Hello world!";
+end

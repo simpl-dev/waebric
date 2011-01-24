@@ -1,0 +1,5 @@
+module test007
+
+def main
+    echo 1 + 2;
+end

@@ -1,0 +1,9 @@
+module test053
+
+def main
+  if (1) 
+    if (b)
+      echo "2";
+    else
+      echo "innermost else";
+end

@@ -1,0 +1,10 @@
+module test021
+
+def main
+  let 
+    x = "no way";
+    x = "yes";
+  in
+	echo x;
+  end
+end

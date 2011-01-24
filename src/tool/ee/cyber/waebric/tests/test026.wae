@@ -1,0 +1,5 @@
+module test026
+
+def main
+  html();
+end

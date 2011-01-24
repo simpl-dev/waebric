@@ -1,0 +1,686 @@
+0:564:Program {
+  definitions=16:564:Definitions {
+    definition=List {
+      16:492:FunctionDef {
+        arguments=30:51:Formals {
+          left=30:32:IdCon {
+            text="url"
+          }
+          rest=List {
+            35:39:IdCon {
+              text="width"
+            }
+            42:47:IdCon {
+              text="height"
+            }
+            50:51:IdCon {
+              text="id"
+            }
+          }
+        }
+        endTerm=490:492:EndTerm {
+          text="end"
+        }
+        idCon=20:28:IdCon {
+          text="swfobject"
+        }
+        statements=List {
+          56:488:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=(null)
+            ifStatement=(null)
+            letStatement=(null)
+            markupStatement=56:488:MarkupStatement {
+              markup=56:142:Markup {
+                arguments=62:142:Arguments {
+                  first=63:113:AttrArg {
+                    expression=71:113:Expression {
+                      catExpression=71:113:CatExpression {
+                        left=71:113:FieldExpression {
+                          idCon=(null)
+                          primitiveExpression=71:113:SymbolCon {
+                            text="'clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+                          }
+                        }
+                        right=(null)
+                      }
+                      listExpression=(null)
+                      recordExpression=(null)
+                    }
+                    idCon=63:69:IdCon {
+                      text="classid"
+                    }
+                  }
+                  rest=List {
+                    116:126:AttrArg {
+                      expression=122:126:Expression {
+                        catExpression=122:126:CatExpression {
+                          left=122:126:FieldExpression {
+                            idCon=(null)
+                            primitiveExpression=122:126:IdCon {
+                              text="width"
+                            }
+                          }
+                          right=(null)
+                        }
+                        listExpression=(null)
+                        recordExpression=(null)
+                      }
+                      idCon=116:120:IdCon {
+                        text="width"
+                      }
+                    }
+                    129:141:AttrArg {
+                      expression=136:141:Expression {
+                        catExpression=136:141:CatExpression {
+                          left=136:141:FieldExpression {
+                            idCon=(null)
+                            primitiveExpression=136:141:IdCon {
+                              text="height"
+                            }
+                          }
+                          right=(null)
+                        }
+                        listExpression=(null)
+                        recordExpression=(null)
+                      }
+                      idCon=129:134:IdCon {
+                        text="height"
+                      }
+                    }
+                  }
+                }
+                designator=56:61:Designator {
+                  attribute=List {
+                  }
+                  idCon=56:61:IdCon {
+                    text="object"
+                  }
+                }
+              }
+              markupChain=144:488:MarkupChain {
+                embedding=(null)
+                expression=(null)
+                semicolon=(null)
+                statement=144:488:Statement {
+                  blockStatement=144:488:BlockStatement {
+                    statement=List {
+                      150:166:Statement {
+                        blockStatement=(null)
+                        cdataStatement=(null)
+                        commentStatement=(null)
+                        eachStatement=(null)
+                        echoStatement=(null)
+                        ifStatement=(null)
+                        letStatement=(null)
+                        markupStatement=150:166:MarkupStatement {
+                          markup=150:165:Markup {
+                            arguments=161:165:Arguments {
+                              first=162:164:Expression {
+                                catExpression=162:164:CatExpression {
+                                  left=162:164:FieldExpression {
+                                    idCon=(null)
+                                    primitiveExpression=162:164:IdCon {
+                                      text="url"
+                                    }
+                                  }
+                                  right=(null)
+                                }
+                                listExpression=(null)
+                                recordExpression=(null)
+                              }
+                              rest=List {
+                              }
+                            }
+                            designator=150:160:Designator {
+                              attribute=List {
+                                155:160:NameAttr {
+                                  name=156:160:IdCon {
+                                    text="movie"
+                                  }
+                                }
+                              }
+                              idCon=150:154:IdCon {
+                                text="param"
+                              }
+                            }
+                          }
+                          markupChain=166:166:MarkupChain {
+                            embedding=(null)
+                            expression=(null)
+                            semicolon=166:166:Semicolon {
+                              text=";"
+                            }
+                            statement=(null)
+                          }
+                        }
+                        yieldStatement=(null)
+                      }
+                      172:192:Statement {
+                        blockStatement=(null)
+                        cdataStatement=(null)
+                        commentStatement=(null)
+                        eachStatement=(null)
+                        echoStatement=(null)
+                        ifStatement=(null)
+                        letStatement=(null)
+                        markupStatement=172:192:MarkupStatement {
+                          markup=172:191:Markup {
+                            arguments=185:191:Arguments {
+                              first=186:190:Expression {
+                                catExpression=186:190:CatExpression {
+                                  left=186:190:FieldExpression {
+                                    idCon=(null)
+                                    primitiveExpression=186:190:SymbolCon {
+                                      text="'high"
+                                    }
+                                  }
+                                  right=(null)
+                                }
+                                listExpression=(null)
+                                recordExpression=(null)
+                              }
+                              rest=List {
+                              }
+                            }
+                            designator=172:184:Designator {
+                              attribute=List {
+                                177:184:NameAttr {
+                                  name=178:184:IdCon {
+                                    text="quality"
+                                  }
+                                }
+                              }
+                              idCon=172:176:IdCon {
+                                text="param"
+                              }
+                            }
+                          }
+                          markupChain=192:192:MarkupChain {
+                            embedding=(null)
+                            expression=(null)
+                            semicolon=192:192:Semicolon {
+                              text=";"
+                            }
+                            statement=(null)
+                          }
+                        }
+                        yieldStatement=(null)
+                      }
+                      198:221:Statement {
+                        blockStatement=(null)
+                        cdataStatement=(null)
+                        commentStatement=(null)
+                        eachStatement=(null)
+                        echoStatement=(null)
+                        ifStatement=(null)
+                        letStatement=(null)
+                        markupStatement=198:221:MarkupStatement {
+                          markup=198:220:Markup {
+                            arguments=211:220:Arguments {
+                              first=212:219:Expression {
+                                catExpression=212:219:CatExpression {
+                                  left=212:219:FieldExpression {
+                                    idCon=(null)
+                                    primitiveExpression=212:219:SymbolCon {
+                                      text="'#fffce6"
+                                    }
+                                  }
+                                  right=(null)
+                                }
+                                listExpression=(null)
+                                recordExpression=(null)
+                              }
+                              rest=List {
+                              }
+                            }
+                            designator=198:210:Designator {
+                              attribute=List {
+                                203:210:NameAttr {
+                                  name=204:210:IdCon {
+                                    text="bgcolor"
+                                  }
+                                }
+                              }
+                              idCon=198:202:IdCon {
+                                text="param"
+                              }
+                            }
+                          }
+                          markupChain=221:221:MarkupChain {
+                            embedding=(null)
+                            expression=(null)
+                            semicolon=221:221:Semicolon {
+                              text=";"
+                            }
+                            statement=(null)
+                          }
+                        }
+                        yieldStatement=(null)
+                      }
+                      227:246:Statement {
+                        blockStatement=(null)
+                        cdataStatement=(null)
+                        commentStatement=227:246:CommentStatement {
+                          commentTerm=227:233:CommentTerm {
+                            text="comment"
+                          }
+                          semicolon=246:246:Semicolon {
+                            text=";"
+                          }
+                          strCon=235:245:StrCon {
+                            text=""[if !IE]>""
+                          }
+                        }
+                        eachStatement=(null)
+                        echoStatement=(null)
+                        ifStatement=(null)
+                        letStatement=(null)
+                        markupStatement=(null)
+                        yieldStatement=(null)
+                      }
+                      252:453:Statement {
+                        blockStatement=(null)
+                        cdataStatement=(null)
+                        commentStatement=(null)
+                        eachStatement=(null)
+                        echoStatement=(null)
+                        ifStatement=(null)
+                        letStatement=(null)
+                        markupStatement=252:453:MarkupStatement {
+                          markup=252:332:Markup {
+                            arguments=258:332:Arguments {
+                              first=259:293:AttrArg {
+                                expression=264:293:Expression {
+                                  catExpression=264:293:CatExpression {
+                                    left=264:293:FieldExpression {
+                                      idCon=(null)
+                                      primitiveExpression=264:293:SymbolCon {
+                                        text="'application/x-shockwave-flash"
+                                      }
+                                    }
+                                    right=(null)
+                                  }
+                                  listExpression=(null)
+                                  recordExpression=(null)
+                                }
+                                idCon=259:262:IdCon {
+                                  text="type"
+                                }
+                              }
+                              rest=List {
+                                296:303:AttrArg {
+                                  expression=301:303:Expression {
+                                    catExpression=301:303:CatExpression {
+                                      left=301:303:FieldExpression {
+                                        idCon=(null)
+                                        primitiveExpression=301:303:IdCon {
+                                          text="url"
+                                        }
+                                      }
+                                      right=(null)
+                                    }
+                                    listExpression=(null)
+                                    recordExpression=(null)
+                                  }
+                                  idCon=296:299:IdCon {
+                                    text="data"
+                                  }
+                                }
+                                306:316:AttrArg {
+                                  expression=312:316:Expression {
+                                    catExpression=312:316:CatExpression {
+                                      left=312:316:FieldExpression {
+                                        idCon=(null)
+                                        primitiveExpression=312:316:IdCon {
+                                          text="width"
+                                        }
+                                      }
+                                      right=(null)
+                                    }
+                                    listExpression=(null)
+                                    recordExpression=(null)
+                                  }
+                                  idCon=306:310:IdCon {
+                                    text="width"
+                                  }
+                                }
+                                319:331:AttrArg {
+                                  expression=326:331:Expression {
+                                    catExpression=326:331:CatExpression {
+                                      left=326:331:FieldExpression {
+                                        idCon=(null)
+                                        primitiveExpression=326:331:IdCon {
+                                          text="height"
+                                        }
+                                      }
+                                      right=(null)
+                                    }
+                                    listExpression=(null)
+                                    recordExpression=(null)
+                                  }
+                                  idCon=319:324:IdCon {
+                                    text="height"
+                                  }
+                                }
+                              }
+                            }
+                            designator=252:257:Designator {
+                              attribute=List {
+                              }
+                              idCon=252:257:IdCon {
+                                text="object"
+                              }
+                            }
+                          }
+                          markupChain=334:453:MarkupChain {
+                            embedding=(null)
+                            expression=(null)
+                            semicolon=(null)
+                            statement=334:453:Statement {
+                              blockStatement=334:453:BlockStatement {
+                                statement=List {
+                                  342:362:Statement {
+                                    blockStatement=(null)
+                                    cdataStatement=(null)
+                                    commentStatement=(null)
+                                    eachStatement=(null)
+                                    echoStatement=(null)
+                                    ifStatement=(null)
+                                    letStatement=(null)
+                                    markupStatement=342:362:MarkupStatement {
+                                      markup=342:361:Markup {
+                                        arguments=355:361:Arguments {
+                                          first=356:360:Expression {
+                                            catExpression=356:360:CatExpression {
+                                              left=356:360:FieldExpression {
+                                                idCon=(null)
+                                                primitiveExpression=356:360:SymbolCon {
+                                                  text="'high"
+                                                }
+                                              }
+                                              right=(null)
+                                            }
+                                            listExpression=(null)
+                                            recordExpression=(null)
+                                          }
+                                          rest=List {
+                                          }
+                                        }
+                                        designator=342:354:Designator {
+                                          attribute=List {
+                                            347:354:NameAttr {
+                                              name=348:354:IdCon {
+                                                text="quality"
+                                              }
+                                            }
+                                          }
+                                          idCon=342:346:IdCon {
+                                            text="param"
+                                          }
+                                        }
+                                      }
+                                      markupChain=362:362:MarkupChain {
+                                        embedding=(null)
+                                        expression=(null)
+                                        semicolon=362:362:Semicolon {
+                                          text=";"
+                                        }
+                                        statement=(null)
+                                      }
+                                    }
+                                    yieldStatement=(null)
+                                  }
+                                  370:393:Statement {
+                                    blockStatement=(null)
+                                    cdataStatement=(null)
+                                    commentStatement=(null)
+                                    eachStatement=(null)
+                                    echoStatement=(null)
+                                    ifStatement=(null)
+                                    letStatement=(null)
+                                    markupStatement=370:393:MarkupStatement {
+                                      markup=370:392:Markup {
+                                        arguments=383:392:Arguments {
+                                          first=384:391:Expression {
+                                            catExpression=384:391:CatExpression {
+                                              left=384:391:FieldExpression {
+                                                idCon=(null)
+                                                primitiveExpression=384:391:SymbolCon {
+                                                  text="'#fffce6"
+                                                }
+                                              }
+                                              right=(null)
+                                            }
+                                            listExpression=(null)
+                                            recordExpression=(null)
+                                          }
+                                          rest=List {
+                                          }
+                                        }
+                                        designator=370:382:Designator {
+                                          attribute=List {
+                                            375:382:NameAttr {
+                                              name=376:382:IdCon {
+                                                text="bgcolor"
+                                              }
+                                            }
+                                          }
+                                          idCon=370:374:IdCon {
+                                            text="param"
+                                          }
+                                        }
+                                      }
+                                      markupChain=393:393:MarkupChain {
+                                        embedding=(null)
+                                        expression=(null)
+                                        semicolon=393:393:Semicolon {
+                                          text=";"
+                                        }
+                                        statement=(null)
+                                      }
+                                    }
+                                    yieldStatement=(null)
+                                  }
+                                  401:420:Statement {
+                                    blockStatement=(null)
+                                    cdataStatement=(null)
+                                    commentStatement=401:420:CommentStatement {
+                                      commentTerm=401:407:CommentTerm {
+                                        text="comment"
+                                      }
+                                      semicolon=420:420:Semicolon {
+                                        text=";"
+                                      }
+                                      strCon=409:419:StrCon {
+                                        text=""<![endif]""
+                                      }
+                                    }
+                                    eachStatement=(null)
+                                    echoStatement=(null)
+                                    ifStatement=(null)
+                                    letStatement=(null)
+                                    markupStatement=(null)
+                                    yieldStatement=(null)
+                                  }
+                                  428:447:Statement {
+                                    blockStatement=(null)
+                                    cdataStatement=(null)
+                                    commentStatement=428:447:CommentStatement {
+                                      commentTerm=428:434:CommentTerm {
+                                        text="comment"
+                                      }
+                                      semicolon=447:447:Semicolon {
+                                        text=";"
+                                      }
+                                      strCon=436:446:StrCon {
+                                        text=""[if !IE]>""
+                                      }
+                                    }
+                                    eachStatement=(null)
+                                    echoStatement=(null)
+                                    ifStatement=(null)
+                                    letStatement=(null)
+                                    markupStatement=(null)
+                                    yieldStatement=(null)
+                                  }
+                                }
+                              }
+                              cdataStatement=(null)
+                              commentStatement=(null)
+                              eachStatement=(null)
+                              echoStatement=(null)
+                              ifStatement=(null)
+                              letStatement=(null)
+                              markupStatement=(null)
+                              yieldStatement=(null)
+                            }
+                          }
+                        }
+                        yieldStatement=(null)
+                      }
+                      465:484:Statement {
+                        blockStatement=(null)
+                        cdataStatement=(null)
+                        commentStatement=465:484:CommentStatement {
+                          commentTerm=465:471:CommentTerm {
+                            text="comment"
+                          }
+                          semicolon=484:484:Semicolon {
+                            text=";"
+                          }
+                          strCon=473:483:StrCon {
+                            text=""<![endif]""
+                          }
+                        }
+                        eachStatement=(null)
+                        echoStatement=(null)
+                        ifStatement=(null)
+                        letStatement=(null)
+                        markupStatement=(null)
+                        yieldStatement=(null)
+                      }
+                    }
+                  }
+                  cdataStatement=(null)
+                  commentStatement=(null)
+                  eachStatement=(null)
+                  echoStatement=(null)
+                  ifStatement=(null)
+                  letStatement=(null)
+                  markupStatement=(null)
+                  yieldStatement=(null)
+                }
+              }
+            }
+            yieldStatement=(null)
+          }
+        }
+      }
+      495:564:FunctionDef {
+        arguments=(null)
+        endTerm=562:564:EndTerm {
+          text="end"
+        }
+        idCon=499:502:IdCon {
+          text="main"
+        }
+        statements=List {
+          506:558:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=(null)
+            ifStatement=(null)
+            letStatement=(null)
+            markupStatement=506:558:MarkupStatement {
+              markup=506:557:Markup {
+                arguments=515:557:Arguments {
+                  first=516:532:Expression {
+                    catExpression=516:532:CatExpression {
+                      left=516:532:FieldExpression {
+                        idCon=(null)
+                        primitiveExpression=516:532:Text {
+                          text=""htt://google.nl""
+                        }
+                      }
+                      right=(null)
+                    }
+                    listExpression=(null)
+                    recordExpression=(null)
+                  }
+                  rest=List {
+                    535:537:Expression {
+                      catExpression=535:537:CatExpression {
+                        left=535:537:FieldExpression {
+                          idCon=(null)
+                          primitiveExpression=535:537:NatCon {
+                            text="232"
+                          }
+                        }
+                        right=(null)
+                      }
+                      listExpression=(null)
+                      recordExpression=(null)
+                    }
+                    540:543:Expression {
+                      catExpression=540:543:CatExpression {
+                        left=540:543:FieldExpression {
+                          idCon=(null)
+                          primitiveExpression=540:543:NatCon {
+                            text="3875"
+                          }
+                        }
+                        right=(null)
+                      }
+                      listExpression=(null)
+                      recordExpression=(null)
+                    }
+                    546:556:Expression {
+                      catExpression=546:556:CatExpression {
+                        left=546:556:FieldExpression {
+                          idCon=(null)
+                          primitiveExpression=546:556:Text {
+                            text=""swfobject""
+                          }
+                        }
+                        right=(null)
+                      }
+                      listExpression=(null)
+                      recordExpression=(null)
+                    }
+                  }
+                }
+                designator=506:514:Designator {
+                  attribute=List {
+                  }
+                  idCon=506:514:IdCon {
+                    text="swfobject"
+                  }
+                }
+              }
+              markupChain=558:558:MarkupChain {
+                embedding=(null)
+                expression=(null)
+                semicolon=558:558:Semicolon {
+                  text=";"
+                }
+                statement=(null)
+              }
+            }
+            yieldStatement=(null)
+          }
+        }
+      }
+    }
+  }
+  idCon=7:13:IdCon {
+    text="test099"
+  }
+}
+RAW:
+Program(IdCon(test099),Definitions(List(FunctionDef(IdCon(swfobject),Formals(IdCon(url),List(IdCon(width), IdCon(height), IdCon(id))),List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(object),List()),Arguments(AttrArg(IdCon(classid),Expression(CatExpression(FieldExpression(SymbolCon('clsid:D27CDB6E-AE6D-11cf-96B8-444553540000),null),null),null,null)),List(AttrArg(IdCon(width),Expression(CatExpression(FieldExpression(IdCon(width),null),null),null,null)), AttrArg(IdCon(height),Expression(CatExpression(FieldExpression(IdCon(height),null),null),null,null))))),MarkupChain(null,null,null,Statement(null,null,null,BlockStatement(List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(param),List(NameAttr(IdCon(movie)))),Arguments(Expression(CatExpression(FieldExpression(IdCon(url),null),null),null,null),List())),MarkupChain(Semicolon(;),null,null,null))), Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(param),List(NameAttr(IdCon(quality)))),Arguments(Expression(CatExpression(FieldExpression(SymbolCon('high),null),null),null,null),List())),MarkupChain(Semicolon(;),null,null,null))), Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(param),List(NameAttr(IdCon(bgcolor)))),Arguments(Expression(CatExpression(FieldExpression(SymbolCon('#fffce6),null),null),null,null),List())),MarkupChain(Semicolon(;),null,null,null))), Statement(null,null,null,null,CommentStatement(CommentTerm(comment),StrCon("[if !IE]>"),Semicolon(;)),null,null,null,null), Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(object),List()),Arguments(AttrArg(IdCon(type),Expression(CatExpression(FieldExpression(SymbolCon('application/x-shockwave-flash),null),null),null,null)),List(AttrArg(IdCon(data),Expression(CatExpression(FieldExpression(IdCon(url),null),null),null,null)), AttrArg(IdCon(width),Expression(CatExpression(FieldExpression(IdCon(width),null),null),null,null)), AttrArg(IdCon(height),Expression(CatExpression(FieldExpression(IdCon(height),null),null),null,null))))),MarkupChain(null,null,null,Statement(null,null,null,BlockStatement(List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(param),List(NameAttr(IdCon(quality)))),Arguments(Expression(CatExpression(FieldExpression(SymbolCon('high),null),null),null,null),List())),MarkupChain(Semicolon(;),null,null,null))), Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(param),List(NameAttr(IdCon(bgcolor)))),Arguments(Expression(CatExpression(FieldExpression(SymbolCon('#fffce6),null),null),null,null),List())),MarkupChain(Semicolon(;),null,null,null))), Statement(null,null,null,null,CommentStatement(CommentTerm(comment),StrCon("<![endif]"),Semicolon(;)),null,null,null,null), Statement(null,null,null,null,CommentStatement(CommentTerm(comment),StrCon("[if !IE]>"),Semicolon(;)),null,null,null,null))),null,null,null,null,null)))), Statement(null,null,null,null,CommentStatement(CommentTerm(comment),StrCon("<![endif]"),Semicolon(;)),null,null,null,null))),null,null,null,null,null))))),EndTerm(end)), FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(swfobject),List()),Arguments(Expression(CatExpression(FieldExpression(Text("htt://google.nl"),null),null),null,null),List(Expression(CatExpression(FieldExpression(NatCon(232),null),null),null,null), Expression(CatExpression(FieldExpression(NatCon(3875),null),null),null,null), Expression(CatExpression(FieldExpression(Text("swfobject"),null),null),null,null)))),MarkupChain(Semicolon(;),null,null,null)))),EndTerm(end)))))

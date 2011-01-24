@@ -1,0 +1,10 @@
+module test091
+
+def main
+   each (x: [1,2,3]) 
+    let 
+      y = x + "xx";
+    in
+      p y;
+    end
+end

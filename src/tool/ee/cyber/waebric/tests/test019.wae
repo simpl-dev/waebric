@@ -1,0 +1,10 @@
+module test019
+
+def main
+  let 
+    x = "no way";
+    f(x) = echo x;
+  in
+	f("Hello");
+  end
+end

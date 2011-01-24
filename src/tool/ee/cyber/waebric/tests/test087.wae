@@ -1,0 +1,7 @@
+module test087
+
+//Parse errors
+
+def main
+  echo "bla"
+end

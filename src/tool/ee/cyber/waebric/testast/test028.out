@@ -1,0 +1,92 @@
+0:55:Program {
+  definitions=16:55:Definitions {
+    definition=List {
+      16:55:FunctionDef {
+        arguments=(null)
+        endTerm=53:55:EndTerm {
+          text="end"
+        }
+        idCon=20:23:IdCon {
+          text="main"
+        }
+        statements=List {
+          27:51:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=(null)
+            ifStatement=(null)
+            letStatement=(null)
+            markupStatement=27:51:MarkupStatement {
+              markup=27:30:Markup {
+                arguments=(null)
+                designator=27:30:Designator {
+                  attribute=List {
+                  }
+                  idCon=27:30:IdCon {
+                    text="html"
+                  }
+                }
+              }
+              markupChain=32:51:MarkupChain {
+                embedding=(null)
+                expression=(null)
+                semicolon=(null)
+                statement=32:51:Statement {
+                  blockStatement=32:51:BlockStatement {
+                    statement=List {
+                      37:47:Statement {
+                        blockStatement=(null)
+                        cdataStatement=(null)
+                        commentStatement=(null)
+                        eachStatement=(null)
+                        echoStatement=37:47:EchoStatement {
+                          embedding=(null)
+                          expression=42:46:Expression {
+                            catExpression=42:46:CatExpression {
+                              left=42:46:FieldExpression {
+                                idCon=(null)
+                                primitiveExpression=42:46:Text {
+                                  text=""bla""
+                                }
+                              }
+                              right=(null)
+                            }
+                            listExpression=(null)
+                            recordExpression=(null)
+                          }
+                          semicolon=47:47:Semicolon {
+                            text=";"
+                          }
+                        }
+                        ifStatement=(null)
+                        letStatement=(null)
+                        markupStatement=(null)
+                        yieldStatement=(null)
+                      }
+                    }
+                  }
+                  cdataStatement=(null)
+                  commentStatement=(null)
+                  eachStatement=(null)
+                  echoStatement=(null)
+                  ifStatement=(null)
+                  letStatement=(null)
+                  markupStatement=(null)
+                  yieldStatement=(null)
+                }
+              }
+            }
+            yieldStatement=(null)
+          }
+        }
+      }
+    }
+  }
+  idCon=7:13:IdCon {
+    text="test028"
+  }
+}
+RAW:
+Program(IdCon(test028),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(html),List()),null),MarkupChain(null,null,null,Statement(null,null,null,BlockStatement(List(Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(Text("bla"),null),null),null,null),null,Semicolon(;)),null,null,null))),null,null,null,null,null))))),EndTerm(end)))))

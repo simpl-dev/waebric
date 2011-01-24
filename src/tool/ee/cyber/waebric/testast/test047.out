@@ -1,0 +1,87 @@
+0:54:Program {
+  definitions=16:54:Definitions {
+    definition=List {
+      16:54:FunctionDef {
+        arguments=(null)
+        endTerm=52:54:EndTerm {
+          text="end"
+        }
+        idCon=20:23:IdCon {
+          text="main"
+        }
+        statements=List {
+          27:50:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=27:50:EachStatement {
+              expression=36:38:Expression {
+                catExpression=(null)
+                listExpression=36:38:ListExpression {
+                  first=37:37:Expression {
+                    catExpression=37:37:CatExpression {
+                      left=37:37:FieldExpression {
+                        idCon=(null)
+                        primitiveExpression=37:37:NatCon {
+                          text="1"
+                        }
+                      }
+                      right=(null)
+                    }
+                    listExpression=(null)
+                    recordExpression=(null)
+                  }
+                  rest=List {
+                  }
+                }
+                recordExpression=(null)
+              }
+              idCon=33:33:IdCon {
+                text="x"
+              }
+              statement=44:50:Statement {
+                blockStatement=(null)
+                cdataStatement=(null)
+                commentStatement=(null)
+                eachStatement=(null)
+                echoStatement=44:50:EchoStatement {
+                  embedding=(null)
+                  expression=49:49:Expression {
+                    catExpression=49:49:CatExpression {
+                      left=49:49:FieldExpression {
+                        idCon=(null)
+                        primitiveExpression=49:49:IdCon {
+                          text="x"
+                        }
+                      }
+                      right=(null)
+                    }
+                    listExpression=(null)
+                    recordExpression=(null)
+                  }
+                  semicolon=50:50:Semicolon {
+                    text=";"
+                  }
+                }
+                ifStatement=(null)
+                letStatement=(null)
+                markupStatement=(null)
+                yieldStatement=(null)
+              }
+            }
+            echoStatement=(null)
+            ifStatement=(null)
+            letStatement=(null)
+            markupStatement=(null)
+            yieldStatement=(null)
+          }
+        }
+      }
+    }
+  }
+  idCon=7:13:IdCon {
+    text="test047"
+  }
+}
+RAW:
+Program(IdCon(test047),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,EachStatement(IdCon(x),Expression(null,ListExpression(Expression(CatExpression(FieldExpression(NatCon(1),null),null),null,null),List()),null),Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(IdCon(x),null),null),null,null),null,Semicolon(;)),null,null,null)),null,null,null,null,null,null,null)),EndTerm(end)))))

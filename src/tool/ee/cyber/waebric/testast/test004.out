@@ -1,0 +1,111 @@
+0:68:Program {
+  definitions=16:68:Definitions {
+    definition=List {
+      16:68:FunctionDef {
+        arguments=(null)
+        endTerm=66:68:EndTerm {
+          text="end"
+        }
+        idCon=20:23:IdCon {
+          text="main"
+        }
+        statements=List {
+          27:64:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=27:64:EchoStatement {
+              embedding=32:63:Embedding {
+                embed=37:44:Embed {
+                  expression=40:44:Expression {
+                    catExpression=40:44:CatExpression {
+                      left=40:44:FieldExpression {
+                        idCon=(null)
+                        primitiveExpression=40:44:Text {
+                          text=""bla""
+                        }
+                      }
+                      right=(null)
+                    }
+                    listExpression=(null)
+                    recordExpression=(null)
+                  }
+                  markup=List {
+                    37:38:Markup {
+                      arguments=(null)
+                      designator=37:38:Designator {
+                        attribute=List {
+                        }
+                        idCon=37:38:IdCon {
+                          text="em"
+                        }
+                      }
+                    }
+                  }
+                }
+                preText=32:36:PreText {
+                  text=""abc<"
+                }
+                textTail=45:63:TextTail {
+                  embed=50:58:Embed {
+                    expression=53:58:Expression {
+                      catExpression=53:58:CatExpression {
+                        left=53:58:FieldExpression {
+                          idCon=(null)
+                          primitiveExpression=53:58:Text {
+                            text=""bla2""
+                          }
+                        }
+                        right=(null)
+                      }
+                      listExpression=(null)
+                      recordExpression=(null)
+                    }
+                    markup=List {
+                      50:51:Markup {
+                        arguments=(null)
+                        designator=50:51:Designator {
+                          attribute=List {
+                          }
+                          idCon=50:51:IdCon {
+                            text="em"
+                          }
+                        }
+                      }
+                    }
+                  }
+                  midText=45:49:MidText {
+                    text=">def<"
+                  }
+                  postText=(null)
+                  textTail=59:63:TextTail {
+                    embed=(null)
+                    midText=(null)
+                    postText=59:63:PostText {
+                      text=">ghi""
+                    }
+                    textTail=(null)
+                  }
+                }
+              }
+              expression=(null)
+              semicolon=64:64:Semicolon {
+                text=";"
+              }
+            }
+            ifStatement=(null)
+            letStatement=(null)
+            markupStatement=(null)
+            yieldStatement=(null)
+          }
+        }
+      }
+    }
+  }
+  idCon=7:13:IdCon {
+    text="test004"
+  }
+}
+RAW:
+Program(IdCon(test004),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,EchoStatement(null,Embedding(PreText("abc<),Embed(List(Markup(Designator(IdCon(em),List()),null)),Expression(CatExpression(FieldExpression(Text("bla"),null),null),null,null)),TextTail(null,MidText(>def<),Embed(List(Markup(Designator(IdCon(em),List()),null)),Expression(CatExpression(FieldExpression(Text("bla2"),null),null),null,null)),TextTail(PostText(>ghi"),null,null,null))),Semicolon(;)),null,null,null)),EndTerm(end)))))

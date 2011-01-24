@@ -1,0 +1,8 @@
+module test096
+
+def main
+  p {}
+  p {};
+  p [];
+  p "";
+end

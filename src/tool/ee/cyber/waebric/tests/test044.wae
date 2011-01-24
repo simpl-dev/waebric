@@ -1,0 +1,18 @@
+module test044
+
+def main
+  f("Hello world!");
+end
+
+def f(x)
+  let 
+    x = "Goodbye!";
+  in
+    g(x);
+  end
+end
+
+def g(x)
+  echo "x = " + x;
+end
+

@@ -1,0 +1,8 @@
+module test097
+
+def main
+  let x = "Hi ";
+  in
+    p x + x + x + x;
+  end
+end

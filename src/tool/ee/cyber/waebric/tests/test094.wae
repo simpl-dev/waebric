@@ -1,0 +1,8 @@
+module test094
+
+def main
+  let x = "bla";
+  in 
+    p "x = <x>";
+  end
+end

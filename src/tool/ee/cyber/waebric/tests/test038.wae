@@ -1,0 +1,9 @@
+module test038
+
+def f()
+  echo "bla";
+end
+
+def main
+  f();
+end

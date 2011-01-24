@@ -1,0 +1,8 @@
+module test079
+
+def main
+  if (!a)
+   echo "Yes";
+  else 
+   echo "No";
+end

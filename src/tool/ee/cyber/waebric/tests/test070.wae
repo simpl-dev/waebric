@@ -1,0 +1,5 @@
+module test070
+
+def main
+  comment "abcdef";
+end

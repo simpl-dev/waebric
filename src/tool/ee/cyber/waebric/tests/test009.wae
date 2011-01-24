@@ -1,0 +1,5 @@
+module test009
+
+def main
+    echo "abc" + 123;
+end

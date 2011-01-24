@@ -1,0 +1,10 @@
+module test069
+
+def f(a, b)
+  echo "A = <a>";
+  echo "B = <b>";
+end
+
+def main
+ f(a = 1, b = 3, b = 323);
+end

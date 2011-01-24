@@ -1,0 +1,9 @@
+module test049
+
+def main
+  let 
+    l = [1,2,3,4];
+  in
+   each (x: l) echo x;
+  end
+end

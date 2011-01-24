@@ -1,0 +1,5 @@
+module test023
+
+def main
+  html(name="html") "Hello world!";
+end

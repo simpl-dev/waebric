@@ -1,0 +1,6 @@
+module test002
+
+// Echo string
+def main
+  echo "Hoi";
+end

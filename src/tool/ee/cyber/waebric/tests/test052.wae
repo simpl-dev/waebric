@@ -1,0 +1,13 @@
+module test052
+
+def main
+   let 
+     a = 3;
+   in
+      if (a)
+        echo "yes";
+      else
+	echo "no";
+   end
+end
+

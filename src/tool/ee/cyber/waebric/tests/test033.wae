@@ -1,0 +1,5 @@
+module test033
+
+def main
+  html.alert(class="bla");
+end

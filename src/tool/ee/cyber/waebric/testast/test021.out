@@ -1,0 +1,118 @@
+0:87:Program {
+  definitions=16:87:Definitions {
+    definition=List {
+      16:87:FunctionDef {
+        arguments=(null)
+        endTerm=85:87:EndTerm {
+          text="end"
+        }
+        idCon=20:23:IdCon {
+          text="main"
+        }
+        statements=List {
+          27:83:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=(null)
+            ifStatement=(null)
+            letStatement=27:83:LetStatement {
+              assignment=List {
+                36:48:Assignment {
+                  funcBinding=(null)
+                  varBinding=36:48:VarBinding {
+                    expression=40:47:Expression {
+                      catExpression=40:47:CatExpression {
+                        left=40:47:FieldExpression {
+                          idCon=(null)
+                          primitiveExpression=40:47:Text {
+                            text=""no way""
+                          }
+                        }
+                        right=(null)
+                      }
+                      listExpression=(null)
+                      recordExpression=(null)
+                    }
+                    idCon=36:36:IdCon {
+                      text="x"
+                    }
+                    semicolon=48:48:Semicolon {
+                      text=";"
+                    }
+                  }
+                }
+                54:63:Assignment {
+                  funcBinding=(null)
+                  varBinding=54:63:VarBinding {
+                    expression=58:62:Expression {
+                      catExpression=58:62:CatExpression {
+                        left=58:62:FieldExpression {
+                          idCon=(null)
+                          primitiveExpression=58:62:Text {
+                            text=""yes""
+                          }
+                        }
+                        right=(null)
+                      }
+                      listExpression=(null)
+                      recordExpression=(null)
+                    }
+                    idCon=54:54:IdCon {
+                      text="x"
+                    }
+                    semicolon=63:63:Semicolon {
+                      text=";"
+                    }
+                  }
+                }
+              }
+              endTerm=81:83:EndTerm {
+                text="end"
+              }
+              statement=List {
+                71:77:Statement {
+                  blockStatement=(null)
+                  cdataStatement=(null)
+                  commentStatement=(null)
+                  eachStatement=(null)
+                  echoStatement=71:77:EchoStatement {
+                    embedding=(null)
+                    expression=76:76:Expression {
+                      catExpression=76:76:CatExpression {
+                        left=76:76:FieldExpression {
+                          idCon=(null)
+                          primitiveExpression=76:76:IdCon {
+                            text="x"
+                          }
+                        }
+                        right=(null)
+                      }
+                      listExpression=(null)
+                      recordExpression=(null)
+                    }
+                    semicolon=77:77:Semicolon {
+                      text=";"
+                    }
+                  }
+                  ifStatement=(null)
+                  letStatement=(null)
+                  markupStatement=(null)
+                  yieldStatement=(null)
+                }
+              }
+            }
+            markupStatement=(null)
+            yieldStatement=(null)
+          }
+        }
+      }
+    }
+  }
+  idCon=7:13:IdCon {
+    text="test021"
+  }
+}
+RAW:
+Program(IdCon(test021),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,LetStatement(List(Assignment(VarBinding(IdCon(x),Expression(CatExpression(FieldExpression(Text("no way"),null),null),null,null),Semicolon(;)),null), Assignment(VarBinding(IdCon(x),Expression(CatExpression(FieldExpression(Text("yes"),null),null),null,null),Semicolon(;)),null)),List(Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(IdCon(x),null),null),null,null),null,Semicolon(;)),null,null,null)),EndTerm(end)),null,null,null,null,null,null)),EndTerm(end)))))

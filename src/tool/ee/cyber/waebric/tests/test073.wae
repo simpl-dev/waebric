@@ -1,0 +1,14 @@
+module test073
+
+def main
+  let p = "P";
+  in
+    p;
+    p p;
+    p p();
+    echo "<p>";
+    echo "<p()>";
+    echo "<p p>";
+    echo "<p p()>";
+  end
+end

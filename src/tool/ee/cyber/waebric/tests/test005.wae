@@ -1,0 +1,5 @@
+module test005
+
+def main
+  echo "abc" + "cdef";
+end

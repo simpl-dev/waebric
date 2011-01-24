@@ -1,0 +1,63 @@
+0:46:Program {
+  definitions=16:46:Definitions {
+    definition=List {
+      16:46:FunctionDef {
+        arguments=(null)
+        endTerm=44:46:EndTerm {
+          text="end"
+        }
+        idCon=20:23:IdCon {
+          text="main"
+        }
+        statements=List {
+          27:42:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=27:42:EchoStatement {
+              embedding=(null)
+              expression=32:41:Expression {
+                catExpression=32:41:CatExpression {
+                  left=32:36:FieldExpression {
+                    idCon=(null)
+                    primitiveExpression=32:36:Text {
+                      text=""abc""
+                    }
+                  }
+                  right=41:41:Expression {
+                    catExpression=41:41:CatExpression {
+                      left=41:41:FieldExpression {
+                        idCon=(null)
+                        primitiveExpression=41:41:NatCon {
+                          text="1"
+                        }
+                      }
+                      right=(null)
+                    }
+                    listExpression=(null)
+                    recordExpression=(null)
+                  }
+                }
+                listExpression=(null)
+                recordExpression=(null)
+              }
+              semicolon=42:42:Semicolon {
+                text=";"
+              }
+            }
+            ifStatement=(null)
+            letStatement=(null)
+            markupStatement=(null)
+            yieldStatement=(null)
+          }
+        }
+      }
+    }
+  }
+  idCon=7:13:IdCon {
+    text="test010"
+  }
+}
+RAW:
+Program(IdCon(test010),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(Text("abc"),null),Expression(CatExpression(FieldExpression(NatCon(1),null),null),null,null)),null,null),null,Semicolon(;)),null,null,null)),EndTerm(end)))))

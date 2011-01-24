@@ -1,0 +1,68 @@
+0:52:Program {
+  definitions=16:52:Definitions {
+    definition=List {
+      16:52:FunctionDef {
+        arguments=(null)
+        endTerm=50:52:EndTerm {
+          text="end"
+        }
+        idCon=20:23:IdCon {
+          text="main"
+        }
+        statements=List {
+          27:48:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=(null)
+            ifStatement=(null)
+            letStatement=(null)
+            markupStatement=27:48:MarkupStatement {
+              markup=27:32:Markup {
+                arguments=31:32:Arguments {
+                  first=(null)
+                  rest=List {
+                  }
+                }
+                designator=27:30:Designator {
+                  attribute=List {
+                  }
+                  idCon=27:30:IdCon {
+                    text="html"
+                  }
+                }
+              }
+              markupChain=34:48:MarkupChain {
+                embedding=(null)
+                expression=34:47:Expression {
+                  catExpression=34:47:CatExpression {
+                    left=34:47:FieldExpression {
+                      idCon=(null)
+                      primitiveExpression=34:47:Text {
+                        text=""Hello world!""
+                      }
+                    }
+                    right=(null)
+                  }
+                  listExpression=(null)
+                  recordExpression=(null)
+                }
+                semicolon=48:48:Semicolon {
+                  text=";"
+                }
+                statement=(null)
+              }
+            }
+            yieldStatement=(null)
+          }
+        }
+      }
+    }
+  }
+  idCon=7:13:IdCon {
+    text="test024"
+  }
+}
+RAW:
+Program(IdCon(test024),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(html),List()),Arguments(null,List())),MarkupChain(Semicolon(;),Expression(CatExpression(FieldExpression(Text("Hello world!"),null),null),null,null),null,null)))),EndTerm(end)))))

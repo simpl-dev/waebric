@@ -1,0 +1,13 @@
+module test050
+
+def main
+  let 
+    l = [1,2,3,4];
+  in
+   each (x: l) {
+      echo x;
+      echo x;
+   }
+  end
+end
+

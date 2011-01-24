@@ -1,0 +1,48 @@
+module test093
+
+
+
+def on-the-wall(x)
+  echo "<x> bottles of beer on the wall, <x> bottles of beer.";
+end
+
+def take-one-down(x)
+  echo "Take one down and pass it around, <x> bottles of beer on the wall.";
+end
+
+
+def line
+  li yield;
+end
+
+def two 
+  line on-the-wall(2)
+  line "Take one down and pass it around, 1 bottle of beer on the wall.";
+end
+
+
+def one
+  line "1 bottle of beer on the wall, 1 bottle of beer.";
+  line "Take one down and pass it around, no more bottles of beer on the wall.";
+end
+
+
+def no-more(x)
+  line "No more bottles of beer on the wall, no more bottles of beer.";
+  line "Go to the store and buy some more, <x> bottles of beer on the wall.";
+end
+
+
+
+def main
+  let iter = [{cur: 99, next: 98}, {cur: 98, next: 97}, {cur: 97, next: 96}, {cur: 96, next: 95}, {cur: 95, next: 94}, {cur: 94, next: 93}, {cur: 93, next: 92}, {cur: 92, next: 91}, {cur: 91, next: 90}, {cur: 90, next: 89}, {cur: 89, next: 88}, {cur: 88, next: 87}, {cur: 87, next: 86}, {cur: 86, next: 85}, {cur: 85, next: 84}, {cur: 84, next: 83}, {cur: 83, next: 82}, {cur: 82, next: 81}, {cur: 81, next: 80}, {cur: 80, next: 79}, {cur: 79, next: 78}, {cur: 78, next: 77}, {cur: 77, next: 76}, {cur: 76, next: 75}, {cur: 75, next: 74}, {cur: 74, next: 73}, {cur: 73, next: 72}, {cur: 72, next: 71}, {cur: 71, next: 70}, {cur: 70, next: 69}, {cur: 69, next: 68}, {cur: 68, next: 67}, {cur: 67, next: 66}, {cur: 66, next: 65}, {cur: 65, next: 64}, {cur: 64, next: 63}, {cur: 63, next: 62}, {cur: 62, next: 61}, {cur: 61, next: 60}, {cur: 60, next: 59}, {cur: 59, next: 58}, {cur: 58, next: 57}, {cur: 57, next: 56}, {cur: 56, next: 55}, {cur: 55, next: 54}, {cur: 54, next: 53}, {cur: 53, next: 52}, {cur: 52, next: 51}, {cur: 51, next: 50}, {cur: 50, next: 49}, {cur: 49, next: 48}, {cur: 48, next: 47}, {cur: 47, next: 46}, {cur: 46, next: 45}, {cur: 45, next: 44}, {cur: 44, next: 43}, {cur: 43, next: 42}, {cur: 42, next: 41}, {cur: 41, next: 40}, {cur: 40, next: 39}, {cur: 39, next: 38}, {cur: 38, next: 37}, {cur: 37, next: 36}, {cur: 36, next: 35}, {cur: 35, next: 34}, {cur: 34, next: 33}, {cur: 33, next: 32}, {cur: 32, next: 31}, {cur: 31, next: 30}, {cur: 30, next: 29}, {cur: 29, next: 28}, {cur: 28, next: 27}, {cur: 27, next: 26}, {cur: 26, next: 25}, {cur: 25, next: 24}, {cur: 24, next: 23}, {cur: 23, next: 22}, {cur: 22, next: 21}, {cur: 21, next: 20}, {cur: 20, next: 19}, {cur: 19, next: 18}, {cur: 18, next: 17}, {cur: 17, next: 16}, {cur: 16, next: 15}, {cur: 15, next: 14}, {cur: 14, next: 13}, {cur: 13, next: 12}, {cur: 12, next: 11}, {cur: 11, next: 10}, {cur: 10, next: 9}, {cur: 9, next: 8}, {cur: 8, next: 7}, {cur: 7, next: 6}, {cur: 6, next: 5}, {cur: 5, next: 4}, {cur: 4, next: 3}, {cur: 3, next: 2}];
+  in
+    each (n: iter) {
+      line on-the-wall(n.cur);
+      line take-one-down(n.next);
+    }
+    two;
+    one;
+    no-more(99);
+  end
+end

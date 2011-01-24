@@ -1,0 +1,10 @@
+module test041
+
+def main
+  f("Hello", " world!");
+end
+
+def f(x)
+  echo "x = " + x;
+end
+

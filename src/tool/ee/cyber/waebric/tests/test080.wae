@@ -1,0 +1,11 @@
+module test080
+
+def main
+  let b = "a"; 
+  in
+    if (a || b)
+      echo "Yes";
+    else 
+     echo "No";
+  end
+end

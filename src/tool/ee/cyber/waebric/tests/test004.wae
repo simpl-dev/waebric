@@ -1,0 +1,5 @@
+module test004
+
+def main
+  echo "abc<em "bla">def<em "bla2">ghi";
+end

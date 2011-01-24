@@ -1,0 +1,20 @@
+module test098
+
+
+def g(a)
+  let 
+    f() = p g("b");
+  in
+    if (a)
+      echo "A was defined";
+    else {
+      echo "calling f";
+      f;
+    }
+  end
+end
+
+
+def main
+  g;
+end

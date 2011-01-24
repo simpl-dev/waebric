@@ -1,0 +1,57 @@
+0:41:Program {
+  definitions=16:41:Definitions {
+    definition=List {
+      16:41:FunctionDef {
+        arguments=(null)
+        endTerm=39:41:EndTerm {
+          text="end"
+        }
+        idCon=20:23:IdCon {
+          text="main"
+        }
+        statements=List {
+          27:37:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=(null)
+            ifStatement=(null)
+            letStatement=(null)
+            markupStatement=27:37:MarkupStatement {
+              markup=27:36:Markup {
+                arguments=(null)
+                designator=27:36:Designator {
+                  attribute=List {
+                    31:36:ClassAttr {
+                      cl=32:36:IdCon {
+                        text="alert"
+                      }
+                    }
+                  }
+                  idCon=27:30:IdCon {
+                    text="html"
+                  }
+                }
+              }
+              markupChain=37:37:MarkupChain {
+                embedding=(null)
+                expression=(null)
+                semicolon=37:37:Semicolon {
+                  text=";"
+                }
+                statement=(null)
+              }
+            }
+            yieldStatement=(null)
+          }
+        }
+      }
+    }
+  }
+  idCon=7:13:IdCon {
+    text="test030"
+  }
+}
+RAW:
+Program(IdCon(test030),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(html),List(ClassAttr(IdCon(alert)))),null),MarkupChain(Semicolon(;),null,null,null)))),EndTerm(end)))))

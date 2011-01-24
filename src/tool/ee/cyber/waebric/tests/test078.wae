@@ -1,0 +1,14 @@
+module test078
+
+def f(a, b)
+  let
+    g(a) = { echo a; echo b; }
+  in
+    g;
+  end
+end
+
+def main
+  f("a", "b");
+end
+

@@ -1,0 +1,8 @@
+module test092
+
+def main
+  let x = "www.google.nl";
+  in
+    a(href="http://" + x) "Google";
+  end
+end

@@ -1,0 +1,11 @@
+module test100
+
+def main
+h2 "Important Dates";
+ table {
+ tr { td b "Abstract submission deadline:"; td "Friday November 28th, 2008"; }
+ tr { td b "Paper submission deadline:";    td "Friday December 5th, 2008"; }  
+ tr { td b "Notification of acceptance:";   td "Friday February 6th, 2009" ; } 
+ tr { td b "Workshop date:" ;               td "20th March 20th, 2009 (tentative)" ; }  
+ }
+end

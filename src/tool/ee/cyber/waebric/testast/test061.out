@@ -1,0 +1,609 @@
+0:411:Program {
+  definitions=17:411:Definitions {
+    definition=List {
+      17:99:FunctionDef {
+        arguments=26:29:Formals {
+          left=26:29:IdCon {
+            text="menu"
+          }
+          rest=List {
+          }
+        }
+        endTerm=97:99:EndTerm {
+          text="end"
+        }
+        idCon=21:24:IdCon {
+          text="menu"
+        }
+        statements=List {
+          34:49:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=34:49:EchoStatement {
+              embedding=(null)
+              expression=39:48:Expression {
+                catExpression=39:48:CatExpression {
+                  left=39:48:FieldExpression {
+                    idCon=44:48:IdCon {
+                      text="title"
+                    }
+                    primitiveExpression=39:42:IdCon {
+                      text="menu"
+                    }
+                  }
+                  right=(null)
+                }
+                listExpression=(null)
+                recordExpression=(null)
+              }
+              semicolon=49:49:Semicolon {
+                text=";"
+              }
+            }
+            ifStatement=(null)
+            letStatement=(null)
+            markupStatement=(null)
+            yieldStatement=(null)
+          }
+          53:95:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=(null)
+            ifStatement=(null)
+            letStatement=(null)
+            markupStatement=53:95:MarkupStatement {
+              markup=53:54:Markup {
+                arguments=(null)
+                designator=53:54:Designator {
+                  attribute=List {
+                  }
+                  idCon=53:54:IdCon {
+                    text="ul"
+                  }
+                }
+              }
+              markupChain=59:95:MarkupChain {
+                embedding=(null)
+                expression=(null)
+                semicolon=(null)
+                statement=59:95:Statement {
+                  blockStatement=(null)
+                  cdataStatement=(null)
+                  commentStatement=(null)
+                  eachStatement=59:95:EachStatement {
+                    expression=70:78:Expression {
+                      catExpression=70:78:CatExpression {
+                        left=70:78:FieldExpression {
+                          idCon=75:78:IdCon {
+                            text="kids"
+                          }
+                          primitiveExpression=70:73:IdCon {
+                            text="menu"
+                          }
+                        }
+                        right=(null)
+                      }
+                      listExpression=(null)
+                      recordExpression=(null)
+                    }
+                    idCon=65:67:IdCon {
+                      text="kid"
+                    }
+                    statement=86:95:Statement {
+                      blockStatement=(null)
+                      cdataStatement=(null)
+                      commentStatement=(null)
+                      eachStatement=(null)
+                      echoStatement=(null)
+                      ifStatement=(null)
+                      letStatement=(null)
+                      markupStatement=86:95:MarkupStatement {
+                        markup=86:94:Markup {
+                          arguments=90:94:Arguments {
+                            first=91:93:Expression {
+                              catExpression=91:93:CatExpression {
+                                left=91:93:FieldExpression {
+                                  idCon=(null)
+                                  primitiveExpression=91:93:IdCon {
+                                    text="kid"
+                                  }
+                                }
+                                right=(null)
+                              }
+                              listExpression=(null)
+                              recordExpression=(null)
+                            }
+                            rest=List {
+                            }
+                          }
+                          designator=86:89:Designator {
+                            attribute=List {
+                            }
+                            idCon=86:89:IdCon {
+                              text="item"
+                            }
+                          }
+                        }
+                        markupChain=95:95:MarkupChain {
+                          embedding=(null)
+                          expression=(null)
+                          semicolon=95:95:Semicolon {
+                            text=";"
+                          }
+                          statement=(null)
+                        }
+                      }
+                      yieldStatement=(null)
+                    }
+                  }
+                  echoStatement=(null)
+                  ifStatement=(null)
+                  letStatement=(null)
+                  markupStatement=(null)
+                  yieldStatement=(null)
+                }
+              }
+            }
+            yieldStatement=(null)
+          }
+        }
+      }
+      102:196:FunctionDef {
+        arguments=111:112:Formals {
+          left=111:112:IdCon {
+            text="mi"
+          }
+          rest=List {
+          }
+        }
+        endTerm=194:196:EndTerm {
+          text="end"
+        }
+        idCon=106:109:IdCon {
+          text="item"
+        }
+        statements=List {
+          117:192:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=(null)
+            ifStatement=(null)
+            letStatement=(null)
+            markupStatement=117:192:MarkupStatement {
+              markup=117:118:Markup {
+                arguments=(null)
+                designator=117:118:Designator {
+                  attribute=List {
+                  }
+                  idCon=117:118:IdCon {
+                    text="li"
+                  }
+                }
+              }
+              markupChain=120:192:MarkupChain {
+                embedding=(null)
+                expression=(null)
+                semicolon=(null)
+                statement=120:192:Statement {
+                  blockStatement=(null)
+                  cdataStatement=(null)
+                  commentStatement=(null)
+                  eachStatement=(null)
+                  echoStatement=(null)
+                  ifStatement=120:192:IfStatement {
+                    elseStat=168:192:Statement {
+                      blockStatement=(null)
+                      cdataStatement=(null)
+                      commentStatement=(null)
+                      eachStatement=(null)
+                      echoStatement=(null)
+                      ifStatement=(null)
+                      letStatement=(null)
+                      markupStatement=168:192:MarkupStatement {
+                        markup=168:182:Markup {
+                          arguments=169:182:Arguments {
+                            first=170:181:AttrArg {
+                              expression=175:181:Expression {
+                                catExpression=175:181:CatExpression {
+                                  left=175:181:FieldExpression {
+                                    idCon=178:181:IdCon {
+                                      text="link"
+                                    }
+                                    primitiveExpression=175:176:IdCon {
+                                      text="mi"
+                                    }
+                                  }
+                                  right=(null)
+                                }
+                                listExpression=(null)
+                                recordExpression=(null)
+                              }
+                              idCon=170:173:IdCon {
+                                text="href"
+                              }
+                            }
+                            rest=List {
+                            }
+                          }
+                          designator=168:168:Designator {
+                            attribute=List {
+                            }
+                            idCon=168:168:IdCon {
+                              text="a"
+                            }
+                          }
+                        }
+                        markupChain=184:192:MarkupChain {
+                          embedding=(null)
+                          expression=184:191:Expression {
+                            catExpression=184:191:CatExpression {
+                              left=184:191:FieldExpression {
+                                idCon=187:191:IdCon {
+                                  text="title"
+                                }
+                                primitiveExpression=184:185:IdCon {
+                                  text="mi"
+                                }
+                              }
+                              right=(null)
+                            }
+                            listExpression=(null)
+                            recordExpression=(null)
+                          }
+                          semicolon=192:192:Semicolon {
+                            text=";"
+                          }
+                          statement=(null)
+                        }
+                      }
+                      yieldStatement=(null)
+                    }
+                    ifStat=140:148:Statement {
+                      blockStatement=(null)
+                      cdataStatement=(null)
+                      commentStatement=(null)
+                      eachStatement=(null)
+                      echoStatement=(null)
+                      ifStatement=(null)
+                      letStatement=(null)
+                      markupStatement=140:148:MarkupStatement {
+                        markup=140:147:Markup {
+                          arguments=144:147:Arguments {
+                            first=145:146:Expression {
+                              catExpression=145:146:CatExpression {
+                                left=145:146:FieldExpression {
+                                  idCon=(null)
+                                  primitiveExpression=145:146:IdCon {
+                                    text="mi"
+                                  }
+                                }
+                                right=(null)
+                              }
+                              listExpression=(null)
+                              recordExpression=(null)
+                            }
+                            rest=List {
+                            }
+                          }
+                          designator=140:143:Designator {
+                            attribute=List {
+                            }
+                            idCon=140:143:IdCon {
+                              text="menu"
+                            }
+                          }
+                        }
+                        markupChain=148:148:MarkupChain {
+                          embedding=(null)
+                          expression=(null)
+                          semicolon=148:148:Semicolon {
+                            text=";"
+                          }
+                          statement=(null)
+                        }
+                      }
+                      yieldStatement=(null)
+                    }
+                    predicate=124:130:Predicate {
+                      left=124:130:IsAPredicate {
+                        expression=124:130:Expression {
+                          catExpression=124:130:CatExpression {
+                            left=124:130:FieldExpression {
+                              idCon=127:130:IdCon {
+                                text="kids"
+                              }
+                              primitiveExpression=124:125:IdCon {
+                                text="mi"
+                              }
+                            }
+                            right=(null)
+                          }
+                          listExpression=(null)
+                          recordExpression=(null)
+                        }
+                        predType=(null)
+                      }
+                      op=List {
+                      }
+                      rest=List {
+                      }
+                    }
+                  }
+                  letStatement=(null)
+                  markupStatement=(null)
+                  yieldStatement=(null)
+                }
+              }
+            }
+            yieldStatement=(null)
+          }
+        }
+      }
+      199:411:FunctionDef {
+        arguments=(null)
+        endTerm=409:411:EndTerm {
+          text="end"
+        }
+        idCon=203:206:IdCon {
+          text="main"
+        }
+        statements=List {
+          210:407:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=(null)
+            ifStatement=(null)
+            letStatement=(null)
+            markupStatement=210:407:MarkupStatement {
+              markup=210:406:Markup {
+                arguments=214:406:Arguments {
+                  first=215:405:Expression {
+                    catExpression=(null)
+                    listExpression=(null)
+                    recordExpression=215:405:RecordExpression {
+                      first=216:228:KeyValuePair {
+                        expression=223:228:Expression {
+                          catExpression=223:228:CatExpression {
+                            left=223:228:FieldExpression {
+                              idCon=(null)
+                              primitiveExpression=223:228:Text {
+                                text=""Menu""
+                              }
+                            }
+                            right=(null)
+                          }
+                          listExpression=(null)
+                          recordExpression=(null)
+                        }
+                        idCon=216:220:IdCon {
+                          text="title"
+                        }
+                      }
+                      rest=List {
+                        231:404:KeyValuePair {
+                          expression=237:404:Expression {
+                            catExpression=(null)
+                            listExpression=237:404:ListExpression {
+                              first=238:263:Expression {
+                                catExpression=(null)
+                                listExpression=(null)
+                                recordExpression=238:263:RecordExpression {
+                                  first=239:251:KeyValuePair {
+                                    expression=246:251:Expression {
+                                      catExpression=246:251:CatExpression {
+                                        left=246:251:FieldExpression {
+                                          idCon=(null)
+                                          primitiveExpression=246:251:Text {
+                                            text=""Home""
+                                          }
+                                        }
+                                        right=(null)
+                                      }
+                                      listExpression=(null)
+                                      recordExpression=(null)
+                                    }
+                                    idCon=239:243:IdCon {
+                                      text="title"
+                                    }
+                                  }
+                                  rest=List {
+                                    254:262:KeyValuePair {
+                                      expression=260:262:Expression {
+                                        catExpression=260:262:CatExpression {
+                                          left=260:262:FieldExpression {
+                                            idCon=(null)
+                                            primitiveExpression=260:262:Text {
+                                              text=""/""
+                                            }
+                                          }
+                                          right=(null)
+                                        }
+                                        listExpression=(null)
+                                        recordExpression=(null)
+                                      }
+                                      idCon=254:257:IdCon {
+                                        text="link"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                              rest=List {
+                                278:403:Expression {
+                                  catExpression=(null)
+                                  listExpression=(null)
+                                  recordExpression=278:403:RecordExpression {
+                                    first=279:291:KeyValuePair {
+                                      expression=286:291:Expression {
+                                        catExpression=286:291:CatExpression {
+                                          left=286:291:FieldExpression {
+                                            idCon=(null)
+                                            primitiveExpression=286:291:Text {
+                                              text=""Misc""
+                                            }
+                                          }
+                                          right=(null)
+                                        }
+                                        listExpression=(null)
+                                        recordExpression=(null)
+                                      }
+                                      idCon=279:283:IdCon {
+                                        text="title"
+                                      }
+                                    }
+                                    rest=List {
+                                      294:402:KeyValuePair {
+                                        expression=303:402:Expression {
+                                          catExpression=(null)
+                                          listExpression=303:402:ListExpression {
+                                            first=304:343:Expression {
+                                              catExpression=(null)
+                                              listExpression=(null)
+                                              recordExpression=304:343:RecordExpression {
+                                                first=305:320:KeyValuePair {
+                                                  expression=312:320:Expression {
+                                                    catExpression=312:320:CatExpression {
+                                                      left=312:320:FieldExpression {
+                                                        idCon=(null)
+                                                        primitiveExpression=312:320:Text {
+                                                          text=""Contact""
+                                                        }
+                                                      }
+                                                      right=(null)
+                                                    }
+                                                    listExpression=(null)
+                                                    recordExpression=(null)
+                                                  }
+                                                  idCon=305:309:IdCon {
+                                                    text="title"
+                                                  }
+                                                }
+                                                rest=List {
+                                                  323:342:KeyValuePair {
+                                                    expression=329:342:Expression {
+                                                      catExpression=329:342:CatExpression {
+                                                        left=329:342:FieldExpression {
+                                                          idCon=(null)
+                                                          primitiveExpression=329:342:Text {
+                                                            text=""contact.html""
+                                                          }
+                                                        }
+                                                        right=(null)
+                                                      }
+                                                      listExpression=(null)
+                                                      recordExpression=(null)
+                                                    }
+                                                    idCon=323:326:IdCon {
+                                                      text="link"
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                            rest=List {
+                                              366:401:Expression {
+                                                catExpression=(null)
+                                                listExpression=(null)
+                                                recordExpression=366:401:RecordExpression {
+                                                  first=367:380:KeyValuePair {
+                                                    expression=374:380:Expression {
+                                                      catExpression=374:380:CatExpression {
+                                                        left=374:380:FieldExpression {
+                                                          idCon=(null)
+                                                          primitiveExpression=374:380:Text {
+                                                            text=""Links""
+                                                          }
+                                                        }
+                                                        right=(null)
+                                                      }
+                                                      listExpression=(null)
+                                                      recordExpression=(null)
+                                                    }
+                                                    idCon=367:371:IdCon {
+                                                      text="title"
+                                                    }
+                                                  }
+                                                  rest=List {
+                                                    383:400:KeyValuePair {
+                                                      expression=389:400:Expression {
+                                                        catExpression=389:400:CatExpression {
+                                                          left=389:400:FieldExpression {
+                                                            idCon=(null)
+                                                            primitiveExpression=389:400:Text {
+                                                              text=""links.html""
+                                                            }
+                                                          }
+                                                          right=(null)
+                                                        }
+                                                        listExpression=(null)
+                                                        recordExpression=(null)
+                                                      }
+                                                      idCon=383:386:IdCon {
+                                                        text="link"
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                          recordExpression=(null)
+                                        }
+                                        idCon=294:297:IdCon {
+                                          text="kids"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                            recordExpression=(null)
+                          }
+                          idCon=231:234:IdCon {
+                            text="kids"
+                          }
+                        }
+                      }
+                    }
+                  }
+                  rest=List {
+                  }
+                }
+                designator=210:213:Designator {
+                  attribute=List {
+                  }
+                  idCon=210:213:IdCon {
+                    text="menu"
+                  }
+                }
+              }
+              markupChain=407:407:MarkupChain {
+                embedding=(null)
+                expression=(null)
+                semicolon=407:407:Semicolon {
+                  text=";"
+                }
+                statement=(null)
+              }
+            }
+            yieldStatement=(null)
+          }
+        }
+      }
+    }
+  }
+  idCon=7:13:IdCon {
+    text="test061"
+  }
+}
+RAW:
+Program(IdCon(test061),Definitions(List(FunctionDef(IdCon(menu),Formals(IdCon(menu),List()),List(Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(IdCon(menu),IdCon(title)),null),null,null),null,Semicolon(;)),null,null,null), Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(ul),List()),null),MarkupChain(null,null,null,Statement(null,EachStatement(IdCon(kid),Expression(CatExpression(FieldExpression(IdCon(menu),IdCon(kids)),null),null,null),Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(item),List()),Arguments(Expression(CatExpression(FieldExpression(IdCon(kid),null),null),null,null),List())),MarkupChain(Semicolon(;),null,null,null)))),null,null,null,null,null,null,null))))),EndTerm(end)), FunctionDef(IdCon(item),Formals(IdCon(mi),List()),List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(li),List()),null),MarkupChain(null,null,null,Statement(IfStatement(Predicate(IsAPredicate(Expression(CatExpression(FieldExpression(IdCon(mi),IdCon(kids)),null),null,null),null),List(),List()),Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(menu),List()),Arguments(Expression(CatExpression(FieldExpression(IdCon(mi),null),null),null,null),List())),MarkupChain(Semicolon(;),null,null,null))),Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(a),List()),Arguments(AttrArg(IdCon(href),Expression(CatExpression(FieldExpression(IdCon(mi),IdCon(link)),null),null,null)),List())),MarkupChain(Semicolon(;),Expression(CatExpression(FieldExpression(IdCon(mi),IdCon(title)),null),null,null),null,null)))),null,null,null,null,null,null,null,null))))),EndTerm(end)), FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(menu),List()),Arguments(Expression(null,null,RecordExpression(KeyValuePair(IdCon(title),Expression(CatExpression(FieldExpression(Text("Menu"),null),null),null,null)),List(KeyValuePair(IdCon(kids),Expression(null,ListExpression(Expression(null,null,RecordExpression(KeyValuePair(IdCon(title),Expression(CatExpression(FieldExpression(Text("Home"),null),null),null,null)),List(KeyValuePair(IdCon(link),Expression(CatExpression(FieldExpression(Text("/"),null),null),null,null))))),List(Expression(null,null,RecordExpression(KeyValuePair(IdCon(title),Expression(CatExpression(FieldExpression(Text("Misc"),null),null),null,null)),List(KeyValuePair(IdCon(kids),Expression(null,ListExpression(Expression(null,null,RecordExpression(KeyValuePair(IdCon(title),Expression(CatExpression(FieldExpression(Text("Contact"),null),null),null,null)),List(KeyValuePair(IdCon(link),Expression(CatExpression(FieldExpression(Text("contact.html"),null),null),null,null))))),List(Expression(null,null,RecordExpression(KeyValuePair(IdCon(title),Expression(CatExpression(FieldExpression(Text("Links"),null),null),null,null)),List(KeyValuePair(IdCon(link),Expression(CatExpression(FieldExpression(Text("links.html"),null),null),null,null))))))),null))))))),null))))),List())),MarkupChain(Semicolon(;),null,null,null)))),EndTerm(end)))))

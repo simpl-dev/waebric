@@ -1,0 +1,51 @@
+0:56:Program {
+  definitions=31:56:Definitions {
+    definition=List {
+      31:56:FunctionDef {
+        arguments=(null)
+        endTerm=54:56:EndTerm {
+          text="end"
+        }
+        idCon=35:38:IdCon {
+          text="main"
+        }
+        statements=List {
+          42:52:Statement {
+            blockStatement=(null)
+            cdataStatement=(null)
+            commentStatement=(null)
+            eachStatement=(null)
+            echoStatement=42:52:EchoStatement {
+              embedding=(null)
+              expression=47:51:Expression {
+                catExpression=47:51:CatExpression {
+                  left=47:51:FieldExpression {
+                    idCon=(null)
+                    primitiveExpression=47:51:Text {
+                      text=""Hoi""
+                    }
+                  }
+                  right=(null)
+                }
+                listExpression=(null)
+                recordExpression=(null)
+              }
+              semicolon=52:52:Semicolon {
+                text=";"
+              }
+            }
+            ifStatement=(null)
+            letStatement=(null)
+            markupStatement=(null)
+            yieldStatement=(null)
+          }
+        }
+      }
+    }
+  }
+  idCon=7:13:IdCon {
+    text="test002"
+  }
+}
+RAW:
+Program(IdCon(test002),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(Text("Hoi"),null),null),null,null),null,Semicolon(;)),null,null,null)),EndTerm(end)))))

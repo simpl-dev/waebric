@@ -1,0 +1,11 @@
+module test082
+
+def main
+  let b = {x: "X"}; 
+  in
+    if (b.x)
+      echo "Yes";
+    else 
+     echo "No";
+  end
+end

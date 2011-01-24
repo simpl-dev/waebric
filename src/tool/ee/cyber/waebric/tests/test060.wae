@@ -1,0 +1,11 @@
+module test060
+
+def f
+  p p p yield;
+end
+
+def main 
+  each (x: [1,2,3,4])
+    f x;
+end
+

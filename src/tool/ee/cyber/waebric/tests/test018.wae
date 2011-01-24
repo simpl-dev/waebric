@@ -1,0 +1,9 @@
+module test018
+
+def main
+  let 
+    f(x) = echo x;
+  in
+	f("Hello");
+  end
+end

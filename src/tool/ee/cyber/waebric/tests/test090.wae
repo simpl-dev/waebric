@@ -1,0 +1,19 @@
+module test090
+
+// shadowing
+
+def main
+  let a = 1; in
+  let a = 2; in
+  let a = 3; in
+  let a = 4; in
+  let a = 5; in
+  let a = 6; in
+    echo a;
+  end
+  end
+  end
+  end
+  end
+  end
+end

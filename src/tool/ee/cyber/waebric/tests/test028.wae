@@ -1,0 +1,7 @@
+module test028
+
+def main
+  html {
+   echo "bla";
+  }
+end

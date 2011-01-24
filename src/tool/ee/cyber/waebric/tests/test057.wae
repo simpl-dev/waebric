@@ -1,0 +1,11 @@
+module test057
+
+def f(a)
+  yield;
+end
+
+def main 
+  let a = "A";
+  in f("B") a; end
+end
+

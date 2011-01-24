@@ -1,0 +1,15 @@
+module test076
+
+def main
+  let 
+    p() = p { echo "p0: "; yield; }
+    p() = p { echo "p1: "; yield; }
+    p() = p { echo "p2: "; yield; }
+    p() = p { echo "p3: "; yield; }
+    p() = p { echo "p4: "; yield; }
+    p() = p { echo "p5: "; yield; }
+    p() = p { echo "p6: "; yield; }
+  in
+    p "Hello World!";
+  end
+end

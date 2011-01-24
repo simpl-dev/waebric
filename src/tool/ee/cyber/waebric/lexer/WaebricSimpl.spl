@@ -50,6 +50,11 @@ terminal SiteTerm enter-state(site, path): "site";
 terminal EndTerm exit-state(site, path): "end";
 terminal CommentTerm enter-state(string): "comment";
 
+terminal PredType: ListType | RecordType | StringType;
+fragment ListType: "list";
+fragment RecordType: "record";
+fragment StringType: "string";
+
 
 // General
 fragment Letter: ('a'..'z'|'A'..'Z');
@@ -108,7 +113,9 @@ Statement:
     | MarkupStatement;
 
 // TODO: rule for if without else.
-IfStatement: "if" "(" Predicate ")" ifStat=Statement "else" elseStat=Statement;
+IfStatement: "if" "(" Predicate ")" ifStat=Statement ("else" elseStat=Statement)?;
+//IfNoElseStatement: "if" "(" Predicate ")" ifStat=Statement;
+
 EachStatement: "each" "(" IdCon ":" Expression ")" Statement;  
 
 LetStatement: "let" Assignment+ "in" Statement* EndTerm;
@@ -132,9 +139,10 @@ option PrimPredicate:
     | IsAPredicate;
 
 NotPredicate: "!" PrimPredicate;
-// TODO: just Expression should be converted to ExprPredicate or something.
+// TODO: just Expression should be converted to ExprPredicate or something. ? WHY
+// ExpPredicate: ListExpression | RecordExpression | PrimitiveExpression;
 IsAPredicate: Expression ("." PredType "?")?;
-PredType: "list" | "record" | "string";
+
 
 
 MarkupChain: Semicolon | Expression Semicolon | Embedding Semicolon | Statement;
@@ -180,140 +188,6 @@ terminal StrCon check-any(string) exit-state(string): '"' StrChar* '"';
 
 
 terminal Semicolon enter-state(path): ";";
-
-
-// Unchecked stuff below.
-
-/*
-
-RecordPair: pairName=IdCon ":" pairValue=PrimitiveData;
-RecordItems: recArg=RecordPair ("," recRest=RecordItems)?;
-DataList: "[" list=DataListItems "]";
-ArgumentsExp: arg=Expression ("," rst=Arguments)?;
-ArgumentsIdCon: id=IdCon "=" Expression;
-option Arguments: ArgumentsExp | ArgumentsIdCon;
-
-// primitive
-DataNum: numVal=NatCon;
-DataSymbol: symVal=SymbolCon;
-
-// with type check as well
-DataStr: strVal=Text;
-DataRecords: "{" records=RecordItems "}";
-DataListItems: listArg=PrimitiveData ("," listRest=DataListItems)?;
-
-
-Statement: IdCon;
-
-// Expressions
-option PrimitiveData: DataNum | DataStr | DataSymbol;
-option Expression: PrimitiveData | DataList | DataRecords;
-
-//Field: Expression "." IdCon;
-
-Field
-	returns Expression {FieldExpression(left, field)}
-	: left=Expression "." field=IdCon;
-Cat
-	returns Expression {makeCat(left :: rest)}
-    : left=Expression ("+" rest=Expression)*;
-
-
-//Predicates
-option Predicate: TypeCheck | Not;
-
-TypeCheck returns Predicate {TypeCheckPredicate(exp, t)}: exp=Expression "." t=Types "?";
-Not returns Predicate {NotPredicate(p)}: "!" p=Predicate;
-Or returns Predicate {getAndOrPredicate(new String("or"), left :: rest)}
-    : left=And ("||" rest=And)*;
-And returns Predicate {getAndOrPredicate(new String("and"), left :: rest)}
-    : left=Predicate ("&&" rest=Predicate)*;
-
-// Types
-option Types {
-    def text: String
-}:
-	TypeList |
-	TypeString |
-	TypeRecord;
-
-
-// Embedding and Markup
-TextTailPost: post=PostText;
-
-TextTailMid: mid=MidText embed=Embed tail=TextTail;
-option TextTail: TextTailPost | TextTailMid;
-
-Embedding: pre=PreText embed=Embed tail=TextTail;
-ExpEmbed: markuplist=Markup* exp=Expression;
-MarkupEmbed: makrkuplist=Markup markup=Markup;
-option Embed: ExpEmbed | MarkupEmbed;
-
-Markup: design=Designator? args=Arguments;
-Designator: id=IdCon attrs=Attribute*;
-
-IdAttr: "#" id=IdCon;
-ClassAttr: "." cl=IdCon;
-
-NameAttr: '$' name=IdCon;
-TypeAttr: ":" t=IdCon;
-WidthHeightAttr: "@" width=NatCon "%" height=NatCon;
-HeightAttr: "@" height=NatCon;
-option Attribute:
-	IdAttr |
-	ClassAttr |
-	NameAttr |
-	TypeAttr |
-	WidthHeightAttr |
-	HeightAttr;
-/*
-Statement: (mlist=Markup+ Statement) |
-	(m=Markup ";") |
-	(mlist=Markup+ m=Markup ";") |
-	(mlist=Markup+ exp=Expression ";") |
-	(mlist=Markup+ emb=Embedding ";") |
-	(d=Designator);
-	*/
-//**** TERMINALS **** //
-// Note that the terminals are matched according to the order of definition
-// therefore some general terminals are used for multiple places
-
-terminal TypeRecord: 'record';
-terminal TypeList: 'list';
-terminal TypeString: 'string';
-
-
-
-//Text and TextChar related
-fragment TextChar:	~('\u0000'..'\u001F' | '&' | '"' | '<' | '\u0080'..'\uFFFF' ) |
-			 '\n' | '\r' | '\t' | EscQuote | Amp | CharRef | EntRef ;
-fragment EscQuote:	'\\\\' | '\\"';
-fragment Amp:		'\&' ~('#' | '0'..'9' | 'a'..'z' | 'A'..'Z' | '_' | ':')+;
-fragment CharRef:	'&#' Digit+ ';' | '&#x' Hexadecimal ';' ;
-fragment EntRef:	'&' ( Letter | '_' | ':' ) ( Letter | Digit | '.' | '-' | '_' | ':')* ';' ;
-terminal Text: '\"' TextChar* '\"';
-
-terminal PreText: '"' TextChar* '<';
-terminal PostText: '>' TextChar* '\"';
-terminal MidText: '>' TextChar* '<';
-
-
-//StrCon and StrChar
-//As this will be processed after Text, all patterns that match
-//both, were already considered as Text. "comment" tag only
-//uses StrCon and this must be considered.
-
-fragment Newline: '\\n';
-fragment Tab: '\\t';
-fragment Quote: '\\"';
-fragment Backslash: '\\\\';
-fragment Decimal: '\\\\' 'a:' Digit 'b:' Digit 'c:' Digit;
-fragment StrChar: ~('\u0000'..'\u001F' | '"' | '\\') | Newline | Tab | Quote | Backslash | Decimal;
-terminal StrCon: '\"' StrChar* '\"';
-
-
-
-*/
 
 // whitespaces and comments
 fragment ML_COMMENT: '/*' (~'*' | '*' ~'/')* '*/';

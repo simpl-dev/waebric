@@ -1,0 +1,5 @@
+module test034
+
+def main
+  html#bla(id="notbla");
+end

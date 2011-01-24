@@ -1,0 +1,11 @@
+module test088
+
+//Parse errors
+
+def main
+  let
+    f = echo "hello";
+  in
+    p f;
+  end
+end

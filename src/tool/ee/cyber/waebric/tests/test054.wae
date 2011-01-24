@@ -1,0 +1,10 @@
+module test054
+
+def main
+  each (x: [1,2,3]) 
+   if (1) 
+    if (b)
+      echo "2";
+    else
+      echo "innermost else";
+end

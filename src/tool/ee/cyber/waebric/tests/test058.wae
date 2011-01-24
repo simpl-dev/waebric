@@ -1,0 +1,16 @@
+module test058
+
+def f(a)
+  let
+    a = "another A";
+  in
+    yield;
+    echo a;
+  end
+end
+
+def main 
+  let a = "A";
+  in f("B") a; end
+end
+
