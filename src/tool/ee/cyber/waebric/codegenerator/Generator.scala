@@ -7,7 +7,20 @@ import ee.cyber.waebric.lexer._
 
 private class CodeGenerator(tree: Program) {
 
-  type Env = Map[String, CommonNode]
+  //type Env = Map[String, CommonNode]
+
+
+  def generate() {
+    val globalEnv: Env = new Env(Map.empty, Map.empty)
+    processDefs(tree, globalEnv)
+
+
+  }
+
+  def processDefs(expr: Program, env: Env) {
+
+    println("ProcessDefs called")
+  }
 
 }
 
@@ -20,6 +33,7 @@ object WaebricSimplCodeGenerator extends MainBase {
       checkErrors(grammar.errors)
 
       val gen = new CodeGenerator(grammar.tree);
+      gen.generate
 
 
     }
