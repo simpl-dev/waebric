@@ -1,16 +1,18 @@
 package ee.cyber.waebric.lexer;
 
 import ee.cyber.simplicitas.{GeneratorBase, MainBase}
-import Dump._
+import ee.cyber.simplicitas.PrettyPrint._
 
 
 class WaebricSimplGenerator(destDir: String)
         extends GeneratorBase(destDir) {
-//  val templates = getTemplates("WaebricSimpl.stg")
 
   def generate(tree: Program) {
-      val dumped = Dump.dumpNode(tree)
-      print(dumped);
+
+      // Just print the syntax tree - nice one and RAW
+      println(prettyPrint(tree))
+      //val dumped = Dump.dumpNode(tree)
+      //print(dumped);
       println("RAW:")
       print(tree);
   }
@@ -23,7 +25,6 @@ object WaebricSimplAST extends MainBase {
     for (arg <- sources) {
       grammar.parseFile(arg)
       checkErrors(grammar.errors)
-
       new WaebricSimplGenerator(destDir).generate(grammar.tree)
     }
   }
