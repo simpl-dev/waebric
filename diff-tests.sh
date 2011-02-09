@@ -9,7 +9,7 @@ do
 	
 	if [ -e "$TEST_OUTPUT_CLASSPATH/test$j.out" ]; then
 		echo "Generating AST from test$j.wae..."
-		./run-waebric.sh $TEST_CLASSPATH/test$j.wae > tmp.txt
+		./run-waebric-ast.sh $TEST_CLASSPATH/test$j.wae > tmp.txt
 		echo "Diffing with existing test$j.out"
 		diff -i -B tmp.txt $TEST_OUTPUT_CLASSPATH/test$j.out
 			

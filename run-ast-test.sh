@@ -7,7 +7,7 @@ echo "Input:"
 cat $TEST_CLASSPATH/test$1.wae
 echo ""
 echo "Output:"
-./run-waebric.sh $TEST_CLASSPATH/test$1.wae
+./run-waebric-ast.sh $TEST_CLASSPATH/test$1.wae
 
 echo ""
 
@@ -18,7 +18,7 @@ else
 	if [ "$2" = "SAVE" ] 
 	then
 		echo "Saving output to $TEST_OUTPUT_CLASSPATH/test$1.out"
-		./run-waebric.sh $TEST_CLASSPATH/test$1.wae > $TEST_OUTPUT_CLASSPATH/test$1.out
+		./run-waebric-ast.sh $TEST_CLASSPATH/test$1.wae > $TEST_OUTPUT_CLASSPATH/test$1.out
 	else
 		echo "use SAVE as the second argument to save the test result"
 	fi

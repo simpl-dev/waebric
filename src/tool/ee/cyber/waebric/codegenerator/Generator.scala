@@ -1,14 +1,15 @@
 package ee.cyber.waebric.codegenerator
 
-import ee.cyber.simplicitas.{GeneratorBase, MainBase, CommonNode}
+import collection.mutable.ArrayBuffer
+
+import ee.cyber.simplicitas.{GeneratorBase, MainBase, CommonNode, SourceMessage}
 import ee.cyber.simplicitas.PrettyPrint._
 import ee.cyber.waebric.lexer._
 
 
-private class CodeGenerator(tree: Program) {
+private class Generator(tree: Program) {
 
-  //type Env = Map[String, CommonNode]
-
+  val errors = ArrayBuffer[SourceMessage]()
 
   def generate() {
     val globalEnv: Env = new Env(Map.empty, Map.empty)
@@ -20,11 +21,12 @@ private class CodeGenerator(tree: Program) {
   def processDefs(expr: Program, env: Env) {
 
     println("ProcessDefs called")
+    println(env)
   }
 
 }
 
-object WaebricSimplCodeGenerator extends MainBase {
+object WaebricGenerator extends MainBase {
   def main(arg: Array[String]) {
     parseOptions(arg)
     val grammar = new WaebricSimplGrammar
@@ -32,7 +34,7 @@ object WaebricSimplCodeGenerator extends MainBase {
       grammar.parseFile(arg)
       checkErrors(grammar.errors)
 
-      val gen = new CodeGenerator(grammar.tree);
+      val gen = new Generator(grammar.tree);
       gen.generate
 
 

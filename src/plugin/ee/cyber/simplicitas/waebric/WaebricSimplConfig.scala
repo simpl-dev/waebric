@@ -3,6 +3,9 @@ package ee.cyber.simplicitas.waebric
 import ee.cyber.simplicitas.imp._
 import ee.cyber.simplicitas.{GenericToken, CommonNode}
 
+import ee.cyber.waebric.lexer._
+
+
 import org.eclipse.swt.graphics.Image
 import org.eclipse.imp.language.LanguageRegistry
 
@@ -59,6 +62,6 @@ class WaebricSimplConfig extends APluginConfig {
   def treeLabel(node: CommonNode) = null
 
   override def runGenerator(dir: String, file: String) {
-    WaebricSimplMain.main(Array("--dest", dir, dir + file))
+    WaebricAST.main(Array("--dest", dir, dir + file))
   }
 }
