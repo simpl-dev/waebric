@@ -8,6 +8,8 @@ import ee.cyber.waebric.lexer._
 
 import org.eclipse.swt.graphics.Image
 import org.eclipse.imp.language.LanguageRegistry
+import ee.cyber.waebric.lexer.WaebricSimplGrammar
+import ee.cyber.waebric.codegenerator.WaebricSimplCodeGenerator
 
 
 object WaebricSimplConfig {
@@ -46,7 +48,7 @@ object WaebricSimplConfig {
     * image file. The path is relative to root of the plugin's jar.
     * The function returns Image object that can later be used in
     * <code>treeImage</code> and <code>fileImage</code> methods.
-    */  
+    */
   def initializeImages(addFun: (String, String) => Image) {
     /* Images.imageX = addFun("imageX", "icons/imageX.gif") */
   }
