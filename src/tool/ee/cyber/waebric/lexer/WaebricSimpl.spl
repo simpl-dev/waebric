@@ -159,16 +159,21 @@ NotPredicate: "!" PrimPredicate;
 // ExpPredicate: ListExpression | RecordExpression | PrimitiveExpression;
 IsAPredicate: Expression ("." PredType "?")?;
 
-
-
-MarkupChain: Semicolon | Expression Semicolon | Embedding Semicolon | Statement;
+MarkupExp: Expression Semicolon;
+MarkupEmb: Embedding Semicolon;
+//MarkupChain: Semicolon | Expression Semicolon | Embedding Semicolon | Statement;
+MarkupChain: Semicolon | MarkupExp | MarkupEmb | Statement;
 
 Embedding: PreText Embed TextTail;
 
-Embed: Markup* Expression | Markup+;
+EmbedExp: Markup* Expression;
+EmbedMarkup: Markup+;
+//Embed: Markup* Expression | Markup+;
+option Embed: EmbedExp | EmbedMarkup;
 
-TextTail: PostText | MidText Embed TextTail;
-
+//TextTail: PostText | MidText Embed TextTail;
+TextTailMid: MidText Embed TextTail;
+option TextTail: PostText | TextTailMid;
 
 //symbol
 terminal SymbolCon: "'" SymbolChar*;
