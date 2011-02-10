@@ -24,11 +24,14 @@ private class Generator(tree: Program) {
 
     println("ProcessDefs called")
 
-    for (definition <- tree.definitions.definition) {
+    // todo, check whether functions with a same name are allowed
+
+    for (definition <- node.definitions.definition) {
       definition match {
         case FunctionDef(idCon, arguments, _, _) =>
           println("def " + idCon.text + " found")
           env.defs += makeBinding(idCon)
+
         case _ => ()
       }
     }

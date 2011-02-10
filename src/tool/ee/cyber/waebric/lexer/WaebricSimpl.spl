@@ -79,10 +79,17 @@ TypeAttr: ":" t=IdCon;
 WidthHeightAttr: "@" width=NatCon "%" height=NatCon;
 HeightAttr: "@" height=NatCon;
 
-Expression: CatExpression | ListExpression | RecordExpression;
+option Expression:
+    CatExpression
+    | ListExpression
+    | RecordExpression
+    | FieldExpression
+    | PrimitiveExpression
+    | KeyValuePair;
 
-CatExpression: left=FieldExpression ("+" right=Expression)?;
-FieldExpression: PrimitiveExpression ("." IdCon)?;
+CatExpression returns Expression {if (right ne null) _self else left}
+    : left=FieldExpression ("+" right=Expression)?;
+FieldExpression returns Expression: PrimitiveExpression ("." IdCon)?;
 option PrimitiveExpression:
      IdCon
      | SymbolCon
@@ -90,12 +97,14 @@ option PrimitiveExpression:
      | Text;
 
 
-ListExpression: "[" (first=Expression ("," rest=Expression)*)? "]";
-RecordExpression: "{" (first=KeyValuePair ("," rest=KeyValuePair)*)? "}";
-KeyValuePair: IdCon ":" Expression;
+ListExpression returns Expression {if (rest ne null) _self else first}
+    : "[" (first=Expression ("," rest=Expression)*)? "]";
+RecordExpression returns Expression {if (rest ne null) _self else first}
+    : "{" (first=KeyValuePair ("," rest=KeyValuePair)*)? "}";
+KeyValuePair returns Expression: IdCon ":" Expression;
 
 
-Statement: 
+option Statement:
     IfStatement
     | EachStatement
     | LetStatement
@@ -107,6 +116,10 @@ Statement:
     | MarkupStatement;
 
 IfStatement: "if" "(" Predicate ")" ifStat=Statement ("else" elseStat=Statement)?;
+option IE: If | IfElse;
+If: "if" "(" Predicate ")" ifStat=Statement;
+Else: "else" elseStat=Statement;
+IfElse returns IE {if (e ne null) _self else i}: i=If (e=Else)?;
 EachStatement: "each" "(" IdCon ":" Expression ")" Statement;  
 
 LetStatement: "let" Assignment+ "in" Statement* EndTerm;

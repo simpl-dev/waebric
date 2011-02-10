@@ -1,22 +1,15 @@
-0:45:Program {
-  definitions=34:45:Definitions {
-    definition=List {
-      34:45:FunctionDef {
-        arguments=(null)
-        endTerm=43:45:EndTerm {
-          text="end"
-        }
-        idCon=38:41:IdCon {
-          text="main"
-        }
-        statements=List {
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test001"
-  }
-}
+Program(
+IdCon( "test001" ),
+Definitions(
+  [
+    FunctionDef(
+      IdCon( "main" ),
+      null,
+      [  ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)
 RAW:
 Program(IdCon(test001),Definitions(List(FunctionDef(IdCon(main),null,List(),EndTerm(end)))))
