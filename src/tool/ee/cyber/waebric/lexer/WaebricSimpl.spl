@@ -113,8 +113,8 @@ KeyValuePair returns Expression: IdCon ":" Expression;
 
 
 option Statement:
-    //IfStatement
-    IfElseStatement
+    IfStatement
+    //IfElseStatement
     | EachStatement
     | LetStatement
     | BlockStatement
@@ -124,14 +124,14 @@ option Statement:
     | YieldStatement
     | MarkupStatement;
 
-//IfStatement: "if" "(" Predicate ")" ifStat=Statement ("else" elseStat=Statement)?;
+IfStatement: "if" "(" Predicate ")" ifStat=Statement ("else" elseStat=Statement)?;
+/* Does not work for some reason..
+option IfElseStatement: OnlyIf | IfElse;
+OnlyIf: "if" "(" Predicate ")" ifStat=Statement;
+OnlyElse: "else" elseStat=Statement;
+IfElse returns IfElseStatement {if (ee ne null) _self else ii}: ii=OnlyIf (ee=OnlyElse)?; */
 
-option IfElseStatement: If | IfElse;
-If: "if" "(" Predicate ")" ifStat=Statement;
-Else: "else" elseStat=Statement;
-IfElse returns IfElseStatement {if (e ne null) _self else i}: i=If (e=Else)?;
-EachStatement: "each" "(" IdCon ":" Expression ")" Statement;  
-
+EachStatement: "each" "(" IdCon ":" Expression ")" Statement;
 LetStatement: "let" Assignment+ "in" Statement* EndTerm;
 Assignment: VarBinding | FuncBinding;
 VarBinding: IdCon "=" Expression Semicolon;
@@ -139,7 +139,9 @@ FuncBinding: func=IdCon "(" (first=IdCon ("," rest=IdCon)*)? ")" "=" Statement;
 
 BlockStatement: "{" Statement* "}";
 CommentStatement: CommentTerm StrCon Semicolon;
-EchoStatement: "echo" (Expression|Embedding) Semicolon;
+option EchoBody:
+    Expression | Embedding;
+EchoStatement: "echo" EchoBody Semicolon;
 CdataStatement: "cdata" Expression Semicolon; 
 YieldStatement: "yield" Semicolon;
 MarkupStatement: Markup MarkupChain;
