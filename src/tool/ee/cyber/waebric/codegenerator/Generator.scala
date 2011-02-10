@@ -27,28 +27,23 @@ private class Generator(tree: Program) {
     // todo, check whether functions with a same name are allowed
 
     for (definition <- node.definitions.definition) {
+      var fnName:String = ""
       definition match {
-        case FunctionDef(function, _, _) =>
-          var fnName:String = ""
-          function match {
-            case Function(name, _) =>
-              fnName = name.idCon.text
-              env.defs += makeBinding(name.idCon)
-            case FunctionName(idCon) =>
-              fnName = idCon.text
-              env.defs += makeBinding(idCon)
-
-          }
-          println("def " + fnName + " found")
-
+        case FunctionDef(Function(name, _), _, _) =>
+         fnName = name.idCon.text
+         env.defs += makeDefBinding(name.idCon, definition)
+        case FunctionDef(FunctionName(idCon), _, _) =>
+          fnName = idCon.text
+          env.defs += makeDefBinding(idCon, definition)
         case _ => ()
       }
+      println("def " + fnName + " found")
     }
 
   }
 
-  def makeBinding(id: IdCon) =
-        (id.text, id)
+  def makeDefBinding(name: IdCon, definition: CommonNode) =
+        (name.text, definition)
 
 
 }

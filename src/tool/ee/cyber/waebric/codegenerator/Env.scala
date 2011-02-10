@@ -4,9 +4,7 @@ import ee.cyber.simplicitas.{CommonNode}
 import collection.mutable.Map
 
 
-class Env(d: Map[String, CommonNode], l: Map[String, CommonNode]) {
-  val defs = d
-  val locals = l
+class Env(val defs: Map[String, CommonNode], val locals: Map[String, CommonNode]) {
 
   override def toString =
         "Env(" + locals + ", " + defs + ")"
