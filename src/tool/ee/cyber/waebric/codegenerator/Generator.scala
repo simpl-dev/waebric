@@ -28,9 +28,18 @@ private class Generator(tree: Program) {
 
     for (definition <- node.definitions.definition) {
       definition match {
-        case FunctionDef(idCon, arguments, _, _) =>
-          println("def " + idCon.text + " found")
-          env.defs += makeBinding(idCon)
+        case FunctionDef(function, _, _) =>
+          var fnName:String = ""
+          function match {
+            case Function(name, _) =>
+              fnName = name.idCon.text
+              env.defs += makeBinding(name.idCon)
+            case FunctionName(idCon) =>
+              fnName = idCon.text
+              env.defs += makeBinding(idCon)
+
+          }
+          println("def " + fnName + " found")
 
         case _ => ()
       }

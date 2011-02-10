@@ -3,8 +3,7 @@ IdCon( "test001" ),
 Definitions(
   [
     FunctionDef(
-      IdCon( "main" ),
-      null,
+      FunctionName( IdCon( "main" ) ),
       [  ],
       EndTerm( "end" )
       )
@@ -12,4 +11,4 @@ Definitions(
   )
 )
 RAW:
-Program(IdCon(test001),Definitions(List(FunctionDef(IdCon(main),null,List(),EndTerm(end)))))
+Program(IdCon(test001),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(),EndTerm(end)))))

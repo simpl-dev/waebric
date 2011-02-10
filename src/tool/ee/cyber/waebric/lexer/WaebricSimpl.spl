@@ -14,10 +14,18 @@ Definitions: Definition+;
 
 option Definition: FunctionDef | Site | Import;
 
+option FunctionHeader: FunctionName | Function;
+
 FunctionDef:
-    "def" IdCon ("(" arguments=Formals? ")")?
+    //"def" IdCon ("(" arguments=Formals? ")")?
+    Function
 	    statements=Statement*
     EndTerm;
+
+FunctionName: "def" IdCon;
+FunctionArgs: "(" arguments=Formals? ")";
+Function returns FunctionHeader { if (args ne null) _self else name }
+    : name=FunctionName (args=FunctionArgs)?;
 Formals: left=IdCon ("," rest=IdCon)*;
 
 
@@ -105,7 +113,8 @@ KeyValuePair returns Expression: IdCon ":" Expression;
 
 
 option Statement:
-    IfStatement
+    //IfStatement
+    IfElseStatement
     | EachStatement
     | LetStatement
     | BlockStatement
@@ -115,11 +124,12 @@ option Statement:
     | YieldStatement
     | MarkupStatement;
 
-IfStatement: "if" "(" Predicate ")" ifStat=Statement ("else" elseStat=Statement)?;
-option IE: If | IfElse;
+//IfStatement: "if" "(" Predicate ")" ifStat=Statement ("else" elseStat=Statement)?;
+
+option IfElseStatement: If | IfElse;
 If: "if" "(" Predicate ")" ifStat=Statement;
 Else: "else" elseStat=Statement;
-IfElse returns IE {if (e ne null) _self else i}: i=If (e=Else)?;
+IfElse returns IfElseStatement {if (e ne null) _self else i}: i=If (e=Else)?;
 EachStatement: "each" "(" IdCon ":" Expression ")" Statement;  
 
 LetStatement: "let" Assignment+ "in" Statement* EndTerm;
