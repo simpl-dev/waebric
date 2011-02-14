@@ -1,63 +1,19 @@
-0:43:Program {
-  definitions=16:43:Definitions {
-    definition=List {
-      16:43:FunctionDef {
-        arguments=(null)
-        endTerm=41:43:EndTerm {
-          text="end"
-        }
-        idCon=20:23:IdCon {
-          text="main"
-        }
-        statements=List {
-          29:39:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=(null)
-            echoStatement=29:39:EchoStatement {
-              embedding=(null)
-              expression=34:38:Expression {
-                catExpression=34:38:CatExpression {
-                  left=34:34:FieldExpression {
-                    idCon=(null)
-                    primitiveExpression=34:34:NatCon {
-                      text="1"
-                    }
-                  }
-                  right=38:38:Expression {
-                    catExpression=38:38:CatExpression {
-                      left=38:38:FieldExpression {
-                        idCon=(null)
-                        primitiveExpression=38:38:NatCon {
-                          text="2"
-                        }
-                      }
-                      right=(null)
-                    }
-                    listExpression=(null)
-                    recordExpression=(null)
-                  }
-                }
-                listExpression=(null)
-                recordExpression=(null)
-              }
-              semicolon=39:39:Semicolon {
-                text=";"
-              }
-            }
-            ifStatement=(null)
-            letStatement=(null)
-            markupStatement=(null)
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test007"
-  }
-}
+Program(
+IdCon( "test007" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        EchoStatement(
+          CatExpression( NatCon( "1" ), NatCon( "2" ) ),
+          Semicolon( ";" )
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)
 RAW:
-Program(IdCon(test007),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(NatCon(1),null),Expression(CatExpression(FieldExpression(NatCon(2),null),null),null,null)),null,null),null,Semicolon(;)),null,null,null)),EndTerm(end)))))
+Program(IdCon(test007),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(EchoStatement(CatExpression(NatCon(1),NatCon(2)),Semicolon(;))),EndTerm(end)))))

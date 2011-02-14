@@ -65,10 +65,12 @@ fragment Hexadecimal: (Letter | Digit)+;
 terminal IdCon: Letter (Letter|Digit|'-')*;
 terminal NatCon: Digit+;
 
-Markup: Designator Arguments?;  // cons(call)
+Markup: Designator MarkupArguments?;  // cons(call)
 Designator: IdCon Attribute*;
-Arguments: "(" (first=Argument ("," rest=Argument)*)? ")";
+Arguments returns MarkupArguments {if (rest ne null) _self else first}
+    : "(" (first=Argument ("," rest=Argument)*)? ")";
 option Argument: AttrArg | Expression;
+option MarkupArguments: Argument | Arguments;
 
 AttrArg: IdCon "=" Expression;
 
@@ -97,7 +99,9 @@ option Expression:
 
 CatExpression returns Expression {if (right ne null) _self else left}
     : left=FieldExpression ("+" right=Expression)?;
-FieldExpression returns Expression: PrimitiveExpression ("." IdCon)?;
+FieldExpression returns Expression {if (right ne null) _self else left}
+    : left=PrimitiveExpression ("." right=IdCon)?;
+
 option PrimitiveExpression:
      IdCon
      | SymbolCon
@@ -133,9 +137,13 @@ IfElse returns IfElseStatement {if (ee ne null) _self else ii}: ii=OnlyIf (ee=On
 
 EachStatement: "each" "(" IdCon ":" Expression ")" Statement;
 LetStatement: "let" Assignment+ "in" Statement* EndTerm;
-Assignment: VarBinding | FuncBinding;
+option Assignment: VarBinding | FuncBinding;
 VarBinding: IdCon "=" Expression Semicolon;
-FuncBinding: func=IdCon "(" (first=IdCon ("," rest=IdCon)*)? ")" "=" Statement;
+FuncBinding: func=IdCon "(" FuncArguments? ")" "=" Statement;
+
+FuncArg returns FuncArguments {if (rest ne null) _self else first}
+    : (first=IdCon ("," rest=IdCon)*);
+option FuncArguments: IdCon | FuncArg;
 
 BlockStatement: "{" Statement* "}";
 CommentStatement: CommentTerm StrCon Semicolon;
@@ -161,8 +169,9 @@ IsAPredicate: Expression ("." PredType "?")?;
 
 MarkupExp: Expression Semicolon;
 MarkupEmb: Embedding Semicolon;
+MarkupSemi: Semicolon;
 //MarkupChain: Semicolon | Expression Semicolon | Embedding Semicolon | Statement;
-MarkupChain: Semicolon | MarkupExp | MarkupEmb | Statement;
+option MarkupChain: MarkupSemi | MarkupExp | MarkupEmb | Statement;
 
 Embedding: PreText Embed TextTail;
 

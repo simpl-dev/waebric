@@ -5,11 +5,7 @@ Definitions(
     FunctionDef(
       FunctionName( IdCon( "main" ) ),
       [
-        EchoStatement(
-          FieldExpression( Text( ""Hoi"" ), null ),
-          null,
-          Semicolon( ";" )
-          )
+        EchoStatement( Text( ""Hoi"" ), Semicolon( ";" ) )
         ],
       EndTerm( "end" )
       )
@@ -17,4 +13,4 @@ Definitions(
   )
 )
 RAW:
-Program(IdCon(test002),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(EchoStatement(FieldExpression(Text("Hoi"),null),null,Semicolon(;))),EndTerm(end)))))
+Program(IdCon(test002),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(EchoStatement(Text("Hoi"),Semicolon(;))),EndTerm(end)))))
