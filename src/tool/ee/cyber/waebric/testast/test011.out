@@ -1,94 +1,28 @@
-0:71:Program {
-  definitions=16:71:Definitions {
-    definition=List {
-      16:71:FunctionDef {
-        arguments=(null)
-        endTerm=69:71:EndTerm {
-          text="end"
-        }
-        idCon=20:23:IdCon {
-          text="main"
-        }
-        statements=List {
-          27:67:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=(null)
-            echoStatement=(null)
-            ifStatement=(null)
-            letStatement=27:67:LetStatement {
-              assignment=List {
-                36:47:Assignment {
-                  funcBinding=(null)
-                  varBinding=36:47:VarBinding {
-                    expression=40:46:Expression {
-                      catExpression=40:46:CatExpression {
-                        left=40:46:FieldExpression {
-                          idCon=(null)
-                          primitiveExpression=40:46:Text {
-                            text=""Hello""
-                          }
-                        }
-                        right=(null)
-                      }
-                      listExpression=(null)
-                      recordExpression=(null)
-                    }
-                    idCon=36:36:IdCon {
-                      text="x"
-                    }
-                    semicolon=47:47:Semicolon {
-                      text=";"
-                    }
-                  }
-                }
-              }
-              endTerm=65:67:EndTerm {
-                text="end"
-              }
-              statement=List {
-                55:61:Statement {
-                  blockStatement=(null)
-                  cdataStatement=(null)
-                  commentStatement=(null)
-                  eachStatement=(null)
-                  echoStatement=55:61:EchoStatement {
-                    embedding=(null)
-                    expression=60:60:Expression {
-                      catExpression=60:60:CatExpression {
-                        left=60:60:FieldExpression {
-                          idCon=(null)
-                          primitiveExpression=60:60:IdCon {
-                            text="x"
-                          }
-                        }
-                        right=(null)
-                      }
-                      listExpression=(null)
-                      recordExpression=(null)
-                    }
-                    semicolon=61:61:Semicolon {
-                      text=";"
-                    }
-                  }
-                  ifStatement=(null)
-                  letStatement=(null)
-                  markupStatement=(null)
-                  yieldStatement=(null)
-                }
-              }
-            }
-            markupStatement=(null)
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test011"
-  }
-}
+Program(
+IdCon( "test011" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        LetStatement(
+          [
+            VarBinding(
+              IdCon( "x" ),
+              Text( ""Hello"" ),
+              Semicolon( ";" )
+              )
+            ],
+          [
+            EchoStatement( IdCon( "x" ), Semicolon( ";" ) )
+            ],
+          EndTerm( "end" )
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)
 RAW:
-Program(IdCon(test011),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,LetStatement(List(Assignment(VarBinding(IdCon(x),Expression(CatExpression(FieldExpression(Text("Hello"),null),null),null,null),Semicolon(;)),null)),List(Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(IdCon(x),null),null),null,null),null,Semicolon(;)),null,null,null)),EndTerm(end)),null,null,null,null,null,null)),EndTerm(end)))))
+Program(IdCon(test011),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(LetStatement(List(VarBinding(IdCon(x),Text("Hello"),Semicolon(;))),List(EchoStatement(IdCon(x),Semicolon(;))),EndTerm(end))),EndTerm(end)))))

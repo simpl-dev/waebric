@@ -3,7 +3,7 @@ grammar ee.cyber.waebric.lexer.WaebricSimpl;
 options (backtrack=true;)
 
 scalaheader {
-// import HelperMethods._
+ import HelperMethods._
 }
 
 lexer-states(site, path, string)
@@ -67,10 +67,13 @@ terminal NatCon: Digit+;
 
 Markup: Designator MarkupArguments?;  // cons(call)
 Designator: IdCon Attribute*;
-Arguments returns MarkupArguments {if (rest ne null) _self else first}
+Arguments returns MarkupArguments {
+        if (rest != null && !rest.isEmpty) _self else if (first ne null) first else _self}
     : "(" (first=Argument ("," rest=Argument)*)? ")";
+ArgumentRest: ("," rest=Argument)*;
 option Argument: AttrArg | Expression;
 option MarkupArguments: Argument | Arguments;
+
 
 AttrArg: IdCon "=" Expression;
 
@@ -109,9 +112,11 @@ option PrimitiveExpression:
      | Text;
 
 
-ListExpression returns Expression {if (rest ne null) _self else first}
+ListExpression returns Expression {
+        if (rest != null && !rest.isEmpty) _self else if (first ne null) first else _self}
     : "[" (first=Expression ("," rest=Expression)*)? "]";
-RecordExpression returns Expression {if (rest ne null) _self else first}
+RecordExpression returns Expression {
+        if (rest != null && !rest.isEmpty) _self else if (first ne null) first else _self}
     : "{" (first=KeyValuePair ("," rest=KeyValuePair)*)? "}";
 KeyValuePair returns Expression: IdCon ":" Expression;
 
@@ -141,7 +146,7 @@ option Assignment: VarBinding | FuncBinding;
 VarBinding: IdCon "=" Expression Semicolon;
 FuncBinding: func=IdCon "(" FuncArguments? ")" "=" Statement;
 
-FuncArg returns FuncArguments {if (rest ne null) _self else first}
+FuncArg returns FuncArguments {if (rest != null && !rest.isEmpty) _self else first}
     : (first=IdCon ("," rest=IdCon)*);
 option FuncArguments: IdCon | FuncArg;
 

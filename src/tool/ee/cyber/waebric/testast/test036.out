@@ -1,57 +1,25 @@
-0:39:Program {
-  definitions=16:39:Definitions {
-    definition=List {
-      16:39:FunctionDef {
-        arguments=(null)
-        endTerm=37:39:EndTerm {
-          text="end"
-        }
-        idCon=20:23:IdCon {
-          text="main"
-        }
-        statements=List {
-          27:35:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=(null)
-            echoStatement=(null)
-            ifStatement=(null)
-            letStatement=(null)
-            markupStatement=27:35:MarkupStatement {
-              markup=27:34:Markup {
-                arguments=(null)
-                designator=27:34:Designator {
-                  attribute=List {
-                    31:34:NameAttr {
-                      name=32:34:IdCon {
-                        text="bla"
-                      }
-                    }
-                  }
-                  idCon=27:30:IdCon {
-                    text="html"
-                  }
-                }
-              }
-              markupChain=35:35:MarkupChain {
-                embedding=(null)
-                expression=(null)
-                semicolon=35:35:Semicolon {
-                  text=";"
-                }
-                statement=(null)
-              }
-            }
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test036"
-  }
-}
+Program(
+IdCon( "test036" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        MarkupStatement(
+          Markup(
+            Designator(
+              IdCon( "html" ),
+              [ NameAttr( IdCon( "bla" ) ) ]
+              ),
+            null
+            ),
+          MarkupSemi( Semicolon( ";" ) )
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)
 RAW:
-Program(IdCon(test036),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(html),List(NameAttr(IdCon(bla)))),null),MarkupChain(Semicolon(;),null,null,null)))),EndTerm(end)))))
+Program(IdCon(test036),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(MarkupStatement(Markup(Designator(IdCon(html),List(NameAttr(IdCon(bla)))),null),MarkupSemi(Semicolon(;)))),EndTerm(end)))))

@@ -1,52 +1,22 @@
-0:35:Program {
-  definitions=16:35:Definitions {
-    definition=List {
-      16:35:FunctionDef {
-        arguments=(null)
-        endTerm=33:35:EndTerm {
-          text="end"
-        }
-        idCon=20:23:IdCon {
-          text="main"
-        }
-        statements=List {
-          27:31:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=(null)
-            echoStatement=(null)
-            ifStatement=(null)
-            letStatement=(null)
-            markupStatement=27:31:MarkupStatement {
-              markup=27:30:Markup {
-                arguments=(null)
-                designator=27:30:Designator {
-                  attribute=List {
-                  }
-                  idCon=27:30:IdCon {
-                    text="html"
-                  }
-                }
-              }
-              markupChain=31:31:MarkupChain {
-                embedding=(null)
-                expression=(null)
-                semicolon=31:31:Semicolon {
-                  text=";"
-                }
-                statement=(null)
-              }
-            }
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test029"
-  }
-}
+Program(
+IdCon( "test029" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        MarkupStatement(
+          Markup(
+            Designator( IdCon( "html" ), [  ] ),
+            null
+            ),
+          MarkupSemi( Semicolon( ";" ) )
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)
 RAW:
-Program(IdCon(test029),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(html),List()),null),MarkupChain(Semicolon(;),null,null,null)))),EndTerm(end)))))
+Program(IdCon(test029),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(MarkupStatement(Markup(Designator(IdCon(html),List()),null),MarkupSemi(Semicolon(;)))),EndTerm(end)))))

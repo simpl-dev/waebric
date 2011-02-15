@@ -1,88 +1,28 @@
-0:61:Program {
-  definitions=16:61:Definitions {
-    definition=List {
-      16:61:FunctionDef {
-        arguments=(null)
-        endTerm=59:61:EndTerm {
-          text="end"
-        }
-        idCon=20:23:IdCon {
-          text="main"
-        }
-        statements=List {
-          27:57:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=(null)
-            echoStatement=(null)
-            ifStatement=(null)
-            letStatement=(null)
-            markupStatement=27:57:MarkupStatement {
-              markup=27:30:Markup {
-                arguments=(null)
-                designator=27:30:Designator {
-                  attribute=List {
-                  }
-                  idCon=27:30:IdCon {
-                    text="html"
-                  }
-                }
-              }
-              markupChain=32:57:MarkupChain {
-                embedding=(null)
-                expression=32:56:Expression {
-                  catExpression=32:56:CatExpression {
-                    left=32:38:FieldExpression {
-                      idCon=(null)
-                      primitiveExpression=32:38:Text {
-                        text=""Hello""
-                      }
-                    }
-                    right=42:56:Expression {
-                      catExpression=42:56:CatExpression {
-                        left=42:44:FieldExpression {
-                          idCon=(null)
-                          primitiveExpression=42:44:Text {
-                            text="" ""
-                          }
-                        }
-                        right=49:56:Expression {
-                          catExpression=49:56:CatExpression {
-                            left=49:56:FieldExpression {
-                              idCon=(null)
-                              primitiveExpression=49:56:Text {
-                                text=""world!""
-                              }
-                            }
-                            right=(null)
-                          }
-                          listExpression=(null)
-                          recordExpression=(null)
-                        }
-                      }
-                      listExpression=(null)
-                      recordExpression=(null)
-                    }
-                  }
-                  listExpression=(null)
-                  recordExpression=(null)
-                }
-                semicolon=57:57:Semicolon {
-                  text=";"
-                }
-                statement=(null)
-              }
-            }
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test027"
-  }
-}
+Program(
+IdCon( "test027" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        MarkupStatement(
+          Markup(
+            Designator( IdCon( "html" ), [  ] ),
+            CatExpression(
+              Text( ""Hello"" ),
+              CatExpression(
+                Text( "" "" ),
+                Text( ""world!"" )
+                )
+              )
+            ),
+          MarkupSemi( Semicolon( ";" ) )
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)
 RAW:
-Program(IdCon(test027),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(html),List()),null),MarkupChain(Semicolon(;),Expression(CatExpression(FieldExpression(Text("Hello"),null),Expression(CatExpression(FieldExpression(Text(" "),null),Expression(CatExpression(FieldExpression(Text("world!"),null),null),null,null)),null,null)),null,null),null,null)))),EndTerm(end)))))
+Program(IdCon(test027),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(MarkupStatement(Markup(Designator(IdCon(html),List()),CatExpression(Text("Hello"),CatExpression(Text(" "),Text("world!")))),MarkupSemi(Semicolon(;)))),EndTerm(end)))))

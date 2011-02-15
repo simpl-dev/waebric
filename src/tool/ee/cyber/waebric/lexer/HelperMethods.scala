@@ -22,32 +22,15 @@ case class TypeCheckPredicate(exp: Expression, t: Types) extends Predicate {
 case class FieldExpression(left: Expression, field: IdCon) extends Expression {
 	def childrenNames = Array("left", "field")
 }
-
+*/
 
 object HelperMethods {
-
-    def makeCat(args: List[Expression]) = {
-        def loop(left: Expression, right: List[Expression]): Expression =
-            (right) match {
-                case (rh :: rt) =>
-                    loop(CatExpression(left, rh).setStart(left).setEnd(rh), rt)
-                case (Nil) =>
-                    left
-            }
-
-        loop(args.head, args.tail)
+    def listEmpty(arg: List[CommonNode]): Boolean = {
+      arg != null && arg.size > 0;
     }
 
-    def getAndOrPredicate(op: String, args: List[Predicate]) = {
-    	def loop(left: Predicate, right: List[Predicate], op: String): Predicate =
-            (right) match {
-                case (rh :: rt) =>
-                    loop(AndOrPredicate(left, rh, op).setStart(left).setEnd(rh), rt, op)
-                case (Nil) =>
-                    left
-            }
+  def makeArgumentList(first: Argument, rest: List[Argument]): ArgumentRest = {
+    new ArgumentRest(rest)
+  }
 
-        loop(args.head, args.tail, op)
-    }
 }
-*/
