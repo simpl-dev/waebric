@@ -109,7 +109,7 @@ option PrimitiveExpression:
      IdCon
      | SymbolCon
      | NatCon 
-     | Text;
+     | Txt;
 
 
 ListExpression returns Expression {
@@ -202,7 +202,7 @@ fragment CharRef:'&#' Digit+ ';' | '&#x' Hexadecimal ';' ;
 fragment EntRef:'&' ( Letter | '_' | ':' ) ( Letter | Digit | '.' | '-' | '_' | ':')* ';' ;
 // TODO: add check that this terminal must not be matched when lexer
 // state contains string.
-terminal Text: '"' TextChar* '"';
+terminal Txt: '"' TextChar* '"';    // Using Text as terminal is not good because of scala.xml.Text
 
 terminal PreText: '"' TextChar* '<';
 terminal PostText: '>' TextChar* '"';
