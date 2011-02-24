@@ -120,12 +120,43 @@ private class Generator(tree: Program) {
   //def processExpressions(exp: CommonNode, env: Env) : NodeSeq = processExpressions(exp, env, null)
 
   def processExpressions(exp: CommonNode, env: Env) : NodeSeq = {
+
+    def resolveArguments(markup: Markup) : NodeSeq = {
+      println("Processing arguments of markup")
+      if (markup.markupArguments eq null) {
+        println("MarkupArguments null")
+        return Text("")
+      }
+      markup.markupArguments match  {
+        case AttrArg(idCon, expression) =>
+          println("attrArg found")
+          Text("")
+        case Arguments(first, rest) =>
+          println("Arguments found")
+          Text("")
+        case _ =>
+          println("Expression found (probably)")
+          processExpressions(markup.markupArguments, env)
+      }
+    }
+
+    def processMarkups(markups: List[Markup], parent: Elem) : NodeSeq = {
+      markups match {
+        case head::tail =>
+
+          generalElem(head.designator.idCon.text,
+            if (tail.size > 0) processMarkups(tail, parent) else resolveArguments(head))
+
+        case Nil => Text("")
+      }
+    }
+
     exp match {
       /* Terminal handling */
-      case Txt(text) => Text(stripQuote(text))
+      case Txt(text) => Text(stripEdges(text))
       case NatCon(text) => Text(text)
-      case PreText(text) => Text(stripPre(text))
-      case PostText(text) => Text(stripPost(text))
+      case PreText(text) => Text(stripEdges(text))
+      case PostText(text) => Text(stripEdges(text))
 
 
       /* Expression handling */
@@ -134,17 +165,20 @@ private class Generator(tree: Program) {
       case Embedding(preText, embed, textTail) =>
         processExpressions(preText, env) ++ processExpressions(embed, env) ++
             processExpressions(textTail, env)
+      case EmbedMarkup(markups) =>
+        println("Markups found: " + markups.size)
+        processMarkups(markups, null)
       case _ => Text("")
     }
-
   }
 
   def textElem(name: String, text: String) =  Elem(null, name, Null, TopScope, Text(text))
-  //def generalElem(name: String, child: Node*) = new Elem(null, name, Null, TopScope, child)
+  def generalElem(name: String, child: NodeSeq) = new Elem(null, name, Null, TopScope, child: _*)
 
-  def stripQuote(s: String) = s.substring(1, s.length - 1)
+  def stripEdges(s: String) = s.substring(1, s.length - 1)
   def stripPre(s: String) = s.substring(1, s.length)
   def stripPost(s: String) = s.substring(0, s.length - 1)
+
   def initHtml = """<?xml version="1.0" encoding="UTF-8"?>""" + "\n" + "<html>" + "\n"
   def closeHtml= "</html>"
 
