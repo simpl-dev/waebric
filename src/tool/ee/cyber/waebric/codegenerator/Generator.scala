@@ -18,8 +18,6 @@ private class Generator(tree: Program) {
 
   val errors = ArrayBuffer[SourceMessage]()
   var buffer: StringBuffer = new StringBuffer
-  var nodes: NodeSeq = List.empty
-
 
   def generate() {
 
@@ -31,18 +29,23 @@ private class Generator(tree: Program) {
     //println("processDefs result: " + globalEnv)
 
     // todo: first process sites. if not found, try with "main"
-    nodes = List.empty
-    generate(globalEnv.defs("main"), globalEnv);
+    var nodes = evalStatement(
+        MarkupStatement(
+          Markup(
+            Designator(IdCon("main"), List.empty),
+            null),
+          MarkupSemi(Semicolon(";"))),
+        globalEnv);
 
-    if (nodes.size != 1 || (nodes.size == 1 && !nodes.head.isInstanceOf[Elem])) {
+    if (nodes.size != 1 ||
+            (nodes.size == 1 && !nodes.head.isInstanceOf[Elem])) {
       // not bounded
-      nodes = generalElem("html", nodes)
+      nodes = elem("html", nodes)
     }
     println("\n" + nodes.toString)
   }
 
   def processDefs(node: Program, env: Env) {
-
     println("ProcessDefs called")
 
     // todo, check whether functions with a same name are allowed
@@ -52,41 +55,57 @@ private class Generator(tree: Program) {
       definition match {
         case FunctionDef(Function(name, _), _, _) =>
          fnName = name.idCon.text
-         env.defs += (name.idCon.text -> definition)
+         env.defs += (name.idCon.text -> definition.asInstanceOf[FunctionDef])
         case FunctionDef(FunctionName(idCon), _, _) =>
           fnName = idCon.text
-          env.defs += (idCon.text -> definition)
+          env.defs += (idCon.text -> definition.asInstanceOf[FunctionDef])
         case _ => ()
       }
       println("def " + fnName + " found")
     }
-
   }
 
-  def generate(node: CommonNode, env: Env) {
-    node match {
-      case FunctionDef(Function(name, args), statements, _) =>
-        //todo: deal with args
-        processStatements(statements, env)
-      case FunctionDef(FunctionName(idCon), statements, _) =>
-        processStatements(statements, env)
-      case _ => ()
+  def evalStatements(statements: List[Statement], env: Env): NodeSeq =
+    statements.map(evalStatement(_, env)).foldLeft(NodeSeq.Empty)(_ ++ _)
+
+  def evalStatement(statement: Statement, env: Env): NodeSeq =
+    statement match {
+      case EchoStatement(echoBody, _) =>
+        val ret = evalExpr(echoBody, env)
+        println("EchoStatement returned: " + ret.toString)
+        ret
+      case MarkupStatement(markup, chain) =>
+        val chainRet = evalMarkupChain(chain, env)
+        evalMarkup(markup, chainRet, env)
+      case _ =>
+        NodeSeq.Empty
     }
 
-  }
+  def evalMarkupChain(chain: MarkupChain, env: Env): NodeSeq =
+    // TODO: match for different types of stuff.
+    NodeSeq.Empty
 
-  def processStatements(statements: List[Statement], env: Env) {
-    for (statement <- statements) {
-      generate(statement, env)
-      statement match {
-        case EchoStatement(echoBody, _) =>
-          val ret = evalExpr(echoBody, env)
-          println("EchoStatement returned: " + ret.toString)
-          nodes ++= ret
-        case _ => ()
+  def evalMarkups(markups: List[Markup], body: NodeSeq, env: Env): NodeSeq =
+    markups.foldLeft(body)(
+      (b: NodeSeq, m: Markup) =>
+        evalMarkup(m, b, env))
 
-      }
+  def evalMarkup(markup: Markup, body: NodeSeq, env: Env): NodeSeq = {
+    // TODO: process designator attributes.
+    val desText = markup.designator.idCon.text
 
+    if (env.defs.contains(desText)) {
+      val defContents = env.defs(desText)
+
+      // TODO: bind formal parameters.
+      // * eval formal parameters
+      // * create new env with values for parameters
+      val newEnv = env
+
+      evalStatements(defContents.statements, newEnv)
+    } else {
+      // TODO: check if is XHTML tag.
+      elem(desText, body)
     }
   }
 
@@ -113,20 +132,6 @@ private class Generator(tree: Program) {
 
     }
 
-    def processMarkups(markups: List[Markup],
-                       exp: Expression, env: Env) : NodeSeq = {
-      markups match {
-        case head :: tail =>
-          generalElem(head.designator.idCon.text,
-              if (!tail.isEmpty)
-                processMarkups(tail, exp, env)
-              else
-                evalExpr(exp, env))
-        case Nil =>
-          Text("")
-      }
-    }
-
     exp match {
       /* Terminal handling */
       case Txt(text) => Text(stripEdges(text))
@@ -140,25 +145,29 @@ private class Generator(tree: Program) {
       case CatExpression(left, right) =>
         evalExpr(left, env) ++ evalExpr(right, env)
       case Embedding(preText, embed, textTail) =>
-        evalExpr(preText, env) ++ evalExpr(embed, env) ++
-          evalExpr(textTail, env)
+        evalExpr(preText, env) ++
+                evalExpr(embed, env) ++
+                evalExpr(textTail, env)
       case EmbedMarkup(markups) =>
         println("EmbedMarkups found: " + markups.size)
-        processMarkups(markups, null, env)
+        evalMarkups(markups, NodeSeq.Empty, env)
       case EmbedExp(markups, exp) =>
         println("EmbedExp found")
-        processMarkups(markups, exp, env)
+        evalMarkups(markups, evalExpr(exp, env), env)
       case TextTailMid(midText, embed, textTail) =>
-        evalExpr(midText, env) ++ evalExpr(embed, env) ++
-          evalExpr(textTail, env)
-      case _ => Text("")
+        evalExpr(midText, env) ++
+                evalExpr(embed, env) ++
+                evalExpr(textTail, env)
+      case _ =>
+        Text("")
     }
   }
 
-  def textElem(name: String, text: String) =
+  def elem(name: String, text: String) =
     Elem(null, name, Null, TopScope, Text(text))
-  def generalElem(name: String, child: NodeSeq) =
-    new Elem(null, name, Null, TopScope, child: _*)
+
+  def elem(name: String, children: NodeSeq) =
+    Elem(null, name, Null, TopScope, children: _*)
 
   def stripEdges(s: String) = s.substring(1, s.length - 1)
   def stripPre(s: String) = s.substring(1, s.length)

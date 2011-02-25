@@ -2,4 +2,15 @@ module test004
 
 def main
   echo "abc<em "bla">def<em "bla2">ghi<em em "a" + "b">";
+  foobar echo "Hello, pretty!";
+end
+
+def foobar
+	p "hello";
+end
+
+def foo
+	main;
+	foo bar baz bag;
+	foo("foo") echo "bar";
 end
