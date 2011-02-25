@@ -81,9 +81,16 @@ private class Generator(tree: Program) {
         NodeSeq.Empty
     }
 
-  def evalMarkupChain(chain: MarkupChain, env: Env): NodeSeq =
-    // TODO: match for different types of stuff.
-    NodeSeq.Empty
+  def evalMarkupChain(chain: MarkupChain, env: Env): NodeSeq = chain match  {
+    case MarkupSemi(_) =>
+      NodeSeq.Empty
+    case MarkupExp(expr, _) =>
+      evalExpr(expr, env)
+    case MarkupEmb(embed, _) =>
+      evalExpr(embed, env)
+    case s: Statement =>
+      evalStatement(s, env)
+  }
 
   def evalMarkups(markups: List[Markup], body: NodeSeq, env: Env): NodeSeq =
     markups.foldLeft(body)(
@@ -91,6 +98,7 @@ private class Generator(tree: Program) {
         evalMarkup(m, b, env))
 
   def evalMarkup(markup: Markup, body: NodeSeq, env: Env): NodeSeq = {
+    println("evalMarkup(" + markup + ", " + body + ")")
     // TODO: process designator attributes.
     val desText = markup.designator.idCon.text
 
@@ -102,6 +110,7 @@ private class Generator(tree: Program) {
       // * create new env with values for parameters
       val newEnv = env
 
+      // TODO: somehow pass the body to the statement.
       evalStatements(defContents.statements, newEnv)
     } else {
       // TODO: check if is XHTML tag.
@@ -109,6 +118,7 @@ private class Generator(tree: Program) {
     }
   }
 
+  // Processes expressions and embeddings.
   def evalExpr(exp: CommonNode, env: Env) : NodeSeq = {
 
     def resolveArguments(markup: Markup) : NodeSeq = {

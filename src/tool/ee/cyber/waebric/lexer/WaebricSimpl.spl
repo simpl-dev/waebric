@@ -35,15 +35,15 @@ ModuleId: first=IdCon ("." rest=IdCon)*;
 // File Mapping Nodes
 Site:
     SiteTerm
-        mappings=Mappings? 
+        mappings=Mappings?
     EndTerm;
 Mappings: first=Mapping (Semicolon rest=Mapping)*;
 Mapping: path=Path ":" markup=Markup;
 
-terminal Path 
-    check-all(site, path) 
+terminal Path
+    check-all(site, path)
     exit-state(path)
-    : ( PathElement '/' )* PathElement '.' FileExt; 
+    : ( PathElement '/' )* PathElement '.' FileExt;
 fragment PathElement:( Letter | Digit | '%' )+ ; // '!'..'+' causes java heap exception
 fragment FileExt:( Letter | Digit )+ ;
 
@@ -75,9 +75,9 @@ AttrArg: IdCon "=" Expression;
 option Attribute:
     IdAttr
     | ClassAttr
-    | NameAttr 
-    | TypeAttr 
-    | WidthHeightAttr 
+    | NameAttr
+    | TypeAttr
+    | WidthHeightAttr
     | HeightAttr;
 
 IdAttr: "#" id=IdCon;
@@ -103,7 +103,7 @@ FieldExpression returns Expression {if (right ne null) _self else left}
 option PrimitiveExpression:
      IdCon
      | SymbolCon
-     | NatCon 
+     | NatCon
      | Txt;
 
 
@@ -150,7 +150,7 @@ CommentStatement: CommentTerm StrCon Semicolon;
 option EchoBody:
     Expression | Embedding;
 EchoStatement: "echo" EchoBody Semicolon;
-CdataStatement: "cdata" Expression Semicolon; 
+CdataStatement: "cdata" Expression Semicolon;
 YieldStatement: "yield" Semicolon;
 MarkupStatement: Markup MarkupChain;
 
@@ -167,8 +167,8 @@ NotPredicate: "!" PrimPredicate;
 // ExpPredicate: ListExpression | RecordExpression | PrimitiveExpression;
 IsAPredicate: Expression ("." PredType "?")?;
 
-MarkupExp: Expression Semicolon;
-MarkupEmb: Embedding Semicolon;
+MarkupExp: expr=Expression Semicolon;
+MarkupEmb: embed=Embedding Semicolon;
 MarkupSemi: Semicolon;
 //MarkupChain: Semicolon | Expression Semicolon | Embedding Semicolon | Statement;
 option MarkupChain: MarkupSemi | MarkupExp | MarkupEmb | Statement;
