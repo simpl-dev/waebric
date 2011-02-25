@@ -8,23 +8,25 @@ Definitions(
         EchoStatement(
           Embedding(
             PreText( ""abc<" ),
-            EmbedMarkup(
+            EmbedExp(
               [
                 Markup(
                   Designator( IdCon( "em" ), [  ] ),
-                  Text( ""bla"" )
+                  null
                   )
-                ]
+                ],
+              Txt( ""bla"" )
               ),
             TextTailMid(
               MidText( ">def<" ),
-              EmbedMarkup(
+              EmbedExp(
                 [
                   Markup(
                     Designator( IdCon( "em" ), [  ] ),
-                    Text( ""bla2"" )
+                    null
                     )
-                  ]
+                  ],
+                Txt( ""bla2"" )
                 ),
               PostText( ">ghi"" )
               )
@@ -38,4 +40,4 @@ Definitions(
   )
 )
 RAW:
-Program(IdCon(test004),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(EchoStatement(Embedding(PreText("abc<),EmbedMarkup(List(Markup(Designator(IdCon(em),List()),Text("bla")))),TextTailMid(MidText(>def<),EmbedMarkup(List(Markup(Designator(IdCon(em),List()),Text("bla2")))),PostText(>ghi"))),Semicolon(;))),EndTerm(end)))))
+Program(IdCon(test004),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(EchoStatement(Embedding(PreText("abc<),EmbedExp(List(Markup(Designator(IdCon(em),List()),null)),Txt("bla")),TextTailMid(MidText(>def<),EmbedExp(List(Markup(Designator(IdCon(em),List()),null)),Txt("bla2")),PostText(>ghi"))),Semicolon(;))),EndTerm(end)))))

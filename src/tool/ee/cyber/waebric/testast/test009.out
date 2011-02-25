@@ -6,7 +6,7 @@ Definitions(
       FunctionName( IdCon( "main" ) ),
       [
         EchoStatement(
-          CatExpression( Text( ""abc"" ), NatCon( "123" ) ),
+          CatExpression( Txt( ""abc"" ), NatCon( "123" ) ),
           Semicolon( ";" )
           )
         ],
@@ -16,4 +16,4 @@ Definitions(
   )
 )
 RAW:
-Program(IdCon(test009),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(EchoStatement(CatExpression(Text("abc"),NatCon(123)),Semicolon(;))),EndTerm(end)))))
+Program(IdCon(test009),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(EchoStatement(CatExpression(Txt("abc"),NatCon(123)),Semicolon(;))),EndTerm(end)))))

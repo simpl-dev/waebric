@@ -4,13 +4,11 @@ Definitions(
   [
     FunctionDef(
       FunctionName( IdCon( "main" ) ),
-      [
-        EchoStatement( Text( ""Hoi"" ), Semicolon( ";" ) )
-        ],
+      [ EchoStatement( Txt( ""Hoi"" ), Semicolon( ";" ) ) ],
       EndTerm( "end" )
       )
     ]
   )
 )
 RAW:
-Program(IdCon(test002),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(EchoStatement(Text("Hoi"),Semicolon(;))),EndTerm(end)))))
+Program(IdCon(test002),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(EchoStatement(Txt("Hoi"),Semicolon(;))),EndTerm(end)))))
