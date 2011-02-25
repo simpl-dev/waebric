@@ -50,10 +50,10 @@ private class Generator(tree: Program) {
       definition match {
         case FunctionDef(Function(name, _), _, _) =>
          fnName = name.idCon.text
-         env.defs += makeDefBinding(name.idCon, definition)
+         env.defs += (name.idCon.text -> definition)
         case FunctionDef(FunctionName(idCon), _, _) =>
           fnName = idCon.text
-          env.defs += makeDefBinding(idCon, definition)
+          env.defs += (idCon.text -> definition)
         case _ => ()
       }
       println("def " + fnName + " found")
@@ -156,10 +156,6 @@ private class Generator(tree: Program) {
   def stripEdges(s: String) = s.substring(1, s.length - 1)
   def stripPre(s: String) = s.substring(1, s.length)
   def stripPost(s: String) = s.substring(0, s.length - 1)
-
-  def makeDefBinding(name: IdCon, definition: CommonNode) =
-        (name.text, definition)
-
 }
 
 object WaebricGenerator extends MainBase {
