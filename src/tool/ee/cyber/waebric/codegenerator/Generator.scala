@@ -8,7 +8,8 @@ import org.xml.sax._
 import xml._
 
 
-import ee.cyber.simplicitas.{GeneratorBase, MainBase, CommonNode, SourceMessage}
+import ee.cyber.simplicitas.{GeneratorBase, MainBase, CommonNode,
+    SourceMessage, PrettyPrint}
 import ee.cyber.simplicitas.PrettyPrint._
 import ee.cyber.waebric.lexer._
 
@@ -24,9 +25,10 @@ private class Generator(tree: Program) {
 
     val globalEnv: Env = new Env(Map.empty, Map.empty)
 
+    println(PrettyPrint.prettyPrint(tree))
 
     processDefs(tree, globalEnv)
-    println("processDefs result: " + globalEnv)
+    //println("processDefs result: " + globalEnv)
 
     // todo: first process sites. if not found, try with "main"
     nodes = List.empty
@@ -36,7 +38,7 @@ private class Generator(tree: Program) {
       // not bounded
       nodes = generalElem("html", nodes)
     }
-    println(nodes.toString)
+    println("\n" + nodes.toString)
   }
 
   def processDefs(node: Program, env: Env) {
@@ -78,7 +80,7 @@ private class Generator(tree: Program) {
       generate(statement, env)
       statement match {
         case EchoStatement(echoBody, _) =>
-          val ret = processExpressions(echoBody, env)
+          val ret = evalExpr(echoBody, env)
           println("EchoStatement returned: " + ret.toString)
           nodes ++= ret
         case _ => ()
@@ -88,7 +90,7 @@ private class Generator(tree: Program) {
     }
   }
 
-  def processExpressions(exp: CommonNode, env: Env) : NodeSeq = {
+  def evalExpr(exp: CommonNode, env: Env) : NodeSeq = {
 
     def resolveArguments(markup: Markup) : NodeSeq = {
       /*println("Processing arguments of markup")
@@ -105,20 +107,23 @@ private class Generator(tree: Program) {
           Text("")
         case _ =>
           println("Expression found (probably)")
-          processExpressions(markup.markupArguments, env)
+          evalExpr(markup.markupArguments, env)
       } */
       Text("")
 
     }
 
-    def processMarkups(markups: List[Markup], exp: Expression, env: Env) : NodeSeq = {
+    def processMarkups(markups: List[Markup],
+                       exp: Expression, env: Env) : NodeSeq = {
       markups match {
-        case head::tail =>
-
+        case head :: tail =>
           generalElem(head.designator.idCon.text,
-            if (tail.size > 0) processMarkups(tail, exp, env) else processExpressions(exp, env))
-
-        case Nil => Text("")
+              if (!tail.isEmpty)
+                processMarkups(tail, exp, env)
+              else
+                evalExpr(exp, env))
+        case Nil =>
+          Text("")
       }
     }
 
@@ -133,10 +138,10 @@ private class Generator(tree: Program) {
 
       /* Expression handling */
       case CatExpression(left, right) =>
-        processExpressions(left, env) ++ processExpressions(right, env)
+        evalExpr(left, env) ++ evalExpr(right, env)
       case Embedding(preText, embed, textTail) =>
-        processExpressions(preText, env) ++ processExpressions(embed, env) ++
-          processExpressions(textTail, env)
+        evalExpr(preText, env) ++ evalExpr(embed, env) ++
+          evalExpr(textTail, env)
       case EmbedMarkup(markups) =>
         println("EmbedMarkups found: " + markups.size)
         processMarkups(markups, null, env)
@@ -144,14 +149,16 @@ private class Generator(tree: Program) {
         println("EmbedExp found")
         processMarkups(markups, exp, env)
       case TextTailMid(midText, embed, textTail) =>
-        processExpressions(midText, env) ++ processExpressions(embed, env) ++
-          processExpressions(textTail, env)
+        evalExpr(midText, env) ++ evalExpr(embed, env) ++
+          evalExpr(textTail, env)
       case _ => Text("")
     }
   }
 
-  def textElem(name: String, text: String) =  Elem(null, name, Null, TopScope, Text(text))
-  def generalElem(name: String, child: NodeSeq) = new Elem(null, name, Null, TopScope, child: _*)
+  def textElem(name: String, text: String) =
+    Elem(null, name, Null, TopScope, Text(text))
+  def generalElem(name: String, child: NodeSeq) =
+    new Elem(null, name, Null, TopScope, child: _*)
 
   def stripEdges(s: String) = s.substring(1, s.length - 1)
   def stripPre(s: String) = s.substring(1, s.length)
