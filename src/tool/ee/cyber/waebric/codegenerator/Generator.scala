@@ -31,41 +31,12 @@ private class Generator(tree: Program) {
     // todo: first process sites. if not found, try with "main"
     nodes = List.empty
     generate(globalEnv.defs.get("main").get, globalEnv);
+
+    if (nodes.size != 1 || (nodes.size == 1 && !nodes.head.isInstanceOf[Elem])) {
+      // not bounded
+      nodes = generalElem("html", nodes)
+    }
     println(nodes.toString)
-
-
-
-    /*
-    var outputXml: Elem = null
-    var outputText: String = null
-
-
-    try {
-      outputXml = XML.loadString(buffer.toString)
-    } catch {
-      // likely, it's not xml, root element missing, etc.
-
-      case e =>
-        println("Error generating XML, trying to add <html> tags")
-        try {
-          outputXml = XML.loadString(initHtml + buffer.toString + closeHtml)
-        } catch {
-          case e =>
-            println("Error generating XML document, outputing raw...")
-            outputText = buffer.toString
-        }
-    }
-    if (outputXml ne null) {
-      println("Xml doc found")
-      println(outputXml.buildString(false))
-    } else {
-      println("Raw output")
-      println(outputText)
-    }
-    */
-
-
-
   }
 
   def processDefs(node: Program, env: Env) {
@@ -109,7 +80,7 @@ private class Generator(tree: Program) {
         case EchoStatement(echoBody, _) =>
           val ret = processExpressions(echoBody, env)
           println("EchoStatement returned: " + ret.toString)
-
+          nodes ++= ret
         case _ => ()
 
       }
@@ -117,12 +88,10 @@ private class Generator(tree: Program) {
     }
   }
 
-  //def processExpressions(exp: CommonNode, env: Env) : NodeSeq = processExpressions(exp, env, null)
-
   def processExpressions(exp: CommonNode, env: Env) : NodeSeq = {
 
     def resolveArguments(markup: Markup) : NodeSeq = {
-      println("Processing arguments of markup")
+      /*println("Processing arguments of markup")
       if (markup.markupArguments eq null) {
         println("MarkupArguments null")
         return Text("")
@@ -137,15 +106,17 @@ private class Generator(tree: Program) {
         case _ =>
           println("Expression found (probably)")
           processExpressions(markup.markupArguments, env)
-      }
+      } */
+      Text("")
+
     }
 
-    def processMarkups(markups: List[Markup], parent: Elem) : NodeSeq = {
+    def processMarkups(markups: List[Markup], exp: Expression, env: Env) : NodeSeq = {
       markups match {
         case head::tail =>
 
           generalElem(head.designator.idCon.text,
-            if (tail.size > 0) processMarkups(tail, parent) else resolveArguments(head))
+            if (tail.size > 0) processMarkups(tail, exp, env) else processExpressions(exp, env))
 
         case Nil => Text("")
       }
@@ -157,6 +128,7 @@ private class Generator(tree: Program) {
       case NatCon(text) => Text(text)
       case PreText(text) => Text(stripEdges(text))
       case PostText(text) => Text(stripEdges(text))
+      case MidText(text) => Text(stripEdges(text))
 
 
       /* Expression handling */
@@ -164,10 +136,16 @@ private class Generator(tree: Program) {
         processExpressions(left, env) ++ processExpressions(right, env)
       case Embedding(preText, embed, textTail) =>
         processExpressions(preText, env) ++ processExpressions(embed, env) ++
-            processExpressions(textTail, env)
+          processExpressions(textTail, env)
       case EmbedMarkup(markups) =>
-        println("Markups found: " + markups.size)
-        processMarkups(markups, null)
+        println("EmbedMarkups found: " + markups.size)
+        processMarkups(markups, null, env)
+      case EmbedExp(markups, exp) =>
+        println("EmbedExp found")
+        processMarkups(markups, exp, env)
+      case TextTailMid(midText, embed, textTail) =>
+        processExpressions(midText, env) ++ processExpressions(embed, env) ++
+          processExpressions(textTail, env)
       case _ => Text("")
     }
   }
@@ -179,12 +157,8 @@ private class Generator(tree: Program) {
   def stripPre(s: String) = s.substring(1, s.length)
   def stripPost(s: String) = s.substring(0, s.length - 1)
 
-  def initHtml = """<?xml version="1.0" encoding="UTF-8"?>""" + "\n" + "<html>" + "\n"
-  def closeHtml= "</html>"
-
   def makeDefBinding(name: IdCon, definition: CommonNode) =
         (name.text, definition)
-
 
 }
 
