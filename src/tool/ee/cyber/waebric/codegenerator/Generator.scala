@@ -42,7 +42,7 @@ private class Generator(tree: Program) {
       // not bounded
       nodes = elem("html", nodes)
     }
-    println("\n" + nodes.toString)
+    println("\n" + new PrettyPrinter(65, 2).formatNodes(nodes))
   }
 
   def processDefs(node: Program, env: Env) {
