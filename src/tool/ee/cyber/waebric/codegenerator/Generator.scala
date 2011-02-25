@@ -30,7 +30,7 @@ private class Generator(tree: Program) {
 
     // todo: first process sites. if not found, try with "main"
     nodes = List.empty
-    generate(globalEnv.defs.get("main").get, globalEnv);
+    generate(globalEnv.defs("main"), globalEnv);
 
     if (nodes.size != 1 || (nodes.size == 1 && !nodes.head.isInstanceOf[Elem])) {
       // not bounded
