@@ -15,9 +15,7 @@ Definitions: Definition+;
 option Definition: FunctionDef | Site | Import;
 
 option FunctionHeader: FunctionName | Function;
-
 FunctionDef:
-    //"def" IdCon ("(" arguments=Formals? ")")?
     Function
 	    statements=Statement*
     EndTerm;
@@ -140,10 +138,7 @@ LetStatement: "let" Assignment+ "in" Statement* EndTerm;
 option Assignment: VarBinding | FuncBinding;
 VarBinding: IdCon "=" Expression Semicolon;
 FuncBinding: func=IdCon "(" FuncArguments? ")" "=" Statement;
-
-FuncArg returns FuncArguments {if ((rest ne null) && !rest.isEmpty) _self else first}
-    : (first=IdCon ("," rest=IdCon)*);
-option FuncArguments: IdCon | FuncArg;
+FuncArguments: first=IdCon ("," rest=IdCon)*;
 
 BlockStatement: "{" Statement* "}";
 CommentStatement: CommentTerm StrCon Semicolon;

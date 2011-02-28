@@ -1,6 +1,13 @@
 module test004
 
 def main
+  let
+  p() = echo x;
+  r(x) = echo x;
+  p(x,y) = echo blah;
+  in
+  	p();
+  end
   echo "abc<em "bla">def<em "bla2">ghi<em em "a" + "b">";
   foobar echo "Hello, pretty!";
 end
@@ -13,4 +20,12 @@ def foo
 	main;
 	foo bar baz bag;
 	foo("foo") echo "bar";
+end
+
+def x(a)
+	blah;
+end
+
+def y(a,b)
+	blah;
 end

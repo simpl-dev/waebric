@@ -21,7 +21,7 @@ private class Generator(tree: Program) {
 
   def generate() {
 
-    val globalEnv: Env = new Env(Map.empty, Map.empty)
+    val globalEnv: Env = new Env(null, Map.empty, Map.empty)
 
     println(PrettyPrint.prettyPrint(tree))
 
@@ -101,9 +101,9 @@ private class Generator(tree: Program) {
     println("evalMarkup(" + markup + ", " + body + ")")
     // TODO: process designator attributes.
     val desText = markup.designator.idCon.text
-
-    if (env.defs.contains(desText)) {
-      val defContents = env.defs(desText)
+    val fun = env.resolveFunction(desText)
+    if (fun ne null) {
+      //val defContents = env.defs(desText)
 
       // TODO: bind formal parameters.
       // * eval formal parameters
@@ -111,7 +111,7 @@ private class Generator(tree: Program) {
       val newEnv = env
 
       // TODO: somehow pass the body to the statement.
-      evalStatements(defContents.statements, newEnv)
+      evalStatements(fun._1, newEnv)
     } else {
       // TODO: check if is XHTML tag.
       elem(desText, body)
