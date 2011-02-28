@@ -7,12 +7,6 @@ import xml.NodeSeq
 
 
 
-/** Type of variable: local, function, or definition. */
-object VarType extends Enumeration {
-    type Type = Value
-    val Func, Def = Value
-}
-
 class Env(val parent: Env, val defs: Map[String, FunctionDef],
           val locals: Map[String, NodeSeq]) {
   var funcs: Map[String, FuncBinding] = Map.empty
