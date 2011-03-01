@@ -77,6 +77,9 @@ private class Generator(tree: Program) {
       case MarkupStatement(markup, chain) =>
         val chainRet = evalMarkupChain(chain, env)
         evalMarkup(markup, chainRet, env)
+      case LetStatement(assignments, statements, _) =>
+        val newEnv = applyAssignments(assignments, env)
+        evalStatements(statements, newEnv)
       case _ =>
         NodeSeq.Empty
     }
@@ -171,6 +174,17 @@ private class Generator(tree: Program) {
       case _ =>
         Text("")
     }
+  }
+
+  private def applyAssignments(assignments: List[Assignment], env: Env): Env = {
+      val aMap = assignments filter { a => a.isInstanceOf[VarBinding] } map {
+          a => (a.asInstanceOf[VarBinding].idCon.text, evalExpr(a.asInstanceOf[VarBinding].expression, env))} toMap;
+      val fMap = assignments filter { f => f.isInstanceOf[FuncBinding] } map {
+          f => (f.asInstanceOf[FuncBinding].func.text, f.asInstanceOf[FuncBinding]) } toMap;
+      println("aMap: " + aMap)
+      println("fMap: " + fMap)
+      return env.expand(collection.mutable.Map(fMap.toSeq: _*), collection.mutable.Map(aMap.toSeq: _*))
+
   }
 
   def elem(name: String, text: String) =
