@@ -155,6 +155,7 @@ private class Generator(tree: Program) {
 
 
       /* Expression handling */
+      case IdCon(text) => env.resolveVariable(text)
       case CatExpression(left, right) =>
         evalExpr(left, env) ++ evalExpr(right, env)
       case Embedding(preText, embed, textTail) =>
