@@ -111,7 +111,7 @@ private class Generator(tree: Program) {
       // TODO: bind formal parameters.
       // * eval formal parameters
       // * create new env with values for parameters
-      val newEnv = env
+      val newEnv = bindParameters(fun._2, markup, env)
 
       // TODO: somehow pass the body to the statement.
       evalStatements(fun._1, newEnv)
@@ -185,6 +185,25 @@ private class Generator(tree: Program) {
       println("aMap: " + aMap)
       println("fMap: " + fMap)
       return env.expand(collection.mutable.Map(fMap.toSeq: _*), collection.mutable.Map(aMap.toSeq: _*))
+
+  }
+
+  private def bindParameters(funArgs: List[IdCon], markup: Markup, env: Env): Env = {
+      val markupArgs: List[Argument] = markup.markupArguments match {
+        case MarkupArguments(first, rest) =>
+            first :: rest
+        case null =>
+            println("No markupArguments found")
+            List.empty
+      }
+      // check whether number of arguments and number of parameters match
+      if (markupArgs.size < funArgs.size) throw new Exception("Wrong number of arguments: " + markupArgs.size)
+
+      val bindMap = funArgs zip markupArgs map { f => (f._1.text, f._2 match {
+                  case AttrArg(_, exp) => evalExpr(exp, env)
+                  case _ => evalExpr(f._2, env)})} toMap;
+
+      return env.expand(Map.empty, collection.mutable.Map(bindMap.toSeq: _*))
 
   }
 

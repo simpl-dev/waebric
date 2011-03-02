@@ -17,7 +17,7 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
       return env
   }
 
-  // returns statements and argument names
+  // returns statements, argument names
   def resolveFunction(name: String): Tuple2[List[Statement], List[IdCon]] = {
       println("Resolve function " + name)
       if (funcs.contains(name)) {
