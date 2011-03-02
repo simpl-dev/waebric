@@ -12,7 +12,7 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
   var funcs: Map[String, FuncBinding] = Map.empty
 
   def expand(functions: Map[String, FuncBinding], locals: Map[String, NodeSeq]) : Env = {
-      val env: Env = new Env(this, null, locals)
+      val env: Env = new Env(this, Map.empty, locals)
       env.funcs ++= functions
       return env
   }

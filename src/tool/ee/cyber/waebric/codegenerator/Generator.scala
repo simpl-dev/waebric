@@ -106,11 +106,6 @@ private class Generator(tree: Program) {
     val desText = markup.designator.idCon.text
     val fun = env.resolveFunction(desText)
     if (fun ne null) {
-      //val defContents = env.defs(desText)
-
-      // TODO: bind formal parameters.
-      // * eval formal parameters
-      // * create new env with values for parameters
       val newEnv = bindParameters(fun._2, markup, env)
 
       // TODO: somehow pass the body to the statement.
