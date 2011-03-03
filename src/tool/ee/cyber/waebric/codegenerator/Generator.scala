@@ -112,33 +112,13 @@ private class Generator(tree: Program) {
       evalStatements(fun._1, newEnv)
     } else {
       // TODO: check if is XHTML tag.
-      elem(desText, body)
+      // TODO: resolve arguments and/or attributes
+      addXHTMLAttributes(elem(desText, body), markup, env)
     }
   }
 
   // Processes expressions and embeddings.
   def evalExpr(exp: CommonNode, env: Env) : NodeSeq = {
-
-    def resolveArguments(markup: Markup) : NodeSeq = {
-      /*println("Processing arguments of markup")
-      if (markup.markupArguments eq null) {
-        println("MarkupArguments null")
-        return Text("")
-      }
-      markup.markupArguments match  {
-        case AttrArg(idCon, expression) =>
-          println("attrArg found")
-          Text("")
-        case Arguments(first, rest) =>
-          println("Arguments found")
-          Text("")
-        case _ =>
-          println("Expression found (probably)")
-          evalExpr(markup.markupArguments, env)
-      } */
-      Text("")
-
-    }
 
     exp match {
       /* Terminal handling */
@@ -183,14 +163,16 @@ private class Generator(tree: Program) {
 
   }
 
-  private def bindParameters(funArgs: List[IdCon], markup: Markup, env: Env): Env = {
-      val markupArgs: List[Argument] = markup.markupArguments match {
+  private def getMarkupArguments(markup: Markup): List[Argument] = markup.markupArguments match {
         case MarkupArguments(first, rest) =>
             first :: rest
         case null =>
             println("No markupArguments found")
             List.empty
       }
+
+  private def bindParameters(funArgs: List[IdCon], markup: Markup, env: Env): Env = {
+      val markupArgs: List[Argument] = getMarkupArguments(markup)
       // check whether number of arguments and number of parameters match
       if (markupArgs.size < funArgs.size) throw new Exception("Wrong number of arguments: " + markupArgs.size)
 
@@ -199,6 +181,20 @@ private class Generator(tree: Program) {
                   case _ => evalExpr(f._2, env)})} toMap;
 
       return env.expand(Map.empty, collection.mutable.Map(bindMap.toSeq: _*))
+
+  }
+
+  private def addXHTMLAttributes(elem: Elem, markup: Markup, env: Env): NodeSeq = {
+      val markupArgs: List[Argument] = getMarkupArguments(markup)
+
+      // We are interested only in AttrArg type
+      val argList = markupArgs filter { f => f.isInstanceOf[AttrArg]} map {
+          f => f match {
+            case AttrArg(idCon, exp) => Attribute(idCon.text, evalExpr(exp, env), Null)
+          }}
+      println("argList: " + argList)
+      //argList.foldLeft(elem)((e: Elem, m: MetaData) => e % m)
+      argList.foldLeft(elem)(_ % _)
 
   }
 
