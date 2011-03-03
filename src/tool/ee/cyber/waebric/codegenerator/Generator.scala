@@ -80,6 +80,8 @@ private class Generator(tree: Program) {
       case LetStatement(assignments, statements, _) =>
         val newEnv = applyAssignments(assignments, env)
         evalStatements(statements, newEnv)
+      case BlockStatement(statements) =>
+        evalStatements(statements, env)
       case _ =>
         NodeSeq.Empty
     }
