@@ -105,12 +105,8 @@ option PrimitiveExpression:
      | Txt;
 
 
-ListExpression returns Expression {
-        if ((rest ne null) && !rest.isEmpty) _self else if (first ne null) first else _self}
-    : "[" (first=Expression ("," rest=Expression)*)? "]";
-RecordExpression returns Expression {
-        if ((rest ne null) && !rest.isEmpty) _self else if (first ne null) first else _self}
-    : "{" (first=KeyValuePair ("," rest=KeyValuePair)*)? "}";
+ListExpression: "[" (first=Expression ("," rest=Expression)*)? "]";
+RecordExpression: "{" (first=KeyValuePair ("," rest=KeyValuePair)*)? "}";
 KeyValuePair returns Expression: IdCon ":" Expression;
 
 

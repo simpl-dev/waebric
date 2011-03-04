@@ -104,7 +104,6 @@ private class Generator(tree: Program) {
 
   def evalMarkup(markup: Markup, body: NodeSeq, env: Env): NodeSeq = {
     println("evalMarkup(" + markup + ", " + body + ")")
-    // TODO: process designator attributes.
     val desText = markup.designator.idCon.text
     val fun = env.resolveFunction(desText)
     if (fun ne null) {
@@ -114,7 +113,6 @@ private class Generator(tree: Program) {
       evalStatements(fun._1, newEnv)
     } else {
       // TODO: check if is XHTML tag.
-      // TODO: resolve arguments and/or attributes
       addXHTMLAttributes(elem(desText, body), markup, env)
     }
   }
