@@ -35,6 +35,8 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
           defs(name) match {
               case FunctionDef(Function(_, FunctionArgs(Formals(first, rest))), statements, _) =>
                   return (statements, first :: rest)
+              case FunctionDef(Function(_, FunctionArgs(null)), statements, _) =>
+                  return (statements, List.empty)
               case FunctionDef(FunctionName(_), statements, _) =>
                   return (statements, List.empty)
               case _ => return null

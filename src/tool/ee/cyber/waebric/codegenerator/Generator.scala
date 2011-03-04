@@ -176,7 +176,8 @@ private class Generator(tree: Program) {
   private def bindParameters(funArgs: List[IdCon], markup: Markup, env: Env): Env = {
       val markupArgs: List[Argument] = getMarkupArguments(markup)
       // check whether number of arguments and number of parameters match
-      if (markupArgs.size < funArgs.size) throw new Exception("Wrong number of arguments: " + markupArgs.size)
+      if (markupArgs.size < funArgs.size) throw new Exception("Wrong number of arguments(" + markupArgs.size
+          + ") for function " + markup.designator.idCon.text + ". Expected: " + funArgs.size)
 
       val bindMap = funArgs zip markupArgs map { f => (f._1.text, f._2 match {
                   case AttrArg(_, exp) => evalExpr(exp, env)
@@ -189,15 +190,37 @@ private class Generator(tree: Program) {
   private def addXHTMLAttributes(elem: Elem, markup: Markup, env: Env): NodeSeq = {
       val markupArgs: List[Argument] = getMarkupArguments(markup)
 
-      // We are interested only in AttrArg type
-      val argList = markupArgs filter { f => f.isInstanceOf[AttrArg]} map {
-          f => f match {
-            case AttrArg(idCon, exp) => Attribute(idCon.text, evalExpr(exp, env), Null)
-          }}
-      println("argList: " + argList)
-      //argList.foldLeft(elem)((e: Elem, m: MetaData) => e % m)
-      argList.foldLeft(elem)(_ % _)
+      //def concatAttrValue()
+      val map: Map[String, NodeSeq] = Map.empty
 
+      def updateMap(pair: Tuple2[String, NodeSeq]) = {
+        val v = map.get(pair._1)
+        if (v ne None) {
+          map.put(pair._1, (v.get ++ Text(" ") ++ pair._2))
+        } else {
+          map.put(pair._1, pair._2)
+        }
+      }
+
+      markup.designator.attribute map {
+          f => val pair = f match {
+              case IdAttr(id) => ("id", Text(id.text))
+              case ClassAttr(cl) => ("class", Text(cl.text))
+              case NameAttr(name) => ("name", Text(name.text))
+              case TypeAttr(t) => ("type", Text(t.text))
+              case WidthHeightAttr(w, h) => updateMap(("width", Text(w.text)))
+                  ("height", Text(h.text))
+              case HeightAttr(h) => ("height", Text(h.text))
+          }
+          updateMap(pair)
+      }
+      // We are interested only in the AttrArg type
+      markupArgs filter { f => f.isInstanceOf[AttrArg]} map {
+          f => f match { case AttrArg(idCon, exp) =>  updateMap((idCon.text, evalExpr(exp, env)))}
+      }
+      val attrs = map.keySet map {f => Attribute(f, map.get(f).get, Null)} toList;
+      //attrs.foldLeft(elem)((e: Elem, m: MetaData) => e % m)
+      attrs.foldLeft(elem)(_ % _)
   }
 
   def elem(name: String, text: String) =
