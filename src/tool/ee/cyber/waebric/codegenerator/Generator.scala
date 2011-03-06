@@ -14,6 +14,23 @@ import ee.cyber.simplicitas.PrettyPrint._
 import ee.cyber.waebric.lexer._
 
 
+private case class ListNodeSeq(var list: List[NodeSeq]) extends NodeSeq {
+  def theSeq: Seq[Node] = {
+    var ret: Seq[Node] = Seq.empty
+    list.foreach(l => ret ++= l.toSeq)
+    ret
+  }
+}
+
+private case class RecordNodeSeq(var record: Map[String, NodeSeq]) extends NodeSeq {
+  def theSeq: Seq[Node] = {
+    var ret: Seq[Node] = Seq.empty
+    record.values.foreach(v => ret ++ v.toSeq)
+    ret
+  }
+}
+
+
 private class Generator(tree: Program) {
 
   val errors = ArrayBuffer[SourceMessage]()
@@ -26,7 +43,6 @@ private class Generator(tree: Program) {
     println(PrettyPrint.prettyPrint(tree))
 
     processDefs(tree, globalEnv)
-    //println("processDefs result: " + globalEnv)
 
     // todo: first process sites. if not found, try with "main"
     var nodes = evalStatement(
@@ -39,7 +55,6 @@ private class Generator(tree: Program) {
 
     if (nodes.size != 1 ||
             (nodes.size == 1 && !nodes.head.isInstanceOf[Elem])) {
-      // not bounded
       nodes = elem("html", nodes)
     }
     println("\n" + new PrettyPrinter(65, 2).formatNodes(nodes))
@@ -47,8 +62,6 @@ private class Generator(tree: Program) {
 
   def processDefs(node: Program, env: Env) {
     println("ProcessDefs called")
-
-    // todo, check whether functions with a same name are allowed
 
     for (definition <- node.definitions.definition) {
       var fnName:String = ""
@@ -82,6 +95,15 @@ private class Generator(tree: Program) {
         evalStatements(statements, newEnv)
       case BlockStatement(statements) =>
         evalStatements(statements, env)
+      case EachStatement(idCon, exp, statement) =>
+        val expressions = evalExpr(exp, env)
+        expressions match {
+          case ListNodeSeq(list) =>
+            var ret: NodeSeq = NodeSeq.Empty;
+            list.foreach(f => ret ++= evalStatement(statement, env.expand(Map.empty, Map(idCon.text -> f))))
+            ret
+          case _ =>  NodeSeq.Empty
+        }
       case _ =>
         NodeSeq.Empty
     }
@@ -147,6 +169,13 @@ private class Generator(tree: Program) {
         evalExpr(midText, env) ++
                 evalExpr(embed, env) ++
                 evalExpr(textTail, env)
+      case ListExpression(first, rest) =>
+        if (first eq null) {
+          ListNodeSeq(List.empty)
+        }
+        new ListNodeSeq((List(first) ++ rest) map {f => evalExpr(f, env)} toList)
+      case RecordExpression(first, rest) =>
+        new RecordNodeSeq(Map("a" -> Text("xxx"))) //todo
       case _ =>
         Text("")
     }
@@ -220,6 +249,11 @@ private class Generator(tree: Program) {
       //attrs.foldLeft(elem)((e: Elem, m: MetaData) => e % m)
       attrs.foldLeft(elem)(_ % _)
   }
+
+  /*private def resolveCollection(exp: Expression, env: Env): List[NodeSeq] = {
+
+
+  } */
 
   def elem(name: String, text: String) =
     Elem(null, name, Null, TopScope, Text(text))
