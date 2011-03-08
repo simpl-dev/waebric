@@ -9,8 +9,7 @@ import ee.cyber.waebric.lexer._
 import org.eclipse.swt.graphics.Image
 import org.eclipse.imp.language.LanguageRegistry
 import ee.cyber.waebric.lexer.WaebricSimplGrammar
-import ee.cyber.waebric.codegenerator.WaebricSimplCodeGenerator
-
+import ee.cyber.waebric.codegenerator.WaebricGenerator
 
 object WaebricSimplConfig {
   // These four values serve technical purposes, do not touch them.
@@ -64,6 +63,6 @@ class WaebricSimplConfig extends APluginConfig {
   def treeLabel(node: CommonNode) = null
 
   override def runGenerator(dir: String, file: String) {
-    WaebricAST.main(Array("--dest", dir, dir + file))
+    WaebricGenerator.main(Array("--dest", dir, dir + file))
   }
 }
