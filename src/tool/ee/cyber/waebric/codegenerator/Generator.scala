@@ -102,8 +102,19 @@ private class Generator(tree: Program) {
             var ret: NodeSeq = NodeSeq.Empty;
             list.foreach(f => ret ++= evalStatement(statement, env.expand(Map.empty, Map(idCon.text -> f))))
             ret
+          // todo - also for record expression
+
           case _ =>  NodeSeq.Empty
         }
+      case IfStatement(p, ifStat, elseStat) =>
+        if (resolvePredicate(if (p.rest ne null) List(p.left) ++ p.rest else List(p.left), p.op, env)) {
+          evalStatement(ifStat, env)
+        } else if (elseStat ne null) {
+          evalStatement(elseStat, env)
+        }
+        NodeSeq.Empty
+
+
       case _ =>
         NodeSeq.Empty
     }
@@ -181,6 +192,11 @@ private class Generator(tree: Program) {
     }
   }
 
+
+  private def resolvePredicate(p: List[PrimPredicate], op: List[PredicateOp], env: Env): Boolean = {
+    true
+  }
+
   private def applyAssignments(assignments: List[Assignment], env: Env): Env = {
       val aMap = assignments filter { a => a.isInstanceOf[VarBinding] } map {
           a => (a.asInstanceOf[VarBinding].idCon.text, evalExpr(a.asInstanceOf[VarBinding].expression, env))} toMap;
@@ -249,11 +265,6 @@ private class Generator(tree: Program) {
       //attrs.foldLeft(elem)((e: Elem, m: MetaData) => e % m)
       attrs.foldLeft(elem)(_ % _)
   }
-
-  /*private def resolveCollection(exp: Expression, env: Env): List[NodeSeq] = {
-
-
-  } */
 
   def elem(name: String, text: String) =
     Elem(null, name, Null, TopScope, Text(text))

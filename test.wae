@@ -1,11 +1,8 @@
 module test004
 
 def main
-  let
-    a = [];
-    in
-    echo "x";
-    end
+  if (a && b && c && !d)
+	  echo "x";
   echo "abc<em "bla">def<em "bla2">ghi<em em "a" + "b">";
   foobar echo "Hello, pretty!";
 end
