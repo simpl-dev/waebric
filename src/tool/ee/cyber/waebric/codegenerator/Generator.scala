@@ -107,10 +107,10 @@ private class Generator(tree: Program) {
           case _ =>  NodeSeq.Empty
         }
       case IfStatement(p, ifStat, elseStat) =>
-        if (resolvePredicate(if (p.rest ne null) List(p.left) ++ p.rest else List(p.left), p.op, env)) {
-          evalStatement(ifStat, env)
+        if (resolvePredicateChain(if (p.rest ne null) List(p.left) ++ p.rest else List(p.left), p.op, env)) {
+          return evalStatement(ifStat, env)
         } else if (elseStat ne null) {
-          evalStatement(elseStat, env)
+          return evalStatement(elseStat, env)
         }
         NodeSeq.Empty
 
@@ -193,8 +193,30 @@ private class Generator(tree: Program) {
   }
 
 
-  private def resolvePredicate(p: List[PrimPredicate], op: List[PredicateOp], env: Env): Boolean = {
-    true
+  private def resolvePredicateChain(p: List[PrimPredicate], op: List[PredicateOp], env: Env): Boolean = {
+    def resolvePredicate(p: PrimPredicate, env: Env): Boolean = {
+      p match {
+        case _ => if (evalExpr(p, env) != Text("")) {
+          println("resolvePredicate expression " + p + ", NONempty Text found")
+          return true
+        } else {
+          println("resolvePredicate expression " + p + ", empty Text found")
+              return false;
+        }
+
+      }
+
+    }
+
+    if (p.size == 1) {
+      return resolvePredicate(p.head, env)
+    }
+    op.head match {
+      case PredicateOp("&&") => return resolvePredicate(p.head, env) && resolvePredicateChain(p.tail, op.tail, env)
+      case PredicateOp("||") => return resolvePredicate(p.head, env) || resolvePredicateChain(p.tail, op.tail, env)
+      case _ => true
+    }
+
   }
 
   private def applyAssignments(assignments: List[Assignment], env: Env): Env = {
