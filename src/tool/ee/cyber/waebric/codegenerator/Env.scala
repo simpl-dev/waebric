@@ -11,11 +11,15 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
           val locals: Map[String, NodeSeq]) {
   var funcs: Map[String, FuncBinding] = Map.empty
 
+  private var yieldValue: NodeSeq = null
+
   def expand(functions: Map[String, FuncBinding], locals: Map[String, NodeSeq]) : Env = {
       val env: Env = new Env(this, Map.empty, locals)
       env.funcs ++= functions
       return env
   }
+
+  def setYield(y: NodeSeq) = {yieldValue = y}
 
   // returns statements, argument names
   def resolveFunction(name: String): Tuple2[List[Statement], List[IdCon]] = {
@@ -59,6 +63,16 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
           return parent.resolveVariable(name)
       }
       return null
+  }
+
+  def resolveYield(): NodeSeq = {
+    if (yieldValue ne null) {
+      return yieldValue
+    }
+    if (parent ne null) {
+      return parent.resolveYield
+    }
+    return NodeSeq.Empty
   }
 
   override def toString =

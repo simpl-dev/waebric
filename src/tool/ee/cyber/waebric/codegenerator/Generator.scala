@@ -113,7 +113,8 @@ private class Generator(tree: Program) {
           return evalStatement(elseStat, env)
         }
         NodeSeq.Empty
-
+      case YieldStatement(_) =>
+        env.resolveYield
 
       case _ =>
         NodeSeq.Empty
@@ -141,8 +142,7 @@ private class Generator(tree: Program) {
     val fun = env.resolveFunction(desText)
     if (fun ne null) {
       val newEnv = bindParameters(fun._2, markup, env)
-
-      // TODO: somehow pass the body to the statement.
+      newEnv.setYield(body)
       evalStatements(fun._1, newEnv)
     } else {
       // TODO: check if is XHTML tag.
@@ -196,18 +196,24 @@ private class Generator(tree: Program) {
   private def resolvePredicateChain(p: List[PrimPredicate], op: List[PredicateOp], env: Env): Boolean = {
     def resolvePredicate(p: PrimPredicate, env: Env): Boolean = {
       p match {
-        case _ => if (evalExpr(p, env) != Text("")) {
-          println("resolvePredicate expression " + p + ", NONempty Text found")
-          return true
-        } else {
-          println("resolvePredicate expression " + p + ", empty Text found")
-              return false;
-        }
+        case NotPredicate(prim) =>
+          println("NotPredicate found")
+          return !resolvePredicate(prim, env)
+        case IsAPredicate(exp, null) =>
+          println("IsAPredicate found with null predtype")
+          return (evalExpr(exp, env) ne null)
+        case IsAPredicate(exp, t) =>
+          println("IsAPredicate found with  " + t + " type")
+          t match {
+            case PredType("list") => exp.isInstanceOf[ListExpression]
+            case PredType("record") => exp.isInstanceOf[RecordExpression]
+            case PredType("string") => exp.isInstanceOf[StrCon]
+            case _ => false
+          }
+        case _ =>      return false;
 
       }
-
     }
-
     if (p.size == 1) {
       return resolvePredicate(p.head, env)
     }
