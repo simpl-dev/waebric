@@ -43,6 +43,7 @@ private case class RecordNodeSeq(var records: List[KeyValueNodeSeq]) extends Nod
 }
 
 private case class KeyValueNodeSeq(var key: String, var value: NodeSeq) extends NodeSeq with RecordNodes {
+  //def theSeq: Seq[Node] = Text(key) ++ Text("--") ++ value.toSeq
   def theSeq: Seq[Node] = value.toSeq
   def get(k: String): NodeSeq = {
     if (k == key) {
@@ -140,7 +141,8 @@ private class Generator(tree: Program) {
         NodeSeq.Empty
       case YieldStatement(_) =>
         env.resolveYield
-
+      case CommentStatement(_, strCon, _) =>
+        new Comment(stripEdges(strCon.text))
       case _ =>
         NodeSeq.Empty
     }
@@ -206,6 +208,7 @@ private class Generator(tree: Program) {
                 evalExpr(embed, env) ++
                 evalExpr(textTail, env)
       case KeyValuePair(idCon, expression) =>
+        println("KeyValuePair found " + idCon + ", " + expression)
         KeyValueNodeSeq(idCon.text, evalExpr(expression, env))
       case ListExpression(first, rest) =>
         if (first eq null) {
@@ -213,6 +216,7 @@ private class Generator(tree: Program) {
         }
         new ListNodeSeq((List(first) ++ rest) map {f => evalExpr(f, env)} toList)
       case RecordExpression(first, rest) =>
+        println("RecordExpression found " + first + ", " + rest)
         if (first eq null) {
           return RecordNodeSeq(List.empty)
         }
@@ -224,10 +228,10 @@ private class Generator(tree: Program) {
             println("RecordNodes " + evalExpr(prim, env)   + " found")
             println("Value: " + r.get(idCon.text))
             return r.get(idCon.text)
+          case _ => NodeSeq.Empty
         }
-        NodeSeq.Empty
       case _ =>
-        Text("")
+        NodeSeq.Empty
     }
   }
 
@@ -243,12 +247,11 @@ private class Generator(tree: Program) {
           val e = evalExpr(exp, env)
           return (e ne null) && (e != NodeSeq.Empty)
         case IsAPredicate(exp, t) =>
-          println("IsAPredicate found with  " + t + " type")
+          println("IsAPredicate( " + exp + ") found with  " + t + " type")
           t match {
-            case PredType("list") => exp.isInstanceOf[ListExpression]
-            case PredType("record") => exp.isInstanceOf[RecordExpression]
-            case PredType("string") => exp.isInstanceOf[StrCon]
-            case _ => false
+            case PredType("list") => return evalExpr(exp, env).isInstanceOf[ListNodeSeq]
+            case PredType("record") => return evalExpr(exp, env).isInstanceOf[RecordNodeSeq]
+            case PredType("string") => return exp.isInstanceOf[StrCon]
           }
         case _ =>      return false;
 
@@ -260,7 +263,7 @@ private class Generator(tree: Program) {
     op.head match {
       case PredicateOp("&&") => return resolvePredicate(p.head, env) && resolvePredicateChain(p.tail, op.tail, env)
       case PredicateOp("||") => return resolvePredicate(p.head, env) || resolvePredicateChain(p.tail, op.tail, env)
-      case _ => true
+      case _ => true; //should never happen
     }
 
   }

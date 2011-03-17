@@ -1,8 +1,14 @@
 module test004
 
 def main
-  if (a && b && c && !d)
+  let
+  	a = 1;
+	b = 2;
+	c = 3;
+  in
+  if (a || b && c && d)
 	  echo "x";
+  end
   echo "abc<em "bla">def<em "bla2">ghi<em em "a" + "b">";
   foobar echo "Hello, pretty!";
 end
@@ -11,16 +17,3 @@ def foobar
 	p "hello";
 end
 
-def foo
-	main;
-	foo bar baz bag;
-	foo("foo") echo "bar";
-end
-
-def x(a)
-	blah;
-end
-
-def y(a,b)
-	blah;
-end
