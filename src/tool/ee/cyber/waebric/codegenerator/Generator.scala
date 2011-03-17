@@ -22,11 +22,34 @@ private case class ListNodeSeq(var list: List[NodeSeq]) extends NodeSeq {
   }
 }
 
-private case class RecordNodeSeq(var record: Map[String, NodeSeq]) extends NodeSeq {
+trait RecordNodes {
+  def get(k: String): NodeSeq
+}
+
+private case class RecordNodeSeq(var records: List[KeyValueNodeSeq]) extends NodeSeq with RecordNodes {
   def theSeq: Seq[Node] = {
     var ret: Seq[Node] = Seq.empty
-    record.values.foreach(v => ret ++ v.toSeq)
+    records.foreach(v => ret ++= v.theSeq)
     ret
+  }
+  def get(k: String): NodeSeq = {
+    for (f <- records) {
+      if (f.get(k) != NodeSeq.Empty) {
+        return f.get(k)
+      }
+    }
+    return NodeSeq.Empty
+  }
+}
+
+private case class KeyValueNodeSeq(var key: String, var value: NodeSeq) extends NodeSeq with RecordNodes {
+  def theSeq: Seq[Node] = value.toSeq
+  def get(k: String): NodeSeq = {
+    if (k == key) {
+      return value
+    } else {
+      return NodeSeq.Empty
+    }
   }
 }
 
@@ -102,8 +125,10 @@ private class Generator(tree: Program) {
             var ret: NodeSeq = NodeSeq.Empty;
             list.foreach(f => ret ++= evalStatement(statement, env.expand(Map.empty, Map(idCon.text -> f))))
             ret
-          // todo - also for record expression
-
+          case RecordNodeSeq(records) =>
+            var ret: NodeSeq = NodeSeq.Empty
+            records.foreach{f => ret ++= evalStatement(statement, env.expand(Map.empty, Map(idCon.text -> f)))}
+            ret
           case _ =>  NodeSeq.Empty
         }
       case IfStatement(p, ifStat, elseStat) =>
@@ -180,13 +205,27 @@ private class Generator(tree: Program) {
         evalExpr(midText, env) ++
                 evalExpr(embed, env) ++
                 evalExpr(textTail, env)
+      case KeyValuePair(idCon, expression) =>
+        KeyValueNodeSeq(idCon.text, evalExpr(expression, env))
       case ListExpression(first, rest) =>
         if (first eq null) {
-          ListNodeSeq(List.empty)
+          return ListNodeSeq(List.empty)
         }
         new ListNodeSeq((List(first) ++ rest) map {f => evalExpr(f, env)} toList)
       case RecordExpression(first, rest) =>
-        new RecordNodeSeq(Map("a" -> Text("xxx"))) //todo
+        if (first eq null) {
+          return RecordNodeSeq(List.empty)
+        }
+        new RecordNodeSeq((List(first) ++ rest) map {
+          f => (evalExpr(f.asInstanceOf[KeyValuePair], env)).asInstanceOf[KeyValueNodeSeq]} toList)
+      case FieldExpression(prim, idCon) =>
+        evalExpr(prim, env) match {
+          case r: RecordNodes =>
+            println("RecordNodes " + evalExpr(prim, env)   + " found")
+            println("Value: " + r.get(idCon.text))
+            return r.get(idCon.text)
+        }
+        NodeSeq.Empty
       case _ =>
         Text("")
     }
@@ -201,7 +240,8 @@ private class Generator(tree: Program) {
           return !resolvePredicate(prim, env)
         case IsAPredicate(exp, null) =>
           println("IsAPredicate found with null predtype")
-          return (evalExpr(exp, env) ne null)
+          val e = evalExpr(exp, env)
+          return (e ne null) && (e != NodeSeq.Empty)
         case IsAPredicate(exp, t) =>
           println("IsAPredicate found with  " + t + " type")
           t match {
