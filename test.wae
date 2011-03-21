@@ -1,19 +1,17 @@
 module test004
 
-def main
-  let
-  	a = 1;
-	b = 2;
-	c = 3;
-  in
-  if (a || b && c && d)
-	  echo "x";
-  end
-  echo "abc<em "bla">def<em "bla2">ghi<em em "a" + "b">";
-  foobar echo "Hello, pretty!";
+site
+	blah.html: main;
+	blah2.html: main
 end
 
-def foobar
-	p "hello";
+site
+	out/blah2.html: main
+end
+
+site
+end
+def main
+	html();
 end
 

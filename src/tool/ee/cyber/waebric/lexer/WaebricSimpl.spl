@@ -2,10 +2,6 @@ grammar ee.cyber.waebric.lexer.WaebricSimpl;
 
 options (backtrack=true;)
 
-scalaheader {
- //import HelperMethods._
-}
-
 lexer-states(site, path, string)
 
 Program: 'module' IdCon Definitions;

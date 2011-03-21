@@ -65,11 +65,6 @@ private case class KeyValueNodeSeq(var key: String, var value: NodeSeq) extends 
 
 private class Generator(tree: Program) {
 
-  val errors = ArrayBuffer[SourceMessage]()
-  var buffer: StringBuffer = new StringBuffer
-
-
-
   def generate() {
 
     val globalEnv: Env = new Env(null, Map.empty, Map.empty)
@@ -77,7 +72,23 @@ private class Generator(tree: Program) {
     D.ebug(PrettyPrint.prettyPrint(tree))
     processDefs(tree, globalEnv)
 
-    // todo: first process sites. if not found, try with "main"
+    var sitesFound = false
+    tree.definitions.definition foreach (s => s match {
+      case Site(_, Mappings(mapping, _, rest), _) =>
+        sitesFound = true
+        List(mapping) ++ rest foreach {
+          f =>
+            val out = new java.io.FileWriter(f.path.text)
+            out.write(new PrettyPrinter(65, 2).formatNodes(
+              evalStatement(MarkupStatement(f.markup, MarkupSemi(Semicolon(";"))),
+                globalEnv)))
+            out.close
+        }
+      case _ => ()
+    })
+
+    if (sitesFound) return
+    // first process sites. if not found, try with "main"
     var nodes = evalStatement(
         MarkupStatement(
           Markup(
@@ -93,20 +104,14 @@ private class Generator(tree: Program) {
     println("\n" + new PrettyPrinter(65, 2).formatNodes(nodes))
   }
 
-  def processDefs(node: Program, env: Env) {
-    for (definition <- node.definitions.definition) {
-      var fnName:String = ""
-      definition match {
+  def processDefs(node: Program, env: Env) = {
+    node.definitions.definition foreach (d => d match {
         case FunctionDef(Function(name, _), _, _) =>
-         fnName = name.idCon.text
-         env.defs += (name.idCon.text -> definition.asInstanceOf[FunctionDef])
+         env.defs += (name.idCon.text -> d.asInstanceOf[FunctionDef])
         case FunctionDef(FunctionName(idCon), _, _) =>
-          fnName = idCon.text
-          env.defs += (idCon.text -> definition.asInstanceOf[FunctionDef])
+          env.defs += (idCon.text -> d.asInstanceOf[FunctionDef])
         case _ => ()
-      }
-      D.ebug("def " + fnName + " found")
-    }
+      })
     // make sure that all defs can see each other
     env.functionEnv = env
   }
