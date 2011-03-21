@@ -26,8 +26,6 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
   def varExpand(locals: Map[String, NodeSeq]): Env =
       expand((Map.empty, null), locals)
 
-  def setYield(y: NodeSeq) = {yieldValue = y}
-
   // returns (statements, argument names, env)
   def resolveFunction(name: String): Tuple3[List[Statement], List[IdCon], Env] = {
       D.ebug("Resolve function " + name)

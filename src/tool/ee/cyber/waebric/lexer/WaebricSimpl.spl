@@ -119,11 +119,6 @@ option Statement:
     | MarkupStatement;
 
 IfStatement: "if" "(" Predicate ")" ifStat=Statement ("else" elseStat=Statement)?;
-/* Does not work for some reason..
-option IfElseStatement: OnlyIf | IfElse;
-OnlyIf: "if" "(" Predicate ")" ifStat=Statement;
-OnlyElse: "else" elseStat=Statement;
-IfElse returns IfElseStatement {if (ee ne null) _self else ii}: ii=OnlyIf (ee=OnlyElse)?; */
 
 EachStatement: "each" "(" IdCon ":" Expression ")" Statement;
 LetStatement: "let" Assignment+ "in" Statement* EndTerm;
@@ -150,8 +145,6 @@ option PrimPredicate:
     | IsAPredicate;
 
 NotPredicate: "!" PrimPredicate;
-// TODO: just Expression should be converted to ExprPredicate or something. ? WHY
-// ExpPredicate: ListExpression | RecordExpression | PrimitiveExpression;
 IsAPredicate: Expression ("." PredType "?")?;
 
 MarkupExp: expr=Expression Semicolon;

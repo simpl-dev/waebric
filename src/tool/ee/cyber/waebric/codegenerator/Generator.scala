@@ -1,10 +1,6 @@
 package ee.cyber.waebric.codegenerator
 
-import collection.mutable.ArrayBuffer
 import collection.mutable.Map
-//import xml.Elem
-//import xml.XML
-import org.xml.sax._
 import xml._
 
 
@@ -385,7 +381,6 @@ private class Generator(tree: Program) {
 
   def stripEdges(s: String) = s.substring(1, s.length - 1)
   def stripPre(s: String) = s.substring(1, s.length)
-  def stripPost(s: String) = s.substring(0, s.length - 1)
 }
 
 object WaebricGenerator extends MainBase {
