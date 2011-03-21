@@ -179,12 +179,17 @@ private class Generator(tree: Program) {
     if (fun ne null) {
       val newEnv = bindParameters((fun._2, fun._3), markup, env)
       newEnv.yieldValue = body
-      D.ebug("Binded env: " + newEnv)
       evalStatements(fun._1, newEnv)
     } else {
-      // TODO: check if is XHTML tag.
-      addXHTMLAttributes(elem(desText, body), markup, env)
-    }
+      try {
+        XHTMLTags.withName(desText toUpperCase)
+        addXHTMLAttributes(elem(desText, body), markup, env)
+      } catch {
+        case e: java.util.NoSuchElementException =>
+          throw new Exception("Function " + desText + " not defined nor it is a XHTML tag")
+      }
+  }
+
   }
 
   // Processes expressions and embeddings.
@@ -209,10 +214,8 @@ private class Generator(tree: Program) {
                 evalExpr(embed, env) ++
                 evalExpr(textTail, env)
       case EmbedMarkup(markups) =>
-        D.ebug("EmbedMarkups found: " + markups.size)
         evalMarkups(markups, NodeSeq.Empty, env)
       case EmbedExp(markups, exp) =>
-        D.ebug("EmbedExp found")
         evalMarkups(markups, evalExpr(exp, env), env)
       case TextTailMid(midText, embed, textTail) =>
         evalExpr(midText, env) ++
@@ -248,23 +251,26 @@ private class Generator(tree: Program) {
 
 
   private def resolvePredicateChain(p: List[PrimPredicate], op: List[PredicateOp], env: Env): Boolean = {
+
+    def checkString(e: Expression): Boolean =  {
+      val n: NodeSeq = evalExpr(e, env)
+      return (n.size == 1 && n.head.isInstanceOf[Text])
+      //this might not be the best way to do it.
+    }
     def resolvePredicate(p: PrimPredicate, env: Env): Boolean = {
       p match {
         case NotPredicate(prim) =>
-          D.ebug("NotPredicate found")
           return !resolvePredicate(prim, env)
         case IsAPredicate(exp, null) =>
-          D.ebug("IsAPredicate found with null predtype")
           val e = evalExpr(exp, env)
           return (e ne null) && (e != NodeSeq.Empty)
         case IsAPredicate(exp, t) =>
-          D.ebug("IsAPredicate( " + exp + ") found with  " + t + " type")
           t match {
             case PredType("list") => return evalExpr(exp, env).isInstanceOf[ListNodeSeq]
             case PredType("record") => return evalExpr(exp, env).isInstanceOf[RecordNodeSeq]
-            case PredType("string") => return exp.isInstanceOf[StrCon]
+            case PredType("string") => return exp.isInstanceOf[StrCon] || checkString(exp)
           }
-        case _ =>      return false;
+        case _ => return false;
 
       }
     }
@@ -307,6 +313,7 @@ private class Generator(tree: Program) {
   }
 
   private def getMarkupArguments(markup: Markup): List[Argument] = markup.markupArguments match {
+        case MarkupArguments(null, rest) => List.empty
         case MarkupArguments(first, rest) => first :: rest
         case null => List.empty
       }
