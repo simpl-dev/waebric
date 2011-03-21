@@ -60,6 +60,7 @@ private case class KeyValueNodeSeq(var key: String, var value: NodeSeq) extends 
 }
 
 private class Generator(tree: Program) {
+  var errors: List[String] = List.empty
 
   def generate() {
 
@@ -74,15 +75,22 @@ private class Generator(tree: Program) {
         sitesFound = true
         List(mapping) ++ rest foreach {
           f =>
-            val out = new java.io.FileWriter(f.path.text)
-            out.write(new PrettyPrinter(65, 2).formatNodes(
-              evalStatement(MarkupStatement(f.markup, MarkupSemi(Semicolon(";"))),
-                globalEnv)))
-            out.close
+            var out: java.io.FileWriter = null
+            try {
+              out = new java.io.FileWriter(f.path.text)
+            } catch {
+              case e => errors ++= List("Could not open the file " + f.path.text + " for writing.")
+            }
+            if (out ne null) {
+              out.write(new PrettyPrinter(65, 2).formatNodes(
+                evalStatement(MarkupStatement(f.markup, MarkupSemi(Semicolon(";"))),
+                  globalEnv)))
+              out.close
+            }
         }
       case _ => ()
     })
-
+    showErrors
     if (sitesFound) return
     // first process sites. if not found, try with "main"
     var nodes = evalStatement(
@@ -98,18 +106,33 @@ private class Generator(tree: Program) {
       nodes = elem("html", nodes)
     }
     println("\n" + new PrettyPrinter(65, 2).formatNodes(nodes))
+    showErrors
   }
 
   def processDefs(node: Program, env: Env) = {
+    def checkExisting(s: String) = {
+      if (env.defs.keySet.contains(s)) {
+        errors ++= List("Duplicate definition " + s + " found")
+      }
+    }
     node.definitions.definition foreach (d => d match {
         case FunctionDef(Function(name, _), _, _) =>
+         checkExisting(name.idCon.text)
          env.defs += (name.idCon.text -> d.asInstanceOf[FunctionDef])
         case FunctionDef(FunctionName(idCon), _, _) =>
+          checkExisting(idCon.text)
           env.defs += (idCon.text -> d.asInstanceOf[FunctionDef])
         case _ => ()
       })
     // make sure that all defs can see each other
     env.functionEnv = env
+  }
+
+  def showErrors = {
+    if (!errors.isEmpty) {
+      println("Found " + errors.size + " errors")
+      errors foreach {e => println("ERROR: " + e)}
+    }
   }
 
   def evalStatements(statements: List[Statement], env: Env): NodeSeq =
@@ -118,9 +141,7 @@ private class Generator(tree: Program) {
   def evalStatement(statement: Statement, env: Env): NodeSeq =
     statement match {
       case EchoStatement(echoBody, _) =>
-        val ret = evalExpr(echoBody, env)
-        D.ebug("EchoStatement returned: " + ret.toString)
-        ret
+        evalExpr(echoBody, env)
       case MarkupStatement(markup, chain) =>
         val chainRet = evalMarkupChain(chain, env)
         evalMarkup(markup, chainRet, env)
@@ -184,11 +205,11 @@ private class Generator(tree: Program) {
     } else {
       try {
         XHTMLTags.withName(desText toUpperCase)
-        addXHTMLAttributes(elem(desText, body), markup, env)
       } catch {
         case e: java.util.NoSuchElementException =>
-          throw new Exception("Function " + desText + " not defined nor it is a XHTML tag")
+          errors ++= List("Function " + desText + " not defined nor it is a XHTML tag")
       }
+      addXHTMLAttributes(elem(desText, body), markup, env)
   }
 
   }
@@ -294,7 +315,11 @@ private class Generator(tree: Program) {
         newEnv = newEnv.varExpand(
           Map(a.asInstanceOf[VarBinding].idCon.text -> evalExpr(a.asInstanceOf[VarBinding].expression, env)))
       } else {
-        newEnv = newEnv.expand((Map(a.asInstanceOf[FuncBinding].func.text -> a.asInstanceOf[FuncBinding]), newEnv),
+        val funcName = a.asInstanceOf[FuncBinding].func.text
+        if (newEnv.resolveFunction(funcName) ne null) {
+          errors ++= List("Overdefined function " + funcName)
+        }
+        newEnv = newEnv.expand((Map(funcName -> a.asInstanceOf[FuncBinding]), newEnv),
           Map.empty)
       }
     }
@@ -321,10 +346,14 @@ private class Generator(tree: Program) {
 
   //funArgs contains the env for the function
   private def bindParameters(funArgs: Tuple2[List[IdCon], Env], markup: Markup, env: Env): Env = {
-      val markupArgs: List[Argument] = getMarkupArguments(markup)
+      var markupArgs: List[Argument] = getMarkupArguments(markup)
       // check whether number of arguments and number of parameters match
-      if (markupArgs.size < funArgs._1.size) throw new Exception("Wrong number of arguments(" + markupArgs.size
-          + ") for function " + markup.designator.idCon.text + ". Expected: " + funArgs._1.size)
+      if (markupArgs.size < funArgs._1.size) {
+        errors ++= List("Wrong number of arguments(" + markupArgs.size +
+          ") for function " + markup.designator.idCon.text + ". Expected: " + funArgs._1.size)
+        while (markupArgs.size < funArgs._1.size)
+          markupArgs ++= List(Txt("\"undef\""))
+      }
 
       val bindMap = funArgs._1 zip markupArgs map { f => (f._1.text, f._2 match {
                   case AttrArg(_, exp) => evalExpr(exp, env)

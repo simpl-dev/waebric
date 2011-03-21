@@ -4,6 +4,7 @@ import ee.cyber.simplicitas.{CommonNode}
 import ee.cyber.waebric.lexer._
 import collection.mutable.Map
 import xml.NodeSeq
+import xml.Text
 
 
 
