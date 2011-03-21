@@ -197,6 +197,7 @@ private class Generator(tree: Program) {
       case PreText(text) => Text(stripEdges(text))
       case PostText(text) => Text(stripEdges(text))
       case MidText(text) => Text(stripEdges(text))
+      case SymbolCon(text) => Text(stripPre(text))
 
 
       /* Expression handling */
@@ -351,8 +352,13 @@ private class Generator(tree: Program) {
           updateMap(pair)
       }
       // We are interested only in the AttrArg type
-      markupArgs filter { f => f.isInstanceOf[AttrArg]} map {
-          f => f match { case AttrArg(idCon, exp) =>  updateMap((idCon.text, evalExpr(exp, env)))}
+      //markupArgs filter { f => f.isInstanceOf[AttrArg]} map {
+      // or not:
+      markupArgs map {
+          f => f match {
+            case AttrArg(idCon, exp) =>  updateMap((idCon.text, evalExpr(exp, env)))
+            case _ => updateMap(("value", evalExpr(f, env)))
+          }
       }
       val attrs = map.keySet map {f => Attribute(f, map.get(f).get, Null)} toList;
       //attrs.foldLeft(elem)((e: Elem, m: MetaData) => e % m)
