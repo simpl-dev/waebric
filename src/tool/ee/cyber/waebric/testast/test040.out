@@ -8,9 +8,9 @@ Definitions(
         MarkupStatement(
           Markup(
             Designator( IdCon( "f" ), [  ] ),
-            Arguments(
-              Text( ""Hello"" ),
-              [ Text( "" world!"" ) ]
+            MarkupArguments(
+              Txt( ""Hello"" ),
+              [ Txt( "" world!"" ) ]
               )
             ),
           MarkupSemi( Semicolon( ";" ) )
@@ -27,11 +27,11 @@ Definitions(
         ),
       [
         EchoStatement(
-          CatExpression( Text( ""x = "" ), IdCon( "x" ) ),
+          CatExpression( Txt( ""x = "" ), IdCon( "x" ) ),
           Semicolon( ";" )
           ),
         EchoStatement(
-          CatExpression( Text( ""
+          CatExpression( Txt( ""
 y = "" ), IdCon( "y" ) ),
           Semicolon( ";" )
           )
@@ -41,6 +41,3 @@ y = "" ), IdCon( "y" ) ),
     ]
   )
 )
-RAW:
-Program(IdCon(test040),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(MarkupStatement(Markup(Designator(IdCon(f),List()),Arguments(Text("Hello"),List(Text(" world!")))),MarkupSemi(Semicolon(;)))),EndTerm(end)), FunctionDef(Function(FunctionName(IdCon(f)),FunctionArgs(Formals(IdCon(x),List(IdCon(y))))),List(EchoStatement(CatExpression(Text("x = "),IdCon(x)),Semicolon(;)), EchoStatement(CatExpression(Text("
-y = "),IdCon(y)),Semicolon(;))),EndTerm(end)))))

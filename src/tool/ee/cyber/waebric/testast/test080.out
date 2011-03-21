@@ -1,176 +1,40 @@
-0:114:Program {
-  definitions=16:114:Definitions {
-    definition=List {
-      16:114:FunctionDef {
-        arguments=(null)
-        endTerm=112:114:EndTerm {
-          text="end"
-        }
-        idCon=20:23:IdCon {
-          text="main"
-        }
-        statements=List {
-          27:110:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=(null)
-            echoStatement=(null)
-            ifStatement=(null)
-            letStatement=27:110:LetStatement {
-              assignment=List {
-                31:38:Assignment {
-                  funcBinding=(null)
-                  varBinding=31:38:VarBinding {
-                    expression=35:37:Expression {
-                      catExpression=35:37:CatExpression {
-                        left=35:37:FieldExpression {
-                          idCon=(null)
-                          primitiveExpression=35:37:Text {
-                            text=""a""
-                          }
-                        }
-                        right=(null)
-                      }
-                      listExpression=(null)
-                      recordExpression=(null)
-                    }
-                    idCon=31:31:IdCon {
-                      text="b"
-                    }
-                    semicolon=38:38:Semicolon {
-                      text=";"
-                    }
-                  }
-                }
-              }
-              endTerm=108:110:EndTerm {
-                text="end"
-              }
-              statement=List {
-                50:104:Statement {
-                  blockStatement=(null)
-                  cdataStatement=(null)
-                  commentStatement=(null)
-                  eachStatement=(null)
-                  echoStatement=(null)
-                  ifStatement=50:104:IfStatement {
-                    elseStat=95:104:Statement {
-                      blockStatement=(null)
-                      cdataStatement=(null)
-                      commentStatement=(null)
-                      eachStatement=(null)
-                      echoStatement=95:104:EchoStatement {
-                        embedding=(null)
-                        expression=100:103:Expression {
-                          catExpression=100:103:CatExpression {
-                            left=100:103:FieldExpression {
-                              idCon=(null)
-                              primitiveExpression=100:103:Text {
-                                text=""No""
-                              }
-                            }
-                            right=(null)
-                          }
-                          listExpression=(null)
-                          recordExpression=(null)
-                        }
-                        semicolon=104:104:Semicolon {
-                          text=";"
-                        }
-                      }
-                      ifStatement=(null)
-                      letStatement=(null)
-                      markupStatement=(null)
-                      yieldStatement=(null)
-                    }
-                    ifStat=68:78:Statement {
-                      blockStatement=(null)
-                      cdataStatement=(null)
-                      commentStatement=(null)
-                      eachStatement=(null)
-                      echoStatement=68:78:EchoStatement {
-                        embedding=(null)
-                        expression=73:77:Expression {
-                          catExpression=73:77:CatExpression {
-                            left=73:77:FieldExpression {
-                              idCon=(null)
-                              primitiveExpression=73:77:Text {
-                                text=""Yes""
-                              }
-                            }
-                            right=(null)
-                          }
-                          listExpression=(null)
-                          recordExpression=(null)
-                        }
-                        semicolon=78:78:Semicolon {
-                          text=";"
-                        }
-                      }
-                      ifStatement=(null)
-                      letStatement=(null)
-                      markupStatement=(null)
-                      yieldStatement=(null)
-                    }
-                    predicate=54:59:Predicate {
-                      left=54:54:IsAPredicate {
-                        expression=54:54:Expression {
-                          catExpression=54:54:CatExpression {
-                            left=54:54:FieldExpression {
-                              idCon=(null)
-                              primitiveExpression=54:54:IdCon {
-                                text="a"
-                              }
-                            }
-                            right=(null)
-                          }
-                          listExpression=(null)
-                          recordExpression=(null)
-                        }
-                        predType=(null)
-                      }
-                      op=List {
-                        56:57:PredicateOp {
-                          text="||"
-                        }
-                      }
-                      rest=List {
-                        59:59:IsAPredicate {
-                          expression=59:59:Expression {
-                            catExpression=59:59:CatExpression {
-                              left=59:59:FieldExpression {
-                                idCon=(null)
-                                primitiveExpression=59:59:IdCon {
-                                  text="b"
-                                }
-                              }
-                              right=(null)
-                            }
-                            listExpression=(null)
-                            recordExpression=(null)
-                          }
-                          predType=(null)
-                        }
-                      }
-                    }
-                  }
-                  letStatement=(null)
-                  markupStatement=(null)
-                  yieldStatement=(null)
-                }
-              }
-            }
-            markupStatement=(null)
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test080"
-  }
-}
-RAW:
-Program(IdCon(test080),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,LetStatement(List(Assignment(VarBinding(IdCon(b),Expression(CatExpression(FieldExpression(Text("a"),null),null),null,null),Semicolon(;)),null)),List(Statement(IfStatement(Predicate(IsAPredicate(Expression(CatExpression(FieldExpression(IdCon(a),null),null),null,null),null),List(PredicateOp(||)),List(IsAPredicate(Expression(CatExpression(FieldExpression(IdCon(b),null),null),null,null),null))),Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(Text("Yes"),null),null),null,null),null,Semicolon(;)),null,null,null),Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(Text("No"),null),null),null,null),null,Semicolon(;)),null,null,null)),null,null,null,null,null,null,null,null)),EndTerm(end)),null,null,null,null,null,null)),EndTerm(end)))))
+Program(
+IdCon( "test080" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        LetStatement(
+          [
+            VarBinding(
+              IdCon( "b" ),
+              Txt( ""a"" ),
+              Semicolon( ";" )
+              )
+            ],
+          [
+            IfStatement(
+              Predicate(
+                IsAPredicate( IdCon( "a" ), null ),
+                [ PredicateOp( "||" ) ],
+                [ IsAPredicate( IdCon( "b" ), null ) ]
+                ),
+              EchoStatement(
+                Txt( ""Yes"" ),
+                Semicolon( ";" )
+                ),
+              EchoStatement(
+                Txt( ""No"" ),
+                Semicolon( ";" )
+                )
+              )
+            ],
+          EndTerm( "end" )
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)

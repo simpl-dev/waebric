@@ -9,7 +9,7 @@ Definitions(
           [
             FuncBinding(
               IdCon( "f" ),
-              IdCon( "x" ),
+              FuncArguments( IdCon( "x" ), [  ] ),
               EchoStatement(
                 IdCon( "x" ),
                 Semicolon( ";" )
@@ -20,7 +20,7 @@ Definitions(
             MarkupStatement(
               Markup(
                 Designator( IdCon( "f" ), [  ] ),
-                Text( ""Hello"" )
+                MarkupArguments( Txt( ""Hello"" ), [  ] )
                 ),
               MarkupSemi( Semicolon( ";" ) )
               )
@@ -33,5 +33,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test018),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(LetStatement(List(FuncBinding(IdCon(f),IdCon(x),EchoStatement(IdCon(x),Semicolon(;)))),List(MarkupStatement(Markup(Designator(IdCon(f),List()),Text("Hello")),MarkupSemi(Semicolon(;)))),EndTerm(end))),EndTerm(end)))))

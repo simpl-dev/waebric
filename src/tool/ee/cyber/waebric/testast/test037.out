@@ -8,7 +8,7 @@ Definitions(
         MarkupStatement(
           Markup(
             Designator( IdCon( "f" ), [  ] ),
-            Arguments( null, [  ] )
+            MarkupArguments( null, [  ] )
             ),
           MarkupSemi( Semicolon( ";" ) )
           )
@@ -20,13 +20,9 @@ Definitions(
         FunctionName( IdCon( "f" ) ),
         FunctionArgs( null )
         ),
-      [
-        EchoStatement( Text( ""bla"" ), Semicolon( ";" ) )
-        ],
+      [ EchoStatement( Txt( ""bla"" ), Semicolon( ";" ) ) ],
       EndTerm( "end" )
       )
     ]
   )
 )
-RAW:
-Program(IdCon(test037),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(MarkupStatement(Markup(Designator(IdCon(f),List()),Arguments(null,List())),MarkupSemi(Semicolon(;)))),EndTerm(end)), FunctionDef(Function(FunctionName(IdCon(f)),FunctionArgs(null)),List(EchoStatement(Text("bla"),Semicolon(;))),EndTerm(end)))))

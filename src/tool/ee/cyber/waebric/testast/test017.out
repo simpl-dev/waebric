@@ -11,7 +11,7 @@ Definitions(
               IdCon( "f" ),
               null,
               EchoStatement(
-                Text( ""abc"" ),
+                Txt( ""abc"" ),
                 Semicolon( ";" )
                 )
               )
@@ -33,5 +33,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test017),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(LetStatement(List(FuncBinding(IdCon(f),null,EchoStatement(Text("abc"),Semicolon(;)))),List(MarkupStatement(Markup(Designator(IdCon(f),List()),null),MarkupSemi(Semicolon(;)))),EndTerm(end))),EndTerm(end)))))

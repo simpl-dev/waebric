@@ -9,12 +9,12 @@ Definitions(
           [
             VarBinding(
               IdCon( "y" ),
-              Text( "" world!"" ),
+              Txt( "" world!"" ),
               Semicolon( ";" )
               ),
             FuncBinding(
               IdCon( "f" ),
-              IdCon( "x" ),
+              FuncArguments( IdCon( "x" ), [  ] ),
               EchoStatement(
                 CatExpression( IdCon( "x" ), IdCon( "y" ) ),
                 Semicolon( ";" )
@@ -25,7 +25,7 @@ Definitions(
             MarkupStatement(
               Markup(
                 Designator( IdCon( "f" ), [  ] ),
-                Text( ""Hello"" )
+                MarkupArguments( Txt( ""Hello"" ), [  ] )
                 ),
               MarkupSemi( Semicolon( ";" ) )
               )
@@ -38,5 +38,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test020),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(LetStatement(List(VarBinding(IdCon(y),Text(" world!"),Semicolon(;)), FuncBinding(IdCon(f),IdCon(x),EchoStatement(CatExpression(IdCon(x),IdCon(y)),Semicolon(;)))),List(MarkupStatement(Markup(Designator(IdCon(f),List()),Text("Hello")),MarkupSemi(Semicolon(;)))),EndTerm(end))),EndTerm(end)))))

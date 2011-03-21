@@ -54,18 +54,30 @@ private case class KeyValueNodeSeq(var key: String, var value: NodeSeq) extends 
   }
 }
 
+object D {
+  val enableDebug = false
+
+
+  def dbg(str: String) = {
+    if (enableDebug == true) {
+      println(str)
+    }
+  }
+}
+
 
 private class Generator(tree: Program) {
 
   val errors = ArrayBuffer[SourceMessage]()
   var buffer: StringBuffer = new StringBuffer
 
+
+
   def generate() {
 
     val globalEnv: Env = new Env(null, Map.empty, Map.empty)
 
-    println(PrettyPrint.prettyPrint(tree))
-
+    D.dbg(PrettyPrint.prettyPrint(tree))
     processDefs(tree, globalEnv)
 
     // todo: first process sites. if not found, try with "main"
@@ -85,7 +97,7 @@ private class Generator(tree: Program) {
   }
 
   def processDefs(node: Program, env: Env) {
-    println("ProcessDefs called")
+    D.dbg("ProcessDefs called")
 
     for (definition <- node.definitions.definition) {
       var fnName:String = ""
@@ -98,7 +110,7 @@ private class Generator(tree: Program) {
           env.defs += (idCon.text -> definition.asInstanceOf[FunctionDef])
         case _ => ()
       }
-      println("def " + fnName + " found")
+      D.dbg("def " + fnName + " found")
     }
   }
 
@@ -109,7 +121,7 @@ private class Generator(tree: Program) {
     statement match {
       case EchoStatement(echoBody, _) =>
         val ret = evalExpr(echoBody, env)
-        println("EchoStatement returned: " + ret.toString)
+        D.dbg("EchoStatement returned: " + ret.toString)
         ret
       case MarkupStatement(markup, chain) =>
         val chainRet = evalMarkupChain(chain, env)
@@ -164,7 +176,7 @@ private class Generator(tree: Program) {
         evalMarkup(m, b, env))
 
   def evalMarkup(markup: Markup, body: NodeSeq, env: Env): NodeSeq = {
-    println("evalMarkup(" + markup + ", " + body + ")")
+    D.dbg("evalMarkup(" + markup + ", " + body + ")")
     val desText = markup.designator.idCon.text
     val fun = env.resolveFunction(desText)
     if (fun ne null) {
@@ -198,17 +210,17 @@ private class Generator(tree: Program) {
                 evalExpr(embed, env) ++
                 evalExpr(textTail, env)
       case EmbedMarkup(markups) =>
-        println("EmbedMarkups found: " + markups.size)
+        D.dbg("EmbedMarkups found: " + markups.size)
         evalMarkups(markups, NodeSeq.Empty, env)
       case EmbedExp(markups, exp) =>
-        println("EmbedExp found")
+        D.dbg("EmbedExp found")
         evalMarkups(markups, evalExpr(exp, env), env)
       case TextTailMid(midText, embed, textTail) =>
         evalExpr(midText, env) ++
                 evalExpr(embed, env) ++
                 evalExpr(textTail, env)
       case KeyValuePair(idCon, expression) =>
-        println("KeyValuePair found " + idCon + ", " + expression)
+        D.dbg("KeyValuePair found " + idCon + ", " + expression)
         KeyValueNodeSeq(idCon.text, evalExpr(expression, env))
       case ListExpression(first, rest) =>
         if (first eq null) {
@@ -216,7 +228,7 @@ private class Generator(tree: Program) {
         }
         new ListNodeSeq((List(first) ++ rest) map {f => evalExpr(f, env)} toList)
       case RecordExpression(first, rest) =>
-        println("RecordExpression found " + first + ", " + rest)
+        D.dbg("RecordExpression found " + first + ", " + rest)
         if (first eq null) {
           return RecordNodeSeq(List.empty)
         }
@@ -225,8 +237,8 @@ private class Generator(tree: Program) {
       case FieldExpression(prim, idCon) =>
         evalExpr(prim, env) match {
           case r: RecordNodes =>
-            println("RecordNodes " + evalExpr(prim, env)   + " found")
-            println("Value: " + r.get(idCon.text))
+            D.dbg("RecordNodes " + evalExpr(prim, env)   + " found")
+            D.dbg("Value: " + r.get(idCon.text))
             return r.get(idCon.text)
           case _ => NodeSeq.Empty
         }
@@ -240,14 +252,14 @@ private class Generator(tree: Program) {
     def resolvePredicate(p: PrimPredicate, env: Env): Boolean = {
       p match {
         case NotPredicate(prim) =>
-          println("NotPredicate found")
+          D.dbg("NotPredicate found")
           return !resolvePredicate(prim, env)
         case IsAPredicate(exp, null) =>
-          println("IsAPredicate found with null predtype")
+          D.dbg("IsAPredicate found with null predtype")
           val e = evalExpr(exp, env)
           return (e ne null) && (e != NodeSeq.Empty)
         case IsAPredicate(exp, t) =>
-          println("IsAPredicate( " + exp + ") found with  " + t + " type")
+          D.dbg("IsAPredicate( " + exp + ") found with  " + t + " type")
           t match {
             case PredType("list") => return evalExpr(exp, env).isInstanceOf[ListNodeSeq]
             case PredType("record") => return evalExpr(exp, env).isInstanceOf[RecordNodeSeq]
@@ -269,12 +281,15 @@ private class Generator(tree: Program) {
   }
 
   private def applyAssignments(assignments: List[Assignment], env: Env): Env = {
+      // variable assignments are by default scoped lexically as they are evaluated during the env expand
       val aMap = assignments filter { a => a.isInstanceOf[VarBinding] } map {
           a => (a.asInstanceOf[VarBinding].idCon.text, evalExpr(a.asInstanceOf[VarBinding].expression, env))} toMap;
+
+      // lexical scoping is needed for function as it is not evaluated during the env expand
       val fMap = assignments filter { f => f.isInstanceOf[FuncBinding] } map {
           f => (f.asInstanceOf[FuncBinding].func.text, f.asInstanceOf[FuncBinding]) } toMap;
-      println("aMap: " + aMap)
-      println("fMap: " + fMap)
+      D.dbg("aMap: " + aMap)
+      D.dbg("fMap: " + fMap)
       return env.expand(collection.mutable.Map(fMap.toSeq: _*), collection.mutable.Map(aMap.toSeq: _*))
 
   }
@@ -283,7 +298,7 @@ private class Generator(tree: Program) {
         case MarkupArguments(first, rest) =>
             first :: rest
         case null =>
-            println("No markupArguments found")
+            D.dbg("No markupArguments found")
             List.empty
       }
 

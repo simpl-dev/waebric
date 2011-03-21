@@ -8,9 +8,12 @@ Definitions(
         MarkupStatement(
           Markup(
             Designator( IdCon( "html" ), [  ] ),
-            Text( ""Hello world!"" )
+            null
             ),
-          MarkupSemi( Semicolon( ";" ) )
+          MarkupExp(
+            Txt( ""Hello world!"" ),
+            Semicolon( ";" )
+            )
           )
         ],
       EndTerm( "end" )
@@ -18,5 +21,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test022),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(MarkupStatement(Markup(Designator(IdCon(html),List()),Text("Hello world!")),MarkupSemi(Semicolon(;)))),EndTerm(end)))))

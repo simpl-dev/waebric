@@ -23,9 +23,9 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
 
   // returns statements, argument names
   def resolveFunction(name: String): Tuple2[List[Statement], List[IdCon]] = {
-      println("Resolve function " + name)
+      D.dbg("Resolve function " + name)
       if (funcs.contains(name)) {
-          println("Function found")
+          D.dbg("Function found")
           funcs(name) match {
               case FuncBinding(idCon, null, statement) =>
                   return (List(statement), List.empty)
@@ -35,7 +35,7 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
           }
       }
       if (defs.contains(name)) {
-          println("Definition found")
+          D.dbg("Definition found")
           defs(name) match {
               case FunctionDef(Function(_, FunctionArgs(Formals(first, rest))), statements, _) =>
                   return (statements, first :: rest)
@@ -54,9 +54,9 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
   }
 
   def resolveVariable(name: String): NodeSeq = {
-      println("Resolve variable " + name)
+      D.dbg("Resolve variable " + name)
       if (locals.contains(name)) {
-          println("Variable found")
+          D.dbg("Variable found")
           return locals(name)
       }
       if (parent ne null) {

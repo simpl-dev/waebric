@@ -15,5 +15,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test005),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(EchoStatement(CatExpression(Txt("abc"),Txt("cdef")),Semicolon(;))),EndTerm(end)))))

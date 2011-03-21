@@ -1,78 +1,29 @@
-0:55:Program {
-  definitions=16:55:Definitions {
-    definition=List {
-      16:55:FunctionDef {
-        arguments=(null)
-        endTerm=53:55:EndTerm {
-          text="end"
-        }
-        idCon=20:23:IdCon {
-          text="main"
-        }
-        statements=List {
-          27:51:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=(null)
-            echoStatement=27:51:EchoStatement {
-              embedding=32:50:Embedding {
-                embed=40:47:Embed {
-                  expression=42:47:Expression {
-                    catExpression=42:47:CatExpression {
-                      left=42:47:FieldExpression {
-                        idCon=(null)
-                        primitiveExpression=42:47:Text {
-                          text=""here""
-                        }
-                      }
-                      right=(null)
-                    }
-                    listExpression=(null)
-                    recordExpression=(null)
-                  }
-                  markup=List {
-                    40:40:Markup {
-                      arguments=(null)
-                      designator=40:40:Designator {
-                        attribute=List {
-                        }
-                        idCon=40:40:IdCon {
-                          text="a"
-                        }
-                      }
-                    }
-                  }
-                }
-                preText=32:39:PreText {
-                  text=""Click <"
-                }
-                textTail=48:50:TextTail {
-                  embed=(null)
-                  midText=(null)
-                  postText=48:50:PostText {
-                    text=">.""
-                  }
-                  textTail=(null)
-                }
-              }
-              expression=(null)
-              semicolon=51:51:Semicolon {
-                text=";"
-              }
-            }
-            ifStatement=(null)
-            letStatement=(null)
-            markupStatement=(null)
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test071"
-  }
-}
-RAW:
-Program(IdCon(test071),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,EchoStatement(null,Embedding(PreText("Click <),Embed(List(Markup(Designator(IdCon(a),List()),null)),Expression(CatExpression(FieldExpression(Text("here"),null),null),null,null)),TextTail(PostText(>."),null,null,null)),Semicolon(;)),null,null,null)),EndTerm(end)))))
+Program(
+IdCon( "test071" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        EchoStatement(
+          Embedding(
+            PreText( ""Click <" ),
+            EmbedExp(
+              [
+                Markup(
+                  Designator( IdCon( "a" ), [  ] ),
+                  null
+                  )
+                ],
+              Txt( ""here"" )
+              ),
+            PostText( ">."" )
+            ),
+          Semicolon( ";" )
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)

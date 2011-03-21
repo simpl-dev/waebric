@@ -1,64 +1,17 @@
-0:35:Program {
-  definitions=16:35:Definitions {
-    definition=List {
-      16:35:FunctionDef {
-        arguments=(null)
-        endTerm=33:35:EndTerm {
-          text="end"
-        }
-        idCon=20:23:IdCon {
-          text="main"
-        }
-        statements=List {
-          27:31:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=(null)
-            echoStatement=(null)
-            ifStatement=(null)
-            letStatement=(null)
-            markupStatement=27:31:MarkupStatement {
-              markup=27:27:Markup {
-                arguments=(null)
-                designator=27:27:Designator {
-                  attribute=List {
-                  }
-                  idCon=27:27:IdCon {
-                    text="a"
-                  }
-                }
-              }
-              markupChain=29:31:MarkupChain {
-                embedding=(null)
-                expression=29:30:Expression {
-                  catExpression=29:30:CatExpression {
-                    left=29:30:FieldExpression {
-                      idCon=(null)
-                      primitiveExpression=29:30:Text {
-                        text=""""
-                      }
-                    }
-                    right=(null)
-                  }
-                  listExpression=(null)
-                  recordExpression=(null)
-                }
-                semicolon=31:31:Semicolon {
-                  text=";"
-                }
-                statement=(null)
-              }
-            }
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test063"
-  }
-}
-RAW:
-Program(IdCon(test063),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(a),List()),null),MarkupChain(Semicolon(;),Expression(CatExpression(FieldExpression(Text(""),null),null),null,null),null,null)))),EndTerm(end)))))
+Program(
+IdCon( "test063" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        MarkupStatement(
+          Markup( Designator( IdCon( "a" ), [  ] ), null ),
+          MarkupExp( Txt( """" ), Semicolon( ";" ) )
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)

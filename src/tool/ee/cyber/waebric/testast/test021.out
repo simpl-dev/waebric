@@ -9,12 +9,12 @@ Definitions(
           [
             VarBinding(
               IdCon( "x" ),
-              Text( ""no way"" ),
+              Txt( ""no way"" ),
               Semicolon( ";" )
               ),
             VarBinding(
               IdCon( "x" ),
-              Text( ""yes"" ),
+              Txt( ""yes"" ),
               Semicolon( ";" )
               )
             ],
@@ -29,5 +29,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test021),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(LetStatement(List(VarBinding(IdCon(x),Text("no way"),Semicolon(;)), VarBinding(IdCon(x),Text("yes"),Semicolon(;))),List(EchoStatement(IdCon(x),Semicolon(;))),EndTerm(end))),EndTerm(end)))))

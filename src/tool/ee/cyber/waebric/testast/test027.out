@@ -8,15 +8,18 @@ Definitions(
         MarkupStatement(
           Markup(
             Designator( IdCon( "html" ), [  ] ),
-            CatExpression(
-              Text( ""Hello"" ),
-              CatExpression(
-                Text( "" "" ),
-                Text( ""world!"" )
-                )
-              )
+            null
             ),
-          MarkupSemi( Semicolon( ";" ) )
+          MarkupExp(
+            CatExpression(
+              Txt( ""Hello"" ),
+              CatExpression(
+                Txt( "" "" ),
+                Txt( ""world!"" )
+                )
+              ),
+            Semicolon( ";" )
+            )
           )
         ],
       EndTerm( "end" )
@@ -24,5 +27,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test027),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(MarkupStatement(Markup(Designator(IdCon(html),List()),CatExpression(Text("Hello"),CatExpression(Text(" "),Text("world!")))),MarkupSemi(Semicolon(;)))),EndTerm(end)))))

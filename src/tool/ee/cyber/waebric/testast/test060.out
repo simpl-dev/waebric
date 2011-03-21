@@ -1,246 +1,49 @@
-0:85:Program {
-  definitions=16:85:Definitions {
-    definition=List {
-      16:39:FunctionDef {
-        arguments=(null)
-        endTerm=37:39:EndTerm {
-          text="end"
-        }
-        idCon=20:20:IdCon {
-          text="f"
-        }
-        statements=List {
-          24:35:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=(null)
-            echoStatement=(null)
-            ifStatement=(null)
-            letStatement=(null)
-            markupStatement=24:35:MarkupStatement {
-              markup=24:24:Markup {
-                arguments=(null)
-                designator=24:24:Designator {
-                  attribute=List {
-                  }
-                  idCon=24:24:IdCon {
-                    text="p"
-                  }
-                }
-              }
-              markupChain=26:35:MarkupChain {
-                embedding=(null)
-                expression=(null)
-                semicolon=(null)
-                statement=26:35:Statement {
-                  blockStatement=(null)
-                  cdataStatement=(null)
-                  commentStatement=(null)
-                  eachStatement=(null)
-                  echoStatement=(null)
-                  ifStatement=(null)
-                  letStatement=(null)
-                  markupStatement=26:35:MarkupStatement {
-                    markup=26:26:Markup {
-                      arguments=(null)
-                      designator=26:26:Designator {
-                        attribute=List {
-                        }
-                        idCon=26:26:IdCon {
-                          text="p"
-                        }
-                      }
-                    }
-                    markupChain=28:35:MarkupChain {
-                      embedding=(null)
-                      expression=(null)
-                      semicolon=(null)
-                      statement=28:35:Statement {
-                        blockStatement=(null)
-                        cdataStatement=(null)
-                        commentStatement=(null)
-                        eachStatement=(null)
-                        echoStatement=(null)
-                        ifStatement=(null)
-                        letStatement=(null)
-                        markupStatement=28:35:MarkupStatement {
-                          markup=28:28:Markup {
-                            arguments=(null)
-                            designator=28:28:Designator {
-                              attribute=List {
-                              }
-                              idCon=28:28:IdCon {
-                                text="p"
-                              }
-                            }
-                          }
-                          markupChain=30:35:MarkupChain {
-                            embedding=(null)
-                            expression=(null)
-                            semicolon=(null)
-                            statement=30:35:Statement {
-                              blockStatement=(null)
-                              cdataStatement=(null)
-                              commentStatement=(null)
-                              eachStatement=(null)
-                              echoStatement=(null)
-                              ifStatement=(null)
-                              letStatement=(null)
-                              markupStatement=(null)
-                              yieldStatement=30:35:YieldStatement {
-                                semicolon=35:35:Semicolon {
-                                  text=";"
-                                }
-                              }
-                            }
-                          }
-                        }
-                        yieldStatement=(null)
-                      }
-                    }
-                  }
-                  yieldStatement=(null)
-                }
-              }
-            }
-            yieldStatement=(null)
-          }
-        }
-      }
-      42:85:FunctionDef {
-        arguments=(null)
-        endTerm=83:85:EndTerm {
-          text="end"
-        }
-        idCon=46:49:IdCon {
-          text="main"
-        }
-        statements=List {
-          54:81:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=54:81:EachStatement {
-              expression=63:71:Expression {
-                catExpression=(null)
-                listExpression=63:71:ListExpression {
-                  first=64:64:Expression {
-                    catExpression=64:64:CatExpression {
-                      left=64:64:FieldExpression {
-                        idCon=(null)
-                        primitiveExpression=64:64:NatCon {
-                          text="1"
-                        }
-                      }
-                      right=(null)
-                    }
-                    listExpression=(null)
-                    recordExpression=(null)
-                  }
-                  rest=List {
-                    66:66:Expression {
-                      catExpression=66:66:CatExpression {
-                        left=66:66:FieldExpression {
-                          idCon=(null)
-                          primitiveExpression=66:66:NatCon {
-                            text="2"
-                          }
-                        }
-                        right=(null)
-                      }
-                      listExpression=(null)
-                      recordExpression=(null)
-                    }
-                    68:68:Expression {
-                      catExpression=68:68:CatExpression {
-                        left=68:68:FieldExpression {
-                          idCon=(null)
-                          primitiveExpression=68:68:NatCon {
-                            text="3"
-                          }
-                        }
-                        right=(null)
-                      }
-                      listExpression=(null)
-                      recordExpression=(null)
-                    }
-                    70:70:Expression {
-                      catExpression=70:70:CatExpression {
-                        left=70:70:FieldExpression {
-                          idCon=(null)
-                          primitiveExpression=70:70:NatCon {
-                            text="4"
-                          }
-                        }
-                        right=(null)
-                      }
-                      listExpression=(null)
-                      recordExpression=(null)
-                    }
-                  }
-                }
-                recordExpression=(null)
-              }
-              idCon=60:60:IdCon {
-                text="x"
-              }
-              statement=78:81:Statement {
-                blockStatement=(null)
-                cdataStatement=(null)
-                commentStatement=(null)
-                eachStatement=(null)
-                echoStatement=(null)
-                ifStatement=(null)
-                letStatement=(null)
-                markupStatement=78:81:MarkupStatement {
-                  markup=78:78:Markup {
-                    arguments=(null)
-                    designator=78:78:Designator {
-                      attribute=List {
-                      }
-                      idCon=78:78:IdCon {
-                        text="f"
-                      }
-                    }
-                  }
-                  markupChain=80:81:MarkupChain {
-                    embedding=(null)
-                    expression=80:80:Expression {
-                      catExpression=80:80:CatExpression {
-                        left=80:80:FieldExpression {
-                          idCon=(null)
-                          primitiveExpression=80:80:IdCon {
-                            text="x"
-                          }
-                        }
-                        right=(null)
-                      }
-                      listExpression=(null)
-                      recordExpression=(null)
-                    }
-                    semicolon=81:81:Semicolon {
-                      text=";"
-                    }
-                    statement=(null)
-                  }
-                }
-                yieldStatement=(null)
-              }
-            }
-            echoStatement=(null)
-            ifStatement=(null)
-            letStatement=(null)
-            markupStatement=(null)
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test060"
-  }
-}
-RAW:
-Program(IdCon(test060),Definitions(List(FunctionDef(IdCon(f),null,List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(p),List()),null),MarkupChain(null,null,null,Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(p),List()),null),MarkupChain(null,null,null,Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(p),List()),null),MarkupChain(null,null,null,Statement(null,null,null,null,null,null,null,YieldStatement(Semicolon(;)),null))))))))))),EndTerm(end)), FunctionDef(IdCon(main),null,List(Statement(null,EachStatement(IdCon(x),Expression(null,ListExpression(Expression(CatExpression(FieldExpression(NatCon(1),null),null),null,null),List(Expression(CatExpression(FieldExpression(NatCon(2),null),null),null,null), Expression(CatExpression(FieldExpression(NatCon(3),null),null),null,null), Expression(CatExpression(FieldExpression(NatCon(4),null),null),null,null))),null),Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(f),List()),null),MarkupChain(Semicolon(;),Expression(CatExpression(FieldExpression(IdCon(x),null),null),null,null),null,null)))),null,null,null,null,null,null,null)),EndTerm(end)))))
+Program(
+IdCon( "test060" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "f" ) ),
+      [
+        MarkupStatement(
+          Markup( Designator( IdCon( "p" ), [  ] ), null ),
+          MarkupStatement(
+            Markup(
+              Designator( IdCon( "p" ), [  ] ),
+              null
+              ),
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "p" ), [  ] ),
+                null
+                ),
+              YieldStatement( Semicolon( ";" ) )
+              )
+            )
+          )
+        ],
+      EndTerm( "end" )
+      ),
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        EachStatement(
+          IdCon( "x" ),
+          ListExpression(
+            NatCon( "1" ),
+            [ NatCon( "2" ), NatCon( "3" ), NatCon( "4" ) ]
+            ),
+          MarkupStatement(
+            Markup(
+              Designator( IdCon( "f" ), [  ] ),
+              null
+              ),
+            MarkupExp( IdCon( "x" ), Semicolon( ";" ) )
+            )
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)

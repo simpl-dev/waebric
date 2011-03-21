@@ -1,140 +1,44 @@
-0:101:Program {
-  definitions=16:101:Definitions {
-    definition=List {
-      16:101:FunctionDef {
-        arguments=(null)
-        endTerm=99:101:EndTerm {
-          text="end"
-        }
-        idCon=20:23:IdCon {
-          text="main"
-        }
-        statements=List {
-          27:97:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=(null)
-            echoStatement=(null)
-            ifStatement=(null)
-            letStatement=27:97:LetStatement {
-              assignment=List {
-                31:50:Assignment {
-                  funcBinding=(null)
-                  varBinding=31:50:VarBinding {
-                    expression=35:49:Expression {
-                      catExpression=35:49:CatExpression {
-                        left=35:49:FieldExpression {
-                          idCon=(null)
-                          primitiveExpression=35:49:Text {
-                            text=""www.google.nl""
-                          }
-                        }
-                        right=(null)
-                      }
-                      listExpression=(null)
-                      recordExpression=(null)
-                    }
-                    idCon=31:31:IdCon {
-                      text="x"
-                    }
-                    semicolon=50:50:Semicolon {
-                      text=";"
-                    }
-                  }
-                }
-              }
-              endTerm=95:97:EndTerm {
-                text="end"
-              }
-              statement=List {
-                61:91:Statement {
-                  blockStatement=(null)
-                  cdataStatement=(null)
-                  commentStatement=(null)
-                  eachStatement=(null)
-                  echoStatement=(null)
-                  ifStatement=(null)
-                  letStatement=(null)
-                  markupStatement=61:91:MarkupStatement {
-                    markup=61:81:Markup {
-                      arguments=62:81:Arguments {
-                        first=63:80:AttrArg {
-                          expression=68:80:Expression {
-                            catExpression=68:80:CatExpression {
-                              left=68:76:FieldExpression {
-                                idCon=(null)
-                                primitiveExpression=68:76:Text {
-                                  text=""http://""
-                                }
-                              }
-                              right=80:80:Expression {
-                                catExpression=80:80:CatExpression {
-                                  left=80:80:FieldExpression {
-                                    idCon=(null)
-                                    primitiveExpression=80:80:IdCon {
-                                      text="x"
-                                    }
-                                  }
-                                  right=(null)
-                                }
-                                listExpression=(null)
-                                recordExpression=(null)
-                              }
-                            }
-                            listExpression=(null)
-                            recordExpression=(null)
-                          }
-                          idCon=63:66:IdCon {
-                            text="href"
-                          }
-                        }
-                        rest=List {
-                        }
-                      }
-                      designator=61:61:Designator {
-                        attribute=List {
-                        }
-                        idCon=61:61:IdCon {
-                          text="a"
-                        }
-                      }
-                    }
-                    markupChain=83:91:MarkupChain {
-                      embedding=(null)
-                      expression=83:90:Expression {
-                        catExpression=83:90:CatExpression {
-                          left=83:90:FieldExpression {
-                            idCon=(null)
-                            primitiveExpression=83:90:Text {
-                              text=""Google""
-                            }
-                          }
-                          right=(null)
-                        }
-                        listExpression=(null)
-                        recordExpression=(null)
-                      }
-                      semicolon=91:91:Semicolon {
-                        text=";"
-                      }
-                      statement=(null)
-                    }
-                  }
-                  yieldStatement=(null)
-                }
-              }
-            }
-            markupStatement=(null)
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test092"
-  }
-}
-RAW:
-Program(IdCon(test092),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,LetStatement(List(Assignment(VarBinding(IdCon(x),Expression(CatExpression(FieldExpression(Text("www.google.nl"),null),null),null,null),Semicolon(;)),null)),List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(a),List()),Arguments(AttrArg(IdCon(href),Expression(CatExpression(FieldExpression(Text("http://"),null),Expression(CatExpression(FieldExpression(IdCon(x),null),null),null,null)),null,null)),List())),MarkupChain(Semicolon(;),Expression(CatExpression(FieldExpression(Text("Google"),null),null),null,null),null,null)))),EndTerm(end)),null,null,null,null,null,null)),EndTerm(end)))))
+Program(
+IdCon( "test092" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        LetStatement(
+          [
+            VarBinding(
+              IdCon( "x" ),
+              Txt( ""www.google.nl"" ),
+              Semicolon( ";" )
+              )
+            ],
+          [
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "a" ), [  ] ),
+                MarkupArguments(
+                  AttrArg(
+                    IdCon( "href" ),
+                    CatExpression(
+                      Txt( ""http://"" ),
+                      IdCon( "x" )
+                      )
+                    ),
+                  [  ]
+                  )
+                ),
+              MarkupExp(
+                Txt( ""Google"" ),
+                Semicolon( ";" )
+                )
+              )
+            ],
+          EndTerm( "end" )
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)

@@ -1,140 +1,28 @@
-0:66:Program {
-  definitions=16:66:Definitions {
-    definition=List {
-      16:66:FunctionDef {
-        arguments=(null)
-        endTerm=64:66:EndTerm {
-          text="end"
-        }
-        idCon=20:23:IdCon {
-          text="main"
-        }
-        statements=List {
-          27:62:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=27:62:EachStatement {
-              expression=36:44:Expression {
-                catExpression=(null)
-                listExpression=36:44:ListExpression {
-                  first=37:37:Expression {
-                    catExpression=37:37:CatExpression {
-                      left=37:37:FieldExpression {
-                        idCon=(null)
-                        primitiveExpression=37:37:NatCon {
-                          text="1"
-                        }
-                      }
-                      right=(null)
-                    }
-                    listExpression=(null)
-                    recordExpression=(null)
-                  }
-                  rest=List {
-                    39:39:Expression {
-                      catExpression=39:39:CatExpression {
-                        left=39:39:FieldExpression {
-                          idCon=(null)
-                          primitiveExpression=39:39:NatCon {
-                            text="2"
-                          }
-                        }
-                        right=(null)
-                      }
-                      listExpression=(null)
-                      recordExpression=(null)
-                    }
-                    41:41:Expression {
-                      catExpression=41:41:CatExpression {
-                        left=41:41:FieldExpression {
-                          idCon=(null)
-                          primitiveExpression=41:41:NatCon {
-                            text="3"
-                          }
-                        }
-                        right=(null)
-                      }
-                      listExpression=(null)
-                      recordExpression=(null)
-                    }
-                    43:43:Expression {
-                      catExpression=43:43:CatExpression {
-                        left=43:43:FieldExpression {
-                          idCon=(null)
-                          primitiveExpression=43:43:NatCon {
-                            text="4"
-                          }
-                        }
-                        right=(null)
-                      }
-                      listExpression=(null)
-                      recordExpression=(null)
-                    }
-                  }
-                }
-                recordExpression=(null)
-              }
-              idCon=33:33:IdCon {
-                text="x"
-              }
-              statement=47:62:Statement {
-                blockStatement=47:62:BlockStatement {
-                  statement=List {
-                    52:58:Statement {
-                      blockStatement=(null)
-                      cdataStatement=(null)
-                      commentStatement=(null)
-                      eachStatement=(null)
-                      echoStatement=52:58:EchoStatement {
-                        embedding=(null)
-                        expression=57:57:Expression {
-                          catExpression=57:57:CatExpression {
-                            left=57:57:FieldExpression {
-                              idCon=(null)
-                              primitiveExpression=57:57:IdCon {
-                                text="x"
-                              }
-                            }
-                            right=(null)
-                          }
-                          listExpression=(null)
-                          recordExpression=(null)
-                        }
-                        semicolon=58:58:Semicolon {
-                          text=";"
-                        }
-                      }
-                      ifStatement=(null)
-                      letStatement=(null)
-                      markupStatement=(null)
-                      yieldStatement=(null)
-                    }
-                  }
-                }
-                cdataStatement=(null)
-                commentStatement=(null)
-                eachStatement=(null)
-                echoStatement=(null)
-                ifStatement=(null)
-                letStatement=(null)
-                markupStatement=(null)
-                yieldStatement=(null)
-              }
-            }
-            echoStatement=(null)
-            ifStatement=(null)
-            letStatement=(null)
-            markupStatement=(null)
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test046"
-  }
-}
-RAW:
-Program(IdCon(test046),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,EachStatement(IdCon(x),Expression(null,ListExpression(Expression(CatExpression(FieldExpression(NatCon(1),null),null),null,null),List(Expression(CatExpression(FieldExpression(NatCon(2),null),null),null,null), Expression(CatExpression(FieldExpression(NatCon(3),null),null),null,null), Expression(CatExpression(FieldExpression(NatCon(4),null),null),null,null))),null),Statement(null,null,null,BlockStatement(List(Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(IdCon(x),null),null),null,null),null,Semicolon(;)),null,null,null))),null,null,null,null,null)),null,null,null,null,null,null,null)),EndTerm(end)))))
+Program(
+IdCon( "test046" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        EachStatement(
+          IdCon( "x" ),
+          ListExpression(
+            NatCon( "1" ),
+            [ NatCon( "2" ), NatCon( "3" ), NatCon( "4" ) ]
+            ),
+          BlockStatement(
+            [
+              EchoStatement(
+                IdCon( "x" ),
+                Semicolon( ";" )
+                )
+              ]
+            )
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)

@@ -1,43 +1,18 @@
-0:47:Program {
-  definitions=16:47:Definitions {
-    definition=List {
-      16:47:FunctionDef {
-        arguments=(null)
-        endTerm=45:47:EndTerm {
-          text="end"
-        }
-        idCon=20:23:IdCon {
-          text="main"
-        }
-        statements=List {
-          27:43:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=27:43:CommentStatement {
-              commentTerm=27:33:CommentTerm {
-                text="comment"
-              }
-              semicolon=43:43:Semicolon {
-                text=";"
-              }
-              strCon=35:42:StrCon {
-                text=""abcdef""
-              }
-            }
-            eachStatement=(null)
-            echoStatement=(null)
-            ifStatement=(null)
-            letStatement=(null)
-            markupStatement=(null)
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test070"
-  }
-}
-RAW:
-Program(IdCon(test070),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,null,null,CommentStatement(CommentTerm(comment),StrCon("abcdef"),Semicolon(;)),null,null,null,null)),EndTerm(end)))))
+Program(
+IdCon( "test070" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        CommentStatement(
+          CommentTerm( "comment" ),
+          StrCon( ""abcdef"" ),
+          Semicolon( ";" )
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)

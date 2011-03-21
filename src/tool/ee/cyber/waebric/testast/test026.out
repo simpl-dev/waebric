@@ -8,7 +8,7 @@ Definitions(
         MarkupStatement(
           Markup(
             Designator( IdCon( "html" ), [  ] ),
-            Arguments( null, [  ] )
+            MarkupArguments( null, [  ] )
             ),
           MarkupSemi( Semicolon( ";" ) )
           )
@@ -18,5 +18,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test026),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(MarkupStatement(Markup(Designator(IdCon(html),List()),Arguments(null,List())),MarkupSemi(Semicolon(;)))),EndTerm(end)))))

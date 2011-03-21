@@ -13,7 +13,7 @@ Definitions(
           BlockStatement(
             [
               EchoStatement(
-                Text( ""bla"" ),
+                Txt( ""bla"" ),
                 Semicolon( ";" )
                 )
               ]
@@ -25,5 +25,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test028),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(MarkupStatement(Markup(Designator(IdCon(html),List()),null),BlockStatement(List(EchoStatement(Text("bla"),Semicolon(;)))))),EndTerm(end)))))

@@ -1,149 +1,33 @@
-0:102:Program {
-  definitions=16:102:Definitions {
-    definition=List {
-      16:102:FunctionDef {
-        arguments=(null)
-        endTerm=100:102:EndTerm {
-          text="end"
-        }
-        idCon=20:23:IdCon {
-          text="main"
-        }
-        statements=List {
-          27:98:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=(null)
-            echoStatement=(null)
-            ifStatement=27:98:IfStatement {
-              elseStat=(null)
-              ifStat=39:98:Statement {
-                blockStatement=(null)
-                cdataStatement=(null)
-                commentStatement=(null)
-                eachStatement=(null)
-                echoStatement=(null)
-                ifStatement=39:98:IfStatement {
-                  elseStat=77:98:Statement {
-                    blockStatement=(null)
-                    cdataStatement=(null)
-                    commentStatement=(null)
-                    eachStatement=(null)
-                    echoStatement=77:98:EchoStatement {
-                      embedding=(null)
-                      expression=82:97:Expression {
-                        catExpression=82:97:CatExpression {
-                          left=82:97:FieldExpression {
-                            idCon=(null)
-                            primitiveExpression=82:97:Text {
-                              text=""innermost else""
-                            }
-                          }
-                          right=(null)
-                        }
-                        listExpression=(null)
-                        recordExpression=(null)
-                      }
-                      semicolon=98:98:Semicolon {
-                        text=";"
-                      }
-                    }
-                    ifStatement=(null)
-                    letStatement=(null)
-                    markupStatement=(null)
-                    yieldStatement=(null)
-                  }
-                  ifStat=52:60:Statement {
-                    blockStatement=(null)
-                    cdataStatement=(null)
-                    commentStatement=(null)
-                    eachStatement=(null)
-                    echoStatement=52:60:EchoStatement {
-                      embedding=(null)
-                      expression=57:59:Expression {
-                        catExpression=57:59:CatExpression {
-                          left=57:59:FieldExpression {
-                            idCon=(null)
-                            primitiveExpression=57:59:Text {
-                              text=""2""
-                            }
-                          }
-                          right=(null)
-                        }
-                        listExpression=(null)
-                        recordExpression=(null)
-                      }
-                      semicolon=60:60:Semicolon {
-                        text=";"
-                      }
-                    }
-                    ifStatement=(null)
-                    letStatement=(null)
-                    markupStatement=(null)
-                    yieldStatement=(null)
-                  }
-                  predicate=43:43:Predicate {
-                    left=43:43:IsAPredicate {
-                      expression=43:43:Expression {
-                        catExpression=43:43:CatExpression {
-                          left=43:43:FieldExpression {
-                            idCon=(null)
-                            primitiveExpression=43:43:IdCon {
-                              text="b"
-                            }
-                          }
-                          right=(null)
-                        }
-                        listExpression=(null)
-                        recordExpression=(null)
-                      }
-                      predType=(null)
-                    }
-                    op=List {
-                    }
-                    rest=List {
-                    }
-                  }
-                }
-                letStatement=(null)
-                markupStatement=(null)
-                yieldStatement=(null)
-              }
-              predicate=31:31:Predicate {
-                left=31:31:IsAPredicate {
-                  expression=31:31:Expression {
-                    catExpression=31:31:CatExpression {
-                      left=31:31:FieldExpression {
-                        idCon=(null)
-                        primitiveExpression=31:31:NatCon {
-                          text="1"
-                        }
-                      }
-                      right=(null)
-                    }
-                    listExpression=(null)
-                    recordExpression=(null)
-                  }
-                  predType=(null)
-                }
-                op=List {
-                }
-                rest=List {
-                }
-              }
-            }
-            letStatement=(null)
-            markupStatement=(null)
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test053"
-  }
-}
-RAW:
-Program(IdCon(test053),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(IfStatement(Predicate(IsAPredicate(Expression(CatExpression(FieldExpression(NatCon(1),null),null),null,null),null),List(),List()),Statement(IfStatement(Predicate(IsAPredicate(Expression(CatExpression(FieldExpression(IdCon(b),null),null),null,null),null),List(),List()),Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(Text("2"),null),null),null,null),null,Semicolon(;)),null,null,null),Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(Text("innermost else"),null),null),null,null),null,Semicolon(;)),null,null,null)),null,null,null,null,null,null,null,null),null),null,null,null,null,null,null,null,null)),EndTerm(end)))))
+Program(
+IdCon( "test053" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        IfStatement(
+          Predicate(
+            IsAPredicate( NatCon( "1" ), null ),
+            [  ],
+            [  ]
+            ),
+          IfStatement(
+            Predicate(
+              IsAPredicate( IdCon( "b" ), null ),
+              [  ],
+              [  ]
+              ),
+            EchoStatement( Txt( ""2"" ), Semicolon( ";" ) ),
+            EchoStatement(
+              Txt( ""innermost else"" ),
+              Semicolon( ";" )
+              )
+            ),
+          null
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)

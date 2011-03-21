@@ -9,7 +9,7 @@ Definitions(
           [
             VarBinding(
               IdCon( "x" ),
-              Text( ""Hello"" ),
+              Txt( ""Hello"" ),
               Semicolon( ";" )
               ),
             FuncBinding(
@@ -38,5 +38,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test015),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(LetStatement(List(VarBinding(IdCon(x),Text("Hello"),Semicolon(;)), FuncBinding(IdCon(f),null,EchoStatement(IdCon(x),Semicolon(;)))),List(MarkupStatement(Markup(Designator(IdCon(f),List()),null),MarkupSemi(Semicolon(;)))),EndTerm(end))),EndTerm(end)))))

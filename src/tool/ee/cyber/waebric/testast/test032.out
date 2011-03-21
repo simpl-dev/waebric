@@ -24,5 +24,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test032),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(MarkupStatement(Markup(Designator(IdCon(html),List(ClassAttr(IdCon(alert)), IdAttr(IdCon(id)))),null),MarkupSemi(Semicolon(;)))),EndTerm(end)))))

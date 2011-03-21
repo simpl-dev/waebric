@@ -8,18 +8,15 @@ Definitions(
         MarkupStatement(
           Markup(
             Designator( IdCon( "html" ), [  ] ),
-            Arguments(
-              AttrArg( IdCon( "name" ), Text( ""bla"" ) ),
+            MarkupArguments(
+              AttrArg( IdCon( "name" ), Txt( ""bla"" ) ),
               [
-                AttrArg(
-                  IdCon( "type" ),
-                  Text( ""xhtml"" )
-                  )
+                AttrArg( IdCon( "type" ), Txt( ""xhtml"" ) )
                 ]
               )
             ),
           MarkupExp(
-            Text( ""Hello world!"" ),
+            Txt( ""Hello world!"" ),
             Semicolon( ";" )
             )
           )
@@ -29,5 +26,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test025),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(MarkupStatement(Markup(Designator(IdCon(html),List()),Arguments(AttrArg(IdCon(name),Text("bla")),List(AttrArg(IdCon(type),Text("xhtml"))))),MarkupExp(Text("Hello world!"),Semicolon(;)))),EndTerm(end)))))

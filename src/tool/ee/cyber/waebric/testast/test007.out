@@ -15,5 +15,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test007),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(EchoStatement(CatExpression(NatCon(1),NatCon(2)),Semicolon(;))),EndTerm(end)))))

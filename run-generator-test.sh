@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TEST_CLASSPATH="src/tool/ee/cyber/waebric/tests"
-TEST_OUTPUT_CLASSPATH="src/tool/ee/cyber/waebric/testast"
+TEST_OUTPUT_CLASSPATH="src/tool/ee/cyber/waebric/testgen"
 
 echo "Input:"
 cat $TEST_CLASSPATH/test$1.wae
@@ -17,7 +17,7 @@ then
 else
 	if [ "$2" = "SAVE" ] 
 	then
-		echo "Saving output to $TEST_OUTPUT_CLASSPATH/test$1.out"
+		echo "Saving output to $TEST_OUTPUT_CLASSPATH/test$1.html"
 		./run-waebric-codegen.sh $TEST_CLASSPATH/test$1.wae > $TEST_OUTPUT_CLASSPATH/test$1.html
 	else
 		echo "use SAVE as the second argument to save the test result"

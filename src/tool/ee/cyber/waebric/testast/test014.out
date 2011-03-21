@@ -9,12 +9,12 @@ Definitions(
           [
             VarBinding(
               IdCon( "x" ),
-              Text( ""Hello"" ),
+              Txt( ""Hello"" ),
               Semicolon( ";" )
               ),
             VarBinding(
               IdCon( "y" ),
-              Text( ""world!"" ),
+              Txt( ""world!"" ),
               Semicolon( ";" )
               )
             ],
@@ -22,7 +22,7 @@ Definitions(
             EchoStatement(
               CatExpression(
                 IdCon( "x" ),
-                CatExpression( Text( "" "" ), IdCon( "y" ) )
+                CatExpression( Txt( "" "" ), IdCon( "y" ) )
                 ),
               Semicolon( ";" )
               )
@@ -35,5 +35,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test014),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(LetStatement(List(VarBinding(IdCon(x),Text("Hello"),Semicolon(;)), VarBinding(IdCon(y),Text("world!"),Semicolon(;))),List(EchoStatement(CatExpression(IdCon(x),CatExpression(Text(" "),IdCon(y))),Semicolon(;))),EndTerm(end))),EndTerm(end)))))

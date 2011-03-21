@@ -1,211 +1,59 @@
-0:131:Program {
-  definitions=16:131:Definitions {
-    definition=List {
-      16:131:FunctionDef {
-        arguments=(null)
-        endTerm=129:131:EndTerm {
-          text="end"
-        }
-        idCon=20:23:IdCon {
-          text="main"
-        }
-        statements=List {
-          27:127:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=(null)
-            echoStatement=(null)
-            ifStatement=(null)
-            letStatement=27:127:LetStatement {
-              assignment=List {
-                31:51:Assignment {
-                  funcBinding=(null)
-                  varBinding=31:51:VarBinding {
-                    expression=35:50:Expression {
-                      catExpression=(null)
-                      listExpression=(null)
-                      recordExpression=35:50:RecordExpression {
-                        first=36:41:KeyValuePair {
-                          expression=39:41:Expression {
-                            catExpression=39:41:CatExpression {
-                              left=39:41:FieldExpression {
-                                idCon=(null)
-                                primitiveExpression=39:41:Text {
-                                  text=""X""
-                                }
-                              }
-                              right=(null)
-                            }
-                            listExpression=(null)
-                            recordExpression=(null)
-                          }
-                          idCon=36:36:IdCon {
-                            text="x"
-                          }
-                        }
-                        rest=List {
-                          44:49:KeyValuePair {
-                            expression=47:49:Expression {
-                              catExpression=47:49:CatExpression {
-                                left=47:49:FieldExpression {
-                                  idCon=(null)
-                                  primitiveExpression=47:49:Text {
-                                    text=""Y""
-                                  }
-                                }
-                                right=(null)
-                              }
-                              listExpression=(null)
-                              recordExpression=(null)
-                            }
-                            idCon=44:44:IdCon {
-                              text="y"
-                            }
-                          }
-                        }
-                      }
-                    }
-                    idCon=31:31:IdCon {
-                      text="b"
-                    }
-                    semicolon=51:51:Semicolon {
-                      text=";"
-                    }
-                  }
-                }
-              }
-              endTerm=125:127:EndTerm {
-                text="end"
-              }
-              statement=List {
-                63:121:Statement {
-                  blockStatement=(null)
-                  cdataStatement=(null)
-                  commentStatement=(null)
-                  eachStatement=(null)
-                  echoStatement=(null)
-                  ifStatement=63:121:IfStatement {
-                    elseStat=112:121:Statement {
-                      blockStatement=(null)
-                      cdataStatement=(null)
-                      commentStatement=(null)
-                      eachStatement=(null)
-                      echoStatement=112:121:EchoStatement {
-                        embedding=(null)
-                        expression=117:120:Expression {
-                          catExpression=117:120:CatExpression {
-                            left=117:120:FieldExpression {
-                              idCon=(null)
-                              primitiveExpression=117:120:Text {
-                                text=""No""
-                              }
-                            }
-                            right=(null)
-                          }
-                          listExpression=(null)
-                          recordExpression=(null)
-                        }
-                        semicolon=121:121:Semicolon {
-                          text=";"
-                        }
-                      }
-                      ifStatement=(null)
-                      letStatement=(null)
-                      markupStatement=(null)
-                      yieldStatement=(null)
-                    }
-                    ifStat=85:95:Statement {
-                      blockStatement=(null)
-                      cdataStatement=(null)
-                      commentStatement=(null)
-                      eachStatement=(null)
-                      echoStatement=85:95:EchoStatement {
-                        embedding=(null)
-                        expression=90:94:Expression {
-                          catExpression=90:94:CatExpression {
-                            left=90:94:FieldExpression {
-                              idCon=(null)
-                              primitiveExpression=90:94:Text {
-                                text=""Yes""
-                              }
-                            }
-                            right=(null)
-                          }
-                          listExpression=(null)
-                          recordExpression=(null)
-                        }
-                        semicolon=95:95:Semicolon {
-                          text=";"
-                        }
-                      }
-                      ifStatement=(null)
-                      letStatement=(null)
-                      markupStatement=(null)
-                      yieldStatement=(null)
-                    }
-                    predicate=67:76:Predicate {
-                      left=67:69:IsAPredicate {
-                        expression=67:69:Expression {
-                          catExpression=67:69:CatExpression {
-                            left=67:69:FieldExpression {
-                              idCon=69:69:IdCon {
-                                text="x"
-                              }
-                              primitiveExpression=67:67:IdCon {
-                                text="b"
-                              }
-                            }
-                            right=(null)
-                          }
-                          listExpression=(null)
-                          recordExpression=(null)
-                        }
-                        predType=(null)
-                      }
-                      op=List {
-                        71:72:PredicateOp {
-                          text="&&"
-                        }
-                      }
-                      rest=List {
-                        74:76:IsAPredicate {
-                          expression=74:76:Expression {
-                            catExpression=74:76:CatExpression {
-                              left=74:76:FieldExpression {
-                                idCon=76:76:IdCon {
-                                  text="y"
-                                }
-                                primitiveExpression=74:74:IdCon {
-                                  text="b"
-                                }
-                              }
-                              right=(null)
-                            }
-                            listExpression=(null)
-                            recordExpression=(null)
-                          }
-                          predType=(null)
-                        }
-                      }
-                    }
-                  }
-                  letStatement=(null)
-                  markupStatement=(null)
-                  yieldStatement=(null)
-                }
-              }
-            }
-            markupStatement=(null)
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test084"
-  }
-}
-RAW:
-Program(IdCon(test084),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,LetStatement(List(Assignment(VarBinding(IdCon(b),Expression(null,null,RecordExpression(KeyValuePair(IdCon(x),Expression(CatExpression(FieldExpression(Text("X"),null),null),null,null)),List(KeyValuePair(IdCon(y),Expression(CatExpression(FieldExpression(Text("Y"),null),null),null,null))))),Semicolon(;)),null)),List(Statement(IfStatement(Predicate(IsAPredicate(Expression(CatExpression(FieldExpression(IdCon(b),IdCon(x)),null),null,null),null),List(PredicateOp(&&)),List(IsAPredicate(Expression(CatExpression(FieldExpression(IdCon(b),IdCon(y)),null),null,null),null))),Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(Text("Yes"),null),null),null,null),null,Semicolon(;)),null,null,null),Statement(null,null,null,null,null,EchoStatement(Expression(CatExpression(FieldExpression(Text("No"),null),null),null,null),null,Semicolon(;)),null,null,null)),null,null,null,null,null,null,null,null)),EndTerm(end)),null,null,null,null,null,null)),EndTerm(end)))))
+Program(
+IdCon( "test084" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        LetStatement(
+          [
+            VarBinding(
+              IdCon( "b" ),
+              RecordExpression(
+                KeyValuePair( IdCon( "x" ), Txt( ""X"" ) ),
+                [
+                  KeyValuePair( IdCon( "y" ), Txt( ""Y"" ) )
+                  ]
+                ),
+              Semicolon( ";" )
+              )
+            ],
+          [
+            IfStatement(
+              Predicate(
+                IsAPredicate(
+                  FieldExpression(
+                    IdCon( "b" ),
+                    IdCon( "x" )
+                    ),
+                  null
+                  ),
+                [ PredicateOp( "&&" ) ],
+                [
+                  IsAPredicate(
+                    FieldExpression(
+                      IdCon( "b" ),
+                      IdCon( "y" )
+                      ),
+                    null
+                    )
+                  ]
+                ),
+              EchoStatement(
+                Txt( ""Yes"" ),
+                Semicolon( ";" )
+                ),
+              EchoStatement(
+                Txt( ""No"" ),
+                Semicolon( ";" )
+                )
+              )
+            ],
+          EndTerm( "end" )
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)

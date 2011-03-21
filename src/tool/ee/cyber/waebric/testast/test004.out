@@ -39,5 +39,3 @@ Definitions(
     ]
   )
 )
-RAW:
-Program(IdCon(test004),Definitions(List(FunctionDef(FunctionName(IdCon(main)),List(EchoStatement(Embedding(PreText("abc<),EmbedExp(List(Markup(Designator(IdCon(em),List()),null)),Txt("bla")),TextTailMid(MidText(>def<),EmbedExp(List(Markup(Designator(IdCon(em),List()),null)),Txt("bla2")),PostText(>ghi"))),Semicolon(;))),EndTerm(end)))))

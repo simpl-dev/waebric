@@ -1,406 +1,110 @@
-0:152:Program {
-  definitions=16:152:Definitions {
-    definition=List {
-      16:152:FunctionDef {
-        arguments=(null)
-        endTerm=150:152:EndTerm {
-          text="end"
-        }
-        idCon=20:23:IdCon {
-          text="main"
-        }
-        statements=List {
-          27:148:Statement {
-            blockStatement=(null)
-            cdataStatement=(null)
-            commentStatement=(null)
-            eachStatement=(null)
-            echoStatement=(null)
-            ifStatement=(null)
-            letStatement=27:148:LetStatement {
-              assignment=List {
-                31:38:Assignment {
-                  funcBinding=(null)
-                  varBinding=31:38:VarBinding {
-                    expression=35:37:Expression {
-                      catExpression=35:37:CatExpression {
-                        left=35:37:FieldExpression {
-                          idCon=(null)
-                          primitiveExpression=35:37:Text {
-                            text=""P""
-                          }
-                        }
-                        right=(null)
-                      }
-                      listExpression=(null)
-                      recordExpression=(null)
-                    }
-                    idCon=31:31:IdCon {
-                      text="p"
-                    }
-                    semicolon=38:38:Semicolon {
-                      text=";"
-                    }
-                  }
-                }
-              }
-              endTerm=146:148:EndTerm {
-                text="end"
-              }
-              statement=List {
-                49:50:Statement {
-                  blockStatement=(null)
-                  cdataStatement=(null)
-                  commentStatement=(null)
-                  eachStatement=(null)
-                  echoStatement=(null)
-                  ifStatement=(null)
-                  letStatement=(null)
-                  markupStatement=49:50:MarkupStatement {
-                    markup=49:49:Markup {
-                      arguments=(null)
-                      designator=49:49:Designator {
-                        attribute=List {
-                        }
-                        idCon=49:49:IdCon {
-                          text="p"
-                        }
-                      }
-                    }
-                    markupChain=50:50:MarkupChain {
-                      embedding=(null)
-                      expression=(null)
-                      semicolon=50:50:Semicolon {
-                        text=";"
-                      }
-                      statement=(null)
-                    }
-                  }
-                  yieldStatement=(null)
-                }
-                56:59:Statement {
-                  blockStatement=(null)
-                  cdataStatement=(null)
-                  commentStatement=(null)
-                  eachStatement=(null)
-                  echoStatement=(null)
-                  ifStatement=(null)
-                  letStatement=(null)
-                  markupStatement=56:59:MarkupStatement {
-                    markup=56:56:Markup {
-                      arguments=(null)
-                      designator=56:56:Designator {
-                        attribute=List {
-                        }
-                        idCon=56:56:IdCon {
-                          text="p"
-                        }
-                      }
-                    }
-                    markupChain=58:59:MarkupChain {
-                      embedding=(null)
-                      expression=58:58:Expression {
-                        catExpression=58:58:CatExpression {
-                          left=58:58:FieldExpression {
-                            idCon=(null)
-                            primitiveExpression=58:58:IdCon {
-                              text="p"
-                            }
-                          }
-                          right=(null)
-                        }
-                        listExpression=(null)
-                        recordExpression=(null)
-                      }
-                      semicolon=59:59:Semicolon {
-                        text=";"
-                      }
-                      statement=(null)
-                    }
-                  }
-                  yieldStatement=(null)
-                }
-                65:70:Statement {
-                  blockStatement=(null)
-                  cdataStatement=(null)
-                  commentStatement=(null)
-                  eachStatement=(null)
-                  echoStatement=(null)
-                  ifStatement=(null)
-                  letStatement=(null)
-                  markupStatement=65:70:MarkupStatement {
-                    markup=65:65:Markup {
-                      arguments=(null)
-                      designator=65:65:Designator {
-                        attribute=List {
-                        }
-                        idCon=65:65:IdCon {
-                          text="p"
-                        }
-                      }
-                    }
-                    markupChain=67:70:MarkupChain {
-                      embedding=(null)
-                      expression=(null)
-                      semicolon=(null)
-                      statement=67:70:Statement {
-                        blockStatement=(null)
-                        cdataStatement=(null)
-                        commentStatement=(null)
-                        eachStatement=(null)
-                        echoStatement=(null)
-                        ifStatement=(null)
-                        letStatement=(null)
-                        markupStatement=67:70:MarkupStatement {
-                          markup=67:69:Markup {
-                            arguments=68:69:Arguments {
-                              first=(null)
-                              rest=List {
-                              }
-                            }
-                            designator=67:67:Designator {
-                              attribute=List {
-                              }
-                              idCon=67:67:IdCon {
-                                text="p"
-                              }
-                            }
-                          }
-                          markupChain=70:70:MarkupChain {
-                            embedding=(null)
-                            expression=(null)
-                            semicolon=70:70:Semicolon {
-                              text=";"
-                            }
-                            statement=(null)
-                          }
-                        }
-                        yieldStatement=(null)
-                      }
-                    }
-                  }
-                  yieldStatement=(null)
-                }
-                76:86:Statement {
-                  blockStatement=(null)
-                  cdataStatement=(null)
-                  commentStatement=(null)
-                  eachStatement=(null)
-                  echoStatement=76:86:EchoStatement {
-                    embedding=81:85:Embedding {
-                      embed=83:83:Embed {
-                        expression=83:83:Expression {
-                          catExpression=83:83:CatExpression {
-                            left=83:83:FieldExpression {
-                              idCon=(null)
-                              primitiveExpression=83:83:IdCon {
-                                text="p"
-                              }
-                            }
-                            right=(null)
-                          }
-                          listExpression=(null)
-                          recordExpression=(null)
-                        }
-                        markup=List {
-                        }
-                      }
-                      preText=81:82:PreText {
-                        text=""<"
-                      }
-                      textTail=84:85:TextTail {
-                        embed=(null)
-                        midText=(null)
-                        postText=84:85:PostText {
-                          text=">""
-                        }
-                        textTail=(null)
-                      }
-                    }
-                    expression=(null)
-                    semicolon=86:86:Semicolon {
-                      text=";"
-                    }
-                  }
-                  ifStatement=(null)
-                  letStatement=(null)
-                  markupStatement=(null)
-                  yieldStatement=(null)
-                }
-                92:104:Statement {
-                  blockStatement=(null)
-                  cdataStatement=(null)
-                  commentStatement=(null)
-                  eachStatement=(null)
-                  echoStatement=92:104:EchoStatement {
-                    embedding=97:103:Embedding {
-                      embed=99:101:Embed {
-                        expression=(null)
-                        markup=List {
-                          99:101:Markup {
-                            arguments=100:101:Arguments {
-                              first=(null)
-                              rest=List {
-                              }
-                            }
-                            designator=99:99:Designator {
-                              attribute=List {
-                              }
-                              idCon=99:99:IdCon {
-                                text="p"
-                              }
-                            }
-                          }
-                        }
-                      }
-                      preText=97:98:PreText {
-                        text=""<"
-                      }
-                      textTail=102:103:TextTail {
-                        embed=(null)
-                        midText=(null)
-                        postText=102:103:PostText {
-                          text=">""
-                        }
-                        textTail=(null)
-                      }
-                    }
-                    expression=(null)
-                    semicolon=104:104:Semicolon {
-                      text=";"
-                    }
-                  }
-                  ifStatement=(null)
-                  letStatement=(null)
-                  markupStatement=(null)
-                  yieldStatement=(null)
-                }
-                110:122:Statement {
-                  blockStatement=(null)
-                  cdataStatement=(null)
-                  commentStatement=(null)
-                  eachStatement=(null)
-                  echoStatement=110:122:EchoStatement {
-                    embedding=115:121:Embedding {
-                      embed=117:119:Embed {
-                        expression=119:119:Expression {
-                          catExpression=119:119:CatExpression {
-                            left=119:119:FieldExpression {
-                              idCon=(null)
-                              primitiveExpression=119:119:IdCon {
-                                text="p"
-                              }
-                            }
-                            right=(null)
-                          }
-                          listExpression=(null)
-                          recordExpression=(null)
-                        }
-                        markup=List {
-                          117:117:Markup {
-                            arguments=(null)
-                            designator=117:117:Designator {
-                              attribute=List {
-                              }
-                              idCon=117:117:IdCon {
-                                text="p"
-                              }
-                            }
-                          }
-                        }
-                      }
-                      preText=115:116:PreText {
-                        text=""<"
-                      }
-                      textTail=120:121:TextTail {
-                        embed=(null)
-                        midText=(null)
-                        postText=120:121:PostText {
-                          text=">""
-                        }
-                        textTail=(null)
-                      }
-                    }
-                    expression=(null)
-                    semicolon=122:122:Semicolon {
-                      text=";"
-                    }
-                  }
-                  ifStatement=(null)
-                  letStatement=(null)
-                  markupStatement=(null)
-                  yieldStatement=(null)
-                }
-                128:142:Statement {
-                  blockStatement=(null)
-                  cdataStatement=(null)
-                  commentStatement=(null)
-                  eachStatement=(null)
-                  echoStatement=128:142:EchoStatement {
-                    embedding=133:141:Embedding {
-                      embed=135:139:Embed {
-                        expression=(null)
-                        markup=List {
-                          135:135:Markup {
-                            arguments=(null)
-                            designator=135:135:Designator {
-                              attribute=List {
-                              }
-                              idCon=135:135:IdCon {
-                                text="p"
-                              }
-                            }
-                          }
-                          137:139:Markup {
-                            arguments=138:139:Arguments {
-                              first=(null)
-                              rest=List {
-                              }
-                            }
-                            designator=137:137:Designator {
-                              attribute=List {
-                              }
-                              idCon=137:137:IdCon {
-                                text="p"
-                              }
-                            }
-                          }
-                        }
-                      }
-                      preText=133:134:PreText {
-                        text=""<"
-                      }
-                      textTail=140:141:TextTail {
-                        embed=(null)
-                        midText=(null)
-                        postText=140:141:PostText {
-                          text=">""
-                        }
-                        textTail=(null)
-                      }
-                    }
-                    expression=(null)
-                    semicolon=142:142:Semicolon {
-                      text=";"
-                    }
-                  }
-                  ifStatement=(null)
-                  letStatement=(null)
-                  markupStatement=(null)
-                  yieldStatement=(null)
-                }
-              }
-            }
-            markupStatement=(null)
-            yieldStatement=(null)
-          }
-        }
-      }
-    }
-  }
-  idCon=7:13:IdCon {
-    text="test073"
-  }
-}
-RAW:
-Program(IdCon(test073),Definitions(List(FunctionDef(IdCon(main),null,List(Statement(null,null,LetStatement(List(Assignment(VarBinding(IdCon(p),Expression(CatExpression(FieldExpression(Text("P"),null),null),null,null),Semicolon(;)),null)),List(Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(p),List()),null),MarkupChain(Semicolon(;),null,null,null))), Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(p),List()),null),MarkupChain(Semicolon(;),Expression(CatExpression(FieldExpression(IdCon(p),null),null),null,null),null,null))), Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(p),List()),null),MarkupChain(null,null,null,Statement(null,null,null,null,null,null,null,null,MarkupStatement(Markup(Designator(IdCon(p),List()),Arguments(null,List())),MarkupChain(Semicolon(;),null,null,null)))))), Statement(null,null,null,null,null,EchoStatement(null,Embedding(PreText("<),Embed(List(),Expression(CatExpression(FieldExpression(IdCon(p),null),null),null,null)),TextTail(PostText(>"),null,null,null)),Semicolon(;)),null,null,null), Statement(null,null,null,null,null,EchoStatement(null,Embedding(PreText("<),Embed(List(Markup(Designator(IdCon(p),List()),Arguments(null,List()))),null),TextTail(PostText(>"),null,null,null)),Semicolon(;)),null,null,null), Statement(null,null,null,null,null,EchoStatement(null,Embedding(PreText("<),Embed(List(Markup(Designator(IdCon(p),List()),null)),Expression(CatExpression(FieldExpression(IdCon(p),null),null),null,null)),TextTail(PostText(>"),null,null,null)),Semicolon(;)),null,null,null), Statement(null,null,null,null,null,EchoStatement(null,Embedding(PreText("<),Embed(List(Markup(Designator(IdCon(p),List()),null), Markup(Designator(IdCon(p),List()),Arguments(null,List()))),null),TextTail(PostText(>"),null,null,null)),Semicolon(;)),null,null,null)),EndTerm(end)),null,null,null,null,null,null)),EndTerm(end)))))
+Program(
+IdCon( "test073" ),
+Definitions(
+  [
+    FunctionDef(
+      FunctionName( IdCon( "main" ) ),
+      [
+        LetStatement(
+          [
+            VarBinding(
+              IdCon( "p" ),
+              Txt( ""P"" ),
+              Semicolon( ";" )
+              )
+            ],
+          [
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "p" ), [  ] ),
+                null
+                ),
+              MarkupSemi( Semicolon( ";" ) )
+              ),
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "p" ), [  ] ),
+                null
+                ),
+              MarkupExp( IdCon( "p" ), Semicolon( ";" ) )
+              ),
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "p" ), [  ] ),
+                null
+                ),
+              MarkupStatement(
+                Markup(
+                  Designator( IdCon( "p" ), [  ] ),
+                  MarkupArguments( null, [  ] )
+                  ),
+                MarkupSemi( Semicolon( ";" ) )
+                )
+              ),
+            EchoStatement(
+              Embedding(
+                PreText( ""<" ),
+                EmbedExp( [  ], IdCon( "p" ) ),
+                PostText( ">"" )
+                ),
+              Semicolon( ";" )
+              ),
+            EchoStatement(
+              Embedding(
+                PreText( ""<" ),
+                EmbedMarkup(
+                  [
+                    Markup(
+                      Designator( IdCon( "p" ), [  ] ),
+                      MarkupArguments( null, [  ] )
+                      )
+                    ]
+                  ),
+                PostText( ">"" )
+                ),
+              Semicolon( ";" )
+              ),
+            EchoStatement(
+              Embedding(
+                PreText( ""<" ),
+                EmbedExp(
+                  [
+                    Markup(
+                      Designator( IdCon( "p" ), [  ] ),
+                      null
+                      )
+                    ],
+                  IdCon( "p" )
+                  ),
+                PostText( ">"" )
+                ),
+              Semicolon( ";" )
+              ),
+            EchoStatement(
+              Embedding(
+                PreText( ""<" ),
+                EmbedMarkup(
+                  [
+                    Markup(
+                      Designator( IdCon( "p" ), [  ] ),
+                      null
+                      ),
+                    Markup(
+                      Designator( IdCon( "p" ), [  ] ),
+                      MarkupArguments( null, [  ] )
+                      )
+                    ]
+                  ),
+                PostText( ">"" )
+                ),
+              Semicolon( ";" )
+              )
+            ],
+          EndTerm( "end" )
+          )
+        ],
+      EndTerm( "end" )
+      )
+    ]
+  )
+)
