@@ -5,7 +5,7 @@ Definitions(
     FunctionDef(
       Function(
         FunctionName( IdCon( "menu" ) ),
-        FunctionArgs( Formals( IdCon( "menu" ), [  ] ) )
+        [ IdCon( "menu" ) ]
         ),
       [
         EchoStatement(
@@ -16,7 +16,7 @@ Definitions(
           Semicolon( ";" )
           ),
         MarkupStatement(
-          Markup( Designator( IdCon( "ul" ), [  ] ), null ),
+          Markup( Designator( IdCon( "ul" ), [  ] ), [  ] ),
           EachStatement(
             IdCon( "kid" ),
             FieldExpression(
@@ -26,7 +26,7 @@ Definitions(
             MarkupStatement(
               Markup(
                 Designator( IdCon( "item" ), [  ] ),
-                MarkupArguments( IdCon( "kid" ), [  ] )
+                [ IdCon( "kid" ) ]
                 ),
               MarkupSemi( Semicolon( ";" ) )
               )
@@ -38,43 +38,43 @@ Definitions(
     FunctionDef(
       Function(
         FunctionName( IdCon( "item" ) ),
-        FunctionArgs( Formals( IdCon( "mi" ), [  ] ) )
+        [ IdCon( "mi" ) ]
         ),
       [
         MarkupStatement(
-          Markup( Designator( IdCon( "li" ), [  ] ), null ),
+          Markup( Designator( IdCon( "li" ), [  ] ), [  ] ),
           IfStatement(
             Predicate(
-              IsAPredicate(
-                FieldExpression(
-                  IdCon( "mi" ),
-                  IdCon( "kids" )
-                  ),
-                null
-                ),
-              [  ],
+              [
+                IsAPredicate(
+                  FieldExpression(
+                    IdCon( "mi" ),
+                    IdCon( "kids" )
+                    ),
+                  null
+                  )
+                ],
               [  ]
               ),
             MarkupStatement(
               Markup(
                 Designator( IdCon( "menu" ), [  ] ),
-                MarkupArguments( IdCon( "mi" ), [  ] )
+                [ IdCon( "mi" ) ]
                 ),
               MarkupSemi( Semicolon( ";" ) )
               ),
             MarkupStatement(
               Markup(
                 Designator( IdCon( "a" ), [  ] ),
-                MarkupArguments(
+                [
                   AttrArg(
                     IdCon( "href" ),
                     FieldExpression(
                       IdCon( "mi" ),
                       IdCon( "link" )
                       )
-                    ),
-                  [  ]
-                  )
+                    )
+                  ]
                 ),
               MarkupExp(
                 FieldExpression(
@@ -90,64 +90,64 @@ Definitions(
       EndTerm( "end" )
       ),
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         MarkupStatement(
           Markup(
             Designator( IdCon( "menu" ), [  ] ),
-            MarkupArguments(
+            [
               RecordExpression(
-                KeyValuePair(
-                  IdCon( "title" ),
-                  Txt( ""Menu"" )
-                  ),
                 [
+                  KeyValuePair(
+                    IdCon( "title" ),
+                    Txt( ""Menu"" )
+                    ),
                   KeyValuePair(
                     IdCon( "kids" ),
                     ListExpression(
-                      RecordExpression(
-                        KeyValuePair(
-                          IdCon( "title" ),
-                          Txt( ""Home"" )
-                          ),
-                        [
-                          KeyValuePair(
-                            IdCon( "link" ),
-                            Txt( ""/"" )
-                            )
-                          ]
-                        ),
                       [
                         RecordExpression(
-                          KeyValuePair(
-                            IdCon( "title" ),
-                            Txt( ""Misc"" )
-                            ),
                           [
+                            KeyValuePair(
+                              IdCon( "title" ),
+                              Txt( ""Home"" )
+                              ),
+                            KeyValuePair(
+                              IdCon( "link" ),
+                              Txt( ""/"" )
+                              )
+                            ]
+                          ),
+                        RecordExpression(
+                          [
+                            KeyValuePair(
+                              IdCon( "title" ),
+                              Txt( ""Misc"" )
+                              ),
                             KeyValuePair(
                               IdCon( "kids" ),
                               ListExpression(
-                                RecordExpression(
-                                  KeyValuePair(
-                                    IdCon( "title" ),
-                                    Txt( ""Contact"" )
-                                    ),
-                                  [
-                                    KeyValuePair(
-                                      IdCon( "link" ),
-                                      Txt(
-                                        ""contact.html""
-                                        )
-                                      )
-                                    ]
-                                  ),
                                 [
                                   RecordExpression(
-                                    KeyValuePair(
-                                      IdCon( "title" ),
-                                      Txt( ""Links"" )
-                                      ),
                                     [
+                                      KeyValuePair(
+                                        IdCon( "title" ),
+                                        Txt( ""Contact"" )
+                                        ),
+                                      KeyValuePair(
+                                        IdCon( "link" ),
+                                        Txt(
+                                          ""contact.html""
+                                          )
+                                        )
+                                      ]
+                                    ),
+                                  RecordExpression(
+                                    [
+                                      KeyValuePair(
+                                        IdCon( "title" ),
+                                        Txt( ""Links"" )
+                                        ),
                                       KeyValuePair(
                                         IdCon( "link" ),
                                         Txt(
@@ -165,9 +165,8 @@ Definitions(
                       )
                     )
                   ]
-                ),
-              [  ]
-              )
+                )
+              ]
             ),
           MarkupSemi( Semicolon( ";" ) )
           )

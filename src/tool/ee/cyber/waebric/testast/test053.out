@@ -3,18 +3,16 @@ IdCon( "test053" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         IfStatement(
           Predicate(
-            IsAPredicate( NatCon( "1" ), null ),
-            [  ],
+            [ IsAPredicate( NatCon( "1" ), null ) ],
             [  ]
             ),
           IfStatement(
             Predicate(
-              IsAPredicate( IdCon( "b" ), null ),
-              [  ],
+              [ IsAPredicate( IdCon( "b" ), null ) ],
               [  ]
               ),
             EchoStatement( Txt( ""2"" ), Semicolon( ";" ) ),

@@ -33,20 +33,16 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
       if (funcs.contains(name)) {
           D.ebug("Function found")
           funcs(name) match {
-              case FuncBinding(idCon, null, statement) =>
-                  return (List(statement), List.empty, functionEnv)
-              case FuncBinding(idCon, FuncArguments(first, rest), statement) =>
-                  return (List(statement), first :: rest, functionEnv)
+              case FuncBinding(idCon, args, statement) =>
+                  return (List(statement), args, functionEnv)
               case _ => return null
           }
       }
       if (defs.contains(name)) {
           D.ebug("Definition found")
           defs(name) match {
-              case FunctionDef(Function(_, FunctionArgs(Formals(first, rest))), statements, _) =>
-                  return (statements, first :: rest, functionEnv)
-              case FunctionDef(Function(_, FunctionArgs(null)), statements, _) =>
-                  return (statements, List.empty, functionEnv)
+              case FunctionDef(Function(_, args), statements, _) =>
+                  return (statements, args, functionEnv)
               case FunctionDef(FunctionName(_), statements, _) =>
                   return (statements, List.empty, functionEnv)
               case _ => return null

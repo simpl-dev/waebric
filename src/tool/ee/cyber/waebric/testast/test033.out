@@ -3,7 +3,7 @@ IdCon( "test033" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         MarkupStatement(
           Markup(
@@ -11,10 +11,7 @@ Definitions(
               IdCon( "html" ),
               [ ClassAttr( IdCon( "alert" ) ) ]
               ),
-            MarkupArguments(
-              AttrArg( IdCon( "class" ), Txt( ""bla"" ) ),
-              [  ]
-              )
+            [ AttrArg( IdCon( "class" ), Txt( ""bla"" ) ) ]
             ),
           MarkupSemi( Semicolon( ";" ) )
           )

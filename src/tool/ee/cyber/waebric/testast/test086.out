@@ -3,15 +3,18 @@ IdCon( "test086" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
             VarBinding(
               IdCon( "b" ),
               RecordExpression(
-                KeyValuePair( IdCon( "x" ), NatCon( "3" ) ),
                 [
+                  KeyValuePair(
+                    IdCon( "x" ),
+                    NatCon( "3" )
+                    ),
                   KeyValuePair(
                     IdCon( "y" ),
                     NatCon( "4" )
@@ -34,7 +37,7 @@ Definitions(
                   MarkupStatement(
                     Markup(
                       Designator( IdCon( "p" ), [  ] ),
-                      null
+                      [  ]
                       ),
                     MarkupExp(
                       IdCon( "x" ),

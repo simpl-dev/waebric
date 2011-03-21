@@ -5,13 +5,13 @@ Definitions(
     FunctionDef(
       Function(
         FunctionName( IdCon( "f" ) ),
-        FunctionArgs( Formals( IdCon( "a" ), [  ] ) )
+        [ IdCon( "a" ) ]
         ),
       [ YieldStatement( Semicolon( ";" ) ) ],
       EndTerm( "end" )
       ),
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
@@ -25,7 +25,7 @@ Definitions(
             MarkupStatement(
               Markup(
                 Designator( IdCon( "f" ), [  ] ),
-                MarkupArguments( Txt( ""B"" ), [  ] )
+                [ Txt( ""B"" ) ]
                 ),
               MarkupExp( IdCon( "a" ), Semicolon( ";" ) )
               )

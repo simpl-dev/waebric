@@ -3,15 +3,15 @@ IdCon( "test049" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
             VarBinding(
               IdCon( "l" ),
               ListExpression(
-                NatCon( "1" ),
                 [
+                  NatCon( "1" ),
                   NatCon( "2" ),
                   NatCon( "3" ),
                   NatCon( "4" )

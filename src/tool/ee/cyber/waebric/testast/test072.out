@@ -3,7 +3,7 @@ IdCon( "test072" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         EchoStatement(
           Embedding(
@@ -18,7 +18,7 @@ Definitions(
                       IdAttr( IdCon( "myid" ) )
                       ]
                     ),
-                  null
+                  [  ]
                   )
                 ],
               Txt( ""here"" )

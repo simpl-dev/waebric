@@ -5,9 +5,7 @@ Definitions(
     FunctionDef(
       Function(
         FunctionName( IdCon( "f" ) ),
-        FunctionArgs(
-          Formals( IdCon( "a" ), [ IdCon( "b" ) ] )
-          )
+        [ IdCon( "a" ), IdCon( "b" ) ]
         ),
       [
         EchoStatement(
@@ -30,20 +28,18 @@ Definitions(
       EndTerm( "end" )
       ),
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         MarkupStatement(
           Markup(
             Designator( IdCon( "f" ), [  ] ),
-            MarkupArguments(
+            [
               NatCon( "1" ),
-              [
-                NatCon( "2" ),
-                NatCon( "3" ),
-                NatCon( "4" ),
-                NatCon( "5" )
-                ]
-              )
+              NatCon( "2" ),
+              NatCon( "3" ),
+              NatCon( "4" ),
+              NatCon( "5" )
+              ]
             ),
           MarkupSemi( Semicolon( ";" ) )
           )

@@ -3,7 +3,7 @@ IdCon( "test003" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         EchoStatement(
           Embedding(
@@ -12,7 +12,7 @@ Definitions(
               [
                 Markup(
                   Designator( IdCon( "em" ), [  ] ),
-                  null
+                  [  ]
                   )
                 ],
               Txt( ""bla"" )

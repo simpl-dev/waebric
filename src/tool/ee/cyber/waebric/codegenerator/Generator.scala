@@ -71,9 +71,9 @@ private class Generator(tree: Program) {
 
     var sitesFound = false
     tree.definitions.definition foreach (s => s match {
-      case Site(_, Mappings(mapping, _, rest), _) =>
+      case Site(_, Mappings(mappings, _), _) =>
         sitesFound = true
-        List(mapping) ++ rest foreach {
+        mappings foreach {
           f =>
             var out: java.io.FileWriter = null
             try {
@@ -164,7 +164,7 @@ private class Generator(tree: Program) {
           case _ =>  NodeSeq.Empty
         }
       case IfStatement(p, ifStat, elseStat) =>
-        if (resolvePredicateChain(if (p.rest ne null) List(p.left) ++ p.rest else List(p.left), p.op, env)) {
+        if (resolvePredicateChain(p.args, p.op, env)) {
           return evalStatement(ifStat, env)
         } else if (elseStat ne null) {
           return evalStatement(elseStat, env)
@@ -246,18 +246,15 @@ private class Generator(tree: Program) {
       case KeyValuePair(idCon, expression) =>
         D.ebug("KeyValuePair found " + idCon + ", " + expression)
         KeyValueNodeSeq(idCon.text, evalExpr(expression, env))
-      case ListExpression(first, rest) =>
-        if (first eq null) {
-          return ListNodeSeq(List.empty)
-        }
-        new ListNodeSeq((List(first) ++ rest) map {f => evalExpr(f, env)} toList)
-      case RecordExpression(first, rest) =>
-        D.ebug("RecordExpression found " + first + ", " + rest)
-        if (first eq null) {
-          return RecordNodeSeq(List.empty)
-        }
-        new RecordNodeSeq((List(first) ++ rest) map {
-          f => (evalExpr(f.asInstanceOf[KeyValuePair], env)).asInstanceOf[KeyValueNodeSeq]} toList)
+      case ListExpression(items) =>
+        ListNodeSeq(items map(evalExpr(_, env))  toList)
+      case RecordExpression(items) =>
+        D.ebug("RecordExpression found " + items)
+        RecordNodeSeq(
+            (for (f <- items)
+                yield evalExpr(f.asInstanceOf[KeyValuePair], env)
+                        .asInstanceOf[KeyValueNodeSeq]
+            ) toList)
       case FieldExpression(prim, idCon) =>
         evalExpr(prim, env) match {
           case r: RecordNodes =>
@@ -338,15 +335,15 @@ private class Generator(tree: Program) {
 
   }
 
-  private def getMarkupArguments(markup: Markup): List[Argument] = markup.markupArguments match {
-        case MarkupArguments(null, rest) => List.empty
-        case MarkupArguments(first, rest) => first :: rest
-        case null => List.empty
-      }
+  private def getMarkupArgs(markup: Markup) =
+      if (markup.args eq null)
+          List.empty
+    else
+          markup.args
 
   //funArgs contains the env for the function
   private def bindParameters(funArgs: Tuple2[List[IdCon], Env], markup: Markup, env: Env): Env = {
-      var markupArgs: List[Argument] = getMarkupArguments(markup)
+      var markupArgs: List[Argument] = getMarkupArgs(markup)
       // check whether number of arguments and number of parameters match
       if (markupArgs.size < funArgs._1.size) {
         errors ++= List("Wrong number of arguments(" + markupArgs.size +
@@ -364,7 +361,6 @@ private class Generator(tree: Program) {
   }
 
   private def addXHTMLAttributes(elem: Elem, markup: Markup, env: Env): NodeSeq = {
-      val markupArgs: List[Argument] = getMarkupArguments(markup)
       val map: Map[String, NodeSeq] = Map.empty
 
       def updateMap(pair: Tuple2[String, NodeSeq]) = {
@@ -391,7 +387,7 @@ private class Generator(tree: Program) {
       // We are interested only in the AttrArg type
       //markupArgs filter { f => f.isInstanceOf[AttrArg]} map {
       // or not:
-      markupArgs map {
+      getMarkupArgs(markup) map {
           f => f match {
             case AttrArg(idCon, exp) =>  updateMap((idCon.text, evalExpr(exp, env)))
             case _ => updateMap(("value", evalExpr(f, env)))

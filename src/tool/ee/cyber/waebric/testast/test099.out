@@ -5,39 +5,30 @@ Definitions(
     FunctionDef(
       Function(
         FunctionName( IdCon( "swfobject" ) ),
-        FunctionArgs(
-          Formals(
-            IdCon( "url" ),
-            [
-              IdCon( "width" ),
-              IdCon( "height" ),
-              IdCon( "id" )
-              ]
-            )
-          )
+        [
+          IdCon( "url" ),
+          IdCon( "width" ),
+          IdCon( "height" ),
+          IdCon( "id" )
+          ]
         ),
       [
         MarkupStatement(
           Markup(
             Designator( IdCon( "object" ), [  ] ),
-            MarkupArguments(
+            [
               AttrArg(
                 IdCon( "classid" ),
                 SymbolCon(
                   "'clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
                   )
                 ),
-              [
-                AttrArg(
-                  IdCon( "width" ),
-                  IdCon( "width" )
-                  ),
-                AttrArg(
-                  IdCon( "height" ),
-                  IdCon( "height" )
-                  )
-                ]
-              )
+              AttrArg( IdCon( "width" ), IdCon( "width" ) ),
+              AttrArg(
+                IdCon( "height" ),
+                IdCon( "height" )
+                )
+              ]
             ),
           BlockStatement(
             [
@@ -47,7 +38,7 @@ Definitions(
                     IdCon( "param" ),
                     [ NameAttr( IdCon( "movie" ) ) ]
                     ),
-                  MarkupArguments( IdCon( "url" ), [  ] )
+                  [ IdCon( "url" ) ]
                   ),
                 MarkupSemi( Semicolon( ";" ) )
                 ),
@@ -57,10 +48,7 @@ Definitions(
                     IdCon( "param" ),
                     [ NameAttr( IdCon( "quality" ) ) ]
                     ),
-                  MarkupArguments(
-                    SymbolCon( "'high" ),
-                    [  ]
-                    )
+                  [ SymbolCon( "'high" ) ]
                   ),
                 MarkupSemi( Semicolon( ";" ) )
                 ),
@@ -70,10 +58,7 @@ Definitions(
                     IdCon( "param" ),
                     [ NameAttr( IdCon( "bgcolor" ) ) ]
                     ),
-                  MarkupArguments(
-                    SymbolCon( "'#fffce6" ),
-                    [  ]
-                    )
+                  [ SymbolCon( "'#fffce6" ) ]
                   ),
                 MarkupSemi( Semicolon( ";" ) )
                 ),
@@ -85,28 +70,26 @@ Definitions(
               MarkupStatement(
                 Markup(
                   Designator( IdCon( "object" ), [  ] ),
-                  MarkupArguments(
+                  [
                     AttrArg(
                       IdCon( "type" ),
                       SymbolCon(
                         "'application/x-shockwave-flash"
                         )
                       ),
-                    [
-                      AttrArg(
-                        IdCon( "data" ),
-                        IdCon( "url" )
-                        ),
-                      AttrArg(
-                        IdCon( "width" ),
-                        IdCon( "width" )
-                        ),
-                      AttrArg(
-                        IdCon( "height" ),
-                        IdCon( "height" )
-                        )
-                      ]
-                    )
+                    AttrArg(
+                      IdCon( "data" ),
+                      IdCon( "url" )
+                      ),
+                    AttrArg(
+                      IdCon( "width" ),
+                      IdCon( "width" )
+                      ),
+                    AttrArg(
+                      IdCon( "height" ),
+                      IdCon( "height" )
+                      )
+                    ]
                   ),
                 BlockStatement(
                   [
@@ -116,10 +99,7 @@ Definitions(
                           IdCon( "param" ),
                           [ NameAttr( IdCon( "quality" ) ) ]
                           ),
-                        MarkupArguments(
-                          SymbolCon( "'high" ),
-                          [  ]
-                          )
+                        [ SymbolCon( "'high" ) ]
                         ),
                       MarkupSemi( Semicolon( ";" ) )
                       ),
@@ -129,10 +109,7 @@ Definitions(
                           IdCon( "param" ),
                           [ NameAttr( IdCon( "bgcolor" ) ) ]
                           ),
-                        MarkupArguments(
-                          SymbolCon( "'#fffce6" ),
-                          [  ]
-                          )
+                        [ SymbolCon( "'#fffce6" ) ]
                         ),
                       MarkupSemi( Semicolon( ";" ) )
                       ),
@@ -161,19 +138,17 @@ Definitions(
       EndTerm( "end" )
       ),
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         MarkupStatement(
           Markup(
             Designator( IdCon( "swfobject" ), [  ] ),
-            MarkupArguments(
+            [
               Txt( ""htt://google.nl"" ),
-              [
-                NatCon( "232" ),
-                NatCon( "3875" ),
-                Txt( ""swfobject"" )
-                ]
-              )
+              NatCon( "232" ),
+              NatCon( "3875" ),
+              Txt( ""swfobject"" )
+              ]
             ),
           MarkupSemi( Semicolon( ";" ) )
           )

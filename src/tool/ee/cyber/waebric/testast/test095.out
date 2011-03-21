@@ -3,10 +3,10 @@ IdCon( "test095" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         MarkupStatement(
-          Markup( Designator( IdCon( "p" ), [  ] ), null ),
+          Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
           MarkupExp(
             SymbolCon( "'akshdakjsdh8372643&^%&^%^92389" ),
             Semicolon( ";" )

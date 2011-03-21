@@ -3,7 +3,7 @@ IdCon( "test001" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [  ],
       EndTerm( "end" )
       )

@@ -17,21 +17,19 @@ FunctionDef:
     EndTerm;
 
 FunctionName: "def" IdCon;
-FunctionArgs: "(" arguments=Formals? ")";
 Function returns FunctionHeader { if (args ne null) _self else name }
-    : name=FunctionName (args=FunctionArgs)?;
-Formals: left=IdCon ("," rest=IdCon)*;
+    : name=FunctionName ("(" (args=IdCon ("," args=IdCon)*)? ")")?;
 
 
 Import: "import" module=ModuleId;
-ModuleId: first=IdCon ("." rest=IdCon)*;
+ModuleId: ids=IdCon ("." ids=IdCon)*;
 
 // File Mapping Nodes
 Site:
     SiteTerm
         mappings=Mappings?
     EndTerm;
-Mappings: first=Mapping (Semicolon rest=Mapping)*;
+Mappings: mapping=Mapping (Semicolon mapping=Mapping)*;
 Mapping: path=Path ":" markup=Markup;
 
 terminal Path
@@ -59,9 +57,8 @@ fragment Hexadecimal: (Letter | Digit)+;
 terminal IdCon: Letter (Letter|Digit|'-')*;
 terminal NatCon: Digit+;
 
-Markup: Designator MarkupArguments?;  // cons(call)
+Markup: Designator ("(" (args=Argument ("," args=Argument)*)? ")")?;  // cons(call)
 Designator: IdCon Attribute*;
-MarkupArguments: "(" (first=Argument ("," rest=Argument)*)? ")";
 option Argument: AttrArg | Expression;
 
 AttrArg: IdCon "=" Expression;
@@ -101,8 +98,8 @@ option PrimitiveExpression:
      | Txt;
 
 
-ListExpression: "[" (first=Expression ("," rest=Expression)*)? "]";
-RecordExpression: "{" (first=KeyValuePair ("," rest=KeyValuePair)*)? "}";
+ListExpression: "[" (args=Expression ("," args=Expression)*)? "]";
+RecordExpression: "{" (args=KeyValuePair ("," args=KeyValuePair)*)? "}";
 KeyValuePair returns Expression: IdCon ":" Expression;
 
 
@@ -124,8 +121,7 @@ EachStatement: "each" "(" IdCon ":" Expression ")" Statement;
 LetStatement: "let" Assignment+ "in" Statement* EndTerm;
 option Assignment: VarBinding | FuncBinding;
 VarBinding: IdCon "=" Expression Semicolon;
-FuncBinding: func=IdCon "(" FuncArguments? ")" "=" Statement;
-FuncArguments: first=IdCon ("," rest=IdCon)*;
+FuncBinding: func=IdCon "(" (args=IdCon ("," args=IdCon)*)? ")" "=" Statement;
 
 BlockStatement: "{" Statement* "}";
 CommentStatement: CommentTerm StrCon Semicolon;
@@ -136,7 +132,7 @@ CdataStatement: "cdata" Expression Semicolon;
 YieldStatement: "yield" Semicolon;
 MarkupStatement: Markup MarkupChain;
 
-Predicate: left=PrimPredicate (op=PredicateOp rest=PrimPredicate)*;
+Predicate: args=PrimPredicate (op=PredicateOp args=PrimPredicate)*;
 terminal PredicateOp: AndOp | OrOp;
 fragment AndOp: "&&";
 fragment OrOp: "||";

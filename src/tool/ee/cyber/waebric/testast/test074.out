@@ -3,17 +3,17 @@ IdCon( "test074" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
             FuncBinding(
               IdCon( "p" ),
-              null,
+              [  ],
               MarkupStatement(
                 Markup(
                   Designator( IdCon( "p" ), [  ] ),
-                  null
+                  [  ]
                   ),
                 MarkupExp(
                   Txt( ""a paragraph"" ),
@@ -26,7 +26,7 @@ Definitions(
             MarkupStatement(
               Markup(
                 Designator( IdCon( "p" ), [  ] ),
-                null
+                [  ]
                 ),
               MarkupSemi( Semicolon( ";" ) )
               )

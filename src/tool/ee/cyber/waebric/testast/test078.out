@@ -5,16 +5,14 @@ Definitions(
     FunctionDef(
       Function(
         FunctionName( IdCon( "f" ) ),
-        FunctionArgs(
-          Formals( IdCon( "a" ), [ IdCon( "b" ) ] )
-          )
+        [ IdCon( "a" ), IdCon( "b" ) ]
         ),
       [
         LetStatement(
           [
             FuncBinding(
               IdCon( "g" ),
-              FuncArguments( IdCon( "a" ), [  ] ),
+              [ IdCon( "a" ) ],
               BlockStatement(
                 [
                   EchoStatement(
@@ -33,7 +31,7 @@ Definitions(
             MarkupStatement(
               Markup(
                 Designator( IdCon( "g" ), [  ] ),
-                null
+                [  ]
                 ),
               MarkupSemi( Semicolon( ";" ) )
               )
@@ -44,15 +42,12 @@ Definitions(
       EndTerm( "end" )
       ),
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         MarkupStatement(
           Markup(
             Designator( IdCon( "f" ), [  ] ),
-            MarkupArguments(
-              Txt( ""a"" ),
-              [ Txt( ""b"" ) ]
-              )
+            [ Txt( ""a"" ), Txt( ""b"" ) ]
             ),
           MarkupSemi( Semicolon( ";" ) )
           )

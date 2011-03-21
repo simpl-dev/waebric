@@ -3,13 +3,13 @@ IdCon( "test017" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
             FuncBinding(
               IdCon( "f" ),
-              null,
+              [  ],
               EchoStatement(
                 Txt( ""abc"" ),
                 Semicolon( ";" )
@@ -20,7 +20,7 @@ Definitions(
             MarkupStatement(
               Markup(
                 Designator( IdCon( "f" ), [  ] ),
-                null
+                [  ]
                 ),
               MarkupSemi( Semicolon( ";" ) )
               )

@@ -3,12 +3,12 @@ IdCon( "test043" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         MarkupStatement(
           Markup(
             Designator( IdCon( "f" ), [  ] ),
-            MarkupArguments( Txt( ""Hello world!"" ), [  ] )
+            [ Txt( ""Hello world!"" ) ]
             ),
           MarkupSemi( Semicolon( ";" ) )
           )
@@ -18,13 +18,13 @@ Definitions(
     FunctionDef(
       Function(
         FunctionName( IdCon( "f" ) ),
-        FunctionArgs( Formals( IdCon( "x" ), [  ] ) )
+        [ IdCon( "x" ) ]
         ),
       [
         MarkupStatement(
           Markup(
             Designator( IdCon( "g" ), [  ] ),
-            MarkupArguments( IdCon( "x" ), [  ] )
+            [ IdCon( "x" ) ]
             ),
           MarkupSemi( Semicolon( ";" ) )
           )
@@ -34,7 +34,7 @@ Definitions(
     FunctionDef(
       Function(
         FunctionName( IdCon( "g" ) ),
-        FunctionArgs( Formals( IdCon( "x" ), [  ] ) )
+        [ IdCon( "x" ) ]
         ),
       [
         EchoStatement(

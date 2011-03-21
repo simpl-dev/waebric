@@ -3,7 +3,7 @@ IdCon( "test006" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [ EchoStatement( NatCon( "4" ), Semicolon( ";" ) ) ],
       EndTerm( "end" )
       )

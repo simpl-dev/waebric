@@ -3,7 +3,7 @@ IdCon( "test052" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
@@ -16,8 +16,7 @@ Definitions(
           [
             IfStatement(
               Predicate(
-                IsAPredicate( IdCon( "a" ), null ),
-                [  ],
+                [ IsAPredicate( IdCon( "a" ), null ) ],
                 [  ]
                 ),
               EchoStatement(

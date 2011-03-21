@@ -3,17 +3,17 @@ IdCon( "test075" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
             FuncBinding(
               IdCon( "mypar" ),
-              null,
+              [  ],
               MarkupStatement(
                 Markup(
                   Designator( IdCon( "p" ), [  ] ),
-                  null
+                  [  ]
                   ),
                 BlockStatement(
                   [
@@ -31,7 +31,7 @@ Definitions(
             MarkupStatement(
               Markup(
                 Designator( IdCon( "mypar" ), [  ] ),
-                null
+                [  ]
                 ),
               MarkupExp(
                 Txt( ""Hallo"" ),

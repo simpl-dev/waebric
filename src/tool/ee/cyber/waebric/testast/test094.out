@@ -3,7 +3,7 @@ IdCon( "test094" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
@@ -17,7 +17,7 @@ Definitions(
             MarkupStatement(
               Markup(
                 Designator( IdCon( "p" ), [  ] ),
-                null
+                [  ]
                 ),
               MarkupEmb(
                 Embedding(

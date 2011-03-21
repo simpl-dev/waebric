@@ -3,11 +3,11 @@ IdCon( "test047" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         EachStatement(
           IdCon( "x" ),
-          ListExpression( NatCon( "1" ), [  ] ),
+          ListExpression( [ NatCon( "1" ) ] ),
           EchoStatement( IdCon( "x" ), Semicolon( ";" ) )
           )
         ],

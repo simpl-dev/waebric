@@ -3,14 +3,15 @@ IdCon( "test079" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         IfStatement(
           Predicate(
-            NotPredicate(
-              IsAPredicate( IdCon( "a" ), null )
-              ),
-            [  ],
+            [
+              NotPredicate(
+                IsAPredicate( IdCon( "a" ), null )
+                )
+              ],
             [  ]
             ),
           EchoStatement( Txt( ""Yes"" ), Semicolon( ";" ) ),

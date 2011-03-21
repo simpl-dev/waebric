@@ -3,15 +3,15 @@ IdCon( "test055" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "f" ) ),
+      Function( FunctionName( IdCon( "f" ) ), [  ] ),
       [ YieldStatement( Semicolon( ";" ) ) ],
       EndTerm( "end" )
       ),
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         MarkupStatement(
-          Markup( Designator( IdCon( "f" ), [  ] ), null ),
+          Markup( Designator( IdCon( "f" ), [  ] ), [  ] ),
           MarkupExp( Txt( ""abc"" ), Semicolon( ";" ) )
           )
         ],

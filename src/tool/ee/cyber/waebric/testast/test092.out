@@ -3,7 +3,7 @@ IdCon( "test092" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
@@ -17,16 +17,15 @@ Definitions(
             MarkupStatement(
               Markup(
                 Designator( IdCon( "a" ), [  ] ),
-                MarkupArguments(
+                [
                   AttrArg(
                     IdCon( "href" ),
                     CatExpression(
                       Txt( ""http://"" ),
                       IdCon( "x" )
                       )
-                    ),
-                  [  ]
-                  )
+                    )
+                  ]
                 ),
               MarkupExp(
                 Txt( ""Google"" ),

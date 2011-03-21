@@ -3,17 +3,15 @@ IdCon( "test025" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         MarkupStatement(
           Markup(
             Designator( IdCon( "html" ), [  ] ),
-            MarkupArguments(
+            [
               AttrArg( IdCon( "name" ), Txt( ""bla"" ) ),
-              [
-                AttrArg( IdCon( "type" ), Txt( ""xhtml"" ) )
-                ]
-              )
+              AttrArg( IdCon( "type" ), Txt( ""xhtml"" ) )
+              ]
             ),
           MarkupExp(
             Txt( ""Hello world!"" ),

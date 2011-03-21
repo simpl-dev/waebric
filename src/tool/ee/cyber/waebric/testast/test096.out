@@ -3,28 +3,28 @@ IdCon( "test096" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         MarkupStatement(
-          Markup( Designator( IdCon( "p" ), [  ] ), null ),
+          Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
           BlockStatement( [  ] )
           ),
         MarkupStatement(
-          Markup( Designator( IdCon( "p" ), [  ] ), null ),
+          Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
           MarkupExp(
-            RecordExpression( null, [  ] ),
+            RecordExpression( [  ] ),
             Semicolon( ";" )
             )
           ),
         MarkupStatement(
-          Markup( Designator( IdCon( "p" ), [  ] ), null ),
+          Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
           MarkupExp(
-            ListExpression( null, [  ] ),
+            ListExpression( [  ] ),
             Semicolon( ";" )
             )
           ),
         MarkupStatement(
-          Markup( Designator( IdCon( "p" ), [  ] ), null ),
+          Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
           MarkupExp( Txt( """" ), Semicolon( ";" ) )
           )
         ],

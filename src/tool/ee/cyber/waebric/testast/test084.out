@@ -3,15 +3,18 @@ IdCon( "test084" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
             VarBinding(
               IdCon( "b" ),
               RecordExpression(
-                KeyValuePair( IdCon( "x" ), Txt( ""X"" ) ),
                 [
+                  KeyValuePair(
+                    IdCon( "x" ),
+                    Txt( ""X"" )
+                    ),
                   KeyValuePair( IdCon( "y" ), Txt( ""Y"" ) )
                   ]
                 ),
@@ -21,15 +24,14 @@ Definitions(
           [
             IfStatement(
               Predicate(
-                IsAPredicate(
-                  FieldExpression(
-                    IdCon( "b" ),
-                    IdCon( "x" )
-                    ),
-                  null
-                  ),
-                [ PredicateOp( "&&" ) ],
                 [
+                  IsAPredicate(
+                    FieldExpression(
+                      IdCon( "b" ),
+                      IdCon( "x" )
+                      ),
+                    null
+                    ),
                   IsAPredicate(
                     FieldExpression(
                       IdCon( "b" ),
@@ -37,7 +39,8 @@ Definitions(
                       ),
                     null
                     )
-                  ]
+                  ],
+                [ PredicateOp( "&&" ) ]
                 ),
               EchoStatement(
                 Txt( ""Yes"" ),

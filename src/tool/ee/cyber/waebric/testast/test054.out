@@ -3,24 +3,21 @@ IdCon( "test054" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         EachStatement(
           IdCon( "x" ),
           ListExpression(
-            NatCon( "1" ),
-            [ NatCon( "2" ), NatCon( "3" ) ]
+            [ NatCon( "1" ), NatCon( "2" ), NatCon( "3" ) ]
             ),
           IfStatement(
             Predicate(
-              IsAPredicate( NatCon( "1" ), null ),
-              [  ],
+              [ IsAPredicate( NatCon( "1" ), null ) ],
               [  ]
               ),
             IfStatement(
               Predicate(
-                IsAPredicate( IdCon( "b" ), null ),
-                [  ],
+                [ IsAPredicate( IdCon( "b" ), null ) ],
                 [  ]
                 ),
               EchoStatement(

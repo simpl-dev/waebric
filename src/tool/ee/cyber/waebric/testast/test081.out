@@ -3,15 +3,16 @@ IdCon( "test081" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
             VarBinding(
               IdCon( "b" ),
               RecordExpression(
-                KeyValuePair( IdCon( "x" ), Txt( ""X"" ) ),
-                [  ]
+                [
+                  KeyValuePair( IdCon( "x" ), Txt( ""X"" ) )
+                  ]
                 ),
               Semicolon( ";" )
               )
@@ -19,11 +20,12 @@ Definitions(
           [
             IfStatement(
               Predicate(
-                IsAPredicate(
-                  IdCon( "b" ),
-                  PredType( "record" )
-                  ),
-                [  ],
+                [
+                  IsAPredicate(
+                    IdCon( "b" ),
+                    PredType( "record" )
+                    )
+                  ],
                 [  ]
                 ),
               EchoStatement(

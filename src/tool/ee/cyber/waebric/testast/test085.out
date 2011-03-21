@@ -3,15 +3,18 @@ IdCon( "test085" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
             VarBinding(
               IdCon( "b" ),
               ListExpression(
-                NatCon( "1" ),
-                [ NatCon( "2" ), NatCon( "3" ) ]
+                [
+                  NatCon( "1" ),
+                  NatCon( "2" ),
+                  NatCon( "3" )
+                  ]
                 ),
               Semicolon( ";" )
               )
@@ -19,12 +22,11 @@ Definitions(
           [
             IfStatement(
               Predicate(
-                IsAPredicate(
-                  IdCon( "b" ),
-                  PredType( "list" )
-                  ),
-                [ PredicateOp( "&&" ) ],
                 [
+                  IsAPredicate(
+                    IdCon( "b" ),
+                    PredType( "list" )
+                    ),
                   NotPredicate(
                     IsAPredicate(
                       FieldExpression(
@@ -34,7 +36,8 @@ Definitions(
                       null
                       )
                     )
-                  ]
+                  ],
+                [ PredicateOp( "&&" ) ]
                 ),
               EchoStatement(
                 Txt( ""Yes"" ),

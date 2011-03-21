@@ -3,7 +3,7 @@ IdCon( "test032" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         MarkupStatement(
           Markup(
@@ -14,7 +14,7 @@ Definitions(
                 IdAttr( IdCon( "id" ) )
                 ]
               ),
-            null
+            [  ]
             ),
           MarkupSemi( Semicolon( ";" ) )
           )

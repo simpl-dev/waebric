@@ -3,17 +3,17 @@ IdCon( "test076" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
             FuncBinding(
               IdCon( "p" ),
-              null,
+              [  ],
               MarkupStatement(
                 Markup(
                   Designator( IdCon( "p" ), [  ] ),
-                  null
+                  [  ]
                   ),
                 BlockStatement(
                   [
@@ -28,11 +28,11 @@ Definitions(
               ),
             FuncBinding(
               IdCon( "p" ),
-              null,
+              [  ],
               MarkupStatement(
                 Markup(
                   Designator( IdCon( "p" ), [  ] ),
-                  null
+                  [  ]
                   ),
                 BlockStatement(
                   [
@@ -47,11 +47,11 @@ Definitions(
               ),
             FuncBinding(
               IdCon( "p" ),
-              null,
+              [  ],
               MarkupStatement(
                 Markup(
                   Designator( IdCon( "p" ), [  ] ),
-                  null
+                  [  ]
                   ),
                 BlockStatement(
                   [
@@ -66,11 +66,11 @@ Definitions(
               ),
             FuncBinding(
               IdCon( "p" ),
-              null,
+              [  ],
               MarkupStatement(
                 Markup(
                   Designator( IdCon( "p" ), [  ] ),
-                  null
+                  [  ]
                   ),
                 BlockStatement(
                   [
@@ -85,11 +85,11 @@ Definitions(
               ),
             FuncBinding(
               IdCon( "p" ),
-              null,
+              [  ],
               MarkupStatement(
                 Markup(
                   Designator( IdCon( "p" ), [  ] ),
-                  null
+                  [  ]
                   ),
                 BlockStatement(
                   [
@@ -104,11 +104,11 @@ Definitions(
               ),
             FuncBinding(
               IdCon( "p" ),
-              null,
+              [  ],
               MarkupStatement(
                 Markup(
                   Designator( IdCon( "p" ), [  ] ),
-                  null
+                  [  ]
                   ),
                 BlockStatement(
                   [
@@ -123,11 +123,11 @@ Definitions(
               ),
             FuncBinding(
               IdCon( "p" ),
-              null,
+              [  ],
               MarkupStatement(
                 Markup(
                   Designator( IdCon( "p" ), [  ] ),
-                  null
+                  [  ]
                   ),
                 BlockStatement(
                   [
@@ -145,7 +145,7 @@ Definitions(
             MarkupStatement(
               Markup(
                 Designator( IdCon( "p" ), [  ] ),
-                null
+                [  ]
                 ),
               MarkupExp(
                 Txt( ""Hello World!"" ),

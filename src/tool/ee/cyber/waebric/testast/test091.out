@@ -3,13 +3,12 @@ IdCon( "test091" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         EachStatement(
           IdCon( "x" ),
           ListExpression(
-            NatCon( "1" ),
-            [ NatCon( "2" ), NatCon( "3" ) ]
+            [ NatCon( "1" ), NatCon( "2" ), NatCon( "3" ) ]
             ),
           LetStatement(
             [
@@ -26,7 +25,7 @@ Definitions(
               MarkupStatement(
                 Markup(
                   Designator( IdCon( "p" ), [  ] ),
-                  null
+                  [  ]
                   ),
                 MarkupExp( IdCon( "y" ), Semicolon( ";" ) )
                 )

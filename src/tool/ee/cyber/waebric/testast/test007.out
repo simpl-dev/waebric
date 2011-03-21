@@ -3,7 +3,7 @@ IdCon( "test007" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         EchoStatement(
           CatExpression( NatCon( "1" ), NatCon( "2" ) ),

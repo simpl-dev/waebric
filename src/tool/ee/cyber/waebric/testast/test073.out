@@ -3,7 +3,7 @@ IdCon( "test073" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
@@ -17,26 +17,26 @@ Definitions(
             MarkupStatement(
               Markup(
                 Designator( IdCon( "p" ), [  ] ),
-                null
+                [  ]
                 ),
               MarkupSemi( Semicolon( ";" ) )
               ),
             MarkupStatement(
               Markup(
                 Designator( IdCon( "p" ), [  ] ),
-                null
+                [  ]
                 ),
               MarkupExp( IdCon( "p" ), Semicolon( ";" ) )
               ),
             MarkupStatement(
               Markup(
                 Designator( IdCon( "p" ), [  ] ),
-                null
+                [  ]
                 ),
               MarkupStatement(
                 Markup(
                   Designator( IdCon( "p" ), [  ] ),
-                  MarkupArguments( null, [  ] )
+                  [  ]
                   ),
                 MarkupSemi( Semicolon( ";" ) )
                 )
@@ -56,7 +56,7 @@ Definitions(
                   [
                     Markup(
                       Designator( IdCon( "p" ), [  ] ),
-                      MarkupArguments( null, [  ] )
+                      [  ]
                       )
                     ]
                   ),
@@ -71,7 +71,7 @@ Definitions(
                   [
                     Markup(
                       Designator( IdCon( "p" ), [  ] ),
-                      null
+                      [  ]
                       )
                     ],
                   IdCon( "p" )
@@ -87,11 +87,11 @@ Definitions(
                   [
                     Markup(
                       Designator( IdCon( "p" ), [  ] ),
-                      null
+                      [  ]
                       ),
                     Markup(
                       Designator( IdCon( "p" ), [  ] ),
-                      MarkupArguments( null, [  ] )
+                      [  ]
                       )
                     ]
                   ),

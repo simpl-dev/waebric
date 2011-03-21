@@ -3,21 +3,15 @@ IdCon( "test038" ),
 Definitions(
   [
     FunctionDef(
-      Function(
-        FunctionName( IdCon( "f" ) ),
-        FunctionArgs( null )
-        ),
+      Function( FunctionName( IdCon( "f" ) ), [  ] ),
       [ EchoStatement( Txt( ""bla"" ), Semicolon( ";" ) ) ],
       EndTerm( "end" )
       ),
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         MarkupStatement(
-          Markup(
-            Designator( IdCon( "f" ), [  ] ),
-            MarkupArguments( null, [  ] )
-            ),
+          Markup( Designator( IdCon( "f" ), [  ] ), [  ] ),
           MarkupSemi( Semicolon( ";" ) )
           )
         ],

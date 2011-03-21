@@ -3,7 +3,7 @@ IdCon( "test005" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         EchoStatement(
           CatExpression( Txt( ""abc"" ), Txt( ""cdef"" ) ),

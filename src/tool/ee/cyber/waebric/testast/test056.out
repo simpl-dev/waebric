@@ -3,12 +3,12 @@ IdCon( "test056" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "f" ) ),
+      Function( FunctionName( IdCon( "f" ) ), [  ] ),
       [ YieldStatement( Semicolon( ";" ) ) ],
       EndTerm( "end" )
       ),
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
@@ -22,7 +22,7 @@ Definitions(
             MarkupStatement(
               Markup(
                 Designator( IdCon( "f" ), [  ] ),
-                null
+                [  ]
                 ),
               MarkupExp( IdCon( "a" ), Semicolon( ";" ) )
               )

@@ -3,12 +3,12 @@ IdCon( "test024" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         MarkupStatement(
           Markup(
             Designator( IdCon( "html" ), [  ] ),
-            MarkupArguments( null, [  ] )
+            [  ]
             ),
           MarkupExp(
             Txt( ""Hello world!"" ),

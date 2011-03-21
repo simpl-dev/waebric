@@ -5,7 +5,7 @@ Definitions(
     FunctionDef(
       Function(
         FunctionName( IdCon( "on-the-wall" ) ),
-        FunctionArgs( Formals( IdCon( "x" ), [  ] ) )
+        [ IdCon( "x" ) ]
         ),
       [
         EchoStatement(
@@ -26,7 +26,7 @@ Definitions(
     FunctionDef(
       Function(
         FunctionName( IdCon( "take-one-down" ) ),
-        FunctionArgs( Formals( IdCon( "x" ), [  ] ) )
+        [ IdCon( "x" ) ]
         ),
       [
         EchoStatement(
@@ -43,27 +43,27 @@ Definitions(
       EndTerm( "end" )
       ),
     FunctionDef(
-      FunctionName( IdCon( "line" ) ),
+      Function( FunctionName( IdCon( "line" ) ), [  ] ),
       [
         MarkupStatement(
-          Markup( Designator( IdCon( "li" ), [  ] ), null ),
+          Markup( Designator( IdCon( "li" ), [  ] ), [  ] ),
           YieldStatement( Semicolon( ";" ) )
           )
         ],
       EndTerm( "end" )
       ),
     FunctionDef(
-      FunctionName( IdCon( "two" ) ),
+      Function( FunctionName( IdCon( "two" ) ), [  ] ),
       [
         MarkupStatement(
           Markup(
             Designator( IdCon( "line" ), [  ] ),
-            null
+            [  ]
             ),
           MarkupStatement(
             Markup(
               Designator( IdCon( "on-the-wall" ), [  ] ),
-              MarkupArguments( NatCon( "2" ), [  ] )
+              [ NatCon( "2" ) ]
               ),
             MarkupSemi( Semicolon( ";" ) )
             )
@@ -71,7 +71,7 @@ Definitions(
         MarkupStatement(
           Markup(
             Designator( IdCon( "line" ), [  ] ),
-            null
+            [  ]
             ),
           MarkupExp(
             Txt(
@@ -84,12 +84,12 @@ Definitions(
       EndTerm( "end" )
       ),
     FunctionDef(
-      FunctionName( IdCon( "one" ) ),
+      Function( FunctionName( IdCon( "one" ) ), [  ] ),
       [
         MarkupStatement(
           Markup(
             Designator( IdCon( "line" ), [  ] ),
-            null
+            [  ]
             ),
           MarkupExp(
             Txt(
@@ -101,7 +101,7 @@ Definitions(
         MarkupStatement(
           Markup(
             Designator( IdCon( "line" ), [  ] ),
-            null
+            [  ]
             ),
           MarkupExp(
             Txt(
@@ -116,13 +116,13 @@ Definitions(
     FunctionDef(
       Function(
         FunctionName( IdCon( "no-more" ) ),
-        FunctionArgs( Formals( IdCon( "x" ), [  ] ) )
+        [ IdCon( "x" ) ]
         ),
       [
         MarkupStatement(
           Markup(
             Designator( IdCon( "line" ), [  ] ),
-            null
+            [  ]
             ),
           MarkupExp(
             Txt(
@@ -134,7 +134,7 @@ Definitions(
         MarkupStatement(
           Markup(
             Designator( IdCon( "line" ), [  ] ),
-            null
+            [  ]
             ),
           MarkupEmb(
             Embedding(
@@ -151,32 +151,32 @@ Definitions(
       EndTerm( "end" )
       ),
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         LetStatement(
           [
             VarBinding(
               IdCon( "iter" ),
               ListExpression(
-                RecordExpression(
-                  KeyValuePair(
-                    IdCon( "cur" ),
-                    NatCon( "99" )
-                    ),
-                  [
-                    KeyValuePair(
-                      IdCon( "next" ),
-                      NatCon( "98" )
-                      )
-                    ]
-                  ),
                 [
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "98" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "99" )
+                        ),
+                      KeyValuePair(
+                        IdCon( "next" ),
+                        NatCon( "98" )
+                        )
+                      ]
+                    ),
+                  RecordExpression(
+                    [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "98" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "97" )
@@ -184,11 +184,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "97" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "97" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "96" )
@@ -196,11 +196,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "96" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "96" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "95" )
@@ -208,11 +208,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "95" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "95" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "94" )
@@ -220,11 +220,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "94" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "94" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "93" )
@@ -232,11 +232,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "93" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "93" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "92" )
@@ -244,11 +244,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "92" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "92" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "91" )
@@ -256,11 +256,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "91" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "91" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "90" )
@@ -268,11 +268,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "90" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "90" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "89" )
@@ -280,11 +280,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "89" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "89" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "88" )
@@ -292,11 +292,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "88" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "88" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "87" )
@@ -304,11 +304,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "87" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "87" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "86" )
@@ -316,11 +316,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "86" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "86" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "85" )
@@ -328,11 +328,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "85" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "85" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "84" )
@@ -340,11 +340,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "84" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "84" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "83" )
@@ -352,11 +352,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "83" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "83" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "82" )
@@ -364,11 +364,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "82" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "82" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "81" )
@@ -376,11 +376,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "81" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "81" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "80" )
@@ -388,11 +388,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "80" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "80" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "79" )
@@ -400,11 +400,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "79" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "79" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "78" )
@@ -412,11 +412,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "78" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "78" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "77" )
@@ -424,11 +424,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "77" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "77" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "76" )
@@ -436,11 +436,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "76" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "76" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "75" )
@@ -448,11 +448,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "75" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "75" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "74" )
@@ -460,11 +460,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "74" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "74" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "73" )
@@ -472,11 +472,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "73" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "73" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "72" )
@@ -484,11 +484,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "72" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "72" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "71" )
@@ -496,11 +496,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "71" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "71" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "70" )
@@ -508,11 +508,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "70" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "70" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "69" )
@@ -520,11 +520,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "69" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "69" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "68" )
@@ -532,11 +532,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "68" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "68" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "67" )
@@ -544,11 +544,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "67" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "67" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "66" )
@@ -556,11 +556,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "66" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "66" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "65" )
@@ -568,11 +568,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "65" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "65" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "64" )
@@ -580,11 +580,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "64" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "64" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "63" )
@@ -592,11 +592,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "63" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "63" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "62" )
@@ -604,11 +604,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "62" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "62" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "61" )
@@ -616,11 +616,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "61" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "61" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "60" )
@@ -628,11 +628,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "60" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "60" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "59" )
@@ -640,11 +640,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "59" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "59" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "58" )
@@ -652,11 +652,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "58" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "58" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "57" )
@@ -664,11 +664,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "57" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "57" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "56" )
@@ -676,11 +676,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "56" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "56" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "55" )
@@ -688,11 +688,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "55" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "55" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "54" )
@@ -700,11 +700,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "54" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "54" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "53" )
@@ -712,11 +712,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "53" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "53" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "52" )
@@ -724,11 +724,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "52" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "52" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "51" )
@@ -736,11 +736,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "51" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "51" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "50" )
@@ -748,11 +748,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "50" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "50" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "49" )
@@ -760,11 +760,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "49" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "49" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "48" )
@@ -772,11 +772,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "48" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "48" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "47" )
@@ -784,11 +784,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "47" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "47" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "46" )
@@ -796,11 +796,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "46" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "46" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "45" )
@@ -808,11 +808,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "45" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "45" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "44" )
@@ -820,11 +820,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "44" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "44" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "43" )
@@ -832,11 +832,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "43" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "43" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "42" )
@@ -844,11 +844,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "42" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "42" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "41" )
@@ -856,11 +856,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "41" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "41" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "40" )
@@ -868,11 +868,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "40" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "40" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "39" )
@@ -880,11 +880,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "39" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "39" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "38" )
@@ -892,11 +892,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "38" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "38" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "37" )
@@ -904,11 +904,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "37" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "37" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "36" )
@@ -916,11 +916,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "36" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "36" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "35" )
@@ -928,11 +928,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "35" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "35" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "34" )
@@ -940,11 +940,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "34" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "34" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "33" )
@@ -952,11 +952,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "33" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "33" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "32" )
@@ -964,11 +964,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "32" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "32" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "31" )
@@ -976,11 +976,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "31" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "31" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "30" )
@@ -988,11 +988,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "30" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "30" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "29" )
@@ -1000,11 +1000,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "29" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "29" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "28" )
@@ -1012,11 +1012,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "28" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "28" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "27" )
@@ -1024,11 +1024,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "27" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "27" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "26" )
@@ -1036,11 +1036,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "26" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "26" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "25" )
@@ -1048,11 +1048,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "25" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "25" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "24" )
@@ -1060,11 +1060,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "24" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "24" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "23" )
@@ -1072,11 +1072,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "23" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "23" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "22" )
@@ -1084,11 +1084,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "22" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "22" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "21" )
@@ -1096,11 +1096,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "21" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "21" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "20" )
@@ -1108,11 +1108,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "20" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "20" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "19" )
@@ -1120,11 +1120,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "19" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "19" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "18" )
@@ -1132,11 +1132,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "18" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "18" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "17" )
@@ -1144,11 +1144,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "17" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "17" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "16" )
@@ -1156,11 +1156,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "16" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "16" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "15" )
@@ -1168,11 +1168,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "15" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "15" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "14" )
@@ -1180,11 +1180,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "14" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "14" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "13" )
@@ -1192,11 +1192,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "13" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "13" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "12" )
@@ -1204,11 +1204,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "12" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "12" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "11" )
@@ -1216,11 +1216,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "11" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "11" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "10" )
@@ -1228,11 +1228,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "10" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "10" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "9" )
@@ -1240,11 +1240,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "9" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "9" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "8" )
@@ -1252,11 +1252,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "8" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "8" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "7" )
@@ -1264,11 +1264,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "7" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "7" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "6" )
@@ -1276,11 +1276,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "6" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "6" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "5" )
@@ -1288,11 +1288,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "5" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "5" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "4" )
@@ -1300,11 +1300,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "4" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "4" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "3" )
@@ -1312,11 +1312,11 @@ Definitions(
                       ]
                     ),
                   RecordExpression(
-                    KeyValuePair(
-                      IdCon( "cur" ),
-                      NatCon( "3" )
-                      ),
                     [
+                      KeyValuePair(
+                        IdCon( "cur" ),
+                        NatCon( "3" )
+                        ),
                       KeyValuePair(
                         IdCon( "next" ),
                         NatCon( "2" )
@@ -1337,7 +1337,7 @@ Definitions(
                   MarkupStatement(
                     Markup(
                       Designator( IdCon( "line" ), [  ] ),
-                      null
+                      [  ]
                       ),
                     MarkupStatement(
                       Markup(
@@ -1345,13 +1345,12 @@ Definitions(
                           IdCon( "on-the-wall" ),
                           [  ]
                           ),
-                        MarkupArguments(
+                        [
                           FieldExpression(
                             IdCon( "n" ),
                             IdCon( "cur" )
-                            ),
-                          [  ]
-                          )
+                            )
+                          ]
                         ),
                       MarkupSemi( Semicolon( ";" ) )
                       )
@@ -1359,7 +1358,7 @@ Definitions(
                   MarkupStatement(
                     Markup(
                       Designator( IdCon( "line" ), [  ] ),
-                      null
+                      [  ]
                       ),
                     MarkupStatement(
                       Markup(
@@ -1367,13 +1366,12 @@ Definitions(
                           IdCon( "take-one-down" ),
                           [  ]
                           ),
-                        MarkupArguments(
+                        [
                           FieldExpression(
                             IdCon( "n" ),
                             IdCon( "next" )
-                            ),
-                          [  ]
-                          )
+                            )
+                          ]
                         ),
                       MarkupSemi( Semicolon( ";" ) )
                       )
@@ -1384,21 +1382,21 @@ Definitions(
             MarkupStatement(
               Markup(
                 Designator( IdCon( "two" ), [  ] ),
-                null
+                [  ]
                 ),
               MarkupSemi( Semicolon( ";" ) )
               ),
             MarkupStatement(
               Markup(
                 Designator( IdCon( "one" ), [  ] ),
-                null
+                [  ]
                 ),
               MarkupSemi( Semicolon( ";" ) )
               ),
             MarkupStatement(
               Markup(
                 Designator( IdCon( "no-more" ), [  ] ),
-                MarkupArguments( NatCon( "99" ), [  ] )
+                [ NatCon( "99" ) ]
                 ),
               MarkupSemi( Semicolon( ";" ) )
               )

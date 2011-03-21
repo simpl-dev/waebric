@@ -3,23 +3,27 @@ IdCon( "test059" ),
 Definitions(
   [
     FunctionDef(
-      FunctionName( IdCon( "f" ) ),
+      Function( FunctionName( IdCon( "f" ) ), [  ] ),
       [ YieldStatement( Semicolon( ";" ) ) ],
       EndTerm( "end" )
       ),
     FunctionDef(
-      FunctionName( IdCon( "main" ) ),
+      Function( FunctionName( IdCon( "main" ) ), [  ] ),
       [
         EachStatement(
           IdCon( "x" ),
           ListExpression(
-            NatCon( "1" ),
-            [ NatCon( "2" ), NatCon( "3" ), NatCon( "4" ) ]
+            [
+              NatCon( "1" ),
+              NatCon( "2" ),
+              NatCon( "3" ),
+              NatCon( "4" )
+              ]
             ),
           MarkupStatement(
             Markup(
               Designator( IdCon( "f" ), [  ] ),
-              null
+              [  ]
               ),
             MarkupExp( IdCon( "x" ), Semicolon( ";" ) )
             )
