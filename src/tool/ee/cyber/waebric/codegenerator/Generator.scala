@@ -13,6 +13,15 @@ import ee.cyber.simplicitas.{GeneratorBase, MainBase, CommonNode,
 import ee.cyber.simplicitas.PrettyPrint._
 import ee.cyber.waebric.lexer._
 
+object D {
+  val enableDebug = false
+
+  def ebug(str: String) = {
+    if (enableDebug == true) {
+      println(str)
+    }
+  }
+}
 
 private case class ListNodeSeq(var list: List[NodeSeq]) extends NodeSeq {
   def theSeq: Seq[Node] = {
@@ -54,18 +63,6 @@ private case class KeyValueNodeSeq(var key: String, var value: NodeSeq) extends 
   }
 }
 
-object D {
-  val enableDebug = false
-
-
-  def dbg(str: String) = {
-    if (enableDebug == true) {
-      println(str)
-    }
-  }
-}
-
-
 private class Generator(tree: Program) {
 
   val errors = ArrayBuffer[SourceMessage]()
@@ -77,7 +74,7 @@ private class Generator(tree: Program) {
 
     val globalEnv: Env = new Env(null, Map.empty, Map.empty)
 
-    D.dbg(PrettyPrint.prettyPrint(tree))
+    D.ebug(PrettyPrint.prettyPrint(tree))
     processDefs(tree, globalEnv)
 
     // todo: first process sites. if not found, try with "main"
@@ -97,8 +94,6 @@ private class Generator(tree: Program) {
   }
 
   def processDefs(node: Program, env: Env) {
-    D.dbg("ProcessDefs called")
-
     for (definition <- node.definitions.definition) {
       var fnName:String = ""
       definition match {
@@ -110,8 +105,10 @@ private class Generator(tree: Program) {
           env.defs += (idCon.text -> definition.asInstanceOf[FunctionDef])
         case _ => ()
       }
-      D.dbg("def " + fnName + " found")
+      D.ebug("def " + fnName + " found")
     }
+    // make sure that all defs can see each other
+    env.functionEnv = env
   }
 
   def evalStatements(statements: List[Statement], env: Env): NodeSeq =
@@ -121,7 +118,7 @@ private class Generator(tree: Program) {
     statement match {
       case EchoStatement(echoBody, _) =>
         val ret = evalExpr(echoBody, env)
-        D.dbg("EchoStatement returned: " + ret.toString)
+        D.ebug("EchoStatement returned: " + ret.toString)
         ret
       case MarkupStatement(markup, chain) =>
         val chainRet = evalMarkupChain(chain, env)
@@ -136,11 +133,11 @@ private class Generator(tree: Program) {
         expressions match {
           case ListNodeSeq(list) =>
             var ret: NodeSeq = NodeSeq.Empty;
-            list.foreach(f => ret ++= evalStatement(statement, env.expand(Map.empty, Map(idCon.text -> f))))
+            list.foreach(f => ret ++= evalStatement(statement, env.varExpand(Map(idCon.text -> f))))
             ret
           case RecordNodeSeq(records) =>
             var ret: NodeSeq = NodeSeq.Empty
-            records.foreach{f => ret ++= evalStatement(statement, env.expand(Map.empty, Map(idCon.text -> f)))}
+            records.foreach{f => ret ++= evalStatement(statement, env.varExpand(Map(idCon.text -> f)))}
             ret
           case _ =>  NodeSeq.Empty
         }
@@ -176,12 +173,13 @@ private class Generator(tree: Program) {
         evalMarkup(m, b, env))
 
   def evalMarkup(markup: Markup, body: NodeSeq, env: Env): NodeSeq = {
-    D.dbg("evalMarkup(" + markup + ", " + body + ")")
+    D.ebug("evalMarkup(" + markup + ", " + body + ")")
     val desText = markup.designator.idCon.text
-    val fun = env.resolveFunction(desText)
+    val fun = env.resolveFunction(desText) //(statements, argNames, function environment)
     if (fun ne null) {
-      val newEnv = bindParameters(fun._2, markup, env)
-      newEnv.setYield(body)
+      val newEnv = bindParameters((fun._2, fun._3), markup, env)
+      newEnv.yieldValue = body
+      D.ebug("Binded env: " + newEnv)
       evalStatements(fun._1, newEnv)
     } else {
       // TODO: check if is XHTML tag.
@@ -210,17 +208,17 @@ private class Generator(tree: Program) {
                 evalExpr(embed, env) ++
                 evalExpr(textTail, env)
       case EmbedMarkup(markups) =>
-        D.dbg("EmbedMarkups found: " + markups.size)
+        D.ebug("EmbedMarkups found: " + markups.size)
         evalMarkups(markups, NodeSeq.Empty, env)
       case EmbedExp(markups, exp) =>
-        D.dbg("EmbedExp found")
+        D.ebug("EmbedExp found")
         evalMarkups(markups, evalExpr(exp, env), env)
       case TextTailMid(midText, embed, textTail) =>
         evalExpr(midText, env) ++
                 evalExpr(embed, env) ++
                 evalExpr(textTail, env)
       case KeyValuePair(idCon, expression) =>
-        D.dbg("KeyValuePair found " + idCon + ", " + expression)
+        D.ebug("KeyValuePair found " + idCon + ", " + expression)
         KeyValueNodeSeq(idCon.text, evalExpr(expression, env))
       case ListExpression(first, rest) =>
         if (first eq null) {
@@ -228,7 +226,7 @@ private class Generator(tree: Program) {
         }
         new ListNodeSeq((List(first) ++ rest) map {f => evalExpr(f, env)} toList)
       case RecordExpression(first, rest) =>
-        D.dbg("RecordExpression found " + first + ", " + rest)
+        D.ebug("RecordExpression found " + first + ", " + rest)
         if (first eq null) {
           return RecordNodeSeq(List.empty)
         }
@@ -237,8 +235,8 @@ private class Generator(tree: Program) {
       case FieldExpression(prim, idCon) =>
         evalExpr(prim, env) match {
           case r: RecordNodes =>
-            D.dbg("RecordNodes " + evalExpr(prim, env)   + " found")
-            D.dbg("Value: " + r.get(idCon.text))
+            D.ebug("RecordNodes " + evalExpr(prim, env)   + " found")
+            D.ebug("Value: " + r.get(idCon.text))
             return r.get(idCon.text)
           case _ => NodeSeq.Empty
         }
@@ -252,14 +250,14 @@ private class Generator(tree: Program) {
     def resolvePredicate(p: PrimPredicate, env: Env): Boolean = {
       p match {
         case NotPredicate(prim) =>
-          D.dbg("NotPredicate found")
+          D.ebug("NotPredicate found")
           return !resolvePredicate(prim, env)
         case IsAPredicate(exp, null) =>
-          D.dbg("IsAPredicate found with null predtype")
+          D.ebug("IsAPredicate found with null predtype")
           val e = evalExpr(exp, env)
           return (e ne null) && (e != NodeSeq.Empty)
         case IsAPredicate(exp, t) =>
-          D.dbg("IsAPredicate( " + exp + ") found with  " + t + " type")
+          D.ebug("IsAPredicate( " + exp + ") found with  " + t + " type")
           t match {
             case PredType("list") => return evalExpr(exp, env).isInstanceOf[ListNodeSeq]
             case PredType("record") => return evalExpr(exp, env).isInstanceOf[RecordNodeSeq]
@@ -281,45 +279,54 @@ private class Generator(tree: Program) {
   }
 
   private def applyAssignments(assignments: List[Assignment], env: Env): Env = {
-      // variable assignments are by default scoped lexically as they are evaluated during the env expand
+      //let's process assignments in the order and expand the env for each assignment
+    var newEnv: Env = env
+    for (a <- assignments) {
+      if (a.isInstanceOf[VarBinding]) {
+        newEnv = newEnv.varExpand(
+          Map(a.asInstanceOf[VarBinding].idCon.text -> evalExpr(a.asInstanceOf[VarBinding].expression, env)))
+      } else {
+        newEnv = newEnv.expand((Map(a.asInstanceOf[FuncBinding].func.text -> a.asInstanceOf[FuncBinding]), newEnv),
+          Map.empty)
+      }
+    }
+    return newEnv
+      /*// variable assignments are by default scoped lexically as they are evaluated during the env expand
       val aMap = assignments filter { a => a.isInstanceOf[VarBinding] } map {
           a => (a.asInstanceOf[VarBinding].idCon.text, evalExpr(a.asInstanceOf[VarBinding].expression, env))} toMap;
-
+      val newEnv: Env = env.expand((Map.empty, null), collection.mutable.Map(aMap.toSeq: _*))
       // lexical scoping is needed for function as it is not evaluated during the env expand
       val fMap = assignments filter { f => f.isInstanceOf[FuncBinding] } map {
           f => (f.asInstanceOf[FuncBinding].func.text, f.asInstanceOf[FuncBinding]) } toMap;
-      D.dbg("aMap: " + aMap)
-      D.dbg("fMap: " + fMap)
-      return env.expand(collection.mutable.Map(fMap.toSeq: _*), collection.mutable.Map(aMap.toSeq: _*))
+      D.ebug("aMap: " + aMap)
+      D.ebug("fMap: " + fMap)
+      return newEnv.expand((collection.mutable.Map(fMap.toSeq: _*), newEnv), Map.empty)
+      */
 
   }
 
   private def getMarkupArguments(markup: Markup): List[Argument] = markup.markupArguments match {
-        case MarkupArguments(first, rest) =>
-            first :: rest
-        case null =>
-            D.dbg("No markupArguments found")
-            List.empty
+        case MarkupArguments(first, rest) => first :: rest
+        case null => List.empty
       }
 
-  private def bindParameters(funArgs: List[IdCon], markup: Markup, env: Env): Env = {
+  //funArgs contains the env for the function
+  private def bindParameters(funArgs: Tuple2[List[IdCon], Env], markup: Markup, env: Env): Env = {
       val markupArgs: List[Argument] = getMarkupArguments(markup)
       // check whether number of arguments and number of parameters match
-      if (markupArgs.size < funArgs.size) throw new Exception("Wrong number of arguments(" + markupArgs.size
-          + ") for function " + markup.designator.idCon.text + ". Expected: " + funArgs.size)
+      if (markupArgs.size < funArgs._1.size) throw new Exception("Wrong number of arguments(" + markupArgs.size
+          + ") for function " + markup.designator.idCon.text + ". Expected: " + funArgs._1.size)
 
-      val bindMap = funArgs zip markupArgs map { f => (f._1.text, f._2 match {
+      val bindMap = funArgs._1 zip markupArgs map { f => (f._1.text, f._2 match {
                   case AttrArg(_, exp) => evalExpr(exp, env)
                   case _ => evalExpr(f._2, env)})} toMap;
-
-      return env.expand(Map.empty, collection.mutable.Map(bindMap.toSeq: _*))
+      // Use the function environment for the expansion
+      return funArgs._2.varExpand(collection.mutable.Map(bindMap.toSeq: _*))
 
   }
 
   private def addXHTMLAttributes(elem: Elem, markup: Markup, env: Env): NodeSeq = {
       val markupArgs: List[Argument] = getMarkupArguments(markup)
-
-      //def concatAttrValue()
       val map: Map[String, NodeSeq] = Map.empty
 
       def updateMap(pair: Tuple2[String, NodeSeq]) = {
@@ -373,8 +380,6 @@ object WaebricGenerator extends MainBase {
 
       val gen = new Generator(grammar.tree);
       gen.generate
-
-
     }
   }
 }

@@ -10,39 +10,46 @@ import xml.NodeSeq
 class Env(val parent: Env, val defs: Map[String, FunctionDef],
           val locals: Map[String, NodeSeq]) {
   var funcs: Map[String, FuncBinding] = Map.empty
+  var functionEnv: Env = null
+  var yieldValue: NodeSeq = null
 
-  private var yieldValue: NodeSeq = null
+  def expand(fnsAndEnv: Tuple2[Map[String, FuncBinding], Env], locals: Map[String, NodeSeq]): Env = {
+    val env: Env = new Env(this, Map.empty, locals)
+    env.funcs ++= fnsAndEnv._1
+    if (!fnsAndEnv._1.isEmpty) {
+      env.functionEnv = fnsAndEnv._2
+    }
+    return env
 
-  def expand(functions: Map[String, FuncBinding], locals: Map[String, NodeSeq]) : Env = {
-      val env: Env = new Env(this, Map.empty, locals)
-      env.funcs ++= functions
-      return env
   }
+
+  def varExpand(locals: Map[String, NodeSeq]): Env =
+      expand((Map.empty, null), locals)
 
   def setYield(y: NodeSeq) = {yieldValue = y}
 
-  // returns statements, argument names
-  def resolveFunction(name: String): Tuple2[List[Statement], List[IdCon]] = {
-      D.dbg("Resolve function " + name)
+  // returns (statements, argument names, env)
+  def resolveFunction(name: String): Tuple3[List[Statement], List[IdCon], Env] = {
+      D.ebug("Resolve function " + name)
       if (funcs.contains(name)) {
-          D.dbg("Function found")
+          D.ebug("Function found")
           funcs(name) match {
               case FuncBinding(idCon, null, statement) =>
-                  return (List(statement), List.empty)
+                  return (List(statement), List.empty, functionEnv)
               case FuncBinding(idCon, FuncArguments(first, rest), statement) =>
-                  return (List(statement), first :: rest)
+                  return (List(statement), first :: rest, functionEnv)
               case _ => return null
           }
       }
       if (defs.contains(name)) {
-          D.dbg("Definition found")
+          D.ebug("Definition found")
           defs(name) match {
               case FunctionDef(Function(_, FunctionArgs(Formals(first, rest))), statements, _) =>
-                  return (statements, first :: rest)
+                  return (statements, first :: rest, functionEnv)
               case FunctionDef(Function(_, FunctionArgs(null)), statements, _) =>
-                  return (statements, List.empty)
+                  return (statements, List.empty, functionEnv)
               case FunctionDef(FunctionName(_), statements, _) =>
-                  return (statements, List.empty)
+                  return (statements, List.empty, functionEnv)
               case _ => return null
           }
       }
@@ -54,9 +61,9 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
   }
 
   def resolveVariable(name: String): NodeSeq = {
-      D.dbg("Resolve variable " + name)
+      D.ebug("Resolve variable " + name)
       if (locals.contains(name)) {
-          D.dbg("Variable found")
+          D.ebug("Variable found")
           return locals(name)
       }
       if (parent ne null) {
@@ -76,5 +83,5 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
   }
 
   override def toString =
-        "Env(" + locals + ", " + defs + ")"
+        "Env(locals: " + locals + ",\ndefs: " + defs + ",\nfuncs: " + funcs + ",\n funcEnv: " + functionEnv + ")"
 }
