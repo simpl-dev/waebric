@@ -1,26 +1,15 @@
 module test004
 
-site
-	blah.html: main;
-	blah2.html: main
-end
+import test2
 
-site
-	out/blah2.html: main
-end
-
-site
-end
 
 def main
-	html();
+	blah2;
+	blah;
 end
 
-def blah
+def blah2
 	echo "x";
 end
 
-def blah
-	echo "y";
-end
 

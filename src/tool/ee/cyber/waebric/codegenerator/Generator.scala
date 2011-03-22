@@ -67,6 +67,7 @@ private class Generator(tree: Program) {
     val globalEnv: Env = new Env(null, Map.empty, Map.empty)
 
     D.ebug(PrettyPrint.prettyPrint(tree))
+    processImports(tree, globalEnv)
     processDefs(tree, globalEnv)
 
     var sitesFound = false
@@ -79,7 +80,7 @@ private class Generator(tree: Program) {
             try {
               out = new java.io.FileWriter(f.path.text)
             } catch {
-              case e => errors ++= List("Could not open the file " + f.path.text + " for writing.")
+              case e => errors :+= "Could not open the file " + f.path.text + " for writing."
             }
             if (out ne null) {
               out.write(new PrettyPrinter(65, 2).formatNodes(
@@ -109,10 +110,24 @@ private class Generator(tree: Program) {
     showErrors
   }
 
+  def processImports(node: Program, env: Env) = {
+    node.definitions.definition foreach (i => i match {
+      case Import(ModuleId(ids)) =>
+        val path: String = ids map(i => i.text) mkString("", "/", ".wae")
+        val f: java.io.File = new java.io.File(path)
+        if (!f.exists)
+          errors :+= "Cannot import from " + path + ", file not found"
+        else
+          processDefs(ImportLoader.load(path), env)
+      case _ => ()
+    })
+
+  }
+
   def processDefs(node: Program, env: Env) = {
     def checkExisting(s: String) = {
       if (env.defs.keySet.contains(s)) {
-        errors ++= List("Duplicate definition " + s + " found")
+        errors :+= "Duplicate definition " + s + " found"
       }
     }
     node.definitions.definition foreach (d => d match {
@@ -207,7 +222,7 @@ private class Generator(tree: Program) {
         XHTMLTags.withName(desText toUpperCase)
       } catch {
         case e: java.util.NoSuchElementException =>
-          errors ++= List("Function " + desText + " not defined nor it is a XHTML tag")
+          errors :+= "Function " + desText + " not defined nor it is a XHTML tag"
       }
       addXHTMLAttributes(elem(desText, body), markup, env)
   }
@@ -314,7 +329,7 @@ private class Generator(tree: Program) {
       } else {
         val funcName = a.asInstanceOf[FuncBinding].func.text
         if (newEnv.resolveFunction(funcName) ne null) {
-          errors ++= List("Overdefined function " + funcName)
+          errors :+= "Overdefined function " + funcName
         }
         newEnv = newEnv.expand((Map(funcName -> a.asInstanceOf[FuncBinding]), newEnv),
           Map.empty)
@@ -346,10 +361,10 @@ private class Generator(tree: Program) {
       var markupArgs: List[Argument] = getMarkupArgs(markup)
       // check whether number of arguments and number of parameters match
       if (markupArgs.size < funArgs._1.size) {
-        errors ++= List("Wrong number of arguments(" + markupArgs.size +
-          ") for function " + markup.designator.idCon.text + ". Expected: " + funArgs._1.size)
+        errors :+= "Wrong number of arguments(" + markupArgs.size +
+          ") for function " + markup.designator.idCon.text + ". Expected: " + funArgs._1.size
         while (markupArgs.size < funArgs._1.size)
-          markupArgs ++= List(Txt("\"undef\""))
+          markupArgs :+= Txt("\"undef\"")
       }
 
       val bindMap = funArgs._1 zip markupArgs map { f => (f._1.text, f._2 match {
@@ -406,6 +421,15 @@ private class Generator(tree: Program) {
 
   def stripEdges(s: String) = s.substring(1, s.length - 1)
   def stripPre(s: String) = s.substring(1, s.length)
+}
+
+object ImportLoader extends MainBase {
+  def load(path: String): Program = {
+    val grammar = new WaebricSimplGrammar
+    grammar.parseFile(path)
+    checkErrors(grammar.errors)
+    grammar.tree
+  }
 }
 
 object WaebricGenerator extends MainBase {
