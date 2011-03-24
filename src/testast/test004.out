@@ -1,13 +1,24 @@
 Program(
 IdCon( "test004" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        EchoStatement(
-          Embedding(
-            PreText( ""abc<" ),
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      EchoStatement(
+        Embedding(
+          PreText( ""abc<" ),
+          EmbedExp(
+            [
+              Markup(
+                Designator( IdCon( "em" ), [  ] ),
+                [  ]
+                )
+              ],
+            Txt( ""bla"" )
+            ),
+          TextTailMid(
+            MidText( ">def<" ),
             EmbedExp(
               [
                 Markup(
@@ -15,27 +26,15 @@ Definitions(
                   [  ]
                   )
                 ],
-              Txt( ""bla"" )
+              Txt( ""bla2"" )
               ),
-            TextTailMid(
-              MidText( ">def<" ),
-              EmbedExp(
-                [
-                  Markup(
-                    Designator( IdCon( "em" ), [  ] ),
-                    [  ]
-                    )
-                  ],
-                Txt( ""bla2"" )
-                ),
-              PostText( ">ghi"" )
-              )
-            ),
-          Semicolon( ";" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+            PostText( ">ghi"" )
+            )
+          ),
+        Semicolon( ";" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

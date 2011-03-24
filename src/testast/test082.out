@@ -1,51 +1,45 @@
 Program(
 IdCon( "test082" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            VarBinding(
-              IdCon( "b" ),
-              RecordExpression(
-                [
-                  KeyValuePair( IdCon( "x" ), Txt( ""X"" ) )
-                  ]
-                ),
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          VarBinding(
+            IdCon( "b" ),
+            RecordExpression(
+              [ KeyValuePair( IdCon( "x" ), Txt( ""X"" ) ) ]
+              ),
+            Semicolon( ";" )
+            )
+          ],
+        [
+          IfStatement(
+            Predicate(
+              [
+                IsAPredicate(
+                  FieldExpression(
+                    IdCon( "b" ),
+                    IdCon( "x" )
+                    ),
+                  null
+                  )
+                ],
+              [  ]
+              ),
+            EchoStatement(
+              Txt( ""Yes"" ),
               Semicolon( ";" )
-              )
-            ],
-          [
-            IfStatement(
-              Predicate(
-                [
-                  IsAPredicate(
-                    FieldExpression(
-                      IdCon( "b" ),
-                      IdCon( "x" )
-                      ),
-                    null
-                    )
-                  ],
-                [  ]
-                ),
-              EchoStatement(
-                Txt( ""Yes"" ),
-                Semicolon( ";" )
-                ),
-              EchoStatement(
-                Txt( ""No"" ),
-                Semicolon( ";" )
-                )
-              )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+              ),
+            EchoStatement( Txt( ""No"" ), Semicolon( ";" ) )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

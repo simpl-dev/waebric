@@ -1,20 +1,19 @@
 Program(
 IdCon( "test095" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        MarkupStatement(
-          Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
-          MarkupExp(
-            SymbolCon( "'akshdakjsdh8372643&^%&^%^92389" ),
-            Semicolon( ";" )
-            )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
+        MarkupExp(
+          SymbolCon( "'akshdakjsdh8372643&^%&^%^92389" ),
+          Semicolon( ";" )
           )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

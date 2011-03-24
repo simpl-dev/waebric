@@ -1,160 +1,154 @@
 Program(
 IdCon( "test099" ),
-Definitions(
-  [
-    FunctionDef(
-      Function(
-        FunctionName( IdCon( "swfobject" ) ),
-        [
-          IdCon( "url" ),
-          IdCon( "width" ),
-          IdCon( "height" ),
-          IdCon( "id" )
-          ]
-        ),
-      [
-        MarkupStatement(
-          Markup(
-            Designator( IdCon( "object" ), [  ] ),
-            [
-              AttrArg(
-                IdCon( "classid" ),
-                SymbolCon(
-                  "'clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-                  )
-                ),
-              AttrArg( IdCon( "width" ), IdCon( "width" ) ),
-              AttrArg(
-                IdCon( "height" ),
-                IdCon( "height" )
+[
+  FunctionDef(
+    IdCon( "swfobject" ),
+    [
+      IdCon( "url" ),
+      IdCon( "width" ),
+      IdCon( "height" ),
+      IdCon( "id" )
+      ],
+    [
+      MarkupStatement(
+        Markup(
+          Designator( IdCon( "object" ), [  ] ),
+          [
+            AttrArg(
+              IdCon( "classid" ),
+              SymbolCon(
+                "'clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
                 )
-              ]
-            ),
-          BlockStatement(
-            [
-              MarkupStatement(
-                Markup(
-                  Designator(
-                    IdCon( "param" ),
-                    [ NameAttr( IdCon( "movie" ) ) ]
-                    ),
-                  [ IdCon( "url" ) ]
+              ),
+            AttrArg( IdCon( "width" ), IdCon( "width" ) ),
+            AttrArg( IdCon( "height" ), IdCon( "height" ) )
+            ]
+          ),
+        BlockStatement(
+          [
+            MarkupStatement(
+              Markup(
+                Designator(
+                  IdCon( "param" ),
+                  [ NameAttr( IdCon( "movie" ) ) ]
                   ),
-                MarkupSemi( Semicolon( ";" ) )
+                [ IdCon( "url" ) ]
                 ),
-              MarkupStatement(
-                Markup(
-                  Designator(
-                    IdCon( "param" ),
-                    [ NameAttr( IdCon( "quality" ) ) ]
-                    ),
-                  [ SymbolCon( "'high" ) ]
+              MarkupSemi( Semicolon( ";" ) )
+              ),
+            MarkupStatement(
+              Markup(
+                Designator(
+                  IdCon( "param" ),
+                  [ NameAttr( IdCon( "quality" ) ) ]
                   ),
-                MarkupSemi( Semicolon( ";" ) )
+                [ SymbolCon( "'high" ) ]
                 ),
-              MarkupStatement(
-                Markup(
-                  Designator(
-                    IdCon( "param" ),
-                    [ NameAttr( IdCon( "bgcolor" ) ) ]
-                    ),
-                  [ SymbolCon( "'#fffce6" ) ]
+              MarkupSemi( Semicolon( ";" ) )
+              ),
+            MarkupStatement(
+              Markup(
+                Designator(
+                  IdCon( "param" ),
+                  [ NameAttr( IdCon( "bgcolor" ) ) ]
                   ),
-                MarkupSemi( Semicolon( ";" ) )
+                [ SymbolCon( "'#fffce6" ) ]
                 ),
-              CommentStatement(
-                CommentTerm( "comment" ),
-                StrCon( ""[if !IE]>"" ),
-                Semicolon( ";" )
-                ),
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "object" ), [  ] ),
-                  [
-                    AttrArg(
-                      IdCon( "type" ),
-                      SymbolCon(
-                        "'application/x-shockwave-flash"
-                        )
-                      ),
-                    AttrArg(
-                      IdCon( "data" ),
-                      IdCon( "url" )
-                      ),
-                    AttrArg(
-                      IdCon( "width" ),
-                      IdCon( "width" )
-                      ),
-                    AttrArg(
-                      IdCon( "height" ),
-                      IdCon( "height" )
+              MarkupSemi( Semicolon( ";" ) )
+              ),
+            CommentStatement(
+              CommentTerm( "comment" ),
+              StrCon( ""[if !IE]>"" ),
+              Semicolon( ";" )
+              ),
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "object" ), [  ] ),
+                [
+                  AttrArg(
+                    IdCon( "type" ),
+                    SymbolCon(
+                      "'application/x-shockwave-flash"
                       )
-                    ]
-                  ),
-                BlockStatement(
-                  [
-                    MarkupStatement(
-                      Markup(
-                        Designator(
-                          IdCon( "param" ),
-                          [ NameAttr( IdCon( "quality" ) ) ]
-                          ),
-                        [ SymbolCon( "'high" ) ]
-                        ),
-                      MarkupSemi( Semicolon( ";" ) )
-                      ),
-                    MarkupStatement(
-                      Markup(
-                        Designator(
-                          IdCon( "param" ),
-                          [ NameAttr( IdCon( "bgcolor" ) ) ]
-                          ),
-                        [ SymbolCon( "'#fffce6" ) ]
-                        ),
-                      MarkupSemi( Semicolon( ";" ) )
-                      ),
-                    CommentStatement(
-                      CommentTerm( "comment" ),
-                      StrCon( ""<![endif]"" ),
-                      Semicolon( ";" )
-                      ),
-                    CommentStatement(
-                      CommentTerm( "comment" ),
-                      StrCon( ""[if !IE]>"" ),
-                      Semicolon( ";" )
-                      )
-                    ]
-                  )
+                    ),
+                  AttrArg(
+                    IdCon( "data" ),
+                    IdCon( "url" )
+                    ),
+                  AttrArg(
+                    IdCon( "width" ),
+                    IdCon( "width" )
+                    ),
+                  AttrArg(
+                    IdCon( "height" ),
+                    IdCon( "height" )
+                    )
+                  ]
                 ),
-              CommentStatement(
-                CommentTerm( "comment" ),
-                StrCon( ""<![endif]"" ),
-                Semicolon( ";" )
+              BlockStatement(
+                [
+                  MarkupStatement(
+                    Markup(
+                      Designator(
+                        IdCon( "param" ),
+                        [ NameAttr( IdCon( "quality" ) ) ]
+                        ),
+                      [ SymbolCon( "'high" ) ]
+                      ),
+                    MarkupSemi( Semicolon( ";" ) )
+                    ),
+                  MarkupStatement(
+                    Markup(
+                      Designator(
+                        IdCon( "param" ),
+                        [ NameAttr( IdCon( "bgcolor" ) ) ]
+                        ),
+                      [ SymbolCon( "'#fffce6" ) ]
+                      ),
+                    MarkupSemi( Semicolon( ";" ) )
+                    ),
+                  CommentStatement(
+                    CommentTerm( "comment" ),
+                    StrCon( ""<![endif]"" ),
+                    Semicolon( ";" )
+                    ),
+                  CommentStatement(
+                    CommentTerm( "comment" ),
+                    StrCon( ""[if !IE]>"" ),
+                    Semicolon( ";" )
+                    )
+                  ]
                 )
-              ]
-            )
+              ),
+            CommentStatement(
+              CommentTerm( "comment" ),
+              StrCon( ""<![endif]"" ),
+              Semicolon( ";" )
+              )
+            ]
           )
-        ],
-      EndTerm( "end" )
-      ),
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        MarkupStatement(
-          Markup(
-            Designator( IdCon( "swfobject" ), [  ] ),
-            [
-              Txt( ""htt://google.nl"" ),
-              NatCon( "232" ),
-              NatCon( "3875" ),
-              Txt( ""swfobject"" )
-              ]
-            ),
-          MarkupSemi( Semicolon( ";" ) )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+        )
+      ],
+    EndTerm( "end" )
+    ),
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup(
+          Designator( IdCon( "swfobject" ), [  ] ),
+          [
+            Txt( ""htt://google.nl"" ),
+            NatCon( "232" ),
+            NatCon( "3875" ),
+            Txt( ""swfobject"" )
+            ]
+          ),
+        MarkupSemi( Semicolon( ";" ) )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

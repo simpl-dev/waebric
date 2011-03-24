@@ -1,35 +1,34 @@
 Program(
 IdCon( "test096" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        MarkupStatement(
-          Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
-          BlockStatement( [  ] )
-          ),
-        MarkupStatement(
-          Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
-          MarkupExp(
-            RecordExpression( [  ] ),
-            Semicolon( ";" )
-            )
-          ),
-        MarkupStatement(
-          Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
-          MarkupExp(
-            ListExpression( [  ] ),
-            Semicolon( ";" )
-            )
-          ),
-        MarkupStatement(
-          Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
-          MarkupExp( Txt( """" ), Semicolon( ";" ) )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
+        BlockStatement( [  ] )
+        ),
+      MarkupStatement(
+        Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
+        MarkupExp(
+          RecordExpression( [  ] ),
+          Semicolon( ";" )
           )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+        ),
+      MarkupStatement(
+        Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
+        MarkupExp(
+          ListExpression( [  ] ),
+          Semicolon( ";" )
+          )
+        ),
+      MarkupStatement(
+        Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
+        MarkupExp( Txt( """" ), Semicolon( ";" ) )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

@@ -1,40 +1,36 @@
 Program(
 IdCon( "test016" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            VarBinding(
-              IdCon( "x" ),
-              Txt( ""Hello"" ),
-              Semicolon( ";" )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          VarBinding(
+            IdCon( "x" ),
+            Txt( ""Hello"" ),
+            Semicolon( ";" )
+            ),
+          FuncBinding(
+            IdCon( "f" ),
+            [  ],
+            EchoStatement( IdCon( "x" ), Semicolon( ";" ) )
+            )
+          ],
+        [
+          MarkupStatement(
+            Markup(
+              Designator( IdCon( "f" ), [  ] ),
+              [  ]
               ),
-            FuncBinding(
-              IdCon( "f" ),
-              [  ],
-              EchoStatement(
-                IdCon( "x" ),
-                Semicolon( ";" )
-                )
-              )
-            ],
-          [
-            MarkupStatement(
-              Markup(
-                Designator( IdCon( "f" ), [  ] ),
-                [  ]
-                ),
-              MarkupSemi( Semicolon( ";" ) )
-              )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+            MarkupSemi( Semicolon( ";" ) )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

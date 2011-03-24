@@ -1,22 +1,22 @@
 Program(
 IdCon( "test055" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "f" ) ), [  ] ),
-      [ YieldStatement( Semicolon( ";" ) ) ],
-      EndTerm( "end" )
-      ),
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        MarkupStatement(
-          Markup( Designator( IdCon( "f" ), [  ] ), [  ] ),
-          MarkupExp( Txt( ""abc"" ), Semicolon( ";" ) )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+[
+  FunctionDef(
+    IdCon( "f" ),
+    [  ],
+    [ YieldStatement( Semicolon( ";" ) ) ],
+    EndTerm( "end" )
+    ),
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup( Designator( IdCon( "f" ), [  ] ), [  ] ),
+        MarkupExp( Txt( ""abc"" ), Semicolon( ";" ) )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

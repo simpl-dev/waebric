@@ -1,20 +1,19 @@
 Program(
 IdCon( "test008" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        EchoStatement(
-          CatExpression(
-            NatCon( "1" ),
-            CatExpression( NatCon( "2" ), NatCon( "3" ) )
-            ),
-          Semicolon( ";" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      EchoStatement(
+        CatExpression(
+          NatCon( "1" ),
+          CatExpression( NatCon( "2" ), NatCon( "3" ) )
+          ),
+        Semicolon( ";" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

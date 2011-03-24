@@ -1,41 +1,37 @@
 Program(
 IdCon( "test091" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        EachStatement(
-          IdCon( "x" ),
-          ListExpression(
-            [ NatCon( "1" ), NatCon( "2" ), NatCon( "3" ) ]
-            ),
-          LetStatement(
-            [
-              VarBinding(
-                IdCon( "y" ),
-                CatExpression(
-                  IdCon( "x" ),
-                  Txt( ""xx"" )
-                  ),
-                Semicolon( ";" )
-                )
-              ],
-            [
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "p" ), [  ] ),
-                  [  ]
-                  ),
-                MarkupExp( IdCon( "y" ), Semicolon( ";" ) )
-                )
-              ],
-            EndTerm( "end" )
-            )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      EachStatement(
+        IdCon( "x" ),
+        ListExpression(
+          [ NatCon( "1" ), NatCon( "2" ), NatCon( "3" ) ]
+          ),
+        LetStatement(
+          [
+            VarBinding(
+              IdCon( "y" ),
+              CatExpression( IdCon( "x" ), Txt( ""xx"" ) ),
+              Semicolon( ";" )
+              )
+            ],
+          [
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "p" ), [  ] ),
+                [  ]
+                ),
+              MarkupExp( IdCon( "y" ), Semicolon( ";" ) )
+              )
+            ],
+          EndTerm( "end" )
           )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

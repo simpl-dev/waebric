@@ -1,45 +1,42 @@
 Program(
 IdCon( "test065" ),
-Definitions(
-  [
-    FunctionDef(
-      Function(
-        FunctionName( IdCon( "f" ) ),
-        [ IdCon( "a" ), IdCon( "b" ) ]
-        ),
-      [
-        EchoStatement(
-          Embedding(
-            PreText( ""A = <" ),
-            EmbedExp( [  ], IdCon( "a" ) ),
-            PostText( ">"" )
-            ),
-          Semicolon( ";" )
+[
+  FunctionDef(
+    IdCon( "f" ),
+    [ IdCon( "a" ), IdCon( "b" ) ],
+    [
+      EchoStatement(
+        Embedding(
+          PreText( ""A = <" ),
+          EmbedExp( [  ], IdCon( "a" ) ),
+          PostText( ">"" )
           ),
-        EchoStatement(
-          Embedding(
-            PreText( ""B = <" ),
-            EmbedExp( [  ], IdCon( "b" ) ),
-            PostText( ">"" )
-            ),
-          Semicolon( ";" )
-          )
-        ],
-      EndTerm( "end" )
-      ),
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        MarkupStatement(
-          Markup(
-            Designator( IdCon( "f" ), [  ] ),
-            [ NatCon( "1" ) ]
-            ),
-          MarkupSemi( Semicolon( ";" ) )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+        Semicolon( ";" )
+        ),
+      EchoStatement(
+        Embedding(
+          PreText( ""B = <" ),
+          EmbedExp( [  ], IdCon( "b" ) ),
+          PostText( ">"" )
+          ),
+        Semicolon( ";" )
+        )
+      ],
+    EndTerm( "end" )
+    ),
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup(
+          Designator( IdCon( "f" ), [  ] ),
+          [ NatCon( "1" ) ]
+          ),
+        MarkupSemi( Semicolon( ";" ) )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

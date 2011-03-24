@@ -4,22 +4,14 @@ options (backtrack=true;)
 
 lexer-states(site, path, string)
 
-Program: 'module' IdCon Definitions;
-
-Definitions: Definition+;
+Program: 'module' IdCon Definition+;
 
 option Definition: FunctionDef | Site | Import;
 
-option FunctionHeader: FunctionName | Function;
 FunctionDef:
-    Function
+    "def" name=IdCon ("(" (args=IdCon ("," args=IdCon)*)? ")")?
 	    statements=Statement*
     EndTerm;
-
-FunctionName: "def" IdCon;
-Function returns FunctionHeader { if (args ne null) _self else name }
-    : name=FunctionName ("(" (args=IdCon ("," args=IdCon)*)? ")")?;
-
 
 Import: "import" module=ModuleId;
 ModuleId: ids=IdCon ("." ids=IdCon)*;

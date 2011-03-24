@@ -1,58 +1,48 @@
 Program(
 IdCon( "test086" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            VarBinding(
-              IdCon( "b" ),
-              RecordExpression(
-                [
-                  KeyValuePair(
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          VarBinding(
+            IdCon( "b" ),
+            RecordExpression(
+              [
+                KeyValuePair( IdCon( "x" ), NatCon( "3" ) ),
+                KeyValuePair( IdCon( "y" ), NatCon( "4" ) ),
+                KeyValuePair( IdCon( "z" ), NatCon( "6" ) )
+                ]
+              ),
+            Semicolon( ";" )
+            )
+          ],
+        [
+          EachStatement(
+            IdCon( "x" ),
+            IdCon( "b" ),
+            BlockStatement(
+              [
+                MarkupStatement(
+                  Markup(
+                    Designator( IdCon( "p" ), [  ] ),
+                    [  ]
+                    ),
+                  MarkupExp(
                     IdCon( "x" ),
-                    NatCon( "3" )
-                    ),
-                  KeyValuePair(
-                    IdCon( "y" ),
-                    NatCon( "4" )
-                    ),
-                  KeyValuePair(
-                    IdCon( "z" ),
-                    NatCon( "6" )
+                    Semicolon( ";" )
                     )
-                  ]
-                ),
-              Semicolon( ";" )
+                  )
+                ]
               )
-            ],
-          [
-            EachStatement(
-              IdCon( "x" ),
-              IdCon( "b" ),
-              BlockStatement(
-                [
-                  MarkupStatement(
-                    Markup(
-                      Designator( IdCon( "p" ), [  ] ),
-                      [  ]
-                      ),
-                    MarkupExp(
-                      IdCon( "x" ),
-                      Semicolon( ";" )
-                      )
-                    )
-                  ]
-                )
-              )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

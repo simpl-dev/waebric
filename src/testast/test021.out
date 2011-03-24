@@ -1,31 +1,28 @@
 Program(
 IdCon( "test021" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            VarBinding(
-              IdCon( "x" ),
-              Txt( ""no way"" ),
-              Semicolon( ";" )
-              ),
-            VarBinding(
-              IdCon( "x" ),
-              Txt( ""yes"" ),
-              Semicolon( ";" )
-              )
-            ],
-          [
-            EchoStatement( IdCon( "x" ), Semicolon( ";" ) )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          VarBinding(
+            IdCon( "x" ),
+            Txt( ""no way"" ),
+            Semicolon( ";" )
+            ),
+          VarBinding(
+            IdCon( "x" ),
+            Txt( ""yes"" ),
+            Semicolon( ";" )
+            )
+          ],
+        [ EchoStatement( IdCon( "x" ), Semicolon( ";" ) ) ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

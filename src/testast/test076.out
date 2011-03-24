@@ -1,163 +1,162 @@
 Program(
 IdCon( "test076" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            FuncBinding(
-              IdCon( "p" ),
-              [  ],
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "p" ), [  ] ),
-                  [  ]
-                  ),
-                BlockStatement(
-                  [
-                    EchoStatement(
-                      Txt( ""p0: "" ),
-                      Semicolon( ";" )
-                      ),
-                    YieldStatement( Semicolon( ";" ) )
-                    ]
-                  )
-                )
-              ),
-            FuncBinding(
-              IdCon( "p" ),
-              [  ],
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "p" ), [  ] ),
-                  [  ]
-                  ),
-                BlockStatement(
-                  [
-                    EchoStatement(
-                      Txt( ""p1: "" ),
-                      Semicolon( ";" )
-                      ),
-                    YieldStatement( Semicolon( ";" ) )
-                    ]
-                  )
-                )
-              ),
-            FuncBinding(
-              IdCon( "p" ),
-              [  ],
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "p" ), [  ] ),
-                  [  ]
-                  ),
-                BlockStatement(
-                  [
-                    EchoStatement(
-                      Txt( ""p2: "" ),
-                      Semicolon( ";" )
-                      ),
-                    YieldStatement( Semicolon( ";" ) )
-                    ]
-                  )
-                )
-              ),
-            FuncBinding(
-              IdCon( "p" ),
-              [  ],
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "p" ), [  ] ),
-                  [  ]
-                  ),
-                BlockStatement(
-                  [
-                    EchoStatement(
-                      Txt( ""p3: "" ),
-                      Semicolon( ";" )
-                      ),
-                    YieldStatement( Semicolon( ";" ) )
-                    ]
-                  )
-                )
-              ),
-            FuncBinding(
-              IdCon( "p" ),
-              [  ],
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "p" ), [  ] ),
-                  [  ]
-                  ),
-                BlockStatement(
-                  [
-                    EchoStatement(
-                      Txt( ""p4: "" ),
-                      Semicolon( ";" )
-                      ),
-                    YieldStatement( Semicolon( ";" ) )
-                    ]
-                  )
-                )
-              ),
-            FuncBinding(
-              IdCon( "p" ),
-              [  ],
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "p" ), [  ] ),
-                  [  ]
-                  ),
-                BlockStatement(
-                  [
-                    EchoStatement(
-                      Txt( ""p5: "" ),
-                      Semicolon( ";" )
-                      ),
-                    YieldStatement( Semicolon( ";" ) )
-                    ]
-                  )
-                )
-              ),
-            FuncBinding(
-              IdCon( "p" ),
-              [  ],
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "p" ), [  ] ),
-                  [  ]
-                  ),
-                BlockStatement(
-                  [
-                    EchoStatement(
-                      Txt( ""p6: "" ),
-                      Semicolon( ";" )
-                      ),
-                    YieldStatement( Semicolon( ";" ) )
-                    ]
-                  )
-                )
-              )
-            ],
-          [
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          FuncBinding(
+            IdCon( "p" ),
+            [  ],
             MarkupStatement(
               Markup(
                 Designator( IdCon( "p" ), [  ] ),
                 [  ]
                 ),
-              MarkupExp(
-                Txt( ""Hello World!"" ),
-                Semicolon( ";" )
+              BlockStatement(
+                [
+                  EchoStatement(
+                    Txt( ""p0: "" ),
+                    Semicolon( ";" )
+                    ),
+                  YieldStatement( Semicolon( ";" ) )
+                  ]
                 )
               )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+            ),
+          FuncBinding(
+            IdCon( "p" ),
+            [  ],
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "p" ), [  ] ),
+                [  ]
+                ),
+              BlockStatement(
+                [
+                  EchoStatement(
+                    Txt( ""p1: "" ),
+                    Semicolon( ";" )
+                    ),
+                  YieldStatement( Semicolon( ";" ) )
+                  ]
+                )
+              )
+            ),
+          FuncBinding(
+            IdCon( "p" ),
+            [  ],
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "p" ), [  ] ),
+                [  ]
+                ),
+              BlockStatement(
+                [
+                  EchoStatement(
+                    Txt( ""p2: "" ),
+                    Semicolon( ";" )
+                    ),
+                  YieldStatement( Semicolon( ";" ) )
+                  ]
+                )
+              )
+            ),
+          FuncBinding(
+            IdCon( "p" ),
+            [  ],
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "p" ), [  ] ),
+                [  ]
+                ),
+              BlockStatement(
+                [
+                  EchoStatement(
+                    Txt( ""p3: "" ),
+                    Semicolon( ";" )
+                    ),
+                  YieldStatement( Semicolon( ";" ) )
+                  ]
+                )
+              )
+            ),
+          FuncBinding(
+            IdCon( "p" ),
+            [  ],
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "p" ), [  ] ),
+                [  ]
+                ),
+              BlockStatement(
+                [
+                  EchoStatement(
+                    Txt( ""p4: "" ),
+                    Semicolon( ";" )
+                    ),
+                  YieldStatement( Semicolon( ";" ) )
+                  ]
+                )
+              )
+            ),
+          FuncBinding(
+            IdCon( "p" ),
+            [  ],
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "p" ), [  ] ),
+                [  ]
+                ),
+              BlockStatement(
+                [
+                  EchoStatement(
+                    Txt( ""p5: "" ),
+                    Semicolon( ";" )
+                    ),
+                  YieldStatement( Semicolon( ";" ) )
+                  ]
+                )
+              )
+            ),
+          FuncBinding(
+            IdCon( "p" ),
+            [  ],
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "p" ), [  ] ),
+                [  ]
+                ),
+              BlockStatement(
+                [
+                  EchoStatement(
+                    Txt( ""p6: "" ),
+                    Semicolon( ";" )
+                    ),
+                  YieldStatement( Semicolon( ";" ) )
+                  ]
+                )
+              )
+            )
+          ],
+        [
+          MarkupStatement(
+            Markup(
+              Designator( IdCon( "p" ), [  ] ),
+              [  ]
+              ),
+            MarkupExp(
+              Txt( ""Hello World!"" ),
+              Semicolon( ";" )
+              )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

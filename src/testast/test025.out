@@ -1,26 +1,25 @@
 Program(
 IdCon( "test025" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        MarkupStatement(
-          Markup(
-            Designator( IdCon( "html" ), [  ] ),
-            [
-              AttrArg( IdCon( "name" ), Txt( ""bla"" ) ),
-              AttrArg( IdCon( "type" ), Txt( ""xhtml"" ) )
-              ]
-            ),
-          MarkupExp(
-            Txt( ""Hello world!"" ),
-            Semicolon( ";" )
-            )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup(
+          Designator( IdCon( "html" ), [  ] ),
+          [
+            AttrArg( IdCon( "name" ), Txt( ""bla"" ) ),
+            AttrArg( IdCon( "type" ), Txt( ""xhtml"" ) )
+            ]
+          ),
+        MarkupExp(
+          Txt( ""Hello world!"" ),
+          Semicolon( ";" )
           )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

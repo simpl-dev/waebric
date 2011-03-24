@@ -1,49 +1,45 @@
 Program(
 IdCon( "test075" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            FuncBinding(
-              IdCon( "mypar" ),
-              [  ],
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "p" ), [  ] ),
-                  [  ]
-                  ),
-                BlockStatement(
-                  [
-                    EchoStatement(
-                      Txt( ""Mypar: "" ),
-                      Semicolon( ";" )
-                      ),
-                    YieldStatement( Semicolon( ";" ) )
-                    ]
-                  )
-                )
-              )
-            ],
-          [
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          FuncBinding(
+            IdCon( "mypar" ),
+            [  ],
             MarkupStatement(
               Markup(
-                Designator( IdCon( "mypar" ), [  ] ),
+                Designator( IdCon( "p" ), [  ] ),
                 [  ]
                 ),
-              MarkupExp(
-                Txt( ""Hallo"" ),
-                Semicolon( ";" )
+              BlockStatement(
+                [
+                  EchoStatement(
+                    Txt( ""Mypar: "" ),
+                    Semicolon( ";" )
+                    ),
+                  YieldStatement( Semicolon( ";" ) )
+                  ]
                 )
               )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+            )
+          ],
+        [
+          MarkupStatement(
+            Markup(
+              Designator( IdCon( "mypar" ), [  ] ),
+              [  ]
+              ),
+            MarkupExp( Txt( ""Hallo"" ), Semicolon( ";" ) )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

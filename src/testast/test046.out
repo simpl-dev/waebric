@@ -1,32 +1,28 @@
 Program(
 IdCon( "test046" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        EachStatement(
-          IdCon( "x" ),
-          ListExpression(
-            [
-              NatCon( "1" ),
-              NatCon( "2" ),
-              NatCon( "3" ),
-              NatCon( "4" )
-              ]
-            ),
-          BlockStatement(
-            [
-              EchoStatement(
-                IdCon( "x" ),
-                Semicolon( ";" )
-                )
-              ]
-            )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      EachStatement(
+        IdCon( "x" ),
+        ListExpression(
+          [
+            NatCon( "1" ),
+            NatCon( "2" ),
+            NatCon( "3" ),
+            NatCon( "4" )
+            ]
+          ),
+        BlockStatement(
+          [
+            EchoStatement( IdCon( "x" ), Semicolon( ";" ) )
+            ]
           )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

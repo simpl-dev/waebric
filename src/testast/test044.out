@@ -1,61 +1,56 @@
 Program(
 IdCon( "test044" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        MarkupStatement(
-          Markup(
-            Designator( IdCon( "f" ), [  ] ),
-            [ Txt( ""Hello world!"" ) ]
-            ),
-          MarkupSemi( Semicolon( ";" ) )
-          )
-        ],
-      EndTerm( "end" )
-      ),
-    FunctionDef(
-      Function(
-        FunctionName( IdCon( "f" ) ),
-        [ IdCon( "x" ) ]
-        ),
-      [
-        LetStatement(
-          [
-            VarBinding(
-              IdCon( "x" ),
-              Txt( ""Goodbye!"" ),
-              Semicolon( ";" )
-              )
-            ],
-          [
-            MarkupStatement(
-              Markup(
-                Designator( IdCon( "g" ), [  ] ),
-                [ IdCon( "x" ) ]
-                ),
-              MarkupSemi( Semicolon( ";" ) )
-              )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      ),
-    FunctionDef(
-      Function(
-        FunctionName( IdCon( "g" ) ),
-        [ IdCon( "x" ) ]
-        ),
-      [
-        EchoStatement(
-          CatExpression( Txt( ""x = "" ), IdCon( "x" ) ),
-          Semicolon( ";" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup(
+          Designator( IdCon( "f" ), [  ] ),
+          [ Txt( ""Hello world!"" ) ]
+          ),
+        MarkupSemi( Semicolon( ";" ) )
+        )
+      ],
+    EndTerm( "end" )
+    ),
+  FunctionDef(
+    IdCon( "f" ),
+    [ IdCon( "x" ) ],
+    [
+      LetStatement(
+        [
+          VarBinding(
+            IdCon( "x" ),
+            Txt( ""Goodbye!"" ),
+            Semicolon( ";" )
+            )
+          ],
+        [
+          MarkupStatement(
+            Markup(
+              Designator( IdCon( "g" ), [  ] ),
+              [ IdCon( "x" ) ]
+              ),
+            MarkupSemi( Semicolon( ";" ) )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    ),
+  FunctionDef(
+    IdCon( "g" ),
+    [ IdCon( "x" ) ],
+    [
+      EchoStatement(
+        CatExpression( Txt( ""x = "" ), IdCon( "x" ) ),
+        Semicolon( ";" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

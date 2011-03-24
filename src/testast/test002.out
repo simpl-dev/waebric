@@ -1,12 +1,11 @@
 Program(
 IdCon( "test002" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [ EchoStatement( Txt( ""Hoi"" ), Semicolon( ";" ) ) ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [ EchoStatement( Txt( ""Hoi"" ), Semicolon( ";" ) ) ],
+    EndTerm( "end" )
+    )
+  ]
 )

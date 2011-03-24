@@ -1,28 +1,27 @@
 Program(
 IdCon( "test035" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        MarkupStatement(
-          Markup(
-            Designator(
-              IdCon( "html" ),
-              [
-                ClassAttr( IdCon( "alert" ) ),
-                IdAttr( IdCon( "bla" ) ),
-                ClassAttr( IdCon( "notalert" ) ),
-                IdAttr( IdCon( "notbla" ) )
-                ]
-              ),
-            [  ]
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup(
+          Designator(
+            IdCon( "html" ),
+            [
+              ClassAttr( IdCon( "alert" ) ),
+              IdAttr( IdCon( "bla" ) ),
+              ClassAttr( IdCon( "notalert" ) ),
+              IdAttr( IdCon( "notbla" ) )
+              ]
             ),
-          MarkupSemi( Semicolon( ";" ) )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+          [  ]
+          ),
+        MarkupSemi( Semicolon( ";" ) )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

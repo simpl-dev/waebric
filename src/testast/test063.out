@@ -1,17 +1,16 @@
 Program(
 IdCon( "test063" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        MarkupStatement(
-          Markup( Designator( IdCon( "a" ), [  ] ), [  ] ),
-          MarkupExp( Txt( """" ), Semicolon( ";" ) )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup( Designator( IdCon( "a" ), [  ] ), [  ] ),
+        MarkupExp( Txt( """" ), Semicolon( ";" ) )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

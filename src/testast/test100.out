@@ -1,188 +1,181 @@
 Program(
 IdCon( "test100" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        MarkupStatement(
-          Markup( Designator( IdCon( "h2" ), [  ] ), [  ] ),
-          MarkupExp(
-            Txt( ""Important Dates"" ),
-            Semicolon( ";" )
-            )
-          ),
-        MarkupStatement(
-          Markup(
-            Designator( IdCon( "table" ), [  ] ),
-            [  ]
-            ),
-          BlockStatement(
-            [
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "tr" ), [  ] ),
-                  [  ]
-                  ),
-                BlockStatement(
-                  [
-                    MarkupStatement(
-                      Markup(
-                        Designator( IdCon( "td" ), [  ] ),
-                        [  ]
-                        ),
-                      MarkupStatement(
-                        Markup(
-                          Designator( IdCon( "b" ), [  ] ),
-                          [  ]
-                          ),
-                        MarkupExp(
-                          Txt(
-                            ""Abstract submission deadline:""
-                            ),
-                          Semicolon( ";" )
-                          )
-                        )
-                      ),
-                    MarkupStatement(
-                      Markup(
-                        Designator( IdCon( "td" ), [  ] ),
-                        [  ]
-                        ),
-                      MarkupExp(
-                        Txt(
-                          ""Friday November 28th, 2008""
-                          ),
-                        Semicolon( ";" )
-                        )
-                      )
-                    ]
-                  )
-                ),
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "tr" ), [  ] ),
-                  [  ]
-                  ),
-                BlockStatement(
-                  [
-                    MarkupStatement(
-                      Markup(
-                        Designator( IdCon( "td" ), [  ] ),
-                        [  ]
-                        ),
-                      MarkupStatement(
-                        Markup(
-                          Designator( IdCon( "b" ), [  ] ),
-                          [  ]
-                          ),
-                        MarkupExp(
-                          Txt(
-                            ""Paper submission deadline:""
-                            ),
-                          Semicolon( ";" )
-                          )
-                        )
-                      ),
-                    MarkupStatement(
-                      Markup(
-                        Designator( IdCon( "td" ), [  ] ),
-                        [  ]
-                        ),
-                      MarkupExp(
-                        Txt(
-                          ""Friday December 5th, 2008""
-                          ),
-                        Semicolon( ";" )
-                        )
-                      )
-                    ]
-                  )
-                ),
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "tr" ), [  ] ),
-                  [  ]
-                  ),
-                BlockStatement(
-                  [
-                    MarkupStatement(
-                      Markup(
-                        Designator( IdCon( "td" ), [  ] ),
-                        [  ]
-                        ),
-                      MarkupStatement(
-                        Markup(
-                          Designator( IdCon( "b" ), [  ] ),
-                          [  ]
-                          ),
-                        MarkupExp(
-                          Txt(
-                            ""Notification of acceptance:""
-                            ),
-                          Semicolon( ";" )
-                          )
-                        )
-                      ),
-                    MarkupStatement(
-                      Markup(
-                        Designator( IdCon( "td" ), [  ] ),
-                        [  ]
-                        ),
-                      MarkupExp(
-                        Txt(
-                          ""Friday February 6th, 2009""
-                          ),
-                        Semicolon( ";" )
-                        )
-                      )
-                    ]
-                  )
-                ),
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "tr" ), [  ] ),
-                  [  ]
-                  ),
-                BlockStatement(
-                  [
-                    MarkupStatement(
-                      Markup(
-                        Designator( IdCon( "td" ), [  ] ),
-                        [  ]
-                        ),
-                      MarkupStatement(
-                        Markup(
-                          Designator( IdCon( "b" ), [  ] ),
-                          [  ]
-                          ),
-                        MarkupExp(
-                          Txt( ""Workshop date:"" ),
-                          Semicolon( ";" )
-                          )
-                        )
-                      ),
-                    MarkupStatement(
-                      Markup(
-                        Designator( IdCon( "td" ), [  ] ),
-                        [  ]
-                        ),
-                      MarkupExp(
-                        Txt(
-                          ""20th March 20th, 2009 (tentative)""
-                          ),
-                        Semicolon( ";" )
-                        )
-                      )
-                    ]
-                  )
-                )
-              ]
-            )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup( Designator( IdCon( "h2" ), [  ] ), [  ] ),
+        MarkupExp(
+          Txt( ""Important Dates"" ),
+          Semicolon( ";" )
           )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+        ),
+      MarkupStatement(
+        Markup(
+          Designator( IdCon( "table" ), [  ] ),
+          [  ]
+          ),
+        BlockStatement(
+          [
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "tr" ), [  ] ),
+                [  ]
+                ),
+              BlockStatement(
+                [
+                  MarkupStatement(
+                    Markup(
+                      Designator( IdCon( "td" ), [  ] ),
+                      [  ]
+                      ),
+                    MarkupStatement(
+                      Markup(
+                        Designator( IdCon( "b" ), [  ] ),
+                        [  ]
+                        ),
+                      MarkupExp(
+                        Txt(
+                          ""Abstract submission deadline:""
+                          ),
+                        Semicolon( ";" )
+                        )
+                      )
+                    ),
+                  MarkupStatement(
+                    Markup(
+                      Designator( IdCon( "td" ), [  ] ),
+                      [  ]
+                      ),
+                    MarkupExp(
+                      Txt( ""Friday November 28th, 2008"" ),
+                      Semicolon( ";" )
+                      )
+                    )
+                  ]
+                )
+              ),
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "tr" ), [  ] ),
+                [  ]
+                ),
+              BlockStatement(
+                [
+                  MarkupStatement(
+                    Markup(
+                      Designator( IdCon( "td" ), [  ] ),
+                      [  ]
+                      ),
+                    MarkupStatement(
+                      Markup(
+                        Designator( IdCon( "b" ), [  ] ),
+                        [  ]
+                        ),
+                      MarkupExp(
+                        Txt(
+                          ""Paper submission deadline:""
+                          ),
+                        Semicolon( ";" )
+                        )
+                      )
+                    ),
+                  MarkupStatement(
+                    Markup(
+                      Designator( IdCon( "td" ), [  ] ),
+                      [  ]
+                      ),
+                    MarkupExp(
+                      Txt( ""Friday December 5th, 2008"" ),
+                      Semicolon( ";" )
+                      )
+                    )
+                  ]
+                )
+              ),
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "tr" ), [  ] ),
+                [  ]
+                ),
+              BlockStatement(
+                [
+                  MarkupStatement(
+                    Markup(
+                      Designator( IdCon( "td" ), [  ] ),
+                      [  ]
+                      ),
+                    MarkupStatement(
+                      Markup(
+                        Designator( IdCon( "b" ), [  ] ),
+                        [  ]
+                        ),
+                      MarkupExp(
+                        Txt(
+                          ""Notification of acceptance:""
+                          ),
+                        Semicolon( ";" )
+                        )
+                      )
+                    ),
+                  MarkupStatement(
+                    Markup(
+                      Designator( IdCon( "td" ), [  ] ),
+                      [  ]
+                      ),
+                    MarkupExp(
+                      Txt( ""Friday February 6th, 2009"" ),
+                      Semicolon( ";" )
+                      )
+                    )
+                  ]
+                )
+              ),
+            MarkupStatement(
+              Markup(
+                Designator( IdCon( "tr" ), [  ] ),
+                [  ]
+                ),
+              BlockStatement(
+                [
+                  MarkupStatement(
+                    Markup(
+                      Designator( IdCon( "td" ), [  ] ),
+                      [  ]
+                      ),
+                    MarkupStatement(
+                      Markup(
+                        Designator( IdCon( "b" ), [  ] ),
+                        [  ]
+                        ),
+                      MarkupExp(
+                        Txt( ""Workshop date:"" ),
+                        Semicolon( ";" )
+                        )
+                      )
+                    ),
+                  MarkupStatement(
+                    Markup(
+                      Designator( IdCon( "td" ), [  ] ),
+                      [  ]
+                      ),
+                    MarkupExp(
+                      Txt(
+                        ""20th March 20th, 2009 (tentative)""
+                        ),
+                      Semicolon( ";" )
+                      )
+                    )
+                  ]
+                )
+              )
+            ]
+          )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

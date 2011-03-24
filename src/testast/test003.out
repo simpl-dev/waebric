@@ -1,29 +1,28 @@
 Program(
 IdCon( "test003" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        EchoStatement(
-          Embedding(
-            PreText( ""abc<" ),
-            EmbedExp(
-              [
-                Markup(
-                  Designator( IdCon( "em" ), [  ] ),
-                  [  ]
-                  )
-                ],
-              Txt( ""bla"" )
-              ),
-            PostText( ">def"" )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      EchoStatement(
+        Embedding(
+          PreText( ""abc<" ),
+          EmbedExp(
+            [
+              Markup(
+                Designator( IdCon( "em" ), [  ] ),
+                [  ]
+                )
+              ],
+            Txt( ""bla"" )
             ),
-          Semicolon( ";" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+          PostText( ">def"" )
+          ),
+        Semicolon( ";" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

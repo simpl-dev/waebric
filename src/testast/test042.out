@@ -1,38 +1,35 @@
 Program(
 IdCon( "test042" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        MarkupStatement(
-          Markup(
-            Designator( IdCon( "f" ), [  ] ),
-            [ Txt( ""Hello"" ) ]
-            ),
-          MarkupSemi( Semicolon( ";" ) )
-          )
-        ],
-      EndTerm( "end" )
-      ),
-    FunctionDef(
-      Function(
-        FunctionName( IdCon( "f" ) ),
-        [ IdCon( "x" ), IdCon( "y" ) ]
-        ),
-      [
-        EchoStatement(
-          CatExpression( Txt( ""x = "" ), IdCon( "x" ) ),
-          Semicolon( ";" )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup(
+          Designator( IdCon( "f" ), [  ] ),
+          [ Txt( ""Hello"" ) ]
           ),
-        EchoStatement(
-          CatExpression( Txt( ""
+        MarkupSemi( Semicolon( ";" ) )
+        )
+      ],
+    EndTerm( "end" )
+    ),
+  FunctionDef(
+    IdCon( "f" ),
+    [ IdCon( "x" ), IdCon( "y" ) ],
+    [
+      EchoStatement(
+        CatExpression( Txt( ""x = "" ), IdCon( "x" ) ),
+        Semicolon( ";" )
+        ),
+      EchoStatement(
+        CatExpression( Txt( ""
 y = "" ), IdCon( "y" ) ),
-          Semicolon( ";" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+        Semicolon( ";" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

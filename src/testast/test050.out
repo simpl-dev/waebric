@@ -1,48 +1,47 @@
 Program(
 IdCon( "test050" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            VarBinding(
-              IdCon( "l" ),
-              ListExpression(
-                [
-                  NatCon( "1" ),
-                  NatCon( "2" ),
-                  NatCon( "3" ),
-                  NatCon( "4" )
-                  ]
-                ),
-              Semicolon( ";" )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          VarBinding(
+            IdCon( "l" ),
+            ListExpression(
+              [
+                NatCon( "1" ),
+                NatCon( "2" ),
+                NatCon( "3" ),
+                NatCon( "4" )
+                ]
+              ),
+            Semicolon( ";" )
+            )
+          ],
+        [
+          EachStatement(
+            IdCon( "x" ),
+            IdCon( "l" ),
+            BlockStatement(
+              [
+                EchoStatement(
+                  IdCon( "x" ),
+                  Semicolon( ";" )
+                  ),
+                EchoStatement(
+                  IdCon( "x" ),
+                  Semicolon( ";" )
+                  )
+                ]
               )
-            ],
-          [
-            EachStatement(
-              IdCon( "x" ),
-              IdCon( "l" ),
-              BlockStatement(
-                [
-                  EchoStatement(
-                    IdCon( "x" ),
-                    Semicolon( ";" )
-                    ),
-                  EchoStatement(
-                    IdCon( "x" ),
-                    Semicolon( ";" )
-                    )
-                  ]
-                )
-              )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

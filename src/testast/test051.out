@@ -1,21 +1,20 @@
 Program(
 IdCon( "test051" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        IfStatement(
-          Predicate(
-            [ IsAPredicate( IdCon( "a" ), null ) ],
-            [  ]
-            ),
-          EchoStatement( Txt( ""a"" ), Semicolon( ";" ) ),
-          EchoStatement( Txt( ""no"" ), Semicolon( ";" ) )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      IfStatement(
+        Predicate(
+          [ IsAPredicate( IdCon( "a" ), null ) ],
+          [  ]
+          ),
+        EchoStatement( Txt( ""a"" ), Semicolon( ";" ) ),
+        EchoStatement( Txt( ""no"" ), Semicolon( ";" ) )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

@@ -1,35 +1,34 @@
 Program(
 IdCon( "test072" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        EchoStatement(
-          Embedding(
-            PreText( ""Click <" ),
-            EmbedExp(
-              [
-                Markup(
-                  Designator(
-                    IdCon( "a" ),
-                    [
-                      ClassAttr( IdCon( "alert" ) ),
-                      IdAttr( IdCon( "myid" ) )
-                      ]
-                    ),
-                  [  ]
-                  )
-                ],
-              Txt( ""here"" )
-              ),
-            PostText( ">."" )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      EchoStatement(
+        Embedding(
+          PreText( ""Click <" ),
+          EmbedExp(
+            [
+              Markup(
+                Designator(
+                  IdCon( "a" ),
+                  [
+                    ClassAttr( IdCon( "alert" ) ),
+                    IdAttr( IdCon( "myid" ) )
+                    ]
+                  ),
+                [  ]
+                )
+              ],
+            Txt( ""here"" )
             ),
-          Semicolon( ";" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+          PostText( ">."" )
+          ),
+        Semicolon( ";" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

@@ -1,42 +1,38 @@
 Program(
 IdCon( "test080" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            VarBinding(
-              IdCon( "b" ),
-              Txt( ""a"" ),
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          VarBinding(
+            IdCon( "b" ),
+            Txt( ""a"" ),
+            Semicolon( ";" )
+            )
+          ],
+        [
+          IfStatement(
+            Predicate(
+              [
+                IsAPredicate( IdCon( "a" ), null ),
+                IsAPredicate( IdCon( "b" ), null )
+                ],
+              [ PredicateOp( "||" ) ]
+              ),
+            EchoStatement(
+              Txt( ""Yes"" ),
               Semicolon( ";" )
-              )
-            ],
-          [
-            IfStatement(
-              Predicate(
-                [
-                  IsAPredicate( IdCon( "a" ), null ),
-                  IsAPredicate( IdCon( "b" ), null )
-                  ],
-                [ PredicateOp( "||" ) ]
-                ),
-              EchoStatement(
-                Txt( ""Yes"" ),
-                Semicolon( ";" )
-                ),
-              EchoStatement(
-                Txt( ""No"" ),
-                Semicolon( ";" )
-                )
-              )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+              ),
+            EchoStatement( Txt( ""No"" ), Semicolon( ";" ) )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

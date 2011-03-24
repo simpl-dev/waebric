@@ -70,7 +70,7 @@ private class Generator(tree: Program) {
         processDefs(tree, globalEnv)
 
         var sitesFound = false
-        tree.definitions.definition foreach (s => s match {
+        tree.definition foreach (s => s match {
             case Site(_, Mappings(mappings, _), _) =>
                 sitesFound = true
                 mappings foreach {
@@ -110,7 +110,7 @@ private class Generator(tree: Program) {
     }
 
     def processImports(node: Program, env: Env) = {
-        node.definitions.definition foreach (i => i match {
+        node.definition foreach (i => i match {
             case Import(ModuleId(ids)) =>
                 val path: String = ids map(i => i.text) mkString("", "/", ".wae")
                 val f: java.io.File = new java.io.File(path)
@@ -129,15 +129,14 @@ private class Generator(tree: Program) {
                 errors :+= "Duplicate definition " + s + " found"
             }
         }
-        node.definitions.definition foreach (d => d match {
-            case FunctionDef(Function(name, _), _, _) =>
-                checkExisting(name.idCon.text)
-                env.defs += (name.idCon.text -> d.asInstanceOf[FunctionDef])
-            case FunctionDef(FunctionName(idCon), _, _) =>
-                checkExisting(idCon.text)
-                env.defs += (idCon.text -> d.asInstanceOf[FunctionDef])
-            case _ => ()
-        })
+        for (d <- node.definition) {
+            d match {
+                case FunctionDef(IdCon(name), _, _, _) =>
+                    checkExisting(name)
+                    env.defs += (name -> d.asInstanceOf[FunctionDef])
+                case _ => ()
+            }
+        }
         // make sure that all defs can see each other
         env.functionEnv = env
     }

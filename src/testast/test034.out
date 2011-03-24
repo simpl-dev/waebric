@@ -1,23 +1,22 @@
 Program(
 IdCon( "test034" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        MarkupStatement(
-          Markup(
-            Designator(
-              IdCon( "html" ),
-              [ IdAttr( IdCon( "bla" ) ) ]
-              ),
-            [ AttrArg( IdCon( "id" ), Txt( ""notbla"" ) ) ]
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup(
+          Designator(
+            IdCon( "html" ),
+            [ IdAttr( IdCon( "bla" ) ) ]
             ),
-          MarkupSemi( Semicolon( ";" ) )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+          [ AttrArg( IdCon( "id" ), Txt( ""notbla"" ) ) ]
+          ),
+        MarkupSemi( Semicolon( ";" ) )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

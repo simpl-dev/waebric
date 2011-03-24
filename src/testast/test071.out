@@ -1,29 +1,28 @@
 Program(
 IdCon( "test071" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        EchoStatement(
-          Embedding(
-            PreText( ""Click <" ),
-            EmbedExp(
-              [
-                Markup(
-                  Designator( IdCon( "a" ), [  ] ),
-                  [  ]
-                  )
-                ],
-              Txt( ""here"" )
-              ),
-            PostText( ">."" )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      EchoStatement(
+        Embedding(
+          PreText( ""Click <" ),
+          EmbedExp(
+            [
+              Markup(
+                Designator( IdCon( "a" ), [  ] ),
+                [  ]
+                )
+              ],
+            Txt( ""here"" )
             ),
-          Semicolon( ";" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+          PostText( ">."" )
+          ),
+        Semicolon( ";" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

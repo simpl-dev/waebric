@@ -1,18 +1,17 @@
 Program(
 IdCon( "test048" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        EachStatement(
-          IdCon( "x" ),
-          ListExpression( [  ] ),
-          EchoStatement( IdCon( "x" ), Semicolon( ";" ) )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      EachStatement(
+        IdCon( "x" ),
+        ListExpression( [  ] ),
+        EchoStatement( IdCon( "x" ), Semicolon( ";" ) )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

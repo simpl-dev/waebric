@@ -1,31 +1,30 @@
 Program(
 IdCon( "test053" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      IfStatement(
+        Predicate(
+          [ IsAPredicate( NatCon( "1" ), null ) ],
+          [  ]
+          ),
         IfStatement(
           Predicate(
-            [ IsAPredicate( NatCon( "1" ), null ) ],
+            [ IsAPredicate( IdCon( "b" ), null ) ],
             [  ]
             ),
-          IfStatement(
-            Predicate(
-              [ IsAPredicate( IdCon( "b" ), null ) ],
-              [  ]
-              ),
-            EchoStatement( Txt( ""2"" ), Semicolon( ";" ) ),
-            EchoStatement(
-              Txt( ""innermost else"" ),
-              Semicolon( ";" )
-              )
-            ),
-          null
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+          EchoStatement( Txt( ""2"" ), Semicolon( ";" ) ),
+          EchoStatement(
+            Txt( ""innermost else"" ),
+            Semicolon( ";" )
+            )
+          ),
+        null
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

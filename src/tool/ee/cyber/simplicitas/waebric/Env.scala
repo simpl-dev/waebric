@@ -13,7 +13,8 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
     var functionEnv: Env = null
     var yieldValue: NodeSeq = null
 
-    def expand(fnsAndEnv: Tuple2[Map[String, FuncBinding], Env], locals: Map[String, NodeSeq]): Env = {
+    def expand(fnsAndEnv: Tuple2[Map[String, FuncBinding], Env],
+               locals: Map[String, NodeSeq]): Env = {
         val env: Env = new Env(this, Map.empty, locals)
         env.funcs ++= fnsAndEnv._1
         if (!fnsAndEnv._1.isEmpty) {
@@ -31,21 +32,14 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
         D.ebug("Resolve function " + name)
         if (funcs.contains(name)) {
             D.ebug("Function found")
-            funcs(name) match {
-                case FuncBinding(idCon, args, statement) =>
-                    return (List(statement), args, functionEnv)
-                case _ => return null
-            }
+            val f = funcs(name)
+            return (List(f.statement), f.args, functionEnv)
         }
         if (defs.contains(name)) {
             D.ebug("Definition found")
-            defs(name) match {
-                case FunctionDef(Function(_, args), statements, _) =>
-                    return (statements, args, functionEnv)
-                case FunctionDef(FunctionName(_), statements, _) =>
-                    return (statements, List.empty, functionEnv)
-                case _ => return null
-            }
+
+            val fun = defs(name)
+            return (fun.statements, fun.args, functionEnv)
         }
         if (parent ne null) {
             return parent.resolveFunction(name)

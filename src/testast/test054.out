@@ -1,40 +1,36 @@
 Program(
 IdCon( "test054" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        EachStatement(
-          IdCon( "x" ),
-          ListExpression(
-            [ NatCon( "1" ), NatCon( "2" ), NatCon( "3" ) ]
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      EachStatement(
+        IdCon( "x" ),
+        ListExpression(
+          [ NatCon( "1" ), NatCon( "2" ), NatCon( "3" ) ]
+          ),
+        IfStatement(
+          Predicate(
+            [ IsAPredicate( NatCon( "1" ), null ) ],
+            [  ]
             ),
           IfStatement(
             Predicate(
-              [ IsAPredicate( NatCon( "1" ), null ) ],
+              [ IsAPredicate( IdCon( "b" ), null ) ],
               [  ]
               ),
-            IfStatement(
-              Predicate(
-                [ IsAPredicate( IdCon( "b" ), null ) ],
-                [  ]
-                ),
-              EchoStatement(
-                Txt( ""2"" ),
-                Semicolon( ";" )
-                ),
-              EchoStatement(
-                Txt( ""innermost else"" ),
-                Semicolon( ";" )
-                )
-              ),
-            null
-            )
+            EchoStatement( Txt( ""2"" ), Semicolon( ";" ) ),
+            EchoStatement(
+              Txt( ""innermost else"" ),
+              Semicolon( ";" )
+              )
+            ),
+          null
           )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

@@ -1,10 +1,12 @@
 Program(
 IdCon( "test060" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "f" ) ), [  ] ),
-      [
+[
+  FunctionDef(
+    IdCon( "f" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
         MarkupStatement(
           Markup( Designator( IdCon( "p" ), [  ] ), [  ] ),
           MarkupStatement(
@@ -12,42 +14,34 @@ Definitions(
               Designator( IdCon( "p" ), [  ] ),
               [  ]
               ),
-            MarkupStatement(
-              Markup(
-                Designator( IdCon( "p" ), [  ] ),
-                [  ]
-                ),
-              YieldStatement( Semicolon( ";" ) )
-              )
+            YieldStatement( Semicolon( ";" ) )
             )
           )
-        ],
-      EndTerm( "end" )
-      ),
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        EachStatement(
-          IdCon( "x" ),
-          ListExpression(
-            [
-              NatCon( "1" ),
-              NatCon( "2" ),
-              NatCon( "3" ),
-              NatCon( "4" )
-              ]
-            ),
-          MarkupStatement(
-            Markup(
-              Designator( IdCon( "f" ), [  ] ),
-              [  ]
-              ),
-            MarkupExp( IdCon( "x" ), Semicolon( ";" ) )
-            )
+        )
+      ],
+    EndTerm( "end" )
+    ),
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      EachStatement(
+        IdCon( "x" ),
+        ListExpression(
+          [
+            NatCon( "1" ),
+            NatCon( "2" ),
+            NatCon( "3" ),
+            NatCon( "4" )
+            ]
+          ),
+        MarkupStatement(
+          Markup( Designator( IdCon( "f" ), [  ] ), [  ] ),
+          MarkupExp( IdCon( "x" ), Semicolon( ";" ) )
           )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

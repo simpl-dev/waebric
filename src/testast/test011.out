@@ -1,26 +1,23 @@
 Program(
 IdCon( "test011" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            VarBinding(
-              IdCon( "x" ),
-              Txt( ""Hello"" ),
-              Semicolon( ";" )
-              )
-            ],
-          [
-            EchoStatement( IdCon( "x" ), Semicolon( ";" ) )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          VarBinding(
+            IdCon( "x" ),
+            Txt( ""Hello"" ),
+            Semicolon( ";" )
+            )
+          ],
+        [ EchoStatement( IdCon( "x" ), Semicolon( ";" ) ) ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

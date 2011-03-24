@@ -1,41 +1,40 @@
 Program(
 IdCon( "test074" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            FuncBinding(
-              IdCon( "p" ),
-              [  ],
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "p" ), [  ] ),
-                  [  ]
-                  ),
-                MarkupExp(
-                  Txt( ""a paragraph"" ),
-                  Semicolon( ";" )
-                  )
-                )
-              )
-            ],
-          [
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          FuncBinding(
+            IdCon( "p" ),
+            [  ],
             MarkupStatement(
               Markup(
                 Designator( IdCon( "p" ), [  ] ),
                 [  ]
                 ),
-              MarkupSemi( Semicolon( ";" ) )
+              MarkupExp(
+                Txt( ""a paragraph"" ),
+                Semicolon( ";" )
+                )
               )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+            )
+          ],
+        [
+          MarkupStatement(
+            Markup(
+              Designator( IdCon( "p" ), [  ] ),
+              [  ]
+              ),
+            MarkupSemi( Semicolon( ";" ) )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

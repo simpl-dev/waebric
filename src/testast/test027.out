@@ -1,29 +1,22 @@
 Program(
 IdCon( "test027" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        MarkupStatement(
-          Markup(
-            Designator( IdCon( "html" ), [  ] ),
-            [  ]
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup( Designator( IdCon( "html" ), [  ] ), [  ] ),
+        MarkupExp(
+          CatExpression(
+            Txt( ""Hello"" ),
+            CatExpression( Txt( "" "" ), Txt( ""world!"" ) )
             ),
-          MarkupExp(
-            CatExpression(
-              Txt( ""Hello"" ),
-              CatExpression(
-                Txt( "" "" ),
-                Txt( ""world!"" )
-                )
-              ),
-            Semicolon( ";" )
-            )
+          Semicolon( ";" )
           )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

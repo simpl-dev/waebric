@@ -1,110 +1,109 @@
 Program(
 IdCon( "test073" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            VarBinding(
-              IdCon( "p" ),
-              Txt( ""P"" ),
-              Semicolon( ";" )
-              )
-            ],
-          [
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          VarBinding(
+            IdCon( "p" ),
+            Txt( ""P"" ),
+            Semicolon( ";" )
+            )
+          ],
+        [
+          MarkupStatement(
+            Markup(
+              Designator( IdCon( "p" ), [  ] ),
+              [  ]
+              ),
+            MarkupSemi( Semicolon( ";" ) )
+            ),
+          MarkupStatement(
+            Markup(
+              Designator( IdCon( "p" ), [  ] ),
+              [  ]
+              ),
+            MarkupExp( IdCon( "p" ), Semicolon( ";" ) )
+            ),
+          MarkupStatement(
+            Markup(
+              Designator( IdCon( "p" ), [  ] ),
+              [  ]
+              ),
             MarkupStatement(
               Markup(
                 Designator( IdCon( "p" ), [  ] ),
                 [  ]
                 ),
               MarkupSemi( Semicolon( ";" ) )
-              ),
-            MarkupStatement(
-              Markup(
-                Designator( IdCon( "p" ), [  ] ),
-                [  ]
-                ),
-              MarkupExp( IdCon( "p" ), Semicolon( ";" ) )
-              ),
-            MarkupStatement(
-              Markup(
-                Designator( IdCon( "p" ), [  ] ),
-                [  ]
-                ),
-              MarkupStatement(
-                Markup(
-                  Designator( IdCon( "p" ), [  ] ),
-                  [  ]
-                  ),
-                MarkupSemi( Semicolon( ";" ) )
-                )
-              ),
-            EchoStatement(
-              Embedding(
-                PreText( ""<" ),
-                EmbedExp( [  ], IdCon( "p" ) ),
-                PostText( ">"" )
-                ),
-              Semicolon( ";" )
-              ),
-            EchoStatement(
-              Embedding(
-                PreText( ""<" ),
-                EmbedMarkup(
-                  [
-                    Markup(
-                      Designator( IdCon( "p" ), [  ] ),
-                      [  ]
-                      )
-                    ]
-                  ),
-                PostText( ">"" )
-                ),
-              Semicolon( ";" )
-              ),
-            EchoStatement(
-              Embedding(
-                PreText( ""<" ),
-                EmbedExp(
-                  [
-                    Markup(
-                      Designator( IdCon( "p" ), [  ] ),
-                      [  ]
-                      )
-                    ],
-                  IdCon( "p" )
-                  ),
-                PostText( ">"" )
-                ),
-              Semicolon( ";" )
-              ),
-            EchoStatement(
-              Embedding(
-                PreText( ""<" ),
-                EmbedMarkup(
-                  [
-                    Markup(
-                      Designator( IdCon( "p" ), [  ] ),
-                      [  ]
-                      ),
-                    Markup(
-                      Designator( IdCon( "p" ), [  ] ),
-                      [  ]
-                      )
-                    ]
-                  ),
-                PostText( ">"" )
-                ),
-              Semicolon( ";" )
               )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+            ),
+          EchoStatement(
+            Embedding(
+              PreText( ""<" ),
+              EmbedExp( [  ], IdCon( "p" ) ),
+              PostText( ">"" )
+              ),
+            Semicolon( ";" )
+            ),
+          EchoStatement(
+            Embedding(
+              PreText( ""<" ),
+              EmbedMarkup(
+                [
+                  Markup(
+                    Designator( IdCon( "p" ), [  ] ),
+                    [  ]
+                    )
+                  ]
+                ),
+              PostText( ">"" )
+              ),
+            Semicolon( ";" )
+            ),
+          EchoStatement(
+            Embedding(
+              PreText( ""<" ),
+              EmbedExp(
+                [
+                  Markup(
+                    Designator( IdCon( "p" ), [  ] ),
+                    [  ]
+                    )
+                  ],
+                IdCon( "p" )
+                ),
+              PostText( ">"" )
+              ),
+            Semicolon( ";" )
+            ),
+          EchoStatement(
+            Embedding(
+              PreText( ""<" ),
+              EmbedMarkup(
+                [
+                  Markup(
+                    Designator( IdCon( "p" ), [  ] ),
+                    [  ]
+                    ),
+                  Markup(
+                    Designator( IdCon( "p" ), [  ] ),
+                    [  ]
+                    )
+                  ]
+                ),
+              PostText( ">"" )
+              ),
+            Semicolon( ";" )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

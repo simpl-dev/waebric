@@ -1,37 +1,36 @@
 Program(
 IdCon( "test014" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            VarBinding(
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          VarBinding(
+            IdCon( "x" ),
+            Txt( ""Hello"" ),
+            Semicolon( ";" )
+            ),
+          VarBinding(
+            IdCon( "y" ),
+            Txt( ""world!"" ),
+            Semicolon( ";" )
+            )
+          ],
+        [
+          EchoStatement(
+            CatExpression(
               IdCon( "x" ),
-              Txt( ""Hello"" ),
-              Semicolon( ";" )
+              CatExpression( Txt( "" "" ), IdCon( "y" ) )
               ),
-            VarBinding(
-              IdCon( "y" ),
-              Txt( ""world!"" ),
-              Semicolon( ";" )
-              )
-            ],
-          [
-            EchoStatement(
-              CatExpression(
-                IdCon( "x" ),
-                CatExpression( Txt( "" "" ), IdCon( "y" ) )
-                ),
-              Semicolon( ";" )
-              )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+            Semicolon( ";" )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

@@ -1,89 +1,88 @@
 Program(
 IdCon( "test090" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            VarBinding(
-              IdCon( "a" ),
-              NatCon( "1" ),
-              Semicolon( ";" )
-              )
-            ],
-          [
-            LetStatement(
-              [
-                VarBinding(
-                  IdCon( "a" ),
-                  NatCon( "2" ),
-                  Semicolon( ";" )
-                  )
-                ],
-              [
-                LetStatement(
-                  [
-                    VarBinding(
-                      IdCon( "a" ),
-                      NatCon( "3" ),
-                      Semicolon( ";" )
-                      )
-                    ],
-                  [
-                    LetStatement(
-                      [
-                        VarBinding(
-                          IdCon( "a" ),
-                          NatCon( "4" ),
-                          Semicolon( ";" )
-                          )
-                        ],
-                      [
-                        LetStatement(
-                          [
-                            VarBinding(
-                              IdCon( "a" ),
-                              NatCon( "5" ),
-                              Semicolon( ";" )
-                              )
-                            ],
-                          [
-                            LetStatement(
-                              [
-                                VarBinding(
-                                  IdCon( "a" ),
-                                  NatCon( "6" ),
-                                  Semicolon( ";" )
-                                  )
-                                ],
-                              [
-                                EchoStatement(
-                                  IdCon( "a" ),
-                                  Semicolon( ";" )
-                                  )
-                                ],
-                              EndTerm( "end" )
-                              )
-                            ],
-                          EndTerm( "end" )
-                          )
-                        ],
-                      EndTerm( "end" )
-                      )
-                    ],
-                  EndTerm( "end" )
-                  )
-                ],
-              EndTerm( "end" )
-              )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          VarBinding(
+            IdCon( "a" ),
+            NatCon( "1" ),
+            Semicolon( ";" )
+            )
+          ],
+        [
+          LetStatement(
+            [
+              VarBinding(
+                IdCon( "a" ),
+                NatCon( "2" ),
+                Semicolon( ";" )
+                )
+              ],
+            [
+              LetStatement(
+                [
+                  VarBinding(
+                    IdCon( "a" ),
+                    NatCon( "3" ),
+                    Semicolon( ";" )
+                    )
+                  ],
+                [
+                  LetStatement(
+                    [
+                      VarBinding(
+                        IdCon( "a" ),
+                        NatCon( "4" ),
+                        Semicolon( ";" )
+                        )
+                      ],
+                    [
+                      LetStatement(
+                        [
+                          VarBinding(
+                            IdCon( "a" ),
+                            NatCon( "5" ),
+                            Semicolon( ";" )
+                            )
+                          ],
+                        [
+                          LetStatement(
+                            [
+                              VarBinding(
+                                IdCon( "a" ),
+                                NatCon( "6" ),
+                                Semicolon( ";" )
+                                )
+                              ],
+                            [
+                              EchoStatement(
+                                IdCon( "a" ),
+                                Semicolon( ";" )
+                                )
+                              ],
+                            EndTerm( "end" )
+                            )
+                          ],
+                        EndTerm( "end" )
+                        )
+                      ],
+                    EndTerm( "end" )
+                    )
+                  ],
+                EndTerm( "end" )
+                )
+              ],
+            EndTerm( "end" )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

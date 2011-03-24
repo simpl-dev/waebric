@@ -1,18 +1,17 @@
 Program(
 IdCon( "test070" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        CommentStatement(
-          CommentTerm( "comment" ),
-          StrCon( ""abcdef"" ),
-          Semicolon( ";" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      CommentStatement(
+        CommentTerm( "comment" ),
+        StrCon( ""abcdef"" ),
+        Semicolon( ";" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

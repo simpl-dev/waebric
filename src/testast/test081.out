@@ -1,48 +1,42 @@
 Program(
 IdCon( "test081" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            VarBinding(
-              IdCon( "b" ),
-              RecordExpression(
-                [
-                  KeyValuePair( IdCon( "x" ), Txt( ""X"" ) )
-                  ]
-                ),
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          VarBinding(
+            IdCon( "b" ),
+            RecordExpression(
+              [ KeyValuePair( IdCon( "x" ), Txt( ""X"" ) ) ]
+              ),
+            Semicolon( ";" )
+            )
+          ],
+        [
+          IfStatement(
+            Predicate(
+              [
+                IsAPredicate(
+                  IdCon( "b" ),
+                  PredType( "record" )
+                  )
+                ],
+              [  ]
+              ),
+            EchoStatement(
+              Txt( ""Yes"" ),
               Semicolon( ";" )
-              )
-            ],
-          [
-            IfStatement(
-              Predicate(
-                [
-                  IsAPredicate(
-                    IdCon( "b" ),
-                    PredType( "record" )
-                    )
-                  ],
-                [  ]
-                ),
-              EchoStatement(
-                Txt( ""Yes"" ),
-                Semicolon( ";" )
-                ),
-              EchoStatement(
-                Txt( ""No"" ),
-                Semicolon( ";" )
-                )
-              )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+              ),
+            EchoStatement( Txt( ""No"" ), Semicolon( ";" ) )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

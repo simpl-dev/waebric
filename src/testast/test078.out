@@ -1,59 +1,56 @@
 Program(
 IdCon( "test078" ),
-Definitions(
-  [
-    FunctionDef(
-      Function(
-        FunctionName( IdCon( "f" ) ),
-        [ IdCon( "a" ), IdCon( "b" ) ]
-        ),
-      [
-        LetStatement(
-          [
-            FuncBinding(
-              IdCon( "g" ),
-              [ IdCon( "a" ) ],
-              BlockStatement(
-                [
-                  EchoStatement(
-                    IdCon( "a" ),
-                    Semicolon( ";" )
-                    ),
-                  EchoStatement(
-                    IdCon( "b" ),
-                    Semicolon( ";" )
-                    )
-                  ]
-                )
+[
+  FunctionDef(
+    IdCon( "f" ),
+    [ IdCon( "a" ), IdCon( "b" ) ],
+    [
+      LetStatement(
+        [
+          FuncBinding(
+            IdCon( "g" ),
+            [ IdCon( "a" ) ],
+            BlockStatement(
+              [
+                EchoStatement(
+                  IdCon( "a" ),
+                  Semicolon( ";" )
+                  ),
+                EchoStatement(
+                  IdCon( "b" ),
+                  Semicolon( ";" )
+                  )
+                ]
               )
-            ],
-          [
-            MarkupStatement(
-              Markup(
-                Designator( IdCon( "g" ), [  ] ),
-                [  ]
-                ),
-              MarkupSemi( Semicolon( ";" ) )
-              )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      ),
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        MarkupStatement(
-          Markup(
-            Designator( IdCon( "f" ), [  ] ),
-            [ Txt( ""a"" ), Txt( ""b"" ) ]
-            ),
-          MarkupSemi( Semicolon( ";" ) )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+            )
+          ],
+        [
+          MarkupStatement(
+            Markup(
+              Designator( IdCon( "g" ), [  ] ),
+              [  ]
+              ),
+            MarkupSemi( Semicolon( ";" ) )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    ),
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      MarkupStatement(
+        Markup(
+          Designator( IdCon( "f" ), [  ] ),
+          [ Txt( ""a"" ), Txt( ""b"" ) ]
+          ),
+        MarkupSemi( Semicolon( ";" ) )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

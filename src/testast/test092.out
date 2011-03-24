@@ -1,43 +1,39 @@
 Program(
 IdCon( "test092" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            VarBinding(
-              IdCon( "x" ),
-              Txt( ""www.google.nl"" ),
-              Semicolon( ";" )
-              )
-            ],
-          [
-            MarkupStatement(
-              Markup(
-                Designator( IdCon( "a" ), [  ] ),
-                [
-                  AttrArg(
-                    IdCon( "href" ),
-                    CatExpression(
-                      Txt( ""http://"" ),
-                      IdCon( "x" )
-                      )
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          VarBinding(
+            IdCon( "x" ),
+            Txt( ""www.google.nl"" ),
+            Semicolon( ";" )
+            )
+          ],
+        [
+          MarkupStatement(
+            Markup(
+              Designator( IdCon( "a" ), [  ] ),
+              [
+                AttrArg(
+                  IdCon( "href" ),
+                  CatExpression(
+                    Txt( ""http://"" ),
+                    IdCon( "x" )
                     )
-                  ]
-                ),
-              MarkupExp(
-                Txt( ""Google"" ),
-                Semicolon( ";" )
-                )
-              )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+                  )
+                ]
+              ),
+            MarkupExp( Txt( ""Google"" ), Semicolon( ";" ) )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )

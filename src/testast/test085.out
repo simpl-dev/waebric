@@ -1,59 +1,55 @@
 Program(
 IdCon( "test085" ),
-Definitions(
-  [
-    FunctionDef(
-      Function( FunctionName( IdCon( "main" ) ), [  ] ),
-      [
-        LetStatement(
-          [
-            VarBinding(
-              IdCon( "b" ),
-              ListExpression(
-                [
-                  NatCon( "1" ),
-                  NatCon( "2" ),
-                  NatCon( "3" )
-                  ]
-                ),
-              Semicolon( ";" )
-              )
-            ],
-          [
-            IfStatement(
-              Predicate(
-                [
+[
+  FunctionDef(
+    IdCon( "main" ),
+    [  ],
+    [
+      LetStatement(
+        [
+          VarBinding(
+            IdCon( "b" ),
+            ListExpression(
+              [
+                NatCon( "1" ),
+                NatCon( "2" ),
+                NatCon( "3" )
+                ]
+              ),
+            Semicolon( ";" )
+            )
+          ],
+        [
+          IfStatement(
+            Predicate(
+              [
+                IsAPredicate(
+                  IdCon( "b" ),
+                  PredType( "list" )
+                  ),
+                NotPredicate(
                   IsAPredicate(
-                    IdCon( "b" ),
-                    PredType( "list" )
-                    ),
-                  NotPredicate(
-                    IsAPredicate(
-                      FieldExpression(
-                        IdCon( "b" ),
-                        IdCon( "x" )
-                        ),
-                      null
-                      )
+                    FieldExpression(
+                      IdCon( "b" ),
+                      IdCon( "x" )
+                      ),
+                    null
                     )
-                  ],
-                [ PredicateOp( "&&" ) ]
-                ),
-              EchoStatement(
-                Txt( ""Yes"" ),
-                Semicolon( ";" )
-                ),
-              EchoStatement(
-                Txt( ""No"" ),
-                Semicolon( ";" )
-                )
-              )
-            ],
-          EndTerm( "end" )
-          )
-        ],
-      EndTerm( "end" )
-      )
-    ]
-  )
+                  )
+                ],
+              [ PredicateOp( "&&" ) ]
+              ),
+            EchoStatement(
+              Txt( ""Yes"" ),
+              Semicolon( ";" )
+              ),
+            EchoStatement( Txt( ""No"" ), Semicolon( ";" ) )
+            )
+          ],
+        EndTerm( "end" )
+        )
+      ],
+    EndTerm( "end" )
+    )
+  ]
 )
