@@ -1,8 +1,8 @@
 #!/bin/bash
 
-TEST_CLASSPATH="src/tool/ee/cyber/waebric/tests"
-TEST_OUTPUT_CLASSPATH="src/tool/ee/cyber/waebric/testast"
-TEST_OUTPUT_CLASSPATH2="src/tool/ee/cyber/waebric/testgen"
+TEST_CLASSPATH="src/tests"
+TEST_OUTPUT_CLASSPATH="src/testast"
+TEST_OUTPUT_CLASSPATH2="src/testgen"
 
 rm -rf target/tests
 mkdir -p target/tests
