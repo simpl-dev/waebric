@@ -3,9 +3,10 @@ package ee.cyber.simplicitas.waebric
 import ee.cyber.simplicitas.{CommonNode}
 import collection.mutable.Map
 import xml.NodeSeq
-import xml.Text
 
-
+// Represents function objects in the environment.
+case class FunObj(name: String, args: List[IdCon],
+                  statements: List[Statement], env: Env)
 
 class Env(val parent: Env, val defs: Map[String, FunctionDef],
           val locals: Map[String, NodeSeq]) {
@@ -13,19 +14,18 @@ class Env(val parent: Env, val defs: Map[String, FunctionDef],
     var functionEnv: Env = null
     var yieldValue: NodeSeq = null
 
-    def expand(fnsAndEnv: Tuple2[Map[String, FuncBinding], Env],
+    def expand(funs: Map[String, FuncBinding], funEnv: Env,
                locals: Map[String, NodeSeq]): Env = {
-        val env: Env = new Env(this, Map.empty, locals)
-        env.funcs ++= fnsAndEnv._1
-        if (!fnsAndEnv._1.isEmpty) {
-            env.functionEnv = fnsAndEnv._2
+        val env = new Env(this, Map.empty, locals)
+        env.funcs ++= funs
+        if (!funs.isEmpty) {
+            env.functionEnv = funEnv
         }
-        return env
-
+        env
     }
 
     def varExpand(locals: Map[String, NodeSeq]): Env =
-        expand((Map.empty, null), locals)
+        expand(Map.empty, null, locals)
 
     // returns (statements, argument names, env)
     def resolveFunction(name: String): Tuple3[List[Statement], List[IdCon], Env] = {

@@ -62,7 +62,6 @@ private class Generator(tree: Program) {
     var errors: List[String] = List.empty
 
     def generate() {
-
         val globalEnv: Env = new Env(null, Map.empty, Map.empty)
 
         D.ebug(PrettyPrint.prettyPrint(tree))
@@ -85,7 +84,7 @@ private class Generator(tree: Program) {
                             out.write(new PrettyPrinter(65, 2).formatNodes(
                                 evalStatement(MarkupStatement(f.markup, MarkupSemi(Semicolon(";"))),
                                     globalEnv)))
-                            out.close
+                            out.close()
                         }
                 }
             case _ => ()
@@ -329,8 +328,8 @@ private class Generator(tree: Program) {
                 if (newEnv.resolveFunction(funcName) ne null) {
                     errors :+= "Overdefined function " + funcName
                 }
-                newEnv = newEnv.expand((Map(funcName -> a.asInstanceOf[FuncBinding]), newEnv),
-                    Map.empty)
+                newEnv = newEnv.expand(Map(funcName -> a.asInstanceOf[FuncBinding]),
+                    newEnv, Map.empty)
             }
         }
         return newEnv
