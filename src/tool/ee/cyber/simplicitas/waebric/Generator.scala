@@ -329,7 +329,7 @@ private class Generator(tree: Program) {
                     errors :+= "Overdefined function " + funcName
                 }
                 newEnv = newEnv.expand(Map(funcName -> a.asInstanceOf[FuncBinding]),
-                    newEnv, Map.empty)
+                    Map.empty)
             }
         }
         return newEnv
