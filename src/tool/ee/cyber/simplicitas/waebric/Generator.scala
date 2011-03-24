@@ -1,6 +1,5 @@
 package ee.cyber.simplicitas.waebric
 
-import collection.mutable.Map
 import xml._
 
 
@@ -62,11 +61,10 @@ private class Generator(tree: Program) {
     var errors: List[String] = List.empty
 
     def generate() {
-        val globalEnv: Env = new Env(null, Map.empty, Map.empty)
-
         D.ebug(PrettyPrint.prettyPrint(tree))
-        processImports(tree, globalEnv)
-        processDefs(tree, globalEnv)
+
+        val globals =  processDefs(processImports(tree), tree)
+        val globalEnv = Env.topLevel(globals)
 
         var sitesFound = false
         tree.definition foreach (s => s match {
@@ -90,7 +88,9 @@ private class Generator(tree: Program) {
             case _ => ()
         })
         showErrors
-        if (sitesFound) return
+        if (sitesFound) {
+            return
+        }
         // first process sites. if not found, try with "main"
         var nodes = evalStatement(
             MarkupStatement(
@@ -108,36 +108,41 @@ private class Generator(tree: Program) {
         showErrors
     }
 
-    def processImports(node: Program, env: Env) = {
-        node.definition foreach (i => i match {
-            case Import(ModuleId(ids)) =>
-                val path: String = ids map(i => i.text) mkString("", "/", ".wae")
-                val f: java.io.File = new java.io.File(path)
-                if (!f.exists)
-                    errors :+= "Cannot import from " + path + ", file not found"
-                else
-                    processDefs(ImportLoader.load(path), env)
-            case _ => ()
-        })
+    def processImports(program: Program) = {
+        var ret = Map.empty[String, FunctionDef]
 
+        for (i <- program.definition)
+            i match {
+                case Import(ModuleId(ids)) =>
+                    val path: String = ids.map(_.text).mkString("", "/", ".wae")
+                    val f: java.io.File = new java.io.File(path)
+                    if (!f.exists)
+                        errors :+= "Cannot import from " + path + ", file not found"
+                    else
+                        ret = processDefs(ret, ImportLoader.load(path))
+                case _ => ()
+            }
+
+        ret
     }
 
-    def processDefs(node: Program, env: Env) = {
+    def processDefs(oldDefs: Map[String, FunctionDef], node: Program) = {
         def checkExisting(s: String) = {
-            if (env.defs.keySet.contains(s)) {
+            if (oldDefs.contains(s)) {
                 errors :+= "Duplicate definition " + s + " found"
             }
         }
+
+        var defs = oldDefs
         for (d <- node.definition) {
             d match {
                 case FunctionDef(IdCon(name), _, _, _) =>
                     checkExisting(name)
-                    env.defs += (name -> d.asInstanceOf[FunctionDef])
+                    defs += (name -> d.asInstanceOf[FunctionDef])
                 case _ => ()
             }
         }
-        // make sure that all defs can see each other
-        env.functionEnv = env
+        defs
     }
 
     def showErrors = {
@@ -167,11 +172,15 @@ private class Generator(tree: Program) {
                 expressions match {
                     case ListNodeSeq(list) =>
                         var ret: NodeSeq = NodeSeq.Empty;
-                        list.foreach(f => ret ++= evalStatement(statement, env.varExpand(Map(idCon.text -> f))))
+                        for (f <- list) {
+                            ret ++= evalStatement(statement, env.varExpand(Map(idCon.text -> f)))
+                        }
                         ret
                     case RecordNodeSeq(records) =>
                         var ret: NodeSeq = NodeSeq.Empty
-                        records.foreach{f => ret ++= evalStatement(statement, env.varExpand(Map(idCon.text -> f)))}
+                        for (f <- records) {
+                            ret ++= evalStatement(statement, env.varExpand(Map(idCon.text -> f)))
+                        }
                         ret
                     case _ =>  NodeSeq.Empty
                 }
@@ -211,9 +220,9 @@ private class Generator(tree: Program) {
         val desText = markup.designator.idCon.text
         val fun = env.resolveFunction(desText) //(statements, argNames, function environment)
         if (fun ne null) {
-            val newEnv = bindParameters((fun._2, fun._3), markup, env)
+            val newEnv = bindParameters(fun.args, fun.env, markup, env)
             newEnv.yieldValue = body
-            evalStatements(fun._1, newEnv)
+            evalStatements(fun.statements, newEnv)
         } else {
             try {
                 XHTMLTags.withName(desText toUpperCase)
@@ -223,7 +232,6 @@ private class Generator(tree: Program) {
             }
             addXHTMLAttributes(elem(desText, body), markup, env)
         }
-
     }
 
     // Processes expressions and embeddings.
@@ -324,7 +332,7 @@ private class Generator(tree: Program) {
                 newEnv = newEnv.varExpand(
                     Map(a.asInstanceOf[VarBinding].idCon.text -> evalExpr(a.asInstanceOf[VarBinding].expression, env)))
             } else {
-                val funcName = a.asInstanceOf[FuncBinding].func.text
+                val funcName = a.asInstanceOf[FuncBinding].name.text
                 if (newEnv.resolveFunction(funcName) ne null) {
                     errors :+= "Overdefined function " + funcName
                 }
@@ -354,26 +362,26 @@ private class Generator(tree: Program) {
             markup.args
 
     //funArgs contains the env for the function
-    private def bindParameters(funArgs: Tuple2[List[IdCon], Env], markup: Markup, env: Env): Env = {
+    private def bindParameters(funArgs: List[IdCon], funEnv: Env, markup: Markup, env: Env): Env = {
         var markupArgs: List[Argument] = getMarkupArgs(markup)
         // check whether number of arguments and number of parameters match
-        if (markupArgs.size < funArgs._1.size) {
+        if (markupArgs.size < funArgs.size) {
             errors :+= "Wrong number of arguments(" + markupArgs.size +
-                    ") for function " + markup.designator.idCon.text + ". Expected: " + funArgs._1.size
-            while (markupArgs.size < funArgs._1.size)
+                    ") for function " + markup.designator.idCon.text + ". Expected: " + funArgs.size
+            while (markupArgs.size < funArgs.size)
                 markupArgs :+= Txt("\"undef\"")
         }
 
-        val bindMap = funArgs._1 zip markupArgs map { f => (f._1.text, f._2 match {
+        val bindMap = funArgs zip markupArgs map { f => (f._1.text, f._2 match {
             case AttrArg(_, exp) => evalExpr(exp, env)
             case _ => evalExpr(f._2, env)})} toMap;
         // Use the function environment for the expansion
-        return funArgs._2.varExpand(collection.mutable.Map(bindMap.toSeq: _*))
+        return funEnv.varExpand(Map(bindMap.toSeq: _*))
 
     }
 
     private def addXHTMLAttributes(elem: Elem, markup: Markup, env: Env): NodeSeq = {
-        val map: Map[String, NodeSeq] = Map.empty
+        val map = collection.mutable.Map.empty[String, NodeSeq]
 
         def updateMap(pair: Tuple2[String, NodeSeq]) = {
             val v = map.get(pair._1)
@@ -438,7 +446,7 @@ object WaebricGenerator extends MainBase {
             checkErrors(grammar.errors)
 
             val gen = new Generator(grammar.tree);
-            gen.generate
+            gen.generate()
         }
     }
 }

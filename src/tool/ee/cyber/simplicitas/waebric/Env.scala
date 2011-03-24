@@ -1,74 +1,73 @@
 package ee.cyber.simplicitas.waebric
 
 import ee.cyber.simplicitas.{CommonNode}
-import collection.mutable.Map
 import xml.NodeSeq
 
 // Represents function objects in the environment.
-case class FunObj(name: String, args: List[IdCon],
-                  statements: List[Statement], env: Env)
+class FunObj(val args: List[IdCon], val statements: List[Statement], var env: Env)
 
-class Env(val parent: Env, val defs: Map[String, FunctionDef],
+object FunObj {
+    def apply(binding: FuncBinding, env: Env): FunObj =
+        new FunObj(binding.args, List(binding.statement), env)
+
+    def apply(binding: FunctionDef, env: Env): FunObj =
+        new FunObj(binding.args, binding.statements, env)
+}
+
+class Env(val parent: Env, val defs: Map[String, FunObj],
           val locals: Map[String, NodeSeq]) {
-    var funcs: Map[String, FuncBinding] = Map.empty
-    var functionEnv: Env = null
     var yieldValue: NodeSeq = null
 
-    def expand(funs: Map[String, FuncBinding],  locals: Map[String, NodeSeq]) = {
-        val env = new Env(this, Map.empty, locals)
-        env.funcs ++= funs
-        if (!funs.isEmpty) {
-            env.functionEnv = this
-        }
-        env
-    }
+    def expand(funs: Map[String, FuncBinding],  locals: Map[String, NodeSeq]) =
+        new Env(this, funs.mapValues(FunObj(_, this)).toMap, locals)
 
     def varExpand(locals: Map[String, NodeSeq]): Env =
         expand(Map.empty, locals)
 
     // returns (statements, argument names, env)
-    def resolveFunction(name: String): Tuple3[List[Statement], List[IdCon], Env] = {
-        D.ebug("Resolve function " + name)
-        if (funcs.contains(name)) {
-            D.ebug("Function found")
-            val f = funcs(name)
-            return (List(f.statement), f.args, functionEnv)
-        }
-        if (defs.contains(name)) {
-            D.ebug("Definition found")
+    def resolveFunction(name: String): FunObj =
+        if (defs.contains(name))
+            defs(name)
+        else
+            parent.resolveFunction(name)
 
-            val fun = defs(name)
-            return (fun.statements, fun.args, functionEnv)
-        }
-        if (parent ne null) {
-            return parent.resolveFunction(name)
-        } else {
-            return null
-        }
-    }
+    def resolveVariable(name: String): NodeSeq =
+        if (locals.contains(name))
+            locals(name)
+        else
+            parent.resolveVariable(name)
 
-    def resolveVariable(name: String): NodeSeq = {
-        D.ebug("Resolve variable " + name)
-        if (locals.contains(name)) {
-            D.ebug("Variable found")
-            return locals(name)
-        }
-        if (parent ne null) {
-            return parent.resolveVariable(name)
-        }
-        return null
-    }
-
-    def resolveYield(): NodeSeq = {
-        if (yieldValue ne null) {
-            return yieldValue
-        }
-        if (parent ne null) {
-            return parent.resolveYield
-        }
-        return NodeSeq.Empty
-    }
+    def resolveYield(): NodeSeq =
+        if (yieldValue ne null)
+            yieldValue
+        else
+            parent.resolveYield
 
     override def toString =
-        "Env(locals: " + locals + ",\ndefs: " + defs + ",\nfuncs: " + funcs + ",\n funcEnv: " + functionEnv + ")"
+        "Env(locals: " + locals + ",\ndefs: " + defs + ")"
+}
+
+object Env {
+    def topLevel(topDefs: Map[String, FunctionDef]) = {
+        val defMap = topDefs.mapValues(FunObj(_, null)).toMap
+        val env = new Env(null, defMap, Map.empty) {
+            override def resolveFunction(name: String) =
+                if (defs.contains(name))
+                    defs(name)
+                else
+                    null
+
+            override def resolveVariable(name: String) = null
+
+            override def resolveYield = NodeSeq.Empty
+        }
+
+        // Toplevel functions are mutually recursive and reference env that
+        // contains their peers.
+        for (fo <- env.defs.values) {
+            fo.env = env
+        }
+
+        env
+    }
 }

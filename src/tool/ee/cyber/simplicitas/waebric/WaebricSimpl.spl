@@ -113,7 +113,7 @@ EachStatement: "each" "(" IdCon ":" Expression ")" Statement;
 LetStatement: "let" Assignment+ "in" Statement* EndTerm;
 option Assignment: VarBinding | FuncBinding;
 VarBinding: IdCon "=" Expression Semicolon;
-FuncBinding: func=IdCon "(" (args=IdCon ("," args=IdCon)*)? ")" "=" Statement;
+FuncBinding: name=IdCon "(" (args=IdCon ("," args=IdCon)*)? ")" "=" Statement;
 
 BlockStatement: "{" Statement* "}";
 CommentStatement: CommentTerm StrCon Semicolon;
