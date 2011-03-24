@@ -1,4 +1,4 @@
-package ee.cyber.waebric.codegenerator
+package ee.cyber.simplicitas.waebric
 
 import collection.mutable.Map
 import xml._
@@ -6,8 +6,7 @@ import xml._
 
 import ee.cyber.simplicitas.{GeneratorBase, MainBase, CommonNode,
 SourceMessage, PrettyPrint}
-import ee.cyber.simplicitas.PrettyPrint._
-import ee.cyber.waebric.lexer._
+import PrettyPrint._
 
 object D {
     val enableDebug = false

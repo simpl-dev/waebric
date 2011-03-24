@@ -1,4 +1,4 @@
-package ee.cyber.waebric.lexer
+package ee.cyber.simplicitas.waebric
 
 /**
  * from http://www.w3schools.com/tags/default.asp  (HTML4.0)

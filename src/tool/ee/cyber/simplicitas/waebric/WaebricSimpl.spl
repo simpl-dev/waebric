@@ -1,4 +1,4 @@
-grammar ee.cyber.waebric.lexer.WaebricSimpl;
+grammar ee.cyber.simplicitas.waebric.WaebricSimpl;
 
 options (backtrack=true;)
 

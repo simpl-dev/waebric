@@ -3,13 +3,9 @@ package ee.cyber.simplicitas.waebric
 import ee.cyber.simplicitas.imp._
 import ee.cyber.simplicitas.{GenericToken, CommonNode}
 
-import ee.cyber.waebric.lexer._
-
 
 import org.eclipse.swt.graphics.Image
 import org.eclipse.imp.language.LanguageRegistry
-import ee.cyber.waebric.lexer.WaebricSimplGrammar
-import ee.cyber.waebric.codegenerator.WaebricGenerator
 
 object WaebricSimplConfig {
   // These four values serve technical purposes, do not touch them.

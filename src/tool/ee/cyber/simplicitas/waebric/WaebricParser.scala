@@ -1,4 +1,4 @@
-package ee.cyber.waebric.lexer;
+package ee.cyber.simplicitas.waebric;
 
 import ee.cyber.simplicitas.{GeneratorBase, MainBase}
 import ee.cyber.simplicitas.PrettyPrint._
