@@ -311,36 +311,19 @@ private class Generator(tree: Program) {
         }
     }
 
-    private def applyBindings(assignments: List[Assignment], env: Env): Env = {
+    private def applyBindings(assignments: List[Assignment], env: Env): Env =
         //let's process assignments in the order and expand the env for each assignment
-        var newEnv: Env = env
-        for (a <- assignments) {
-            if (a.isInstanceOf[VarBinding]) {
-                newEnv = newEnv.varExpand(
-                    Map(a.asInstanceOf[VarBinding].idCon.text -> evalExpr(a.asInstanceOf[VarBinding].expression, env)))
-            } else {
-                val funcName = a.asInstanceOf[FuncBinding].name.text
-                if (newEnv.resolveFunction(funcName) ne null) {
-                    errors :+= "Overdefined function " + funcName
-                }
-                newEnv = newEnv.expand(Map(funcName -> a.asInstanceOf[FuncBinding]),
-                    Map.empty)
-            }
-        }
-        return newEnv
-        /*// variable assignments are by default scoped lexically as they are evaluated during the env expand
-        val aMap = assignments filter { a => a.isInstanceOf[VarBinding] } map {
-            a => (a.asInstanceOf[VarBinding].idCon.text, evalExpr(a.asInstanceOf[VarBinding].expression, env))} toMap;
-        val newEnv: Env = env.expand((Map.empty, null), collection.mutable.Map(aMap.toSeq: _*))
-        // lexical scoping is needed for function as it is not evaluated during the env expand
-        val fMap = assignments filter { mapping => mapping.isInstanceOf[FuncBinding] } map {
-            mapping => (mapping.asInstanceOf[FuncBinding].func.text, mapping.asInstanceOf[FuncBinding]) } toMap;
-        D.ebug("aMap: " + aMap)
-        D.ebug("fMap: " + fMap)
-        return newEnv.expand((collection.mutable.Map(fMap.toSeq: _*), newEnv), Map.empty)
-        */
-
-    }
+        assignments.foldLeft(env)(
+            (oldEnv, assign) =>
+            assign match {
+                case VarBinding(IdCon(id), expr, _) =>
+                    oldEnv.varExpand(Map(id -> evalExpr(expr, oldEnv)))
+                case fb @ FuncBinding(IdCon(funcName), _, _) =>
+                    if (oldEnv.resolveFunction(funcName) ne null) {
+                        errors :+= "Overdefined function " + funcName
+                    }
+                    oldEnv.expand(Map(funcName -> fb), Map.empty)
+            })
 
     private def getMarkupArgs(markup: Markup) =
         if (markup.args eq null)
@@ -349,7 +332,8 @@ private class Generator(tree: Program) {
             markup.args
 
     //funArgs contains the env for the function
-    private def bindParameters(funArgs: List[IdCon], funEnv: Env, markup: Markup, env: Env): Env = {
+    private def bindParameters(funArgs: List[IdCon], funEnv: Env,
+                               markup: Markup, env: Env): Env = {
         var markupArgs: List[Argument] = getMarkupArgs(markup)
         // check whether number of arguments and number of parameters match
         if (markupArgs.size < funArgs.size) {
@@ -363,8 +347,7 @@ private class Generator(tree: Program) {
             case AttrArg(_, exp) => evalExpr(exp, env)
             case _ => evalExpr(f._2, env)})} toMap;
         // Use the function environment for the expansion
-        return funEnv.varExpand(Map(bindMap.toSeq: _*))
-
+        funEnv.varExpand(Map(bindMap.toSeq: _*))
     }
 
     private def addXHTMLAttributes(elem: Elem, markup: Markup, env: Env): NodeSeq = {
