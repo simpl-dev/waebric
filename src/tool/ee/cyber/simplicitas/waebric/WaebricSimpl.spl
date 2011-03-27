@@ -92,7 +92,7 @@ option PrimitiveExpression:
 
 ListExpression: "[" (args=Expression ("," args=Expression)*)? "]";
 RecordExpression: "{" (args=KeyValuePair ("," args=KeyValuePair)*)? "}";
-KeyValuePair returns Expression: IdCon ":" Expression;
+KeyValuePair: IdCon ":" Expression;
 
 
 option Statement:

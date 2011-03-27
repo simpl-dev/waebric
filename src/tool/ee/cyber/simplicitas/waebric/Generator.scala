@@ -18,11 +18,8 @@ object D {
 }
 
 private case class ListNodeSeq(var list: List[NodeSeq]) extends NodeSeq {
-    def theSeq: Seq[Node] = {
-        var ret: Seq[Node] = Seq.empty
-        list.foreach(l => ret ++= l.toSeq)
-        ret
-    }
+    def theSeq =
+        list.map(_.toSeq).flatten
 }
 
 trait RecordNodes {
@@ -30,31 +27,22 @@ trait RecordNodes {
 }
 
 private case class RecordNodeSeq(var records: List[KeyValueNodeSeq]) extends NodeSeq with RecordNodes {
-    def theSeq: Seq[Node] = {
-        var ret: Seq[Node] = Seq.empty
-        records.foreach(v => ret ++= v.theSeq)
-        ret
-    }
-    def get(k: String): NodeSeq = {
-        for (f <- records) {
-            if (f.get(k) != NodeSeq.Empty) {
-                return f.get(k)
-            }
-        }
-        return NodeSeq.Empty
-    }
+    def theSeq =
+        records.map(_.theSeq).flatten
+
+    def get(k: String) =
+        records.map(_.get(k)).find(_ != NodeSeq.Empty).getOrElse(NodeSeq.Empty)
 }
 
 private case class KeyValueNodeSeq(var key: String, var value: NodeSeq) extends NodeSeq with RecordNodes {
     //def theSeq: Seq[Node] = Text(key) ++ Text("--") ++ value.toSeq
     def theSeq: Seq[Node] = value.toSeq
-    def get(k: String): NodeSeq = {
-        if (k == key) {
-            return value
-        } else {
-            return NodeSeq.Empty
-        }
-    }
+
+    def get(k: String) =
+        if (k == key)
+            value
+        else
+            NodeSeq.Empty
 }
 
 private class Generator(tree: Program) {
@@ -272,15 +260,14 @@ private class Generator(tree: Program) {
                 D.ebug("RecordExpression found " + items)
                 RecordNodeSeq(
                     (for (f <- items)
-                    yield evalExpr(f.asInstanceOf[KeyValuePair], env)
-                                .asInstanceOf[KeyValueNodeSeq]
-                            ) toList)
+                        yield evalExpr(f, env).asInstanceOf[KeyValueNodeSeq]
+                    ) toList)
             case FieldExpression(prim, idCon) =>
                 evalExpr(prim, env) match {
                     case r: RecordNodes =>
                         D.ebug("RecordNodes " + evalExpr(prim, env)   + " found")
                         D.ebug("Value: " + r.get(idCon.text))
-                        return r.get(idCon.text)
+                        r.get(idCon.text)
                     case _ => NodeSeq.Empty
                 }
             case _ =>
