@@ -259,9 +259,8 @@ private class Generator(tree: Program) {
             case RecordExpression(items) =>
                 D.ebug("RecordExpression found " + items)
                 RecordNodeSeq(
-                    (for (f <- items)
-                        yield evalExpr(f, env).asInstanceOf[KeyValueNodeSeq]
-                    ) toList)
+                    items.map(
+                        evalExpr(_, env).asInstanceOf[KeyValueNodeSeq]))
             case FieldExpression(prim, idCon) =>
                 evalExpr(prim, env) match {
                     case r: RecordNodes =>
