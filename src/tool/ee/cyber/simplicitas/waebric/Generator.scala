@@ -63,30 +63,16 @@ private class Generator(tree: Program) {
     def generate() {
         D.ebug(PrettyPrint.prettyPrint(tree))
 
-        val globals =  processDefs(processImports(tree), tree)
+        val globals = processDefs(processImports(tree), tree)
         val globalEnv = Env.topLevel(globals)
 
         var sitesFound = false
-        tree.definition foreach (s => s match {
+        tree.definition foreach {
             case Site(_, Mappings(mappings, _), _) =>
                 sitesFound = true
-                mappings foreach {
-                    f =>
-                        var out: java.io.FileWriter = null
-                        try {
-                            out = new java.io.FileWriter(f.path.text)
-                        } catch {
-                            case e => errors :+= "Could not open the file " + f.path.text + " for writing."
-                        }
-                        if (out ne null) {
-                            out.write(new PrettyPrinter(65, 2).formatNodes(
-                                evalStatement(MarkupStatement(f.markup, MarkupSemi(Semicolon(";"))),
-                                    globalEnv)))
-                            out.close()
-                        }
-                }
+                mappings.foreach(processSiteMappings(_, globalEnv))
             case _ => ()
-        })
+        }
         showErrors
         if (sitesFound) {
             return
@@ -106,6 +92,23 @@ private class Generator(tree: Program) {
         }
         println("\n" + new PrettyPrinter(65, 2).formatNodes(nodes))
         showErrors
+    }
+
+    def processSiteMappings(mapping: Mapping, env: Env) {
+        var out: java.io.FileWriter = null
+        try {
+            out = new java.io.FileWriter(mapping.path.text)
+        } catch {
+            case e =>
+                errors :+= "Could not open the file " + mapping.path.text + " for writing."
+        }
+        if (out ne null) {
+            out.write(new PrettyPrinter(65, 2).formatNodes(
+                evalStatement(
+                    MarkupStatement(mapping.markup,
+                        MarkupSemi(Semicolon(";"))), env)))
+            out.close()
+        }
     }
 
     def processImports(program: Program) = {
@@ -346,8 +349,8 @@ private class Generator(tree: Program) {
             a => (a.asInstanceOf[VarBinding].idCon.text, evalExpr(a.asInstanceOf[VarBinding].expression, env))} toMap;
         val newEnv: Env = env.expand((Map.empty, null), collection.mutable.Map(aMap.toSeq: _*))
         // lexical scoping is needed for function as it is not evaluated during the env expand
-        val fMap = assignments filter { f => f.isInstanceOf[FuncBinding] } map {
-            f => (f.asInstanceOf[FuncBinding].func.text, f.asInstanceOf[FuncBinding]) } toMap;
+        val fMap = assignments filter { mapping => mapping.isInstanceOf[FuncBinding] } map {
+            mapping => (mapping.asInstanceOf[FuncBinding].func.text, mapping.asInstanceOf[FuncBinding]) } toMap;
         D.ebug("aMap: " + aMap)
         D.ebug("fMap: " + fMap)
         return newEnv.expand((collection.mutable.Map(fMap.toSeq: _*), newEnv), Map.empty)
@@ -405,7 +408,7 @@ private class Generator(tree: Program) {
             updateMap(pair)
         }
         // We are interested only in the AttrArg type
-        //markupArgs filter { f => f.isInstanceOf[AttrArg]} map {
+        //markupArgs filter { mapping => mapping.isInstanceOf[AttrArg]} map {
         // or not:
         getMarkupArgs(markup) map {
             f => f match {
