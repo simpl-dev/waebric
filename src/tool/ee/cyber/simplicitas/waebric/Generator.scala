@@ -152,8 +152,11 @@ private class Generator(tree: Program) {
         }
     }
 
+    def concatNodes(nodes: List[NodeSeq]) =
+        nodes.foldLeft(NodeSeq.Empty)(_ ++ _)
+
     def evalStatements(statements: List[Statement], env: Env): NodeSeq =
-        statements.map(evalStatement(_, env)).foldLeft(NodeSeq.Empty)(_ ++ _)
+        concatNodes(statements.map(evalStatement(_, env)))
 
     def evalStatement(statement: Statement, env: Env): NodeSeq =
         statement match {
@@ -167,24 +170,8 @@ private class Generator(tree: Program) {
                 evalStatements(statements, newEnv)
             case BlockStatement(statements) =>
                 evalStatements(statements, env)
-            case EachStatement(idCon, exp, statement) =>
-                val expressions = evalExpr(exp, env)
-                expressions match {
-                    case ListNodeSeq(list) =>
-                        var ret: NodeSeq = NodeSeq.Empty;
-                        for (f <- list) {
-                            ret ++= evalStatement(statement, env.varExpand(Map(idCon.text -> f)))
-                        }
-                        ret
-                    case RecordNodeSeq(records) =>
-                        var ret: NodeSeq = NodeSeq.Empty
-                        for (f <- records) {
-                            ret ++= evalStatement(statement, env.varExpand(Map(idCon.text -> f)))
-                        }
-                        ret
-                    case _ =>
-                        NodeSeq.Empty
-                }
+            case EachStatement(id, exp, statement) =>
+                processEachStatement(id, exp, statement, env)
             case IfStatement(Predicate(pArgs, pOp), ifStat, elseStat) =>
                 if (resolvePredicateChain(pArgs, pOp, env))
                     evalStatement(ifStat, env)
@@ -197,6 +184,24 @@ private class Generator(tree: Program) {
             case _ =>
                 NodeSeq.Empty
         }
+
+    def processEachStatement(id: IdCon, exp: Expression,
+                             statement: Statement, env: Env) = {
+        def evalStmt(item: NodeSeq) =
+            evalStatement(statement, env.varExpand(Map(id.text -> item)))
+
+        def processList(lst: List[NodeSeq]) =
+            concatNodes(lst.map(evalStmt))
+
+        evalExpr(exp, env) match {
+            case ListNodeSeq(list) =>
+                processList(list)
+            case RecordNodeSeq(records) =>
+                processList(records)
+            case _ =>
+                NodeSeq.Empty
+        }
+    }
 
     def evalMarkupChain(chain: MarkupChain, env: Env): NodeSeq = chain match  {
         case MarkupSemi(_) =>
