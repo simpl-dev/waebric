@@ -114,17 +114,16 @@ private class Generator(tree: Program) {
     def processImports(program: Program) = {
         var ret = Map.empty[String, FunctionDef]
 
-        for (i <- program.definition)
-            i match {
-                case Import(ModuleId(ids)) =>
-                    val path: String = ids.map(_.text).mkString("", "/", ".wae")
-                    val f: java.io.File = new java.io.File(path)
-                    if (!f.exists)
-                        errors :+= "Cannot import from " + path + ", file not found"
-                    else
-                        ret = processDefs(ret, ImportLoader.load(path))
-                case _ => ()
-            }
+        program.definition foreach {
+            case Import(ModuleId(ids)) =>
+                val path = ids.map(_.text).mkString("", "/", ".wae")
+                val f = new java.io.File(path)
+                if (!f.exists)
+                    errors :+= "Cannot import from " + path + ", file not found"
+                else
+                    ret = processDefs(ret, ImportLoader.load(path))
+            case _ => ()
+        }
 
         ret
     }
@@ -137,18 +136,16 @@ private class Generator(tree: Program) {
         }
 
         var defs = oldDefs
-        for (d <- node.definition) {
-            d match {
-                case FunctionDef(IdCon(name), _, _, _) =>
-                    checkExisting(name)
-                    defs += (name -> d.asInstanceOf[FunctionDef])
-                case _ => ()
-            }
+        node.definition foreach {
+            case fd @ FunctionDef(IdCon(name), _, _, _) =>
+                checkExisting(name)
+                defs += (name -> fd)
+            case _ => ()
         }
         defs
     }
 
-    def showErrors = {
+    def showErrors() {
         if (!errors.isEmpty) {
             println("Found " + errors.size + " errors")
             errors foreach {e => println("ERROR: " + e)}
@@ -165,8 +162,8 @@ private class Generator(tree: Program) {
             case MarkupStatement(markup, chain) =>
                 val chainRet = evalMarkupChain(chain, env)
                 evalMarkup(markup, chainRet, env)
-            case LetStatement(assignments, statements, _) =>
-                val newEnv = applyAssignments(assignments, env)
+            case LetStatement(bindings, statements, _) =>
+                val newEnv = applyBindings(bindings, env)
                 evalStatements(statements, newEnv)
             case BlockStatement(statements) =>
                 evalStatements(statements, env)
@@ -185,15 +182,14 @@ private class Generator(tree: Program) {
                             ret ++= evalStatement(statement, env.varExpand(Map(idCon.text -> f)))
                         }
                         ret
-                    case _ =>  NodeSeq.Empty
+                    case _ =>
+                        NodeSeq.Empty
                 }
-            case IfStatement(p, ifStat, elseStat) =>
-                if (resolvePredicateChain(p.args, p.op, env)) {
-                    return evalStatement(ifStat, env)
-                } else if (elseStat ne null) {
-                    return evalStatement(elseStat, env)
-                }
-                NodeSeq.Empty
+            case IfStatement(Predicate(pArgs, pOp), ifStat, elseStat) =>
+                if (resolvePredicateChain(pArgs, pOp, env))
+                    evalStatement(ifStat, env)
+                else // case where elseStat eq null is handled in evalStatement
+                    evalStatement(elseStat, env)
             case YieldStatement(_) =>
                 env.resolveYield
             case CommentStatement(_, strCon, _) =>
@@ -327,7 +323,7 @@ private class Generator(tree: Program) {
 
     }
 
-    private def applyAssignments(assignments: List[Assignment], env: Env): Env = {
+    private def applyBindings(assignments: List[Assignment], env: Env): Env = {
         //let's process assignments in the order and expand the env for each assignment
         var newEnv: Env = env
         for (a <- assignments) {
