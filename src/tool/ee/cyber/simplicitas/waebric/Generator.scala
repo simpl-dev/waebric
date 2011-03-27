@@ -274,39 +274,41 @@ private class Generator(tree: Program) {
         }
 
 
-    private def resolvePredicateChain(p: List[PrimPredicate], op: List[PredicateOp], env: Env): Boolean = {
-
+    private def resolvePredicateChain(predList: List[PrimPredicate],
+                                      op: List[PredicateOp], env: Env): Boolean = {
         def checkString(e: Expression): Boolean =  {
             val n: NodeSeq = evalExpr(e, env)
-            return (n.size == 1 && n.head.isInstanceOf[Text])
+            n.size == 1 && n.head.isInstanceOf[Text]
             //this might not be the best way to do it.
         }
-        def resolvePredicate(p: PrimPredicate, env: Env): Boolean = {
+
+        def resolvePredicate(p: PrimPredicate, env: Env): Boolean =
             p match {
                 case NotPredicate(prim) =>
-                    return !resolvePredicate(prim, env)
+                    !resolvePredicate(prim, env)
                 case IsAPredicate(exp, null) =>
                     val e = evalExpr(exp, env)
-                    return (e ne null) && (e != NodeSeq.Empty)
-                case IsAPredicate(exp, t) =>
-                    t match {
-                        case PredType("list") => return evalExpr(exp, env).isInstanceOf[ListNodeSeq]
-                        case PredType("record") => return evalExpr(exp, env).isInstanceOf[RecordNodeSeq]
-                        case PredType("string") => return exp.isInstanceOf[StrCon] || checkString(exp)
-                    }
-                case _ => return false;
-
+                    (e ne null) && (e != NodeSeq.Empty)
+                case IsAPredicate(exp, PredType("list")) =>
+                    evalExpr(exp, env).isInstanceOf[ListNodeSeq]
+                case IsAPredicate(exp, PredType("record")) =>
+                    evalExpr(exp, env).isInstanceOf[RecordNodeSeq]
+                case IsAPredicate(exp, PredType("string")) =>
+                    exp.isInstanceOf[StrCon] || checkString(exp)
+                case _ => false;
             }
-        }
-        if (p.size == 1) {
-            return resolvePredicate(p.head, env)
-        }
-        op.head match {
-            case PredicateOp("&&") => return resolvePredicate(p.head, env) && resolvePredicateChain(p.tail, op.tail, env)
-            case PredicateOp("||") => return resolvePredicate(p.head, env) || resolvePredicateChain(p.tail, op.tail, env)
-            case _ => true; //should never happen
-        }
 
+        (predList, op) match {
+            case (List(single), _) =>
+                resolvePredicate(predList.head, env)
+            case (ph :: pt, PredicateOp("&&") :: ot) =>
+                resolvePredicate(ph, env) &&
+                        resolvePredicateChain(pt, ot, env)
+            case (ph :: pt, PredicateOp("||") :: ot) =>
+                resolvePredicate(ph, env) ||
+                        resolvePredicateChain(pt, ot, env)
+            case _ => true  // cannot happen
+        }
     }
 
     private def applyBindings(assignments: List[Assignment], env: Env): Env = {
