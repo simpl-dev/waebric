@@ -222,25 +222,21 @@ private class Generator(tree: Program) {
     def evalMarkup(markup: Markup, body: NodeSeq, env: Env): NodeSeq = {
         D.ebug("evalMarkup(" + markup + ", " + body + ")")
         val desText = markup.designator.idCon.text
-        val fun = env.resolveFunction(desText) //(statements, argNames, function environment)
+        val fun = env.resolveFunction(desText)
         if (fun ne null) {
             val newEnv = bindParameters(fun.args, fun.env, markup, env)
             newEnv.yieldValue = body
             evalStatements(fun.statements, newEnv)
         } else {
-            try {
-                XHTMLTags.withName(desText toUpperCase)
-            } catch {
-                case e: java.util.NoSuchElementException =>
-                    errors :+= "Function " + desText + " not defined nor it is a XHTML tag"
+            if (!XHTMLTags.tags.contains(desText.toUpperCase)) {
+                errors :+= "Function " + desText + " not defined nor it is a XHTML tag"
             }
             addXHTMLAttributes(elem(desText, body), markup, env)
         }
     }
 
     // Processes expressions and embeddings.
-    def evalExpr(exp: CommonNode, env: Env) : NodeSeq = {
-
+    def evalExpr(exp: CommonNode, env: Env) : NodeSeq =
         exp match {
         /* Terminal handling */
             case Txt(text) => Text(stripEdges(text))
@@ -290,7 +286,6 @@ private class Generator(tree: Program) {
             case _ =>
                 NodeSeq.Empty
         }
-    }
 
 
     private def resolvePredicateChain(p: List[PrimPredicate], op: List[PredicateOp], env: Env): Boolean = {
