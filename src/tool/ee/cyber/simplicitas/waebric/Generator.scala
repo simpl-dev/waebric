@@ -352,41 +352,41 @@ private class Generator(tree: Program) {
         funEnv.varExpand(bindings.toMap)
     }
 
-    private def addXHTMLAttributes(elem: Elem, markup: Markup, env: Env): NodeSeq = {
-        val map = collection.mutable.Map.empty[String, NodeSeq]
+    private def addXHTMLAttributes(elem: Elem, markup: Markup, env: Env) = {
+        def extractAttributes(attr: Attribute) = attr match {
+            case IdAttr(id) => List(("id", Text(id.text)))
+            case ClassAttr(cl) => List(("class", Text(cl.text)))
+            case NameAttr(name) => List(("name", Text(name.text)))
+            case TypeAttr(t) => List(("type", Text(t.text)))
+            case WidthHeightAttr(w, h) =>
+                List(("width", Text(w.text)), ("height", Text(h.text)))
+            case HeightAttr(h) => List(("height", Text(h.text)))
+        }
+
+        val attrMap = collection.mutable.Map.empty[String, NodeSeq]
 
         def updateMap(pair: Tuple2[String, NodeSeq]) = {
-            val v = map.get(pair._1)
+            val v = attrMap.get(pair._1)
             if (v ne None) {
-                map.put(pair._1, (v.get ++ Text(" ") ++ pair._2))
+                attrMap.put(pair._1, (v.get ++ Text(" ") ++ pair._2))
             } else {
-                map.put(pair._1, pair._2)
+                attrMap.put(pair._1, pair._2)
             }
         }
 
-        markup.designator.attribute map {
-            f => val pair = f match {
-                case IdAttr(id) => ("id", Text(id.text))
-                case ClassAttr(cl) => ("class", Text(cl.text))
-                case NameAttr(name) => ("name", Text(name.text))
-                case TypeAttr(t) => ("type", Text(t.text))
-                case WidthHeightAttr(w, h) => updateMap(("width", Text(w.text)))
-                ("height", Text(h.text))
-                case HeightAttr(h) => ("height", Text(h.text))
-            }
-            updateMap(pair)
-        }
-        // We are interested only in the AttrArg type
-        //markupArgs filter { mapping => mapping.isInstanceOf[AttrArg]} map {
-        // or not:
+        // Extract all the specially encoded attributes
+        markup.designator.attribute.map(extractAttributes).flatten.
+                foreach(updateMap)
+
+        // extract the standard attributes
         getMarkupArgs(markup) map {
-            f => f match {
-                case AttrArg(idCon, exp) =>  updateMap((idCon.text, evalExpr(exp, env)))
-                case _ => updateMap(("value", evalExpr(f, env)))
-            }
-        }
-        val attrs = map.keySet map {f => Attribute(f, map.get(f).get, Null)} toList;
-        //attrs.foldLeft(elem)((e: Elem, m: MetaData) => e % m)
+            case AttrArg(idCon, exp) => (idCon.text, evalExpr(exp, env))
+            case f => ("value", evalExpr(f, env))
+        } foreach(updateMap)
+
+        val attrs = attrMap map {
+            entry => Attribute(entry._1, entry._2, Null)} toList
+
         attrs.foldLeft(elem)(_ % _)
     }
 
