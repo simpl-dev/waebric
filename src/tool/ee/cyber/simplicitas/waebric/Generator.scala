@@ -331,23 +331,25 @@ private class Generator(tree: Program) {
         else
             markup.args
 
-    //funArgs contains the env for the function
     private def bindParameters(funArgs: List[IdCon], funEnv: Env,
                                markup: Markup, env: Env): Env = {
         var markupArgs: List[Argument] = getMarkupArgs(markup)
+
         // check whether number of arguments and number of parameters match
         if (markupArgs.size < funArgs.size) {
             errors :+= "Wrong number of arguments(" + markupArgs.size +
                     ") for function " + markup.designator.idCon.text + ". Expected: " + funArgs.size
-            while (markupArgs.size < funArgs.size)
-                markupArgs :+= Txt("\"undef\"")
+            markupArgs ++= List.fill(funArgs.size - markupArgs.size)(Txt("\"undef\""))
         }
 
-        val bindMap = funArgs zip markupArgs map { f => (f._1.text, f._2 match {
-            case AttrArg(_, exp) => evalExpr(exp, env)
-            case _ => evalExpr(f._2, env)})} toMap;
+        val bindings = funArgs.zip(markupArgs).map {
+            case (IdCon(name), AttrArg(_, expr)) =>
+                (name, evalExpr(expr, env))
+            case (IdCon(name), expr) =>
+                (name, evalExpr(expr, env))
+        }
         // Use the function environment for the expansion
-        funEnv.varExpand(Map(bindMap.toSeq: _*))
+        funEnv.varExpand(bindings.toMap)
     }
 
     private def addXHTMLAttributes(elem: Elem, markup: Markup, env: Env): NodeSeq = {
