@@ -8,6 +8,7 @@ Program: 'module' IdCon Definition+;
 
 option Definition: FunctionDef | Site | Import;
 
+// CC 5:
 FunctionDef:
     "def" name=IdCon ("(" (args=IdCon ("," args=IdCon)*)? ")")?
 	    statements=Statement*
@@ -41,8 +42,6 @@ fragment ListType: "list";
 fragment RecordType: "record";
 fragment StringType: "string";
 
-
-// General
 fragment Letter: ('a'..'z'|'A'..'Z');
 fragment Digit: ('0'..'9');
 fragment Hexadecimal: (Letter | Digit)+;
@@ -55,6 +54,7 @@ option Argument: AttrArg | Expression;
 
 AttrArg: IdCon "=" Expression;
 
+//CC 6:
 option Attribute:
     IdAttr
     | ClassAttr
@@ -70,6 +70,7 @@ TypeAttr: ":" t=IdCon;
 WidthHeightAttr: "@" width=NatCon "%" height=NatCon;
 HeightAttr: "@" height=NatCon;
 
+//CC 6:
 option Expression:
     CatExpression
     | ListExpression
@@ -94,10 +95,9 @@ ListExpression: "[" (args=Expression ("," args=Expression)*)? "]";
 RecordExpression: "{" (args=KeyValuePair ("," args=KeyValuePair)*)? "}";
 KeyValuePair: IdCon ":" Expression;
 
-
+//CC 9:
 option Statement:
     IfStatement
-    //IfElseStatement
     | EachStatement
     | LetStatement
     | BlockStatement
@@ -138,17 +138,14 @@ IsAPredicate: Expression ("." PredType "?")?;
 MarkupExp: expr=Expression Semicolon;
 MarkupEmb: embed=Embedding Semicolon;
 MarkupSemi: Semicolon;
-//MarkupChain: Semicolon | Expression Semicolon | Embedding Semicolon | Statement;
 option MarkupChain: MarkupSemi | MarkupExp | MarkupEmb | Statement;
 
 Embedding: PreText Embed TextTail;
 
 EmbedExp: Markup* Expression;
 EmbedMarkup: Markup+;
-//Embed: Markup* Expression | Markup+;
 option Embed: EmbedExp | EmbedMarkup;
 
-//TextTail: PostText | MidText Embed TextTail;
 TextTailMid: MidText Embed TextTail;
 option TextTail: PostText | TextTailMid;
 
@@ -163,18 +160,11 @@ fragment EscQuote:'\\\\' | '\\"';
 fragment Amp:'\&' ~('#' | '0'..'9' | 'a'..'z' | 'A'..'Z' | '_' | ':')+;
 fragment CharRef:'&#' Digit+ ';' | '&#x' Hexadecimal ';' ;
 fragment EntRef:'&' ( Letter | '_' | ':' ) ( Letter | Digit | '.' | '-' | '_' | ':')* ';' ;
-// TODO: add check that this terminal must not be matched when lexer
-// state contains string.
 terminal Txt: '"' TextChar* '"';    // Using Text as terminal is not good because of scala.xml.Text
 
 terminal PreText: '"' TextChar* '<';
 terminal PostText: '>' TextChar* '"';
 terminal MidText: '>' TextChar* '<';
-
-//StrCon and StrChar
-//As this will be processed after Text, all patterns that match
-//both, were already considered as Text. "comment" tag only
-//uses StrCon and this must be considered.
 
 fragment Newline: '\\n';
 fragment Tab: '\\t';
